@@ -1,4 +1,4 @@
-# black_queen_hypothesis
+# Testing the Black Queen Hypothesis
 
 This repository hosts figures and code for testing the black queen hypothesis.  
 So far I tested if I see more deletions in co-evolved samples in PacBio data.  
