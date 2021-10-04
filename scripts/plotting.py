@@ -2,7 +2,8 @@ import pandas as pd
 from get_samples import Samples
 import os
 import plotly.express as px
-import numpy as np
+import json
+import subprocess
 
 class Plotting():
     """Plotting class for black queen hypothesis analysis."""
@@ -73,6 +74,23 @@ def plot_deletions():
         p.update_labels(p.strip_plot,'Number of deletions '+strain,'treatment','number of deletions','evolved samples')
         fname = (strain+'_number of deletions '+'.png').replace(' ','_')
         p.strip_plot.write_image(os.path.join('../plots','deleted_bases',fname))
+
+def plot_gc_bias():
+    """Plotting GC bias, plotting is done by package gc_bias."""
+    s = Samples()
+
+    for strain in s.strains:
+        for sample in s.strains[strain]:
+            labels = dict()
+            labels['title'] = strain+' in '+sample['name']
+            labels['xlabel'] = 'GC content per window'
+            labels['ylabel'] = 'coverage per window'
+            labels['theme'] = 'plotly_dark'
+            j = json.dumps(labels,indent=4) 
+            with open(os.path.join(sample['dir'],'labels.json'),'w') as handle:
+                handle.write(j)
+            cmd = ['sbatch','plot_gc_bias.sh',sample['dir']]
+            subprocess.call(' '.join(cmd),shell=True)
     
 if __name__ == "__main__":
-    plot_deletions()
+    plot_gc_bias()
