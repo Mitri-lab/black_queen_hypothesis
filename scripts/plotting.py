@@ -2,6 +2,7 @@ import pandas as pd
 from get_samples import Samples
 import os
 import plotly.express as px
+import plotly.graph_objects as go
 import json
 import subprocess
 
@@ -17,7 +18,8 @@ class Plotting():
                 if not pd.isna(value):
                     x.append(df.columns[counter])
                     y.append(value)
-        self.strip_plot = px.strip(x=x,y=y)
+        #First number of size arguments is 16:9 ratio
+        self.strip_plot = px.strip(x=x,y=y,width=1057.92*0.8*0.4,height=595.2*0.8)
         self.strip_plot.update_xaxes(type='category')
 
     def update_labels(self,plot,title,xlabel,ylabel,legend_title):
@@ -26,9 +28,8 @@ class Plotting():
             title=title,
             xaxis_title=xlabel,
             yaxis_title=ylabel,
-            template='plotly_dark',
             legend_title=legend_title)
-        plot.update_traces(showlegend=True)
+        plot.update_traces(showlegend=False)
 
 
 def parse_deletions(meta_dict):
@@ -90,6 +91,7 @@ def plot_gc_bias():
             with open(os.path.join(sample['dir'],'labels.json'),'w') as handle:
                 handle.write(j)
             cmd = ['sbatch','plot_gc_bias.sh',sample['dir']]
+            print(sample['dir'])
             subprocess.call(' '.join(cmd),shell=True)
     
 if __name__ == "__main__":
