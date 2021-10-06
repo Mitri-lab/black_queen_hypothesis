@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 
 class Samples():
@@ -7,6 +8,12 @@ class Samples():
         self.sample_sheet = './sample_sheet.xlsx'
         self.df = pd.read_excel(self.sample_sheet,dtype=str)
         self.strains = dict()
+
+        self.references = dict()
+        self.references['Comamonas testosteroni'] = '/users/eulrich/evomicrocomm/references/ct/ct.fasta'
+        self.references['Agrobacterium tumefaciens'] = '/users/eulrich/evomicrocomm/references/at/at.fasta'
+        self.references['Microbacterium saperdae'] = '/users/eulrich/evomicrocomm/references/ms/ms.fasta'
+        self.references['Ochrobactrum anthropi'] = '/users/eulrich/evomicrocomm/references/oa/oa.fasta'
       
         """For every strain we create a  list of dictionaries with
         the information about directory, sample name, treatment and sequencing platform"""
@@ -24,9 +31,3 @@ class Samples():
                     meta['treatment'] = int(row.sample_name[4])
                 meta['platform'] = row.platform
                 self.strains[strain].append(meta)
-
-        
-        self.at_ref = '/users/eulrich/evomicrocomm/references/at/at.fasta'      
-        self.ct_ref = '/users/eulrich/evomicrocomm/references/ct/ct.fasta'
-        self.ms_ref = '/users/eulrich/evomicrocomm/references/ms/ms.fasta'
-        self.oa_ref = '/users/eulrich/evomicrocomm/references/oa/oa.fasta'
