@@ -9,6 +9,7 @@ class Samples():
         self.df = pd.read_excel(self.sample_sheet,dtype=str)
         self.strains = dict()
 
+        #Adding reference fastas to class
         self.references = dict()
         self.references['Comamonas testosteroni'] = '/users/eulrich/evomicrocomm/references/ct/ct.fasta'
         self.references['Agrobacterium tumefaciens'] = '/users/eulrich/evomicrocomm/references/at/at.fasta'

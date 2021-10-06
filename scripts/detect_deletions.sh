@@ -8,9 +8,12 @@
 #
 #SBATCH --time=00:30:00
 #
+#Mapping with minimap2
 minimap2 -t 16 --secondary=no -ax asm20 $1/reference.fasta $1/corrected_reads.fasta > $1/alignment.minimap.sam
 samtools view -S -b $1/alignment.minimap.sam > $1/alignment.minimap.bam
 samtools sort $1/alignment.minimap.bam -o $1/alignment.minimap.sorted.bam
-samtools index $1/alignment.minimap.sorted.bam
+samtools index $1/alignment.minimap.sorted.bamhttps://github.com/nahanoo/deletion_detection
 samtools depth -aa $1/alignment.minimap.sorted.bam -o $1/depth.tsv
+#Calling deletion_detection module
+#See https://github.com/nahanoo/deletion_detection
 detect_deletions --output_no_alignment_regions $1/alignment.minimap.sorted.bam $1/
