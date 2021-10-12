@@ -1,5 +1,5 @@
 import pandas as pd
-from get_samples import Samples
+from samples import Samples
 import os
 import plotly.express as px
 import plotly.graph_objects as go

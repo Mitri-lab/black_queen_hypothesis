@@ -1,4 +1,4 @@
-from get_samples import Samples
+from samples import Samples
 import os
 import pandas as pd
 from Bio import SeqIO
