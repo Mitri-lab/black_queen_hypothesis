@@ -1,0 +1,15 @@
+from os.path import join
+
+work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
+
+rule mapping:
+    input: 
+        reference = join(work,'{sample}','{strain}','reference.fasta'),
+        read1 = join(work,'{sample}','read1.fq.gz'),
+        read2 = join(work,'{sample}','read2.fq.gz')
+    output: 
+        join(work,'{sample}','{strain}','mapped_reads.sam')
+    threads:
+        16
+    shell:
+        "minimap2 -ax sr {input} > {output}"

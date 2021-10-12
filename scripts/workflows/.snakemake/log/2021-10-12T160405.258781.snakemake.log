@@ -1,0 +1,26 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job        count    min threads    max threads
+-------  -------  -------------  -------------
+mapping        1             16             16
+total          1             16             16
+
+Select jobs to execute...
+
+[Tue Oct 12 16:04:09 2021]
+rule mapping:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ct/reference.fasta, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ct/mapped_reads.sam
+    jobid: 0
+    wildcards: sample=T33.3.5, strain=ct
+    threads: 16
+    resources: tmpdir=/tmp
+
+minimap2 -ax sr /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ct/reference.fasta /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read1.fq.gz /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read2.fq.gz > /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ct/mapped_reads.sam
+Submitted job 0 with external jobid 'Submitted batch job 2740576'.
+[Tue Oct 12 16:09:11 2021]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/.snakemake/log/2021-10-12T160405.258781.snakemake.log
