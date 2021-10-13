@@ -3,13 +3,17 @@ from os.path import join
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 
 rule mapping:
-    input: 
+    input:
         reference = join(work,'{sample}','{strain}','reference.fasta'),
         read1 = join(work,'{sample}','read1.fq.gz'),
         read2 = join(work,'{sample}','read2.fq.gz')
-    output: 
-        join(work,'{sample}','{strain}','mapped_reads.sam')
+    output:
+        join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     threads:
         16
     shell:
-        "minimap2 -ax sr {input} > {output}"
+        """
+        minimap2 --secondary=no -ax sr {input} | samtools view \
+        -S -b | samtools sort -o {output}
+        samtools index {output}
+        """
