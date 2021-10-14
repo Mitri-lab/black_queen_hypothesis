@@ -1,2 +1,5 @@
 scripts/__pycache__
 scripts/*.json
+scripts/slurm*
+scripts/workflows/slurm*
+scripts/workflows/.snakemake/
