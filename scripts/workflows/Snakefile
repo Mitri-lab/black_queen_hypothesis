@@ -4,7 +4,7 @@ work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 
 rule mapping:
     input:
-        reference = join(work,'{sample}','{strain}','reference.fasta'),
+        reference = join(work,'{strain}','reference.fasta'),
         read1 = join(work,'{sample}','read1.fq.gz'),
         read2 = join(work,'{sample}','read2.fq.gz')
     output:
@@ -13,7 +13,21 @@ rule mapping:
         16
     shell:
         """
-        minimap2 --secondary=no -ax sr {input} | samtools view \
-        -S -b | samtools sort -o {output}
+        minimap2 --secondary=no -R '@RG\\tID:snippy\\tSM:snippy' -ax sr {input} | samtools view \
+        -S -b --threads 16 | samtools sort --threads 16 -o {output}
         samtools index {output}
+        """
+
+rule snippy:
+    input:
+        reference = join(work,'{strain}','reference.gbk'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        outfile = join(work,'{sample}','{strain}','snippy','snps.tab')
+    params:
+        outdir = join(work,'{sample}','{strain}','snippy')
+    shell:
+        """
+        snippy --cpus 16 --force --ram 64 --minfrac 0.8 --cleanup --outdir \
+        {params} --reference {input.reference} --bam {input.bam}
         """
