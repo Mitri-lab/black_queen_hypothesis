@@ -19,12 +19,13 @@ s = Samples()
 
 def submit(files):
     """Basic snakemake calling"""
-    cluster_config = '--cluster-config cluster.json --cluster "sbatch --mem={cluster.mem} -t {cluster.time} -c {threads}"'
+    cluster_config = '--cluster-config cluster.json --cluster \
+        "sbatch --mem={cluster.mem} -t {cluster.time} -c {threads}"'
     cmd = ['snakemake','--rerun-incomplete','-j','100',cluster_config,files]
     subprocess.call(' '.join(cmd),shell=True)
 
 def snake_test():
-    submit(join(work,'T22.2.4','ct','snippy','snps.tab'))
+    submit(join(work,'T22.4.5','oa','report.md'))
 
 def strain_caller(output_file):
     """Grabbing all the directories and formatting them as snakemake wildcards."""
@@ -37,6 +38,6 @@ def strain_caller(output_file):
     submit(files)
 
 if __name__ == '__main__':
-    #strain_caller('mapped_reads.sorted.bam')
     #strain_caller(join('snippy','snps.tab'))
-    snake_test()
+    strain_caller('report.md')
+    #snake_test()

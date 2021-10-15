@@ -1,6 +1,11 @@
 from os.path import join
+from samples import Samples
+import json
 
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
+
+def get_strain(wildcards):
+    return Samples().abbreviations[wildcards.strain]
 
 rule mapping:
     input:
@@ -14,7 +19,7 @@ rule mapping:
     shell:
         """
         minimap2 --secondary=no -R '@RG\\tID:snippy\\tSM:snippy' -ax sr {input} | samtools view \
-        -S -b --threads 16 | samtools sort --threads 16 -o {output}
+        -S -b --threads 15 | samtools sort --threads 15 -o {output}
         samtools index {output}
         """
 
@@ -24,6 +29,8 @@ rule snippy:
         bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     output:
         outfile = join(work,'{sample}','{strain}','snippy','snps.tab')
+    threads:
+        16
     params:
         outdir = join(work,'{sample}','{strain}','snippy')
     shell:
@@ -31,3 +38,28 @@ rule snippy:
         snippy --cpus 16 --force --ram 64 --minfrac 0.8 --cleanup --outdir \
         {params} --reference {input.reference} --bam {input.bam}
         """
+rule labels:
+    output:
+        join(work,'{sample}','{strain}','labels.json')
+    params:
+        outdir = join(work,'{sample}','{strain}'),
+        strain = get_strain
+    threads:
+        1
+    shell:
+        "python create_labels.py {wildcards.sample} {params.strain} {params.outdir}"
+
+rule report:
+    input:
+        join(work,'{sample}','{strain}','labels.json')
+    output:
+        join(work,'{sample}','{strain}','report.md')
+    params:
+        reference = join(work,'{strain}','reference.fasta'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam'),
+        outdir = join(work,'{sample}','{strain}')
+    threads:
+        16
+    shell:
+        "report_bam_stats --plotting_only {params.reference} {params.bam} {input} {params.outdir}"
+
