@@ -15,7 +15,7 @@ class Mutations():
             snps = Snps(strain)
             snps.get_avg_snps()
             snps.get_avg_effects()
-            snps.get_affected_genes_per_timepoint()
+            snps.get_gene_counts_per_treatment()
             self.strains[strain] = snps
 
     def print_effects(self):
@@ -24,20 +24,28 @@ class Mutations():
             print(strain)
             print(pd.DataFrame(effects.avg_effects),'\n')
 
+    def print_gene_counts(self):
+        """Prints normalized gene counts per treatment."""
+        for strain in self.strains:
+            print(strain,'\n',pd.DataFrame(self.strains[strain].gene_counts_per_treatment))
+
 class Snps():
     """This class returns SNPs stats per strain."""
     def __init__(self,strain):
         self.strain = strain
 
         #Timepoints of studies
-        self.timepoints = {'T11':None,'T22':None,'T33':None,'T44':None}
+        self.timepoints = ['T11','T22','T33','T44']
         #Grabs all treatments per strain
         self.treatments = set([sample['treatment'] for sample in s.strains[self.strain]])
+        self.microcosms = [1,2,3,4,5]
 
-        #Stors all snippy dfs of a strain with the treatment as a key
-        #Stors all snippy dsf of a strain with the timepoint as a key
+        #Stores all snippy dfs of a strain with the treatment as a key
+        #Stores all snippy dsf of a strain with the timepoint as a key
+        #Stores all snippy dsf of a strain with the microcosm as a key
         self.snps_per_treatment = {treatment:[] for treatment in self.treatments}
         self.snps_per_timepoint = {timepoint:[] for timepoint in self.timepoints}
+        self.snps_per_microcosm = {microcosm:[] for microcosm in self.microcosms}
         for sample in s.strains[self.strain]:
             #We only look at Illumina and samples with a snippy file
             #(because of no coverage some samples have no snippy file)
@@ -46,16 +54,7 @@ class Snps():
                 self.snps_per_treatment[sample['treatment']].append(df)
                 timepoint = sample['name'][0:3]
                 self.snps_per_timepoint[timepoint].append(df)
-
-
-        #Stors n_samples per treatment for average calculations
-        self.samples_per_treatment = {treatment:None for treatment in self.treatments}
-        self.samples_per_timepoint = 1
-        for treatment in self.treatments:
-            n_samples = len([sample for sample in s.strains[self.strain] \
-            if (sample['treatment'] == treatment) & (sample['platform'] == 'illumina')])
-            self.samples_per_treatment[treatment] = n_samples
-
+                self.snps_per_microcosm[sample['microcosm']].append(df)
 
     def get_avg_snps(self):
         """Calculates average SNPS per treatment"""
@@ -71,7 +70,7 @@ class Snps():
         for treatment in self.snps_per_treatment:
             for df in self.snps_per_treatment[treatment]:
                 n_snps[treatment].append(len(df))
-            n_samples = self.samples_per_treatment[treatment]
+            n_samples = len(self.snps_per_treatment[treatment])
             self.avg_snps[treatment] = sum(n_snps[treatment])/n_samples
 
     def get_avg_effects(self):
@@ -93,23 +92,29 @@ class Snps():
             
             #Normalizes counts by n_samples
             for effect,count in effects.items():
-                effects[effect] = count/self.samples_per_treatment[treatment]
+                effects[effect] = count/len(self.snps_per_treatment[treatment])
 
             self.avg_effects[treatment] = effects
     
-    def get_affected_genes_per_timepoint(self):
-        self.normalized_gene_count_per_timepoint = {timepoint:None for timepoint in self.timepoints}
-        for timepoint in self.timepoints:
-            df = pd.concat(self.snps_per_timepoint[timepoint]).dropna()
-            gene_counts = {gene:0 for gene in set(df['GENE'])}
-            for gene in df['GENE']:
-                gene_counts[gene] += 1
-            gene_counts_per_sample = gene_counts
-            for gene,count in gene_counts.items():
-                gene_counts_per_sample[gene] = count/self.samples_per_treatment
-            self.normalized_gene_count_per_timepoint[timepoint] = gene_counts
+    def get_gene_counts(self,dfs):
+        """Returns the gene counts over subsetted samples. dfs are
+        subsetter according to treatment, timepoint or microcosm.
+        Results are normalized by n samples."""
+        df = pd.concat(dfs).dropna()
+        gene_counts = {gene:0 for gene in set(df['GENE'])}
+        for gene in df['GENE']:
+            gene_counts[gene] += 1
+        gene_counts_per_sample = gene_counts
+        for gene,count in gene_counts.items():
+            gene_counts_per_sample[gene] = count/len(dfs)
+        return gene_counts
 
-
+    def get_gene_counts_per_treatment(self):
+        """Gets the normalized gene count subsetted by treatment."""
+        self.gene_counts_per_treatment = {treatment:None for treatment in self.treatments}
+        for treatment in self.treatments:
+            self.gene_counts_per_treatment[treatment] = \
+                self.get_gene_counts(self.snps_per_treatment[treatment])
 
 m = Mutations()
 m.get_snps()
