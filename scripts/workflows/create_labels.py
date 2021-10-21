@@ -23,4 +23,4 @@ def create_plot_labels(sample,strain,out):
         handle.write(j)
 
 if __name__ == "__main__":
-    create_plot_labels(sys.argv[1],sys.argv[2]+sys.argv[3],sys.argv[4])
+    create_plot_labels(sys.argv[1],' '.join([sys.argv[2],sys.argv[3]]),sys.argv[4])
