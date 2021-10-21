@@ -11,10 +11,10 @@ s = Samples()
 m = Mutations()
 
 class Plotting():
-    def plot_gene_count_series(self):
-        m.get_gene_count_series()
+    def plot_gene_series(self):
+        m.get_gene_series()
         styles = ['solid', 'dot', 'dash', 'longdash','solid','dashdot', 'longdashdot','solid']
-        for (strain,treatment),df in m.gene_count_series.items():
+        for (strain,treatment),df in m.gene_series.items():
             fig = go.Figure()
             for i,row in df.iterrows():
                 fig.add_trace(go.Scatter(
