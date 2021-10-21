@@ -1,12 +1,12 @@
 {
     "mapping":
     {
-        "mem": "64G",
+        "mem": "128G",
         "time": "3:0:0"
     },
     "snippy":
     {
-        "mem": "64G",
+        "mem": "256G",
         "time": "3:0:0"
     },
     "labels":
@@ -16,7 +16,12 @@
     },
     "report":
     {
-        "mem": "64G",
+        "mem": "256G",
         "time": "1:0:0"
+    },
+    "md_pdf":
+    {
+        "mem": "8G",
+        "time": "0:10:0"
     }
 }
