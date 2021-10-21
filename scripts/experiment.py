@@ -25,5 +25,6 @@ class Experiment():
 
         for strain,samples in s.strains.items():
             for sample in samples:
-                key = (sample['strain'],sample['treatment'])
-                self.strain_series[key].append(sample)
+                if sample['platform'] == 'illumina':
+                    key = (sample['strain'],sample['treatment'])
+                    self.strain_series[key].append(sample)
