@@ -3,6 +3,7 @@ from experiment import Experiment
 from samples import Samples
 from mutations import Mutations
 import plotly.graph_objects as go
+import plotly.express as px
 from os.path import join
 
 e = Experiment()
@@ -29,8 +30,3 @@ class Plotting():
                 yaxis_title = 'observed in n microcosms'
             )
             fig.write_image(join('..','plots','genes','_'.join([strain.replace(' ','_'),str(treatment)])+'.png'))
-
-        return fig
-
-p = Plotting()
-f = p.plot_gene_count_series()
