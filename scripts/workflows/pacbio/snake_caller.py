@@ -29,23 +29,15 @@ def submit(files):
 def single_caller(path):
     submit(path)
 
-def strain_caller(strain,output_file):
-    """Grabbing all the directories and formatting them as snakemake wildcards."""
+def all_caller(output_file):
     output = []
-    for sample in s.strains[strain]:
-        if sample['platform'] == 'illumina':
-            output.append(sample['name'])
-    files = join(work,'{'+','.join(output)+'}',\
-        s.abbreviations[strain],output_file)
+    for strain,samples in s.strains.items():
+        for sample in samples:
+            if sample['platform'] == 'pacbio':
+                output.append(sample['name'])
+    files = join(work,'{'+','.join(output)+'}',output_file)
     submit(files)
 
-def time_point_caller(output_file):
-    dirs = [d.split('/')[-1] for d in glob.glob(join(work,'T44.4.*'))]
-    submit(join(work,'{'+','.join(dirs)+'}','{at,ct,oa,ms}',output_file))
-
 if __name__ == '__main__':
-    #strain_caller(sys.argv[1],join('snippy','snps.tab'))
-    strain_caller(s.abbreviations[sys.argv[1]],'report.md')
-    #snake_test()
-    #time_point_caller('report.md')
-    single_caller(sys.argv[1])
+    #single_caller(sys.argv[1])
+    all_caller('report.md')
