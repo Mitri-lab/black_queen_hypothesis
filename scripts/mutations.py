@@ -8,20 +8,6 @@ e = Experiment()
 s = Samples()
 
 class Mutations():
-    def __init__(self,dropna=False):
-        self.strains = {key:None for key in s.strains.keys()}
-        for strain,samples in s.strains.items():
-            dfs = []
-            for sample in samples:
-                f = join(sample['dir_name'],'snippy','snps.tab')
-                if exists(f):
-                    df = pd.read_csv(f,sep='\t')
-                    if dropna:
-                        df = df.dropna()
-                    df.insert(0,'sample',sample['name'])
-                    dfs.append(df)
-            self.strains[strain] = pd.concat(dfs)
-
     def get_gene_series(self):
         """Returns a dataframe per treatment and strain
         with timepoints as x axis and genes as y axis,
@@ -42,6 +28,10 @@ class Mutations():
                 f = join(sample['dir_name'],'snippy','snps.tab')
                 if exists(f):
                     genes = pd.read_csv(f,sep='\t').dropna()['GENE']
+                    #If gene is mutated multiple times we want to count it only once
+                    gene_added = {gene:False for gene in set(genes)}
                     for gene in genes:
-                        out.at[gene,sample['timepoint']] += 1
+                        if not gene_added[gene]:
+                            out.at[gene,sample['timepoint']] += 1
+                            gene_added[gene] = True
             self.gene_series[(strain,treatment)] = out
