@@ -1,8 +1,8 @@
 scripts/__pycache__
 scripts/*.json
 scripts/slurm*
-scripts/workflows/slurm*
-scripts/workflows/.snakemake/
+scripts/workflows/*/slurm*
+scripts/workflows/*/.snakemake/
 scripts/filesystem/__pycache__
 scripts/tmp.py
 plots/effects/
