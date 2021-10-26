@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sun Oct 17 22:42:13 2021]
+rule mapping:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ct/reference.fasta, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/ct/mapped_reads.sorted.bam
+    jobid: 0
+    wildcards: sample=T22.2.2, strain=ct
+    threads: 16
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/2846143
+
+[M::mm_idx_gen::0.194*0.70] collected minimizers
+[M::mm_idx_gen::0.210*1.59] sorted minimizers
+[M::main::0.210*1.59] loaded/built the index for 2 target sequence(s)
+[M::mm_mapopt_update::0.210*1.59] mid_occ = 1000
+[M::mm_idx_stat] kmer size: 21; skip: 11; is_hpc: 0; #seq: 2
+[M::mm_idx_stat::0.223*1.55] distinct minimizers: 993850 (99.11% are singletons); average occurrences: 1.021; average spacing: 5.998; total length: 6084391
+[M::worker_pipeline::2.058*3.59] mapped 334472 sequences
+[M::worker_pipeline::3.026*4.56] mapped 334434 sequences
+[M::worker_pipeline::4.044*5.02] mapped 334660 sequences
+[M::worker_pipeline::5.025*5.40] mapped 334604 sequences
+[M::worker_pipeline::5.881*5.97] mapped 334660 sequences
+[M::worker_pipeline::6.900*6.68] mapped 334682 sequences
+[M::worker_pipeline::7.615*6.89] mapped 334544 sequences
+[M::worker_pipeline::8.268*7.11] mapped 334668 sequences
+[M::worker_pipeline::9.140*7.50] mapped 334616 sequences
+[M::worker_pipeline::9.507*7.25] mapped 334442 sequences
+[M::worker_pipeline::9.741*7.10] mapped 199778 sequences
+[M::main] Version: 2.22-r1101
+[M::main] CMD: minimap2 --secondary=no -t 16 -R @RG\tID:snippy\tSM:snippy -ax sr /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ct/reference.fasta /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read1.fq.gz /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read2.fq.gz
+[M::main] Real time: 9.767 sec; CPU: 69.192 sec; Peak RSS: 0.594 GB
+[bam_sort_core] merging from 0 files and 16 in-memory blocks...
+[Sun Oct 17 22:42:27 2021]
+Finished job 0.
+1 of 1 steps (100%) done

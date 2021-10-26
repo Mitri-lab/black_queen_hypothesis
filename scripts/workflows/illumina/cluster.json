@@ -1,0 +1,32 @@
+{
+    "mapping":
+    {
+        "mem": "128G",
+        "time": "3:0:0"
+    },
+    "snippy":
+    {
+        "mem": "256G",
+        "time": "6:0:0"
+    },
+    "labels":
+    {
+        "mem": "1G",
+        "time": "0:2:0"
+    },
+    "report":
+    {
+        "mem": "256G",
+        "time": "1:0:0"
+    },
+    "md_pdf":
+    {
+        "mem": "8G",
+        "time": "0:10:0"
+    },
+    "no_alignments":
+    {
+        "mem": "64G",
+        "time": "1:0:0"
+    }
+}

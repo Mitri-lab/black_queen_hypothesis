@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Mon Oct 25 15:16:24 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/at/no_alignment_regions.tsv
+    jobid: 0
+    wildcards: sample=T33.4.4, strain=at
+    threads: 16
+    resources: mem_mb=13023, disk_mb=13023, tmpdir=/tmp/3066441
+
+[Mon Oct 25 15:25:26 2021]
+Finished job 0.
+1 of 1 steps (100%) done

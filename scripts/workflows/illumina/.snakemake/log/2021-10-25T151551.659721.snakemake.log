@@ -1,0 +1,669 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+no_alignments       47             16             16
+total               47             16             16
+
+Select jobs to execute...
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/at/no_alignment_regions.tsv
+    jobid: 64
+    wildcards: sample=T33.4.3.rep, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 64 with external jobid 'Submitted batch job 3066424'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/at/no_alignment_regions.tsv
+    jobid: 30
+    wildcards: sample=T22.3.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 30 with external jobid 'Submitted batch job 3066425'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/at/no_alignment_regions.tsv
+    jobid: 44
+    wildcards: sample=T11.3.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 44 with external jobid 'Submitted batch job 3066426'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/at/no_alignment_regions.tsv
+    jobid: 2
+    wildcards: sample=T22.4.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 2 with external jobid 'Submitted batch job 3066427'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/at/no_alignment_regions.tsv
+    jobid: 16
+    wildcards: sample=T22.1.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 16 with external jobid 'Submitted batch job 3066428'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/at/no_alignment_regions.tsv
+    jobid: 58
+    wildcards: sample=T22.4.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 58 with external jobid 'Submitted batch job 3066429'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/at/no_alignment_regions.tsv
+    jobid: 72
+    wildcards: sample=T11.4.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 72 with external jobid 'Submitted batch job 3066430'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/at/no_alignment_regions.tsv
+    jobid: 86
+    wildcards: sample=T44.3.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 86 with external jobid 'Submitted batch job 3066431'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/at/no_alignment_regions.tsv
+    jobid: 66
+    wildcards: sample=T11.3.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 66 with external jobid 'Submitted batch job 3066432'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/at/no_alignment_regions.tsv
+    jobid: 80
+    wildcards: sample=T44.3.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 80 with external jobid 'Submitted batch job 3066433'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/at/no_alignment_regions.tsv
+    jobid: 10
+    wildcards: sample=T22.3.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 10 with external jobid 'Submitted batch job 3066434'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/at/no_alignment_regions.tsv
+    jobid: 94
+    wildcards: sample=T11.1.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 94 with external jobid 'Submitted batch job 3066435'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/at/no_alignment_regions.tsv
+    jobid: 24
+    wildcards: sample=T11.4.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 24 with external jobid 'Submitted batch job 3066436'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/at/no_alignment_regions.tsv
+    jobid: 52
+    wildcards: sample=T33.3.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 52 with external jobid 'Submitted batch job 3066437'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/at/no_alignment_regions.tsv
+    jobid: 46
+    wildcards: sample=T33.1.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 46 with external jobid 'Submitted batch job 3066438'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/at/no_alignment_regions.tsv
+    jobid: 4
+    wildcards: sample=T44.3.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 4 with external jobid 'Submitted batch job 3066439'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/at/no_alignment_regions.tsv
+    jobid: 32
+    wildcards: sample=T22.1.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 32 with external jobid 'Submitted batch job 3066440'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/at/no_alignment_regions.tsv
+    jobid: 18
+    wildcards: sample=T33.4.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 18 with external jobid 'Submitted batch job 3066441'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/at/no_alignment_regions.tsv
+    jobid: 60
+    wildcards: sample=T11.4.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 60 with external jobid 'Submitted batch job 3066442'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/at/no_alignment_regions.tsv
+    jobid: 74
+    wildcards: sample=T11.4.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 74 with external jobid 'Submitted batch job 3066443'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/at/no_alignment_regions.tsv
+    jobid: 88
+    wildcards: sample=T44.4.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 88 with external jobid 'Submitted batch job 3066444'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/at/no_alignment_regions.tsv
+    jobid: 50
+    wildcards: sample=T33.1.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 50 with external jobid 'Submitted batch job 3066445'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/at/no_alignment_regions.tsv
+    jobid: 12
+    wildcards: sample=T22.3.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 12 with external jobid 'Submitted batch job 3066446'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/at/no_alignment_regions.tsv
+    jobid: 26
+    wildcards: sample=T44.1.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 26 with external jobid 'Submitted batch job 3066447'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/at/no_alignment_regions.tsv
+    jobid: 40
+    wildcards: sample=T44.1.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 40 with external jobid 'Submitted batch job 3066448'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/at/no_alignment_regions.tsv
+    jobid: 54
+    wildcards: sample=T11.3.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 54 with external jobid 'Submitted batch job 3066449'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/at/no_alignment_regions.tsv
+    jobid: 68
+    wildcards: sample=T33.4.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 68 with external jobid 'Submitted batch job 3066450'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/at/no_alignment_regions.tsv
+    jobid: 82
+    wildcards: sample=T33.3.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 82 with external jobid 'Submitted batch job 3066451'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/at/no_alignment_regions.tsv
+    jobid: 92
+    wildcards: sample=T44.4.5.rep, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 92 with external jobid 'Submitted batch job 3066452'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/at/no_alignment_regions.tsv
+    jobid: 22
+    wildcards: sample=T33.4.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 22 with external jobid 'Submitted batch job 3066453'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/at/no_alignment_regions.tsv
+    jobid: 78
+    wildcards: sample=T11.3.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 78 with external jobid 'Submitted batch job 3066454'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/at/no_alignment_regions.tsv
+    jobid: 20
+    wildcards: sample=T44.4.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 20 with external jobid 'Submitted batch job 3066455'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/at/no_alignment_regions.tsv
+    jobid: 34
+    wildcards: sample=T11.3.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 34 with external jobid 'Submitted batch job 3066456'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/at/no_alignment_regions.tsv
+    jobid: 6
+    wildcards: sample=T44.3.3.rep, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 6 with external jobid 'Submitted batch job 3066457'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/at/no_alignment_regions.tsv
+    jobid: 48
+    wildcards: sample=T22.3.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 48 with external jobid 'Submitted batch job 3066458'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/at/no_alignment_regions.tsv
+    jobid: 62
+    wildcards: sample=T22.4.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 62 with external jobid 'Submitted batch job 3066459'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/at/no_alignment_regions.tsv
+    jobid: 76
+    wildcards: sample=T44.3.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 76 with external jobid 'Submitted batch job 3066460'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/at/no_alignment_regions.tsv
+    jobid: 90
+    wildcards: sample=T44.4.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 90 with external jobid 'Submitted batch job 3066461'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/at/no_alignment_regions.tsv
+    jobid: 0
+    wildcards: sample=T44.4.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 0 with external jobid 'Submitted batch job 3066462'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/at/no_alignment_regions.tsv
+    jobid: 14
+    wildcards: sample=T33.3.3, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 14 with external jobid 'Submitted batch job 3066463'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/at/no_alignment_regions.tsv
+    jobid: 28
+    wildcards: sample=T33.3.4, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 28 with external jobid 'Submitted batch job 3066464'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/at/no_alignment_regions.tsv
+    jobid: 42
+    wildcards: sample=T22.3.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 42 with external jobid 'Submitted batch job 3066465'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/at/no_alignment_regions.tsv
+    jobid: 56
+    wildcards: sample=T22.4.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 56 with external jobid 'Submitted batch job 3066466'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/at/no_alignment_regions.tsv
+    jobid: 70
+    wildcards: sample=T11.4.5, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 70 with external jobid 'Submitted batch job 3066467'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/at/no_alignment_regions.tsv
+    jobid: 84
+    wildcards: sample=T11.1.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 84 with external jobid 'Submitted batch job 3066468'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/at/no_alignment_regions.tsv
+    jobid: 36
+    wildcards: sample=T22.4.2, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 36 with external jobid 'Submitted batch job 3066469'.
+
+[Mon Oct 25 15:15:55 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/at/no_alignment_regions.tsv
+    jobid: 8
+    wildcards: sample=T33.4.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp/3066420
+
+Submitted job 8 with external jobid 'Submitted batch job 3066470'.
+[Mon Oct 25 15:16:18 2021]
+Finished job 16.
+1 of 47 steps (2%) done
+[Mon Oct 25 15:16:33 2021]
+Finished job 46.
+2 of 47 steps (4%) done
+[Mon Oct 25 15:16:33 2021]
+Finished job 32.
+3 of 47 steps (6%) done
+[Mon Oct 25 15:16:47 2021]
+Finished job 94.
+4 of 47 steps (9%) done
+[Mon Oct 25 15:17:56 2021]
+Finished job 58.
+5 of 47 steps (11%) done
+[Mon Oct 25 15:18:24 2021]
+Finished job 10.
+6 of 47 steps (13%) done
+[Mon Oct 25 15:18:25 2021]
+Finished job 50.
+7 of 47 steps (15%) done
+[Mon Oct 25 15:18:52 2021]
+Finished job 2.
+8 of 47 steps (17%) done
+[Mon Oct 25 15:19:06 2021]
+Finished job 30.
+9 of 47 steps (19%) done
+[Mon Oct 25 15:19:07 2021]
+Finished job 26.
+10 of 47 steps (21%) done
+[Mon Oct 25 15:19:07 2021]
+Finished job 40.
+11 of 47 steps (23%) done
+[Mon Oct 25 15:21:43 2021]
+Finished job 12.
+12 of 47 steps (26%) done
+[Mon Oct 25 15:23:28 2021]
+Finished job 82.
+13 of 47 steps (28%) done
+[Mon Oct 25 15:24:34 2021]
+Finished job 48.
+14 of 47 steps (30%) done
+[Mon Oct 25 15:24:45 2021]
+Finished job 52.
+15 of 47 steps (32%) done
+[Mon Oct 25 15:24:58 2021]
+Finished job 4.
+16 of 47 steps (34%) done
+[Mon Oct 25 15:25:24 2021]
+Finished job 86.
+17 of 47 steps (36%) done
+[Mon Oct 25 15:25:37 2021]
+Finished job 64.
+18 of 47 steps (38%) done
+[Mon Oct 25 15:25:37 2021]
+Finished job 18.
+19 of 47 steps (40%) done
+[Mon Oct 25 15:25:50 2021]
+Finished job 80.
+20 of 47 steps (43%) done
+[Mon Oct 25 15:26:14 2021]
+Finished job 24.
+21 of 47 steps (45%) done
+[Mon Oct 25 15:26:50 2021]
+Finished job 72.
+22 of 47 steps (47%) done
+[Mon Oct 25 15:27:02 2021]
+Finished job 88.
+23 of 47 steps (49%) done
+[Mon Oct 25 15:27:27 2021]
+Finished job 62.
+24 of 47 steps (51%) done
+[Mon Oct 25 15:27:52 2021]
+Finished job 84.
+25 of 47 steps (53%) done
+[Mon Oct 25 15:28:02 2021]
+Finished job 66.
+26 of 47 steps (55%) done
+[Mon Oct 25 15:28:02 2021]
+Finished job 68.
+27 of 47 steps (57%) done
+[Mon Oct 25 15:28:02 2021]
+Finished job 22.
+28 of 47 steps (60%) done
+[Mon Oct 25 15:28:14 2021]
+Finished job 74.
+29 of 47 steps (62%) done
+[Mon Oct 25 15:28:25 2021]
+Finished job 44.
+30 of 47 steps (64%) done
+[Mon Oct 25 15:28:25 2021]
+Finished job 60.
+31 of 47 steps (66%) done
+[Mon Oct 25 15:28:26 2021]
+Finished job 56.
+32 of 47 steps (68%) done
+[Mon Oct 25 15:28:48 2021]
+Finished job 42.
+33 of 47 steps (70%) done
+[Mon Oct 25 15:28:58 2021]
+Finished job 78.
+34 of 47 steps (72%) done
+[Mon Oct 25 15:29:21 2021]
+Finished job 36.
+35 of 47 steps (74%) done
+[Mon Oct 25 15:29:31 2021]
+Finished job 92.
+36 of 47 steps (77%) done
+[Mon Oct 25 15:30:04 2021]
+Finished job 20.
+37 of 47 steps (79%) done
+[Mon Oct 25 15:31:10 2021]
+Finished job 54.
+38 of 47 steps (81%) done
+[Mon Oct 25 15:32:11 2021]
+Finished job 34.
+39 of 47 steps (83%) done
+[Mon Oct 25 15:32:21 2021]
+Finished job 6.
+40 of 47 steps (85%) done
+[Mon Oct 25 15:33:01 2021]
+Finished job 14.
+41 of 47 steps (87%) done
+[Mon Oct 25 15:34:51 2021]
+Finished job 28.
+42 of 47 steps (89%) done
+[Mon Oct 25 15:35:01 2021]
+Finished job 90.
+43 of 47 steps (91%) done
+[Mon Oct 25 15:35:01 2021]
+Finished job 0.
+44 of 47 steps (94%) done
+[Mon Oct 25 15:35:41 2021]
+Finished job 70.
+45 of 47 steps (96%) done
+[Mon Oct 25 15:35:52 2021]
+Finished job 76.
+46 of 47 steps (98%) done
+[Mon Oct 25 15:35:52 2021]
+Finished job 8.
+47 of 47 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/illumina/.snakemake/log/2021-10-25T151551.659721.snakemake.log

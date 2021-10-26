@@ -1,0 +1,94 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sun Oct 17 22:48:34 2021]
+rule mapping:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference.fasta, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/at/mapped_reads.sorted.bam
+    jobid: 0
+    wildcards: sample=T11.1.1, strain=at
+    threads: 16
+    resources: mem_mb=2715, disk_mb=2715, tmpdir=/tmp/2846242
+
+[M::mm_idx_gen::0.150*0.78] collected minimizers
+[M::mm_idx_gen::0.169*1.46] sorted minimizers
+[M::main::0.169*1.46] loaded/built the index for 5 target sequence(s)
+[M::mm_mapopt_update::0.169*1.46] mid_occ = 1000
+[M::mm_idx_stat] kmer size: 21; skip: 11; is_hpc: 0; #seq: 5
+[M::mm_idx_stat::0.181*1.43] distinct minimizers: 875577 (98.87% are singletons); average occurrences: 1.019; average spacing: 5.996; total length: 5348547
+[M::worker_pipeline::1.892*3.75] mapped 332780 sequences
+[M::worker_pipeline::2.838*4.70] mapped 332564 sequences
+[M::worker_pipeline::3.805*5.22] mapped 332804 sequences
+[M::worker_pipeline::4.687*5.56] mapped 332640 sequences
+[M::worker_pipeline::5.897*6.46] mapped 332602 sequences
+[M::worker_pipeline::6.625*6.74] mapped 332636 sequences
+[M::worker_pipeline::7.384*7.08] mapped 332686 sequences
+[M::worker_pipeline::8.020*7.14] mapped 333016 sequences
+[M::worker_pipeline::9.102*7.56] mapped 332492 sequences
+[M::worker_pipeline::9.447*7.35] mapped 332266 sequences
+[M::worker_pipeline::10.210*7.42] mapped 332480 sequences
+[M::worker_pipeline::10.961*7.49] mapped 332362 sequences
+[M::worker_pipeline::12.094*7.74] mapped 332398 sequences
+[M::worker_pipeline::12.480*7.56] mapped 332298 sequences
+[M::worker_pipeline::13.256*7.60] mapped 332300 sequences
+[M::worker_pipeline::14.438*7.80] mapped 332330 sequences
+[M::worker_pipeline::14.809*7.65] mapped 332496 sequences
+[M::worker_pipeline::15.591*7.68] mapped 332354 sequences
+[M::worker_pipeline::16.341*7.70] mapped 332280 sequences
+[M::worker_pipeline::17.122*7.72] mapped 332280 sequences
+[M::worker_pipeline::17.948*7.80] mapped 332364 sequences
+[M::worker_pipeline::18.526*7.82] mapped 332312 sequences
+[M::worker_pipeline::19.373*7.89] mapped 332264 sequences
+[M::worker_pipeline::19.973*7.87] mapped 332360 sequences
+[M::worker_pipeline::20.759*7.89] mapped 332622 sequences
+[M::worker_pipeline::21.881*8.04] mapped 332576 sequences
+[M::worker_pipeline::22.283*7.93] mapped 332504 sequences
+[M::worker_pipeline::23.054*7.94] mapped 332570 sequences
+[M::worker_pipeline::24.192*8.06] mapped 332498 sequences
+[M::worker_pipeline::24.597*7.96] mapped 332496 sequences
+[M::worker_pipeline::25.356*7.97] mapped 332348 sequences
+[M::worker_pipeline::26.443*8.08] mapped 332380 sequences
+[M::worker_pipeline::26.876*7.98] mapped 332482 sequences
+[M::worker_pipeline::27.731*8.01] mapped 332400 sequences
+[M::worker_pipeline::28.406*8.02] mapped 332292 sequences
+[M::worker_pipeline::29.440*8.10] mapped 332468 sequences
+[M::worker_pipeline::29.873*8.01] mapped 332422 sequences
+[M::worker_pipeline::31.002*8.09] mapped 332300 sequences
+[M::worker_pipeline::31.417*8.01] mapped 332246 sequences
+[M::worker_pipeline::32.183*8.02] mapped 332240 sequences
+[M::worker_pipeline::32.917*8.03] mapped 332388 sequences
+[M::worker_pipeline::33.668*8.05] mapped 332274 sequences
+[M::worker_pipeline::34.724*8.12] mapped 332180 sequences
+[M::worker_pipeline::35.105*8.06] mapped 332208 sequences
+[M::worker_pipeline::35.866*8.07] mapped 332204 sequences
+[M::worker_pipeline::36.626*8.08] mapped 332220 sequences
+[M::worker_pipeline::37.746*8.15] mapped 332158 sequences
+[M::worker_pipeline::38.093*8.09] mapped 332272 sequences
+[M::worker_pipeline::38.848*8.10] mapped 332410 sequences
+[M::worker_pipeline::39.626*8.12] mapped 332376 sequences
+[M::worker_pipeline::40.725*8.18] mapped 332236 sequences
+[M::worker_pipeline::41.124*8.12] mapped 332284 sequences
+[M::worker_pipeline::41.871*8.13] mapped 332286 sequences
+[M::worker_pipeline::42.541*8.15] mapped 332254 sequences
+[M::worker_pipeline::43.291*8.16] mapped 332128 sequences
+[M::worker_pipeline::44.413*8.21] mapped 332128 sequences
+[M::worker_pipeline::44.853*8.15] mapped 332166 sequences
+[M::worker_pipeline::45.624*8.17] mapped 332590 sequences
+[M::worker_pipeline::46.351*8.17] mapped 332492 sequences
+[M::worker_pipeline::47.144*8.17] mapped 332406 sequences
+[M::worker_pipeline::48.153*8.23] mapped 332416 sequences
+[M::worker_pipeline::48.551*8.18] mapped 332450 sequences
+[M::worker_pipeline::49.302*8.19] mapped 332434 sequences
+[M::worker_pipeline::50.095*8.17] mapped 332360 sequences
+[M::worker_pipeline::50.515*8.12] mapped 332554 sequences
+[M::worker_pipeline::50.540*8.11] mapped 9234 sequences
+[M::main] Version: 2.22-r1101
+[M::main] CMD: minimap2 --secondary=no -t 16 -R @RG\tID:snippy\tSM:snippy -ax sr /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference.fasta /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read1.fq.gz /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read2.fq.gz
+[M::main] Real time: 50.568 sec; CPU: 410.011 sec; Peak RSS: 0.718 GB
+[bam_sort_core] merging from 0 files and 16 in-memory blocks...
+[Sun Oct 17 22:49:55 2021]
+Finished job 0.
+1 of 1 steps (100%) done

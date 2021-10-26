@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+no_alignments        1             16             16
+total                1             16             16
+
+Select jobs to execute...
+
+[Mon Oct 25 14:37:14 2021]
+rule no_alignments:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference_stripped.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/at/no_alignment_regions.tsv
+    jobid: 0
+    wildcards: sample=T33.3.1, strain=at
+    threads: 16
+    resources: tmpdir=/tmp
+
+Submitted job 0 with external jobid 'Submitted batch job 3064539'.
+[Mon Oct 25 14:45:45 2021]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/illumina/.snakemake/log/2021-10-25T143711.998120.snakemake.log

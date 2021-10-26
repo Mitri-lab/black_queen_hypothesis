@@ -1,0 +1,70 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Sun Oct 17 22:40:46 2021]
+rule mapping:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ct/reference.fasta, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/ct/mapped_reads.sorted.bam
+    jobid: 0
+    wildcards: sample=T44.2.2.rep, strain=ct
+    threads: 16
+    resources: mem_mb=1752, disk_mb=1752, tmpdir=/tmp/2846126
+
+[M::mm_idx_gen::0.144*0.95] collected minimizers
+[M::mm_idx_gen::0.160*2.11] sorted minimizers
+[M::main::0.160*2.11] loaded/built the index for 2 target sequence(s)
+[M::mm_mapopt_update::0.160*2.11] mid_occ = 1000
+[M::mm_idx_stat] kmer size: 21; skip: 11; is_hpc: 0; #seq: 2
+[M::mm_idx_stat::0.173*2.03] distinct minimizers: 993850 (99.11% are singletons); average occurrences: 1.021; average spacing: 5.998; total length: 6084391
+[M::worker_pipeline::1.762*4.33] mapped 332372 sequences
+[M::worker_pipeline::2.681*5.34] mapped 332192 sequences
+[M::worker_pipeline::3.583*5.89] mapped 332114 sequences
+[M::worker_pipeline::4.439*6.22] mapped 331992 sequences
+[M::worker_pipeline::5.560*6.98] mapped 331988 sequences
+[M::worker_pipeline::6.462*7.40] mapped 332282 sequences
+[M::worker_pipeline::7.625*7.98] mapped 332170 sequences
+[M::worker_pipeline::7.990*7.71] mapped 332064 sequences
+[M::worker_pipeline::8.731*7.84] mapped 331994 sequences
+[M::worker_pipeline::9.487*7.94] mapped 331994 sequences
+[M::worker_pipeline::10.531*8.38] mapped 332178 sequences
+[M::worker_pipeline::10.893*8.17] mapped 332232 sequences
+[M::worker_pipeline::11.662*8.22] mapped 332272 sequences
+[M::worker_pipeline::12.316*8.31] mapped 332094 sequences
+[M::worker_pipeline::13.078*8.35] mapped 331954 sequences
+[M::worker_pipeline::13.951*8.60] mapped 331946 sequences
+[M::worker_pipeline::14.447*8.50] mapped 332344 sequences
+[M::worker_pipeline::15.190*8.55] mapped 332326 sequences
+[M::worker_pipeline::16.179*8.76] mapped 332222 sequences
+[M::worker_pipeline::16.543*8.61] mapped 332084 sequences
+[M::worker_pipeline::17.286*8.66] mapped 332018 sequences
+[M::worker_pipeline::18.248*8.81] mapped 332370 sequences
+[M::worker_pipeline::18.710*8.71] mapped 332186 sequences
+[M::worker_pipeline::19.400*8.75] mapped 332110 sequences
+[M::worker_pipeline::20.439*8.91] mapped 332054 sequences
+[M::worker_pipeline::20.811*8.79] mapped 332208 sequences
+[M::worker_pipeline::21.553*8.80] mapped 332232 sequences
+[M::worker_pipeline::22.251*8.82] mapped 332128 sequences
+[M::worker_pipeline::22.942*8.84] mapped 332032 sequences
+[M::worker_pipeline::23.651*8.86] mapped 332010 sequences
+[M::worker_pipeline::24.337*8.89] mapped 332010 sequences
+[M::worker_pipeline::25.018*8.91] mapped 332146 sequences
+[M::worker_pipeline::25.687*8.94] mapped 332084 sequences
+[M::worker_pipeline::26.389*8.96] mapped 332080 sequences
+[M::worker_pipeline::27.106*8.97] mapped 332094 sequences
+[M::worker_pipeline::27.831*8.98] mapped 332064 sequences
+[M::worker_pipeline::28.916*9.07] mapped 332156 sequences
+[M::worker_pipeline::29.287*8.98] mapped 332260 sequences
+[M::worker_pipeline::29.993*9.00] mapped 332206 sequences
+[M::worker_pipeline::31.060*9.06] mapped 332202 sequences
+[M::worker_pipeline::31.389*8.98] mapped 332062 sequences
+[M::worker_pipeline::31.693*8.90] mapped 268142 sequences
+[M::main] Version: 2.22-r1101
+[M::main] CMD: minimap2 --secondary=no -t 16 -R @RG\tID:snippy\tSM:snippy -ax sr /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ct/reference.fasta /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read1.fq.gz /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read2.fq.gz
+[M::main] Real time: 31.724 sec; CPU: 282.077 sec; Peak RSS: 0.726 GB
+[bam_sort_core] merging from 0 files and 16 in-memory blocks...
+[Sun Oct 17 22:41:35 2021]
+Finished job 0.
+1 of 1 steps (100%) done

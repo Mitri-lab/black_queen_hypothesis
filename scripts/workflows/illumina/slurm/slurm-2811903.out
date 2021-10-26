@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Fri Oct 15 16:20:00 2021]
+rule report:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/at/labels.json, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/at/reference.fasta, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/at/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/at/report.md
+    jobid: 0
+    wildcards: sample=T44.4.5.rep, strain=at
+    threads: 16
+    resources: mem_mb=14222, disk_mb=14222, tmpdir=/tmp/2811903
+
+[Fri Oct 15 16:39:25 2021]
+Finished job 0.
+1 of 1 steps (100%) done

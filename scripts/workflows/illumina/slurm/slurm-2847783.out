@@ -1,0 +1,81 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job       count    min threads    max threads
+------  -------  -------------  -------------
+snippy        5             16             16
+total         5             16             16
+
+Select jobs to execute...
+
+[Mon Oct 18 09:01:01 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/oa/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/oa/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/oa/snippy/snps.tab
+    jobid: 10
+    wildcards: sample=T44.4.2, strain=oa
+    threads: 16
+    resources: tmpdir=/tmp/2847783
+
+Submitted job 10 with external jobid 'Submitted batch job 2847784'.
+
+[Mon Oct 18 09:01:01 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/oa/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/oa/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/oa/snippy/snps.tab
+    jobid: 12
+    wildcards: sample=T44.4.4, strain=oa
+    threads: 16
+    resources: tmpdir=/tmp/2847783
+
+Submitted job 12 with external jobid 'Submitted batch job 2847785'.
+
+[Mon Oct 18 09:01:01 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/oa/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/oa/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/oa/snippy/snps.tab
+    jobid: 26
+    wildcards: sample=T44.4.1, strain=oa
+    threads: 16
+    resources: tmpdir=/tmp/2847783
+
+Submitted job 26 with external jobid 'Submitted batch job 2847786'.
+
+[Mon Oct 18 09:01:01 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/oa/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/oa/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/oa/snippy/snps.tab
+    jobid: 34
+    wildcards: sample=T44.4.5.rep, strain=oa
+    threads: 16
+    resources: tmpdir=/tmp/2847783
+
+Submitted job 34 with external jobid 'Submitted batch job 2847787'.
+
+[Mon Oct 18 09:01:01 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/oa/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/oa/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/oa/snippy/snps.tab
+    jobid: 22
+    wildcards: sample=T44.4.3, strain=oa
+    threads: 16
+    resources: tmpdir=/tmp/2847783
+
+Submitted job 22 with external jobid 'Submitted batch job 2847788'.
+[Mon Oct 18 09:01:41 2021]
+Finished job 10.
+1 of 5 steps (20%) done
+[Mon Oct 18 09:01:41 2021]
+Finished job 12.
+2 of 5 steps (40%) done
+[Mon Oct 18 09:01:41 2021]
+Finished job 26.
+3 of 5 steps (60%) done
+[Mon Oct 18 09:01:41 2021]
+Finished job 34.
+4 of 5 steps (80%) done
+[Mon Oct 18 09:01:41 2021]
+Finished job 22.
+5 of 5 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/.snakemake/log/2021-10-18T090059.515461.snakemake.log

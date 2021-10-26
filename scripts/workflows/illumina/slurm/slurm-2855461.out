@@ -1,0 +1,461 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job       count    min threads    max threads
+------  -------  -------------  -------------
+md_pdf       40              1              1
+total        40              1              1
+
+Select jobs to execute...
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/ms/report.pdf
+    jobid: 56
+    wildcards: sample=T33.3.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 56 with external jobid 'Submitted batch job 2855477'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/ms/report.pdf
+    jobid: 84
+    wildcards: sample=T44.3.3.rep, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 84 with external jobid 'Submitted batch job 2855478'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/ms/report.pdf
+    jobid: 112
+    wildcards: sample=T44.3.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 112 with external jobid 'Submitted batch job 2855479'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/ms/report.pdf
+    jobid: 0
+    wildcards: sample=T22.4.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 0 with external jobid 'Submitted batch job 2855480'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/ms/report.pdf
+    jobid: 28
+    wildcards: sample=T11.4.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 28 with external jobid 'Submitted batch job 2855481'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/ms/report.pdf
+    jobid: 140
+    wildcards: sample=T33.3.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 140 with external jobid 'Submitted batch job 2855482'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/ms/report.pdf
+    jobid: 8
+    wildcards: sample=T33.4.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 8 with external jobid 'Submitted batch job 2855483'.
+
+[Mon Oct 18 13:32:51 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/ms/report.pdf
+    jobid: 64
+    wildcards: sample=T44.4.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 64 with external jobid 'Submitted batch job 2855484'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/ms/report.pdf
+    jobid: 148
+    wildcards: sample=T44.3.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 148 with external jobid 'Submitted batch job 2855485'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/ms/report.pdf
+    jobid: 120
+    wildcards: sample=T44.3.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 120 with external jobid 'Submitted batch job 2855486'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/ms/report.pdf
+    jobid: 36
+    wildcards: sample=T44.3.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 36 with external jobid 'Submitted batch job 2855487'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/ms/report.pdf
+    jobid: 92
+    wildcards: sample=T44.4.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 92 with external jobid 'Submitted batch job 2855488'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/ms/report.pdf
+    jobid: 44
+    wildcards: sample=T11.3.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 44 with external jobid 'Submitted batch job 2855490'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/ms/report.pdf
+    jobid: 16
+    wildcards: sample=T11.4.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 16 with external jobid 'Submitted batch job 2855491'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/ms/report.pdf
+    jobid: 100
+    wildcards: sample=T33.4.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 100 with external jobid 'Submitted batch job 2855492'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/ms/report.pdf
+    jobid: 128
+    wildcards: sample=T11.3.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 128 with external jobid 'Submitted batch job 2855493'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/ms/report.pdf
+    jobid: 156
+    wildcards: sample=T22.3.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 156 with external jobid 'Submitted batch job 2855494'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/ms/report.pdf
+    jobid: 72
+    wildcards: sample=T22.3.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 72 with external jobid 'Submitted batch job 2855495'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/ms/report.pdf
+    jobid: 24
+    wildcards: sample=T44.4.5.rep, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 24 with external jobid 'Submitted batch job 2855496'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/ms/report.pdf
+    jobid: 52
+    wildcards: sample=T22.4.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 52 with external jobid 'Submitted batch job 2855497'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/ms/report.pdf
+    jobid: 80
+    wildcards: sample=T11.3.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 80 with external jobid 'Submitted batch job 2855498'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/ms/report.pdf
+    jobid: 108
+    wildcards: sample=T22.4.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 108 with external jobid 'Submitted batch job 2855499'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/ms/report.pdf
+    jobid: 136
+    wildcards: sample=T11.4.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 136 with external jobid 'Submitted batch job 2855500'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/ms/report.pdf
+    jobid: 104
+    wildcards: sample=T11.3.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 104 with external jobid 'Submitted batch job 2855501'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/ms/report.pdf
+    jobid: 76
+    wildcards: sample=T33.4.3.rep, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 76 with external jobid 'Submitted batch job 2855502'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/ms/report.pdf
+    jobid: 48
+    wildcards: sample=T22.3.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 48 with external jobid 'Submitted batch job 2855503'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/ms/report.pdf
+    jobid: 32
+    wildcards: sample=T11.4.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 32 with external jobid 'Submitted batch job 2855504'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/ms/report.pdf
+    jobid: 60
+    wildcards: sample=T22.4.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 60 with external jobid 'Submitted batch job 2855505'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/ms/report.pdf
+    jobid: 4
+    wildcards: sample=T33.4.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 4 with external jobid 'Submitted batch job 2855506'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/ms/report.pdf
+    jobid: 88
+    wildcards: sample=T33.3.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 88 with external jobid 'Submitted batch job 2855507'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/ms/report.pdf
+    jobid: 116
+    wildcards: sample=T22.4.4, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 116 with external jobid 'Submitted batch job 2855508'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/ms/report.pdf
+    jobid: 144
+    wildcards: sample=T22.3.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 144 with external jobid 'Submitted batch job 2855509'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/ms/report.pdf
+    jobid: 132
+    wildcards: sample=T11.3.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 132 with external jobid 'Submitted batch job 2855510'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/ms/report.pdf
+    jobid: 12
+    wildcards: sample=T33.3.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 12 with external jobid 'Submitted batch job 2855511'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.pdf
+    jobid: 40
+    wildcards: sample=T44.4.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 40 with external jobid 'Submitted batch job 2855512'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/ms/report.pdf
+    jobid: 68
+    wildcards: sample=T33.3.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 68 with external jobid 'Submitted batch job 2855513'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/ms/report.pdf
+    jobid: 96
+    wildcards: sample=T22.3.1, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 96 with external jobid 'Submitted batch job 2855514'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/ms/report.pdf
+    jobid: 124
+    wildcards: sample=T33.4.5, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 124 with external jobid 'Submitted batch job 2855515'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/ms/report.pdf
+    jobid: 152
+    wildcards: sample=T44.4.2, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 152 with external jobid 'Submitted batch job 2855516'.
+
+[Mon Oct 18 13:32:52 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/ms/report.pdf
+    jobid: 20
+    wildcards: sample=T11.4.3, strain=ms
+    resources: tmpdir=/tmp/2855461
+
+Submitted job 20 with external jobid 'Submitted batch job 2855517'.
+[Mon Oct 18 13:33:03 2021]
+Error in rule md_pdf:
+    jobid: 88
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/ms/report.pdf
+    shell:
+        md-to-pdf /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/ms/report.md
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 2855507
+
+Error executing rule md_pdf on cluster (jobid: 88, external: Submitted batch job 2855507, jobscript: /users/eulrich/black_queen_hypothesis/scripts/workflows/.snakemake/tmp.lt9gtdor/snakejob.md_pdf.88.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Mon Oct 18 13:33:04 2021]
+Finished job 132.
+1 of 40 steps (2%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 12.
+2 of 40 steps (5%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 40.
+3 of 40 steps (8%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 68.
+4 of 40 steps (10%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 96.
+5 of 40 steps (12%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 124.
+6 of 40 steps (15%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 152.
+7 of 40 steps (18%) done
+[Mon Oct 18 13:33:04 2021]
+Finished job 20.
+8 of 40 steps (20%) done
+[Mon Oct 18 13:33:15 2021]
+Error in rule md_pdf:
+    jobid: 56
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/ms/report.pdf
+    shell:
+        md-to-pdf /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/ms/report.md
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    cluster_jobid: Submitted batch job 2855477
+
+Error executing rule md_pdf on cluster (jobid: 56, external: Submitted batch job 2855477, jobscript: /users/eulrich/black_queen_hypothesis/scripts/workflows/.snakemake/tmp.lt9gtdor/snakejob.md_pdf.56.sh). For error details see the cluster log and the log files of the involved rule(s).
+[Mon Oct 18 13:33:17 2021]
+Finished job 116.
+9 of 40 steps (22%) done
+[Mon Oct 18 13:33:18 2021]
+Finished job 144.
+10 of 40 steps (25%) done
+slurmstepd: error: *** JOB 2855461 ON dna029 CANCELLED AT 2021-10-18T13:39:16 ***

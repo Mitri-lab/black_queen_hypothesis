@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job       count    min threads    max threads
+------  -------  -------------  -------------
+snippy        1             16             16
+total         1             16             16
+
+Select jobs to execute...
+
+[Thu Oct 21 10:22:27 2021]
+rule snippy:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ct/reference.gbk, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/ct/mapped_reads.sorted.bam
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/ct/snippy/snps.tab
+    jobid: 0
+    wildcards: sample=T33.3.1, strain=ct
+    threads: 16
+    resources: tmpdir=/tmp/2940054
+
+Submitted job 0 with external jobid 'Submitted batch job 2940055'.
+[Thu Oct 21 10:35:57 2021]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/.snakemake/log/2021-10-21T102225.334462.snakemake.log

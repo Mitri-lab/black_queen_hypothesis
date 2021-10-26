@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Select jobs to execute...
+
+[Mon Oct 18 13:32:55 2021]
+rule md_pdf:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.md
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.pdf
+    jobid: 0
+    wildcards: sample=T44.4.1, strain=ms
+    resources: mem_mb=1000, disk_mb=1000, tmpdir=/tmp/2855512
+
+]0;md-to-pdf[13:32:58] generating PDF from /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.md [started]
+[13:33:02] generating PDF from /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/ms/report.md [completed]
+[Mon Oct 18 13:33:02 2021]
+Finished job 0.
+1 of 1 steps (100%) done
