@@ -10,6 +10,12 @@ def get_strain(wildcards):
             if sample['name'] == wildcards.sample:
                 return strain
 
+def get_reference(wildcards):
+    for strain,samples in Samples().strains.items():
+        for sample in samples:
+            if sample['name'] == wildcards.sample:
+                return join(work,Samples().abbreviations[strain],'reference_stripped.gbk')
+
 rule mapping_corrected_reads:
     input:
         reference = join(work,'{sample}','reference.fasta'),
@@ -26,15 +32,19 @@ rule mapping_corrected_reads:
 
 rule deletion_detection:
     input:
-        join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+        bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam'),
+        genbank = get_reference
     output:
         join(work,'{sample}','in_read_deletions.tsv'),
         join(work,'{sample}','no_alignment_regions.tsv')
     params:
         outdir = join(work,'{sample}')
+    threads:
+        16
     shell:
         """
-        detect_deletions --output_no_alignment_regions --min_counts 10 --min_frequency 0.8 {input} {params.outdir}
+        detect_deletions --genbank {input.genbank} --min_counts 10 --min_frequency 0.8 \
+        {input.bam} {params.outdir}
         """
 
 rule labels:
