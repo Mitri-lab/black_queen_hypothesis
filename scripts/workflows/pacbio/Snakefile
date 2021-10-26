@@ -1,0 +1,66 @@
+from os.path import join
+from samples import Samples
+import json
+
+work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
+
+def get_strain(wildcards):
+    for strain,samples in Samples().strains.items():
+        for sample in samples:
+            if sample['name'] == wildcards.sample:
+                return strain
+
+rule mapping_corrected_reads:
+    input:
+        reference = join(work,'{sample}','reference.fasta'),
+        corrected_reads = join(work,'{sample}','corrected_reads.fasta')
+    output:
+        join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+    threads:
+        16
+    shell:
+        """
+        minimap2 --secondary=no -t 16 -ax map-pb {input} | samtools sort --threads 16 -o {output}
+        samtools index {output}
+        """
+
+rule deletion_detection:
+    input:
+        join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+    output:
+        join(work,'{sample}','in_read_deletions.tsv'),
+        join(work,'{sample}','no_alignment_regions.tsv')
+    params:
+        outdir = join(work,'{sample}')
+    shell:
+        """
+        detect_deletions --output_no_alignment_regions --min_counts 10 --min_frequency 0.8 {input} {params.outdir}
+        """
+
+rule labels:
+    output:
+        join(work,'{sample}','labels.json')
+    params:
+        outdir = join(work,'{sample}'),
+        strain = get_strain
+    threads:
+        1
+    shell:
+        """
+        echo {params.strain}
+        python create_labels.py {wildcards.sample} {params.strain} {params.outdir}
+        """
+
+rule report:
+    input:
+        labels = join(work,'{sample}','labels.json'),
+        reference = join(work,'{sample}','reference.fasta'),
+        bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+    output:
+        join(work,'{sample}','report.md')
+    params:
+        outdir = join(work,'{sample}')
+    threads:
+        16
+    shell:
+        "report_bam_stats {input.reference} {input.bam} {input.labels} {params.outdir}"

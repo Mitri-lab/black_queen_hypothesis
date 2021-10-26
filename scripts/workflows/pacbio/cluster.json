@@ -1,0 +1,22 @@
+{
+    "mapping_corrected_reads":
+    {
+        "mem": "32G",
+        "time": "3:0:0"
+    },
+    "deletion_detection":
+    {
+        "mem": "128G",
+        "time": "3:0:0"
+    },
+    "labels":
+    {
+        "mem": "1G",
+        "time": "0:10:0"
+    },
+    "report":
+    {
+        "mem": "256G",
+        "time": "1:0:0"
+    }
+}
