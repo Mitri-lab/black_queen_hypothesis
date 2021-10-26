@@ -1,9 +1,7 @@
-from numpy import tile
 from experiment import Experiment
 from samples import Samples
 from mutations import Mutations
 import plotly.graph_objects as go
-import plotly.express as px
 from os.path import join
 import random
 
