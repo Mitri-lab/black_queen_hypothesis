@@ -19,7 +19,7 @@ class Plotting():
                     x.append(df.columns[counter])
                     y.append(value)
         #First number of size arguments is 16:9 ratio
-        self.strip_plot = px.strip(x=x,y=y,width=1057.92*0.8*0.4,height=595.2*0.8)
+        self.strip_plot = px.strip(x=x,y=y,width=1057.92*0.8*0.6,height=595.2*0.8)
         self.strip_plot.update_xaxes(type='category')
 
     def update_labels(self,plot,title,xlabel,ylabel,legend_title):
@@ -49,8 +49,10 @@ def parse_deletions(meta_dict):
         #Analysis is only for pacbio data
         if sample['platform'] == 'pacbio':
             #Getting dfs for no aligments as well as inread deletions
-            in_read_deletions = pd.read_csv(os.path.join(base_dir,sample['dir'],'in_read_deletions.tsv'),sep='\t')
-            no_alignments = pd.read_csv(os.path.join(base_dir,sample['dir'],'no_alignment_regions.tsv'),sep='\t')
+            in_read_deletions = pd.read_csv(os.path.join(base_dir,sample['dir_name'],\
+                'in_read_deletions.tsv'),sep='\t',usecols=['chromosome','position','length']).drop_duplicates()
+            no_alignments = pd.read_csv(os.path.join(base_dir,sample['dir_name'],\
+                'no_alignment_regions.tsv'),sep='\t',usecols=['chromosome','position','length']).drop_duplicates()
             df = pd.concat([in_read_deletions,no_alignments])
             out_sum.at[sample['name'],sample['treatment']] = df['length'].sum()
             out_n.at[sample['name'],sample['treatment']] = len(df)
@@ -67,11 +69,11 @@ def plot_deletions():
         #Plotting deleted bases
         p.categorical_plot(out_sum)
         p.update_labels(p.strip_plot,'Deleted bases '+strain,'treatment','deleted basepairs','evolved samples')
-        fname = (strain+'_deleted bases '+'.png').replace(' ','_')
+        fname = (strain+'_deleted bases'+'.png').replace(' ','_')
         p.strip_plot.write_image(os.path.join('../plots','deleted_bases',fname))
         
         #Plotting n deletions
         p.categorical_plot(out_n)
         p.update_labels(p.strip_plot,'Number of deletions '+strain,'treatment','number of deletions','evolved samples')
-        fname = (strain+'_number of deletions '+'.png').replace(' ','_')
+        fname = (strain+'_number of deletions'+'.png').replace(' ','_')
         p.strip_plot.write_image(os.path.join('../plots','deleted_bases',fname))
