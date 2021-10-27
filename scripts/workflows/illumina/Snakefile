@@ -23,6 +23,16 @@ rule mapping:
         samtools index {output}
         """
 
+rule flagstat:
+    input:
+        join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        join(work,'{sample}','{strain}','flagstat.tsv')
+    threads:
+        16
+    shell:
+        "samtools flagstat --threads {threads} -O tsv {input} > {output}"
+
 rule snippy:
     input:
         reference = join(work,'{strain}','reference.gbk'),

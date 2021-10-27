@@ -4,6 +4,11 @@
         "mem": "128G",
         "time": "3:0:0"
     },
+    "flagstat":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
     "snippy":
     {
         "mem": "256G",

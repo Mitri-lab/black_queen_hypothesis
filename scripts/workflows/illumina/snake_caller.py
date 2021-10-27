@@ -49,4 +49,4 @@ if __name__ == '__main__':
     #snake_test()
     #time_point_caller('report.md')
     #single_caller(sys.argv[1])
-    strain_caller(s.abbreviations[sys.argv[1]],'no_alignment_regions.tsv')
+    strain_caller(s.abbreviations[sys.argv[1]],'flagstat.tsv')
