@@ -30,6 +30,43 @@ rule mapping_corrected_reads:
         samtools index {output}
         """
 
+rule overlapping_corrected_reads:
+    input:
+        join(work,'{sample}','corrected_reads.fasta'),
+    output:
+        join(work,'{sample}','overlapped_corrected_reads.paf')
+    threads:
+        16
+    shell:
+        "minimap2 -x ava-pb -t {threads} {input} {input} > {output}"
+
+rule miniasm:
+    input:
+        reads = join(work,'{sample}','corrected_reads.fasta'),
+        overlap = join(work,'{sample}','overlapped_corrected_reads.paf')
+    output:
+        gfa = join(work,'{sample}','assembly.miniasm.gfa'),
+        fasta = join(work,'{sample}','assembly.miniasm.fasta')
+    threads:
+        16
+    shell:
+        """miniasm -f {input} > {output.gfa}
+        awk '/^S/{{print ">"$2"\\n"$3}}' {output.gfa} > {output.fasta}
+        """
+
+rule prokka:
+    input:
+        join(work,'{sample}','assembly.fasta')
+    output:
+        join(work,'{sample}','prokka','prokka.gbk')
+    params:
+        join(work,'{sample}','prokka')
+    threads:
+        16
+    shell:
+        """prokka --outdir {params} --force --prefix prokka --kingdom Bacteria --cpus {threads} {input}
+        """
+
 rule deletion_detection:
     input:
         bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam'),

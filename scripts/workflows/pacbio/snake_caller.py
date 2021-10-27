@@ -40,4 +40,4 @@ def all_caller(output_file):
 
 if __name__ == '__main__':
     #single_caller(sys.argv[1])
-    all_caller('no_alignment_regions.tsv')
+    all_caller(join('prokka','prokka.gbk'))
