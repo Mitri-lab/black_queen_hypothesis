@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 import pandas as pd
 
 s = Samples()
+work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 
 def plot_contigs(strain):
     """Plots genome length and n contigs per treatment"""
@@ -46,6 +47,10 @@ def plot_contigs(strain):
                 name='length',opacity=0.5,showlegend=False,marker_color='blue'),row=1,col=counter+1,secondary_y=False)
             fig.add_trace(go.Bar(x=df.index,y=df['contigs'],name='contigs',opacity=0.5,showlegend=False,\
                 marker_color='mediumpurple'),row=1,col=counter+1,secondary_y=True)
+
+        reference_length = sum([len(contig) for contig in SeqIO.parse(join(work,s.abbreviations[strain],'reference.fasta'),'fasta')])
+
+        fig.add_hline(y=reference_length,annotation_text='reference',line_dash="dash")
         #Adding axixs titles
         fig.update_yaxes(title_text='genome length in bp',secondary_y=False)
         fig.update_yaxes(title_text='n contigs',secondary_y=True)
