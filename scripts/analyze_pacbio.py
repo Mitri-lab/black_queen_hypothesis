@@ -1,5 +1,9 @@
 from samples import Samples
 from plotting import Plotting
+from os.path import join
+from os.path import exists
+import pandas as pd
+from Bio import SeqIO
 
 s = Samples()
 p = Plotting()
@@ -69,4 +73,3 @@ def plot_genome_length():
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','contigs',title.replace(' ','_')+'.png'))
-    return fig,n_contigs
