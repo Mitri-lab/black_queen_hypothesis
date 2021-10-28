@@ -10,6 +10,46 @@ s = Samples()
 p = Plotting()
 e = Experiment()
 
+def plot_indel():
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        dfs = []
+        deleted_bases = pd.DataFrame(columns=treatments,index=[sample['name'] \
+            for sample in s.strains[strain] if sample['platform']== 'pacbio'])
+        inserted_bases = pd.DataFrame(columns=treatments,index=[sample['name'] \
+            for sample in s.strains[strain] if sample['platform']== 'pacbio'])
+        for sample in s.strains[strain]:
+            if sample['platform'] == 'pacbio':
+                #Summing deleted bases from deletion_detection analysis
+                no_coverage = join(sample['dir_name'],'no_alignment_regions.tsv')
+                if exists(no_coverage):
+                    deleted_bases.at[sample['name'],sample['treatment']] = sum(pd.read_csv(no_coverage,sep='\t',\
+                        usecols=['chromosome','position','length']).drop_duplicates()['length'])
+                in_read = join(sample['dir_name'],'in_read_deletions.tsv')
+                if exists(in_read):
+                    deleted_bases.at[sample['name'],sample['treatment']] += sum(pd.read_csv(in_read,sep='\t',\
+                        usecols=['chromosome','position','length']).drop_duplicates()['length'])
+                insertions = join(sample['dir_name'],'insertions.tsv')
+                if exists(insertions):
+                    inserted_bases.at[sample['name'],sample['treatment']] = sum(pd.read_csv(insertions,sep='\t',\
+                        usecols=['chromosome','position','length']).drop_duplicates()['length'])
+        fig = p.subplot_treatments(strain,deleted_bases)
+        title = 'delete bases in '+strain
+        fig.update_layout(
+            xaxis_title='sample',
+            yaxis_title='deleted bp',
+            title=title)
+        fig.update_traces(showlegend=False)
+        fig.write_image(join('..','plots','deleted_bases',title.replace(' ','_')+'.png'))
+        
+        fig = p.subplot_treatments(strain,inserted_bases)
+        title = 'inserted bases in '+strain
+        fig.update_layout(
+            xaxis_title='sample',
+            yaxis_title='inserted bp',
+            title=title)
+        fig.update_traces(showlegend=False)
+        fig.write_image(join('..','plots','inserted_bases',title.replace(' ','_')+'.png'))
 
 def plot_deletions():
     """Plotting the sum of deleted bases in pacbio samples."""
@@ -119,4 +159,4 @@ def genes():
             pac = get_features(join(sample['dir_name'],'prokka','prokka.gbk'))
             print(sample['name'],'\n',set(ref)-set(pac))
     return ref,pac
-r,p = genes()
+#r,p = genes()
