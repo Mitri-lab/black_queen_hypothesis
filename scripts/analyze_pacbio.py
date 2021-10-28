@@ -1,4 +1,5 @@
 from samples import Samples
+from samples import Experiment
 from plotting import Plotting
 from os.path import join
 from os.path import exists
@@ -7,6 +8,7 @@ from Bio import SeqIO
 
 s = Samples()
 p = Plotting()
+e = Experiment()
 
 
 def plot_deletions():
@@ -36,6 +38,28 @@ def plot_deletions():
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','deleted_bases',title.replace(' ','_')+'.png'))
+
+def plot_insertions():
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        out = pd.DataFrame(columns=treatments,index=[sample['name'] \
+            for sample in s.strains[strain] if sample['platform']== 'pacbio'])
+        for sample in s.strains[strain]:
+            if sample['platform'] == 'pacbio':
+                #Summing deleted bases from deletion_detection analysis
+                insertions = join(sample['dir_name'],'insertions.tsv')
+                if exists(insertions):
+                    inserted_bases = sum(pd.read_csv(insertions,sep='\t',\
+                        usecols=['chromosome','position','length']).drop_duplicates()['length'])
+                out.at[sample['name'],sample['treatment']] = inserted_bases
+        fig = p.subplot_treatments(strain,out)
+        title = 'inserted bases in '+strain
+        fig.update_layout(
+            xaxis_title='sample',
+            yaxis_title='inserted bp',
+            title=title)
+        fig.update_traces(showlegend=False)
+        fig.write_image(join('..','plots','insertions',title.replace(' ','_')+'.png'))
 
 def plot_genome_length():
     """Plotting assembly length of pacbio data and resulting n contigs of assmblies."""
@@ -73,3 +97,26 @@ def plot_genome_length():
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','contigs',title.replace(' ','_')+'.png'))
+
+
+def genes():
+    def get_features(genbank):
+        contigs = [feature for feature in [contig.features for contig in SeqIO.parse(genbank,'genbank')]]
+        genes = []
+        for contig in contigs:
+            for feature in contig:
+                try:
+                    genes.append(feature.qualifiers['gene'][0])
+                except KeyError:
+                    pass
+        features = {gene:0 for gene in set(genes)}
+        for gene in genes:
+            features[gene] += 1
+        return features
+    ref = get_features(join(s.work,'ct','prokka','prokka.gbk'))
+    for sample in s.strains[s.abbreviations['ct']]:
+        if sample['platform'] == 'pacbio':
+            pac = get_features(join(sample['dir_name'],'prokka','prokka.gbk'))
+            print(sample['name'],'\n',set(ref)-set(pac))
+    return ref,pac
+r,p = genes()
