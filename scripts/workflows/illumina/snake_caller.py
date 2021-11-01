@@ -45,8 +45,8 @@ def time_point_caller(output_file):
 
 if __name__ == '__main__':
     #strain_caller(sys.argv[1],join('snippy','snps.tab'))
-    #strain_caller(s.abbreviations[sys.argv[1]],join('snippy','snps.tab'))
+    strain_caller(s.abbreviations[sys.argv[1]],join('snippy','snps.tab'))
     #snake_test()
     #time_point_caller('report.md')
     #single_caller(sys.argv[1])
-    strain_caller(s.abbreviations[sys.argv[1]],'flagstat.tsv')
+    #strain_caller(s.abbreviations[sys.argv[1]],'flagstat.tsv')

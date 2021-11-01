@@ -40,12 +40,12 @@ rule snippy:
     output:
         outfile = join(work,'{sample}','{strain}','snippy','snps.tab')
     threads:
-        16
+        32
     params:
         outdir = join(work,'{sample}','{strain}','snippy')
     shell:
         """
-        snippy --cpus 16 --force --ram 256 --minfrac 0.8 --cleanup --outdir \
+        snippy --cpus 32 --force --ram 256 --minfrac 0.8 --cleanup --outdir \
         {params} --reference {input.reference} --bam {input.bam}
         """
 
