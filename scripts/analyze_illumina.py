@@ -1,13 +1,38 @@
 from samples import Samples
-from samples import Experiment
 from plotting import Plotting
 import pandas as pd
 from os.path import join
 from os.path import exists
+import math
 
 s = Samples()
-e = Experiment()
 p = Plotting()
+
+def plot_snps():
+    for strain in s.strains:
+        #Get all treatments of a strain
+        treatments = s.treatments[strain]
+        #Create subplot titles
+        n_snps = pd.DataFrame(columns=treatments,index=[sample['name'] \
+            for sample in s.strains[strain] if sample['platform']== 'illumina'])
+        for counter,treatment in enumerate(treatments):
+            #Get all sample names of a treatment
+            for sample in s.strains[strain]:
+                #Getting genome lenght and n contigs
+                if sample['platform'] == 'illumina':
+                    snps = join(sample['dir_name'],'snippy','snps.tab')
+                    if exists(snps):
+                        n_snps.at[sample['name'],sample['treatment']] = \
+                            len(pd.read_csv(snps,sep='\t'))
+        print(strain,'\n',n_snps)
+        fig = p.subplot_treatments(strain,n_snps)
+        title = 'N SNPs in '+strain
+        fig.update_layout(
+            xaxis_title='samples',
+            yaxis_title='n SNPs',
+            title=title)
+        fig.update_traces(showlegend=False)
+        fig.write_image(join('..','plots','snps',title.replace(' ','_')+'.png'))
 
 def plot_genes():
     """This plots the mutated genes in n microocms."""
@@ -21,7 +46,8 @@ def plot_genes():
                     snps = join(sample['dir_name'],'snippy','snps.tab')
                     if exists(snps):
                         genes += pd.read_csv(snps,sep='\t').dropna()['GENE'].to_list()
-            out = pd.DataFrame(0,columns=e.timepoints,index=set(genes))
+            timepoints = ['T11','T22','T33','T44']
+            out = pd.DataFrame(0,columns=timepoints,index=set(genes))
             for sample in samples:
                 if sample['treatment'] == treatment:
                     snps = join(sample['dir_name'],'snippy','snps.tab')
@@ -29,12 +55,39 @@ def plot_genes():
                         for gene in set(pd.read_csv(snps,sep='\t').dropna()['GENE']):
                             out.at[gene,sample['timepoint']] += 1 
             fig = p.trajectories(out)
-            title = [strain,'in','treatment',str(treatment)]
+            title = ['Mutated','genes','in',strain,'in','treatment',str(treatment)]
             fig.update_layout(
                     title = ' '.join(title),
-                    xaxis_title = 'timepoint',
+                    xaxis_title = 'timepoints',
                     yaxis_title = 'observed in n microcosms'
                 )
             fig.write_image(join('..','plots','genes',' '.join(title).replace(' ','_')+'.png'))
 
-plot_genes()
+def plot_products():
+    for strain,samples in s.strains.items():
+        treatments = s.treatments[strain]
+        top_genes = pd.DataFrame(columns=treatments)
+        sorted_genes = pd.DataFrame(columns=treatments)
+        for sample in samples:
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'],'snippy','snps.tab')
+                if exists(f):
+                    genes = set(pd.read_csv(f,sep='\t').dropna()['PRODUCT'])
+                    for gene in genes:
+                        if gene in top_genes.index:
+                            top_genes.at[gene,sample['treatment']] += 1
+                        else:
+                            top_genes.at[gene,sample['treatment']] = 1
+        for treatment in s.treatments[strain]:
+            series = top_genes[treatment].sort_values(ascending=False)
+            for gene,count in series.items():
+                sorted_genes.at[gene,treatment] = count
+        fig = p.subplot_products(strain,sorted_genes)
+        title = ['Products','affected','by','mutations','in',strain]
+        fig.update_layout(overwrite=True,
+                title = ' '.join(title),
+                height = 800
+            )
+        fig.update_xaxes(title_text='observed mutated product n times',row=len(treatments),col=1)
+        fig.update_yaxes(title_text='products',row=int(math.ceil(len(treatments)/2)),col=1)
+        fig.write_image(join('..','plots','products',' '.join(title).replace(' ','_')+'.png'))
