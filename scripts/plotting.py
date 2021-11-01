@@ -23,6 +23,22 @@ class Plotting():
                 row=1,col=counter+1)
         return fig
 
+    def subplot_products(self,strain,df):
+        """This function plots the products impacted by mutations.
+        Input is a df with treatments as columns and products as index.
+        Values are observed counts."""
+        #Get all treatments of a strain
+        treatments = s.treatments[strain]
+        subplot_titles = ['treatment '+str(treatment) for treatment in treatments]
+        fig = make_subplots(rows=len(treatments),cols=1,subplot_titles=subplot_titles,\
+            shared_xaxes=False,vertical_spacing=0.1)
+        for counter,treatment in enumerate(treatments):
+            subset = df[treatment].dropna()
+            fig.add_trace(go.Scatter(x=subset.values,y=subset.index,mode='markers',marker_color=color),\
+                row=counter+1,col=1)
+        fig.update_yaxes(automargin=True)
+        return fig
+
     def trajectories(self,df):
         """This function plots tracetories of mutated genes across microcosms.
         Input is a df with timepoints as columns and gene names as index"""
