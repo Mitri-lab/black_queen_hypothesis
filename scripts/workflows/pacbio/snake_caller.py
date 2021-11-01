@@ -12,7 +12,6 @@
 import subprocess
 from os.path import join
 from samples import Samples
-import glob
 import sys
 
 #Defining some globals
@@ -40,4 +39,4 @@ def all_caller(output_file):
 
 if __name__ == '__main__':
     #single_caller(sys.argv[1])
-    all_caller(join('prokka','prokka.gbk'))
+    all_caller('mutant_to_parent.noalignments.tsv')
