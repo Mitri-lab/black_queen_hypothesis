@@ -37,9 +37,9 @@ def plot_indel():
         
         d[strain] = deleted_bases
         fig = p.subplot_treatments(strain,deleted_bases)
-        title = 'delete bases in '+strain
+        title = 'Deleted bases in '+strain
         fig.update_layout(
-            xaxis_title='sample',
+            xaxis_title='samples',
             yaxis_title='deleted bp',
             title=title)
         fig.update_traces(showlegend=False)
@@ -47,9 +47,9 @@ def plot_indel():
         
         i[strain] = inserted_bases
         fig = p.subplot_treatments(strain,inserted_bases)
-        title = 'inserted bases in '+strain
+        title = 'Inserted bases in '+strain
         fig.update_layout(
-            xaxis_title='sample',
+            xaxis_title='samples',
             yaxis_title='inserted bp',
             title=title)
         fig.update_traces(showlegend=False)
@@ -80,38 +80,20 @@ def plot_genome_length():
         fig = p.subplot_treatments(strain,length)
         reference_length = sum([len(contig) for contig in SeqIO.parse(s.references[strain],'fasta')])
         fig.add_hline(y=reference_length,annotation_text='reference',line_dash="dash")
-        title = 'assembly length in '+strain
+        title = 'Assembly length in '+strain
         fig.update_layout(
-            xaxis_title='sample',
+            xaxis_title='samples',
             yaxis_title='assembly length in bp',
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','genome_length',title.replace(' ','_')+'.png'))
         
         fig = p.subplot_treatments(strain,n_contigs)
-        title = 'n contigs in '+strain
+        title = 'N contigs in '+strain
         fig.update_layout(
-            xaxis_title='sample',
+            xaxis_title='samples',
             yaxis_title='n contigs',
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','contigs',title.replace(' ','_')+'.png'))
     return genome_length
-
-def plot_differences():
-    difference = {strain:None for strain in s.strains}
-    d,i = plot_indel()
-    g = plot_genome_length()
-    for strain in s.strains:
-        difference[strain] = g[strain] - d[strain] + i[strain]
-        fig = p.subplot_treatments(strain,difference[strain])
-        title = 'differences in '+strain
-        fig.update_layout(
-            xaxis_title='sample',
-            yaxis_title='n contigs',
-            title=title)
-        fig.update_traces(showlegend=False)
-        reference_length = sum([len(contig) for contig in SeqIO.parse(s.references[strain],'fasta')])
-        fig.add_hline(y=reference_length,annotation_text='reference',line_dash="dash")
-        fig.write_image(join('..','plots','differences',title.replace(' ','_')+'.png'))
-    return difference
