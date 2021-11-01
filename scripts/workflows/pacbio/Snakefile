@@ -10,11 +10,17 @@ def get_strain(wildcards):
             if sample['name'] == wildcards.sample:
                 return strain
 
-def get_reference(wildcards):
+def get_genbank(wildcards):
     for strain,samples in Samples().strains.items():
         for sample in samples:
             if sample['name'] == wildcards.sample:
                 return join(work,Samples().abbreviations[strain],'reference_stripped.gbk')
+
+def get_reference(wildcards):
+    for strain,samples in Samples().strains.items():
+        for sample in samples:
+            if sample['name'] == wildcards.sample:
+                return join(work,Samples().abbreviations[strain],'reference.fasta')
 
 rule mapping_corrected_reads:
     input:
@@ -67,10 +73,36 @@ rule prokka:
         """prokka --outdir {params} --force --prefix prokka --kingdom Bacteria --cpus {threads} {input}
         """
 
+rule mutant_to_parent:
+    input:
+        assembly = join(work,'{sample}','assembly.fasta'),
+        reference = get_reference
+    output:
+        join(work,'{sample}','aligned.sorted.bam')
+    threads:
+        8
+    shell:
+        """minimap2 -ax asm5 {input} | \
+        samtools sort --threads 16 -o {output}"""
+
+rule mutant_to_parent_deletions:
+    input:
+        bam = join(work,'{sample}','aligned.sorted.bam'),
+        gbk = join(work,'{sample}','prokka','prokka.gbk')
+    output:
+        join(work,'{sample}','mutant_to_parent.noalignments.tsv')
+    params:
+        join(work,'{sample}')
+    threads:
+        16
+    shell:
+        "detect_deletions --no_alignment_only --prefix mutant_to_parent --genbank {input.gbk} {input.bam} {params}"
+
+
 rule deletion_detection:
     input:
         bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam'),
-        genbank = get_reference
+        genbank = get_genbank
     output:
         join(work,'{sample}','in_read_deletions.tsv'),
         join(work,'{sample}','no_alignment_regions.tsv')
