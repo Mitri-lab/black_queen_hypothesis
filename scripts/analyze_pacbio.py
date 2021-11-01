@@ -97,3 +97,38 @@ def plot_genome_length():
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','contigs',title.replace(' ','_')+'.png'))
     return genome_length
+
+def get_affected_products(df_name):
+    affected_products = {strain:None for strain in s.strains}
+    for strain,samples in s.strains.items():
+        treatments = s.treatments[strain]
+        sorted_products = pd.DataFrame(columns=treatments)
+        for sample in samples:
+            if sample['platform'] == 'pacbio':
+                f = join(sample['dir_name'],df_name)
+                if exists(f):
+                    products = set(pd.read_csv(f,sep='\t').dropna()['product'])
+                    for product in products:
+                        if product in sorted_products.index:
+                            sorted_products.at[product,sample['treatment']] += 1
+                        else:
+                            sorted_products.at[product,sample['treatment']] = 1
+        sorted_products.index.name = 'product'
+        affected_products[strain] = sorted_products
+    return affected_products
+
+def deleted_products():
+    affected_products = get_affected_products('no_alignment_regions.tsv')
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        column_names = ['treatment '+str(treatment) for treatment in treatments]
+        fname = 'deleted_products_'+strain.replace(' ','_')+'.csv'
+        affected_products[strain].to_csv(join('..','tables','pacbio_deletions',fname),header=column_names)
+
+def inserted_products():
+    affected_products = get_affected_products('mutant_to_parent.noalignments.tsv')
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        column_names = ['treatment '+str(treatment) for treatment in treatments]
+        fname = 'inserted_products_'+strain.replace(' ','_')+'.csv'
+        affected_products[strain].to_csv(join('..','tables','pacbio_insertions',fname),header=column_names)
