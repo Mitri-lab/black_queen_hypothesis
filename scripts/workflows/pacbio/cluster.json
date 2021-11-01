@@ -19,6 +19,16 @@
         "mem": "32G",
         "time": "0:30:0"
     },
+    "mutant_to_parent":
+    {
+        "mem": "16G",
+        "time": "0:30:0"
+    },
+    "mutant_to_parent_deletions":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
     "deletion_detection":
     {
         "mem": "128G",
