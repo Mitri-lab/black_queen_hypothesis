@@ -1,9 +1,12 @@
 from samples import Samples
 from plotting import Plotting
+from analyze_marcs_deletions import get_gc_content
 import pandas as pd
 from os.path import join
 from os.path import exists
 import math
+from Bio import SeqIO
+import glob
 
 s = Samples()
 p = Plotting()
@@ -91,3 +94,17 @@ def plot_products():
         fig.update_xaxes(title_text='observed mutated product n times',row=len(treatments),col=1)
         fig.update_yaxes(title_text='products',row=int(math.ceil(len(treatments)/2)),col=1)
         fig.write_image(join('..','plots','products',' '.join(title).replace(' ','_')+'.png'))
+
+def write_gc_content():
+    df = pd.DataFrame(columns=['gc content'])
+    for strain in s.strains:
+        sequence = str()
+        reference = s.references[strain]
+        contigs = [contig for contig in SeqIO.parse(reference,'fasta')]
+        for contig in contigs:
+            sequence += contig.seq
+        gc_content = get_gc_content(sequence)
+        df.at[strain,'gc content'] = gc_content
+    df.index.name = 'strain'
+    fname = join('..','tables','gc_content','gc_content.csv')
+    df.to_csv(fname)
