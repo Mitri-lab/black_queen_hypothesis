@@ -27,12 +27,12 @@ def plot_snps():
                     if exists(snps):
                         n_snps.at[sample['name'],sample['treatment']] = \
                             len(pd.read_csv(snps,sep='\t'))
-        print(strain,'\n',n_snps)
         fig = p.subplot_treatments(strain,n_snps)
         title = 'N SNPs in '+strain
         fig.update_layout(
             xaxis_title='samples',
             yaxis_title='n SNPs',
+            width=len(n_snps) * 30,
             title=title)
         fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','snps',title.replace(' ','_')+'.png'))
@@ -69,30 +69,26 @@ def plot_genes():
 def plot_products():
     for strain,samples in s.strains.items():
         treatments = s.treatments[strain]
-        top_genes = pd.DataFrame(columns=treatments)
-        sorted_genes = pd.DataFrame(columns=treatments)
+        n_products = pd.DataFrame(columns=treatments)
         for sample in samples:
             if sample['platform'] == 'illumina':
                 f = join(sample['dir_name'],'snippy','snps.tab')
                 if exists(f):
-                    genes = set(pd.read_csv(f,sep='\t').dropna()['PRODUCT'])
-                    for gene in genes:
-                        if gene in top_genes.index:
-                            top_genes.at[gene,sample['treatment']] += 1
+                    products = set(pd.read_csv(f,sep='\t').dropna()['PRODUCT'])
+                    for product in products:
+                        if product in n_products[sample['treatment']].dropna().index:
+                            n_products.at[product,sample['treatment']] += 1
                         else:
-                            top_genes.at[gene,sample['treatment']] = 1
-        for treatment in s.treatments[strain]:
-            series = top_genes[treatment].sort_values(ascending=False)
-            for gene,count in series.items():
-                sorted_genes.at[gene,treatment] = count
-        fig = p.subplot_products(strain,sorted_genes)
+                            n_products.at[product,sample['treatment']] = 1
+        fig = p.subplot_products(strain,n_products)
         title = ['Products','affected','by','mutations','in',strain]
         fig.update_layout(overwrite=True,
                 title = ' '.join(title),
-                height = 800
+                height = len(n_products) * 50
             )
         fig.update_xaxes(title_text='observed mutated product n times',row=len(treatments),col=1)
         fig.update_yaxes(title_text='products',row=int(math.ceil(len(treatments)/2)),col=1)
+        fig.update_traces(showlegend=False)
         fig.write_image(join('..','plots','products',' '.join(title).replace(' ','_')+'.png'))
 
 def write_gc_content():
