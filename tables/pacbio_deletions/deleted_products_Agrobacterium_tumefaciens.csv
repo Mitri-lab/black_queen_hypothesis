@@ -1,91 +1,91 @@
 product,treatment 1,treatment 3,treatment 4
-Sporulation initiation inhibitor protein Soj,1,,
-Modification methylase DpnIIB,2,,
-Conjugal transfer protein TraG,2,,
-Biofilm dispersion protein BdlA,2,,
-DNA-invertase hin,1,,
-putative metal-dependent hydrolase YjjV,,1,
-Putative undecaprenyl-diphosphatase YbjG,,1,
+Modification methylase DpnIIB,2,3,2
+DNA-invertase hin,1,3,4
+Sporulation initiation inhibitor protein Soj,1,4,3
+Biofilm dispersion protein BdlA,2,3,3
+Conjugal transfer protein TraG,2,4,3
 60 kDa chaperonin,,1,
-Divalent metal cation transporter MntH,,1,
-Bicarbonate transporter BicA,,1,
-Disulfide bond formation protein D,,1,
-Cytochrome bo(3) ubiquinol oxidase subunit 3,,1,
-Protease HtpX,,1,
-Chromosome-partitioning protein Spo0J,,1,
-HTH-type transcriptional regulator ZntR,,1,
-D-alanyl-D-alanine carboxypeptidase DacF,,1,
-Transcriptional activator protein TraR,,1,
-Ribonuclease BN,,1,
-Serine/threonine-protein kinase HipA,,1,
-Thioredoxin 2,,1,
-Na(+)/H(+) antiporter NhaA,,1,
-Swarming motility regulation protein RssB,,1,
+Divalent metal cation transporter MntH,,1,1
 Mobilization protein A,,1,
-Lipoprotein signal peptidase,,1,
-DNA replication and repair protein RecF,,1,
-putative helicase HelY,,1,
-Multicopper oxidase MmcO,,1,
-RNA polymerase-binding transcription factor DksA,,1,
-Quaternary ammonium compound-resistance protein SugE,,1,
-Cytochrome bo(3) ubiquinol oxidase subunit 1,,1,
-HTH-type transcriptional regulator DdrOP3,,1,
-Cytochrome bo(3) ubiquinol oxidase subunit 4,,1,
-Cyclopropane-fatty-acyl-phospholipid synthase,,1,
-Polyamine aminopropyltransferase,,1,
-Tyrosine recombinase XerD,,1,
-Diacylglycerol kinase,,1,
 DNA primase TraC,,1,
-Type IV secretion system protein virB9,,1,
-"Cadmium, cobalt and zinc/H(+)-K(+) antiporter",,1,
-Type IV secretion system protein virB4,,1,
-Cytochrome bo(3) ubiquinol oxidase subunit 2,,1,
-Chromosome-partitioning protein ParB,,1,
-"putative L,D-transpeptidase ErfK/SrfK",,1,
-putative oxidoreductase CzcO,,1,
-Sensor protein RstB,,1,
-ATP-dependent Clp protease ATP-binding subunit ClpC,,1,
-Acyl-homoserine-lactone synthase,,1,
-"Lead, cadmium, zinc and mercury-transporting ATPase",,1,
-HTH-type transcriptional regulator HmrR,,1,
-Multiple antibiotic resistance protein MarR,,1,
-Endonuclease YncB,,1,
-ATP-dependent zinc metalloprotease FtsH 4,,1,
-Transcriptional repressor TraM,,1,
-Putative L-lactate dehydrogenase operon regulatory protein,,1,
-Glutathione-regulated potassium-efflux system protein KefC,,1,
-Spore protein SP21,,1,
-Disulfide bond formation protein C,,1,
-RecBCD enzyme subunit RecB,,1,
-Phosphoethanolamine transferase EptA,,1,
-2-dehydro-3-deoxy-D-gluconate 5-dehydrogenase,,1,
-Tyrosine recombinase XerC,,1,
-Rhomboid protease GluP,,1,
-SCO1 protein,,1,
-Putative serine protease HtrA,,1,
-"putative L,D-transpeptidase YbiS",,1,
-7-cyano-7-deazaguanine synthase,,1,
+Cytochrome bo(3) ubiquinol oxidase subunit 3,,1,1
 L-cystine import ATP-binding protein TcyN,,1,
+2-dehydro-3-deoxy-D-gluconate 5-dehydrogenase,,1,
+Putative undecaprenyl-diphosphatase YbjG,,1,
+"Cadmium, cobalt and zinc/H(+)-K(+) antiporter",,1,1
+HTH-type transcriptional regulator HmrR,,1,1
+Spore protein SP21,,1,
+RecBCD enzyme subunit RecB,,1,
+Acyl-homoserine-lactone synthase,,1,
+Lipoprotein signal peptidase,,1,1
+"Lead, cadmium, zinc and mercury-transporting ATPase",,1,1
+DNA replication and repair protein RecF,,1,
+HTH-type transcriptional regulator DdrOP3,,1,
+HTH-type transcriptional regulator ZntR,,1,1
+Glutathione-regulated potassium-efflux system protein KefC,,1,
+Endonuclease YncB,,1,
+putative helicase HelY,,1,
+Disulfide bond formation protein D,,1,1
+Na(+)/H(+) antiporter NhaA,,1,
+Polyamine aminopropyltransferase,,1,
+putative metal-dependent hydrolase YjjV,,1,
+Swarming motility regulation protein RssB,,1,
+Cytochrome bo(3) ubiquinol oxidase subunit 1,,1,1
+Cyclopropane-fatty-acyl-phospholipid synthase,,1,
+ATP-dependent Clp protease ATP-binding subunit ClpC,,1,
+SCO1 protein,,1,1
+putative oxidoreductase CzcO,,1,1
+Bicarbonate transporter BicA,,1,
+Diacylglycerol kinase,,1,
+Serine/threonine-protein kinase HipA,,1,
+Transcriptional activator protein TraR,,1,
+Chromosome-partitioning protein ParB,,1,
+Multiple antibiotic resistance protein MarR,,1,
+Type IV secretion system protein virB9,,1,
+Putative L-lactate dehydrogenase operon regulatory protein,,1,
+Quaternary ammonium compound-resistance protein SugE,,1,
+Tyrosine recombinase XerD,,1,
+7-cyano-7-deazaguanine synthase,,1,
+"putative L,D-transpeptidase YbiS",,1,1
+Putative serine protease HtrA,,1,
+D-alanyl-D-alanine carboxypeptidase DacF,,1,
+Ribonuclease BN,,1,
+Phosphoethanolamine transferase EptA,,1,1
+"putative L,D-transpeptidase ErfK/SrfK",,1,1
+Cytochrome bo(3) ubiquinol oxidase subunit 2,,1,1
+Multicopper oxidase MmcO,,1,
+Tyrosine recombinase XerC,,1,
+Sensor protein RstB,,1,
+ATP-dependent zinc metalloprotease FtsH 4,,1,
+Thioredoxin 2,,1,
+Transcriptional repressor TraM,,1,
+Chromosome-partitioning protein Spo0J,,1,
+Rhomboid protease GluP,,1,
+RNA polymerase-binding transcription factor DksA,,1,
+Cytochrome bo(3) ubiquinol oxidase subunit 4,,1,1
+Type IV secretion system protein virB4,,1,
+Disulfide bond formation protein C,,1,1
+Protease HtpX,,1,
 Thiamine-monophosphate kinase,,1,
-Allantoate amidohydrolase,,,2
-Atrazine chlorohydrolase,,,2
-Nickel-binding periplasmic protein,,,2
-Oligopeptide transport system permease protein OppC,,,2
 Acetophenone carboxylase delta subunit,,,2
-Glutathione transport system permease protein GsiC,,,2
 Glutathione import ATP-binding protein GsiA,,,2
+Oligopeptide transport system permease protein OppC,,,2
+Allantoate amidohydrolase,,,2
+Nickel-binding periplasmic protein,,,2
+Glutathione transport system permease protein GsiC,,,2
+Atrazine chlorohydrolase,,,2
 Acetophenone carboxylase gamma subunit,,,2
-Na(+)/H(+) antiporter subunit C1,,,1
-Chemotaxis protein CheY,,,1
-Chemotaxis protein CheA,,,1
-Na(+)/H(+) antiporter subunit F,,,1
-Chemotaxis protein methyltransferase,,,1
-Na(+)/H(+) antiporter subunit A,,,1
 Na(+)/H(+) antiporter subunit E1,,,1
-Aerotaxis receptor,,,1
-Na(+)/H(+) antiporter subunit G,,,1
-Chemotaxis response regulator protein-glutamate methylesterase,,,1
+Chemotaxis protein CheA,,,1
+Na(+)/H(+) antiporter subunit C1,,,1
+Chemotaxis protein methyltransferase,,,1
+Na(+)/H(+) antiporter subunit F,,,1
+Type-1 restriction enzyme R protein,,,1
+Flagellar M-ring protein,,,1
+Na(+)/H(+) antiporter subunit A,,,1
 Na(+)/H(+) antiporter subunit D,,,1
 Chemoreceptor glutamine deamidase CheD,,,1
-Flagellar M-ring protein,,,1
-Type-1 restriction enzyme R protein,,,1
+Na(+)/H(+) antiporter subunit G,,,1
+Aerotaxis receptor,,,1
+Chemotaxis response regulator protein-glutamate methylesterase,,,1
+Chemotaxis protein CheY,,,1
