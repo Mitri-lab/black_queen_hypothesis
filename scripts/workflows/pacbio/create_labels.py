@@ -3,6 +3,9 @@ import sys
 from os.path import join
 
 def create_plot_labels(sample,strain,out):
+    """Creating labels and storing as json for
+    https://github.com/nahanoo/gc_bias/tree/main/gc_bias
+    """
     labels = dict()
     density_plot = dict()
     density_plot['title'] = strain+' in '+sample

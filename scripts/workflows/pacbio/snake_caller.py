@@ -14,6 +14,15 @@ from os.path import join
 from samples import Samples
 import sys
 
+"""
+################################################################################
+Author: https://github.com/nahanoo
+This is a really usefull script to call snakemake. For snakemake you
+define the output file you want to be generated. Snakemake checks all rules
+and creates missing input files.
+################################################################################
+"""
+
 #Defining some globals
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 s = Samples()
@@ -25,10 +34,9 @@ def submit(files):
     cmd = ['snakemake','--rerun-incomplete','-j','100',cluster_config,files]
     subprocess.call(' '.join(cmd),shell=True)
 
-def single_caller(path):
-    submit(path)
 
 def all_caller(output_file):
+    """Basic snakemake calling taking the desired output file as input."""
     output = []
     for strain,samples in s.strains.items():
         for sample in samples:
@@ -38,5 +46,7 @@ def all_caller(output_file):
     submit(files)
 
 if __name__ == '__main__':
-    #single_caller(sys.argv[1])
+    """Example how to run this script: sbatch snake_caller.py at
+    It's nice that this script then also runs as a sleeper on the cluster.
+    """
     all_caller('mutant_to_parent.noalignments.tsv')
