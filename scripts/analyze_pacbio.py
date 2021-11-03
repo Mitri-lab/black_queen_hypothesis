@@ -167,7 +167,7 @@ def get_affected_products(df_name):
                     products = set(pd.read_csv(f,sep='\t').dropna()['product'])
                     for product in products:
                         #Storing how many time product was mutated
-                        if product in sorted_products.index:
+                        if product in sorted_products[sample['treatment']].dropna().index:
                             sorted_products.at[product,sample['treatment']] += 1
                         else:
                             sorted_products.at[product,sample['treatment']] = 1
@@ -175,7 +175,7 @@ def get_affected_products(df_name):
         sorted_products.index.name = 'product'
         #Storing as dictionary
         affected_products[strain] = sorted_products
-        
+
     return affected_products
 
 def deleted_products():
