@@ -15,22 +15,29 @@ from samples import Samples
 import glob
 import sys
 
+"""
+################################################################################
+Author: https://github.com/nahanoo
+This is a really usefull script to call snakemake. For snakemake you
+define the output file you want to be generated. Snakemake checks all rules
+and creates missing input files.
+################################################################################
+"""
+
+
 #Defining some globals
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 s = Samples()
 
 def submit(files):
-    """Basic snakemake calling"""
+    """Basic snakemake calling taking the desired output file as input."""
     cluster_config = '--cluster-config cluster.json --cluster \
         "sbatch --mem={cluster.mem} -t {cluster.time} -c {threads}"'
     cmd = ['snakemake','--rerun-incomplete','-j','100',cluster_config,files]
     subprocess.call(' '.join(cmd),shell=True)
 
-def single_caller(path):
-    submit(path)
-
 def strain_caller(strain,output_file):
-    """Grabbing all the directories and formatting them as snakemake wildcards."""
+    """This allows to create desired files per strain."""
     output = []
     for sample in s.strains[strain]:
         if sample['platform'] == 'illumina':
@@ -39,14 +46,10 @@ def strain_caller(strain,output_file):
         s.abbreviations[strain],output_file)
     submit(files)
 
-def time_point_caller(output_file):
-    dirs = [d.split('/')[-1] for d in glob.glob(join(work,'T44.4.*'))]
-    submit(join(work,'{'+','.join(dirs)+'}','{at,ct,oa,ms}',output_file))
 
 if __name__ == '__main__':
-    #strain_caller(sys.argv[1],join('snippy','snps.tab'))
+    """Example of a function call. Super nice that abbrevieations work.
+    Example how to run this script: sbatch snake_caller.py at
+    It's nice that this script then also runs as a sleeper on the cluster.
+    """
     strain_caller(s.abbreviations[sys.argv[1]],join('snippy','snps.tab'))
-    #snake_test()
-    #time_point_caller('report.md')
-    #single_caller(sys.argv[1])
-    #strain_caller(s.abbreviations[sys.argv[1]],'flagstat.tsv')

@@ -2,7 +2,15 @@ import json
 import sys
 from os.path import join
 
+"""
+################################################################################
+Author: https://github.com/nahanoo
+This script creates the labels for the pdf report of the alignment file.
+################################################################################
+"""
+
 def create_plot_labels(sample,strain,out):
+    """Labels for histogram and density plot."""
     labels = dict()
     density_plot = dict()
     density_plot['title'] = strain+' in '+sample

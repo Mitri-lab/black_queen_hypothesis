@@ -2,11 +2,29 @@ from os.path import join
 from samples import Samples
 import json
 
+"""
+################################################################################
+Author: https://github.com/nahanoo
+This is the workflow used for sample processing the illumina data.
+It aligns the illumina reads to the genome of the wild-type strains used
+in a tratment. Those alignment files are analyzed using 
+https://github.com/nahanoo/gc_bias/tree/report. The same alignment files
+are then used to identify SNPs with https://github.com/tseemann/snippy.
+################################################################################
+"""
+
+#Setting global data path
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 
 def get_strain(wildcards):
+    """Because it's easier I shortedned the directory names
+    of strains to at, ct, ms and oa. This
+    function allows us to back and for between
+    abbreviations and full strian name."""
     return Samples().abbreviations[wildcards.strain]
 
+#Mapping illumina reads to wild-type genomes
+#Read group in minimap2 command must match the output direcotry in snippy rule
 rule mapping:
     input:
         reference = join(work,'{strain}','reference.fasta'),
@@ -23,6 +41,7 @@ rule mapping:
         samtools index {output}
         """
 
+#Getting mapping stats of aligment files.
 rule flagstat:
     input:
         join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
@@ -33,6 +52,35 @@ rule flagstat:
     shell:
         "samtools flagstat --threads {threads} -O tsv {input} > {output}"
 
+#For creating the report we need to write future plot labels to json
+rule labels:
+    output:
+        join(work,'{sample}','{strain}','labels.json')
+    params:
+        outdir = join(work,'{sample}','{strain}'),
+        strain = get_strain
+    threads:
+        1
+    shell:
+        "python create_labels.py {wildcards.sample} {params.strain} {params.outdir}"
+
+#Creating repord markdown with
+#https://github.com/nahanoo/gc_bias/tree/report
+rule report:
+    input:
+        labels = join(work,'{sample}','{strain}','labels.json'),
+        reference = join(work,'{strain}','reference.fasta'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        join(work,'{sample}','{strain}','report.md')
+    params:
+        outdir = join(work,'{sample}','{strain}')
+    threads:
+        16
+    shell:
+        "report_bam_stats {input.reference} {input.bam} {input.labels} {params.outdir}"
+
+#Identifying SNPs using snippy
 rule snippy:
     input:
         reference = join(work,'{strain}','reference.gbk'),
@@ -49,6 +97,8 @@ rule snippy:
         {params} --reference {input.reference} --bam {input.bam}
         """
 
+#This rule is not used currently but would allow to indentify regions with no coverage
+#It's not used because of sequence biased coverage issues.
 rule no_alignments:
     input:
         genbank = join(work,'{strain}','reference_stripped.gbk'),
@@ -63,28 +113,3 @@ rule no_alignments:
         """
         detect_deletions --no_alignment_only --min_mapping_quality 0 --genbank {input} --min_count 10 {params}
         """
-
-rule labels:
-    output:
-        join(work,'{sample}','{strain}','labels.json')
-    params:
-        outdir = join(work,'{sample}','{strain}'),
-        strain = get_strain
-    threads:
-        1
-    shell:
-        "python create_labels.py {wildcards.sample} {params.strain} {params.outdir}"
-
-rule report:
-    input:
-        labels = join(work,'{sample}','{strain}','labels.json'),
-        reference = join(work,'{strain}','reference.fasta'),
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
-    output:
-        join(work,'{sample}','{strain}','report.md')
-    params:
-        outdir = join(work,'{sample}','{strain}')
-    threads:
-        16
-    shell:
-        "report_bam_stats {input.reference} {input.bam} {input.labels} {params.outdir}"
