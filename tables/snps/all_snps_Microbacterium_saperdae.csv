@@ -1,0 +1,73 @@
+sample,CHROM,POS,TYPE,AA_POS,EFFECT,GENE,PRODUCT
+T11.3.1,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.3.1,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.3.2,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.3.2,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.3.3,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.3.3,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.3.4,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.3.4,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.3.5,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.3.5,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.4.2,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.4.2,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T11.4.3,c01,699272,snp,520/666,missense_variant c.1559C>T p.Thr520Ile,ftsH_1,ATP-dependent zinc metalloprotease FtsH
+T11.4.3,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T11.4.3,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T22.4.3,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T22.4.3,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T22.4.5,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.3.1,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.3.1,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.3.1,c01,2588030,del,176/475,frameshift_variant c.526delA p.Ile176fs,puuP_3,Putrescine importer PuuP
+T33.3.1,c01,2638764,snp,37/200,missense_variant c.109T>C p.Ser37Pro,kstR,HTH-type transcriptional repressor KstR
+T33.3.2,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.3.2,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.3.3,c01,657367,snp,55/151,missense_variant c.163A>C p.Thr55Pro,tagD,Glycerol-3-phosphate cytidylyltransferase
+T33.3.3,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.3.3,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.3.3,c01,1913025,snp,274/279,missense_variant c.821T>C p.Leu274Pro,cobB,NAD-dependent protein deacylase
+T33.3.4,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.3.4,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.3.5,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.3.5,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.4.2,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.4.2,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.4.2,c01,3615511,snp,145/328,missense_variant c.435A>C p.Glu145Asp,yhdN_3,General stress protein 69
+T33.4.3.rep,c01,699272,snp,520/666,missense_variant c.1559C>T p.Thr520Ile,ftsH_1,ATP-dependent zinc metalloprotease FtsH
+T33.4.3.rep,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.4.3.rep,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T33.4.3.rep,c01,3100708,del,30/219,frameshift_variant c.90_91delGC p.Leu31fs,ydfG,NADP-dependent 3-hydroxy acid dehydrogenase YdfG
+T33.4.5,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T33.4.5,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.1,c01,1088,snp,363/463,missense_variant c.1088C>A p.Thr363Lys,dnaA,Chromosomal replication initiator protein DnaA
+T44.3.1,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.3.1,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.2,c01,660917,snp,366/665,missense_variant c.1096T>C p.Ser366Pro,gumI,GDP-mannose:glycolipid 4-beta-D-mannosyltransferase
+T44.3.2,c01,826998,snp,305/515,missense_variant c.913T>C p.Phe305Leu,apc3_2,Acetophenone carboxylase gamma subunit
+T44.3.2,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.3.2,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.2,c01,3382652,del,88/516,conservative_inframe_deletion c.262_285delCCCGAGGCGGTCGCGGGCGGCATC p.Pro88_Ile95del,dtpT,Di-/tripeptide transporter
+T44.3.3.rep,c01,657367,snp,55/151,missense_variant c.163A>C p.Thr55Pro,tagD,Glycerol-3-phosphate cytidylyltransferase
+T44.3.3.rep,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.3.3.rep,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.3.rep,c01,1913025,snp,274/279,missense_variant c.821T>C p.Leu274Pro,cobB,NAD-dependent protein deacylase
+T44.3.3.rep,c01,1940379,snp,116/149,missense_variant c.347A>C p.Tyr116Ser,glbO,Group 2 truncated hemoglobin GlbO
+T44.3.4,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.3.4,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.5,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.3.5,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.3.5,c01,2587322,snp,412/475,missense_variant c.1235T>G p.Met412Arg,puuP_3,Putrescine importer PuuP
+T44.4.2,c01,3615511,snp,145/328,missense_variant c.435A>C p.Glu145Asp,yhdN_3,General stress protein 69
+T44.4.3,c01,699272,snp,520/666,missense_variant c.1559C>T p.Thr520Ile,ftsH_1,ATP-dependent zinc metalloprotease FtsH
+T44.4.3,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.4.3,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.4.5.rep,c01,698447,snp,245/666,missense_variant c.734T>C p.Val245Ala,ftsH_1,ATP-dependent zinc metalloprotease FtsH
+T44.4.5.rep,c01,804045,snp,222/651,synonymous_variant c.666C>T p.Gly222Gly,ctpG_2,putative cation-transporting ATPase G
+T44.4.5.rep,c01,804921,snp,514/651,synonymous_variant c.1542A>C p.Arg514Arg,ctpG_2,putative cation-transporting ATPase G
+T44.4.5.rep,c01,804978,snp,533/651,synonymous_variant c.1599A>G p.Gly533Gly,ctpG_2,putative cation-transporting ATPase G
+T44.4.5.rep,c01,808055,del,31/324,frameshift_variant c.91_95delCTCGG p.Leu31fs,birA_1,Bifunctional ligase/repressor BirA
+T44.4.5.rep,c01,831593,snp,237/504,missense_variant c.709A>G p.Met237Val,pucR_1,Purine catabolism regulatory protein
+T44.4.5.rep,c01,1739271,del,20/411,frameshift_variant c.59delA p.Asn20fs,gyrB_2,DNA gyrase subunit B
+T44.4.5.rep,c01,1739320,del,37/411,frameshift_variant c.110_111delCC p.Pro37fs,gyrB_2,DNA gyrase subunit B
+T44.4.5.rep,c01,3643534,snp,91/249,missense_variant c.272A>C p.Asp91Ala,srlR,Glucitol operon repressor

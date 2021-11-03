@@ -1,0 +1,930 @@
+sample,CHROM,POS,TYPE,AA_POS,EFFECT,GENE,PRODUCT
+T11.4.1,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T11.4.1,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T11.4.1,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T11.4.2,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T11.4.2,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T11.4.2,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T11.4.3,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T11.4.3,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T11.4.3,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T11.4.4,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T11.4.4,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T11.4.4,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T11.4.5,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T11.4.5,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T11.4.5,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T11.4.5,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.1,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T22.4.1,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T22.4.1,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T22.4.1,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,96441,snp,171/546,synonymous_variant c.513T>C p.Asn171Asn,groL,60 kDa chaperonin
+T22.4.2,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T22.4.2,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T22.4.2,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T22.4.2,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T22.4.2,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T22.4.2,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T22.4.2,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T22.4.2,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T22.4.2,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T22.4.2,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T22.4.2,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T22.4.2,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T22.4.2,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T22.4.2,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T22.4.2,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T22.4.2,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T22.4.2,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T22.4.2,c01,96807,snp,293/546,synonymous_variant c.879G>C p.Ala293Ala,groL,60 kDa chaperonin
+T22.4.2,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022330,complex,382/840,synonymous_variant c.1146_1149delCGCCinsTGCT p.384,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022339,snp,385/840,synonymous_variant c.1155A>C p.Ala385Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2022358,snp,392/840,missense_variant c.1174G>A p.Val392Ile,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023410,snp,742/840,synonymous_variant c.2226A>G p.Gln742Gln,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023416,complex,744/840,synonymous_variant c.2232_2233delCAinsGC p.746,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T22.4.2,c02,436029,snp,508/1377,synonymous_variant c.1524T>A p.Ala508Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436125,snp,540/1377,synonymous_variant c.1620C>T p.Leu540Leu,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,436143,snp,546/1377,synonymous_variant c.1638C>T p.Gly546Gly,rpoB,DNA-directed RNA polymerase subunit beta
+T22.4.2,c02,439829,snp,329/1400,synonymous_variant c.987G>C p.Leu329Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440172,snp,444/1400,missense_variant c.1330A>G p.Ile444Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440282,snp,480/1400,synonymous_variant c.1440T>G p.Leu480Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,440288,snp,482/1400,synonymous_variant c.1446A>G p.Ala482Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441065,snp,741/1400,synonymous_variant c.2223T>C p.Arg741Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441071,snp,743/1400,synonymous_variant c.2229T>G p.Leu743Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441077,snp,745/1400,synonymous_variant c.2235C>A p.Ala745Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,441203,complex,787/1400,synonymous_variant c.2361_2364delTGCTinsGGCG p.789,rpoC,DNA-directed RNA polymerase subunit beta'
+T22.4.2,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T22.4.2,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T22.4.2,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T22.4.2,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T22.4.2,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T22.4.2,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T22.4.2,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T22.4.2,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T22.4.2,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T22.4.2,c02,453659,snp,53/122,synonymous_variant c.159A>G p.Lys53Lys,rplN,50S ribosomal protein L14
+T22.4.2,c02,453665,complex,55/122,synonymous_variant c.165_168delTGATinsCGAC p.57,rplN,50S ribosomal protein L14
+T22.4.2,c02,698351,snp,242/424,synonymous_variant c.726G>C p.Thr242Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698505,complex,190/424,synonymous_variant c.570_572delCAGinsTTC p.192,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698546,complex,176/424,synonymous_variant c.528_531delTGCGinsCGCC p.178,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698555,snp,174/424,synonymous_variant c.522G>C p.Val174Val,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698618,complex,152/424,synonymous_variant c.456_459delAGGCinsCGGT p.154,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698627,snp,150/424,synonymous_variant c.450G>C p.Thr150Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698633,snp,148/424,synonymous_variant c.444A>G p.Thr148Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698639,snp,146/424,synonymous_variant c.438G>A p.Ala146Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698645,snp,144/424,synonymous_variant c.432C>G p.Ala144Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698657,complex,138/424,synonymous_variant c.414_420delTGTGCCAinsCGTTCCC p.141,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698675,snp,134/424,synonymous_variant c.402A>C p.Ala134Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698726,complex,116/424,missense_variant c.348_351delTCTTinsCATG p.Leu117Met,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,698752,snp,109/424,missense_variant c.325A>G p.Ile109Val,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T22.4.2,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T22.4.2,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T22.4.2,c02,2279042,snp,9/134,synonymous_variant c.27T>C p.Gly9Gly,ssb_4,Single-stranded DNA-binding protein
+T22.4.2,c02,2279055,complex,14/134,missense_variant c.40_41delGAinsAC p.Asp14Thr,ssb_4,Single-stranded DNA-binding protein
+T22.4.3,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T22.4.3,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T22.4.3,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T22.4.4,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T22.4.4,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T22.4.4,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T22.4.4,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022120,complex,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T22.4.4,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T22.4.4,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T22.4.4,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T22.4.4,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T22.4.4,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T22.4.4,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T22.4.5,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T22.4.5,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T22.4.5,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T22.4.5,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T22.4.5,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T22.4.5,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T22.4.5,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T22.4.5,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T22.4.5,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T22.4.5,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T33.4.1,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T33.4.1,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T33.4.1,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T33.4.2,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T33.4.2,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T33.4.2,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T33.4.2,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T33.4.2,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T33.4.2,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T33.4.2,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T33.4.2,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T33.4.2,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T33.4.2,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T33.4.2,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T33.4.2,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T33.4.2,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T33.4.2,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T33.4.2,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c01,96441,snp,171/546,synonymous_variant c.513T>C p.Asn171Asn,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T33.4.3.rep,c01,96807,snp,293/546,synonymous_variant c.879G>C p.Ala293Ala,groL,60 kDa chaperonin
+T33.4.3.rep,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T33.4.3.rep,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T33.4.3.rep,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T33.4.3.rep,c01,2007281,snp,55/133,synonymous_variant c.165C>G p.Thr55Thr,ssb_1,Single-stranded DNA-binding protein
+T33.4.3.rep,c01,2007330,complex,72/133,missense_variant c.214_216delCAAinsGAG p.Gln72Glu,ssb_1,Single-stranded DNA-binding protein
+T33.4.3.rep,c01,2007347,snp,77/133,synonymous_variant c.231T>C p.Gly77Gly,ssb_1,Single-stranded DNA-binding protein
+T33.4.3.rep,c01,2007392,snp,92/133,synonymous_variant c.276C>G p.Thr92Thr,ssb_1,Single-stranded DNA-binding protein
+T33.4.3.rep,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022330,complex,382/840,synonymous_variant c.1146_1149delCGCCinsTGCT p.384,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022339,snp,385/840,synonymous_variant c.1155A>C p.Ala385Ala,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2022358,snp,392/840,missense_variant c.1174G>A p.Val392Ile,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023532,complex,783/840,missense_variant c.2348_2352delACGGTinsGCGGC p.Asp783Gly,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023545,complex,787/840,synonymous_variant c.2361_2364delTGCAinsCGCT p.789,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c01,2023554,snp,790/840,synonymous_variant c.2370C>G p.Leu790Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.3.rep,c02,435993,complex,496/1377,synonymous_variant c.1488_1491delGGTCinsCGTG p.498,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436008,snp,501/1377,synonymous_variant c.1503T>C p.Asp501Asp,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436029,snp,508/1377,synonymous_variant c.1524T>A p.Ala508Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436125,snp,540/1377,synonymous_variant c.1620C>T p.Leu540Leu,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,436143,snp,546/1377,synonymous_variant c.1638C>T p.Gly546Gly,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.3.rep,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440144,snp,434/1400,synonymous_variant c.1302T>G p.Leu434Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440156,snp,438/1400,synonymous_variant c.1314C>T p.Ala438Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440165,complex,441/1400,missense_variant c.1323_1325delCACinsGAT p.Thr442Met,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440172,snp,444/1400,missense_variant c.1330A>G p.Ile444Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440282,snp,480/1400,synonymous_variant c.1440T>G p.Leu480Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,440288,snp,482/1400,synonymous_variant c.1446A>G p.Ala482Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,441077,snp,745/1400,synonymous_variant c.2235C>A p.Ala745Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,441203,complex,787/1400,synonymous_variant c.2361_2364delTGCTinsGGCG p.789,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.3.rep,c02,445968,snp,353/694,synonymous_variant c.1059T>C p.Arg353Arg,fusA,Elongation factor G
+T33.4.3.rep,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T33.4.3.rep,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T33.4.3.rep,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T33.4.3.rep,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T33.4.3.rep,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T33.4.3.rep,c02,446174,snp,422/694,missense_variant c.1265C>G p.Ala422Gly,fusA,Elongation factor G
+T33.4.3.rep,c02,451011,snp,243/277,synonymous_variant c.729T>C p.Arg243Arg,rplB,50S ribosomal protein L2
+T33.4.3.rep,c02,451017,complex,245/277,synonymous_variant c.735_738delTGTCinsGGTT p.247,rplB,50S ribosomal protein L2
+T33.4.3.rep,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T33.4.3.rep,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T33.4.3.rep,c02,451161,complex,10/92,synonymous_variant c.30_36delCGTCGATinsTGTTGAC p.13,rpsS,30S ribosomal protein S19
+T33.4.3.rep,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,453659,snp,53/122,synonymous_variant c.159A>G p.Lys53Lys,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,453665,complex,55/122,synonymous_variant c.165_168delTGATinsCGAC p.57,rplN,50S ribosomal protein L14
+T33.4.3.rep,c02,698342,snp,245/424,synonymous_variant c.735C>G p.Leu245Leu,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698351,snp,242/424,synonymous_variant c.726G>C p.Thr242Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698505,mnp,190/424,synonymous_variant c.570_572delCAGinsTTC p.192,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698618,complex,152/424,synonymous_variant c.456_459delAGGCinsCGGT p.154,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698627,snp,150/424,synonymous_variant c.450G>C p.Thr150Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698633,snp,148/424,synonymous_variant c.444A>G p.Thr148Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698639,snp,146/424,synonymous_variant c.438G>A p.Ala146Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698645,snp,144/424,synonymous_variant c.432C>G p.Ala144Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698657,complex,138/424,synonymous_variant c.414_420delTGTGCCAinsCGTTCCC p.141,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698675,snp,134/424,synonymous_variant c.402A>C p.Ala134Ala,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698726,complex,116/424,missense_variant c.348_351delTCTTinsCATG p.Leu117Met,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,698752,snp,109/424,missense_variant c.325A>G p.Ile109Val,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.3.rep,c02,1908916,complex,185/566,synonymous_variant c.555_558delGGAAinsCGAG p.187,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T33.4.3.rep,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T33.4.4,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T33.4.4,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T33.4.4,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T33.4.5,c01,96441,snp,171/546,synonymous_variant c.513T>C p.Asn171Asn,groL,60 kDa chaperonin
+T33.4.5,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T33.4.5,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T33.4.5,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T33.4.5,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T33.4.5,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T33.4.5,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T33.4.5,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T33.4.5,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T33.4.5,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T33.4.5,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T33.4.5,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T33.4.5,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T33.4.5,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T33.4.5,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T33.4.5,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T33.4.5,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T33.4.5,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T33.4.5,c01,96807,snp,293/546,synonymous_variant c.879G>C p.Ala293Ala,groL,60 kDa chaperonin
+T33.4.5,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T33.4.5,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T33.4.5,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T33.4.5,c01,2007281,snp,55/133,synonymous_variant c.165C>G p.Thr55Thr,ssb_1,Single-stranded DNA-binding protein
+T33.4.5,c01,2007330,complex,72/133,missense_variant c.214_216delCAAinsGAG p.Gln72Glu,ssb_1,Single-stranded DNA-binding protein
+T33.4.5,c01,2007347,snp,77/133,synonymous_variant c.231T>C p.Gly77Gly,ssb_1,Single-stranded DNA-binding protein
+T33.4.5,c01,2007392,snp,92/133,synonymous_variant c.276C>G p.Thr92Thr,ssb_1,Single-stranded DNA-binding protein
+T33.4.5,c01,2007410,snp,98/133,synonymous_variant c.294T>C p.Asp98Asp,ssb_1,Single-stranded DNA-binding protein
+T33.4.5,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022330,complex,382/840,synonymous_variant c.1146_1149delCGCCinsTGCT p.384,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022339,snp,385/840,synonymous_variant c.1155A>C p.Ala385Ala,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2022358,snp,392/840,missense_variant c.1174G>A p.Val392Ile,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023401,snp,739/840,synonymous_variant c.2217T>C p.Tyr739Tyr,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023410,snp,742/840,synonymous_variant c.2226A>G p.Gln742Gln,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023416,complex,744/840,synonymous_variant c.2232_2233delCAinsGC p.746,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023532,complex,783/840,missense_variant c.2348_2352delACGGTinsGCGGC p.Asp783Gly,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023545,complex,787/840,synonymous_variant c.2361_2364delTGCAinsCGCT p.789,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c01,2023554,snp,790/840,synonymous_variant c.2370C>G p.Leu790Leu,virB4_2,Type IV secretion system protein virB4
+T33.4.5,c02,435993,complex,496/1377,synonymous_variant c.1488_1491delGGTCinsCGTG p.498,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436008,snp,501/1377,synonymous_variant c.1503T>C p.Asp501Asp,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436029,snp,508/1377,synonymous_variant c.1524T>A p.Ala508Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,436125,snp,540/1377,synonymous_variant c.1620C>T p.Leu540Leu,rpoB,DNA-directed RNA polymerase subunit beta
+T33.4.5,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,439997,complex,385/1400,synonymous_variant c.1155_1161delACGTCTTinsCCGCCTC p.388,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440156,snp,438/1400,synonymous_variant c.1314C>T p.Ala438Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440165,complex,441/1400,missense_variant c.1323_1325delCACinsGAT p.Thr442Met,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440172,snp,444/1400,missense_variant c.1330A>G p.Ile444Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440282,snp,480/1400,synonymous_variant c.1440T>G p.Leu480Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,440288,snp,482/1400,synonymous_variant c.1446A>G p.Ala482Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441065,snp,741/1400,synonymous_variant c.2223T>C p.Arg741Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441071,snp,743/1400,synonymous_variant c.2229T>G p.Leu743Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441077,snp,745/1400,synonymous_variant c.2235C>A p.Ala745Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441203,complex,787/1400,synonymous_variant c.2361_2364delTGCTinsGGCG p.789,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441215,snp,791/1400,synonymous_variant c.2373C>T p.Gly791Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,441221,snp,793/1400,synonymous_variant c.2379G>T p.Leu793Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T33.4.5,c02,445968,snp,353/694,synonymous_variant c.1059T>C p.Arg353Arg,fusA,Elongation factor G
+T33.4.5,c02,445974,complex,355/694,missense_variant c.1065_1066delTAinsCG p.Ile356Val,fusA,Elongation factor G
+T33.4.5,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T33.4.5,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T33.4.5,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T33.4.5,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T33.4.5,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T33.4.5,c02,446174,snp,422/694,missense_variant c.1265C>G p.Ala422Gly,fusA,Elongation factor G
+T33.4.5,c02,451011,snp,243/277,synonymous_variant c.729T>C p.Arg243Arg,rplB,50S ribosomal protein L2
+T33.4.5,c02,451017,complex,245/277,synonymous_variant c.735_738delTGTCinsGGTT p.247,rplB,50S ribosomal protein L2
+T33.4.5,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T33.4.5,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T33.4.5,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T33.4.5,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T33.4.5,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T33.4.5,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T33.4.5,c02,453659,snp,53/122,synonymous_variant c.159A>G p.Lys53Lys,rplN,50S ribosomal protein L14
+T33.4.5,c02,453665,complex,55/122,synonymous_variant c.165_168delTGATinsCGAC p.57,rplN,50S ribosomal protein L14
+T33.4.5,c02,698342,snp,245/424,synonymous_variant c.735C>G p.Leu245Leu,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698351,snp,242/424,synonymous_variant c.726G>C p.Thr242Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,698505,mnp,190/424,synonymous_variant c.570_572delCAGinsTTC p.192,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T33.4.5,c02,1908908,mnp,183/566,synonymous_variant c.547_548delAGinsTC p.184,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908916,complex,185/566,synonymous_variant c.555_558delGGAAinsCGAG p.187,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T33.4.5,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T33.4.5,c02,2279042,snp,9/134,synonymous_variant c.27T>C p.Gly9Gly,ssb_4,Single-stranded DNA-binding protein
+T33.4.5,c02,2279055,complex,14/134,missense_variant c.40_41delGAinsAC p.Asp14Thr,ssb_4,Single-stranded DNA-binding protein
+T33.4.5,c02,2279075,complex,20/134,missense_variant c.60_61delCCinsTG p.Gln21Glu,ssb_4,Single-stranded DNA-binding protein
+T33.4.5,c02,2279084,snp,23/134,synonymous_variant c.69C>T p.Gly23Gly,ssb_4,Single-stranded DNA-binding protein
+T33.4.5,c02,2445232,snp,314/521,synonymous_variant c.942C>G p.Leu314Leu,atpD,ATP synthase subunit beta
+T33.4.5,c02,2445250,complex,320/521,synonymous_variant c.960_963delCGCTinsGGCC p.322,atpD,ATP synthase subunit beta
+T33.4.5,c02,2445259,snp,323/521,synonymous_variant c.969C>T p.Gly323Gly,atpD,ATP synthase subunit beta
+T44.4.1,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T44.4.1,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T44.4.1,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T44.4.1,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T44.4.1,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T44.4.1,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T44.4.1,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T44.4.1,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T44.4.1,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T44.4.1,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T44.4.1,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T44.4.1,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T44.4.1,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T44.4.1,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T44.4.1,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T44.4.1,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T44.4.1,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T44.4.1,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T44.4.1,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T44.4.1,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T44.4.1,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.1,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.1,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.1,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.1,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.1,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T44.4.1,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T44.4.1,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T44.4.1,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T44.4.1,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T44.4.1,c02,450996,complex,238/277,synonymous_variant c.714_717delTACCinsCACG p.240,rplB,50S ribosomal protein L2
+T44.4.1,c02,451011,snp,243/277,synonymous_variant c.729T>C p.Arg243Arg,rplB,50S ribosomal protein L2
+T44.4.1,c02,451017,complex,245/277,synonymous_variant c.735_738delTGTCinsGGTT p.247,rplB,50S ribosomal protein L2
+T44.4.1,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T44.4.1,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T44.4.1,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T44.4.1,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T44.4.1,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T44.4.1,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T44.4.1,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.1,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.1,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.1,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.1,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.1,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T44.4.1,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T44.4.2,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T44.4.2,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T44.4.2,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T44.4.2,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T44.4.2,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T44.4.2,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T44.4.2,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T44.4.2,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T44.4.2,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T44.4.2,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T44.4.2,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T44.4.2,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T44.4.2,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T44.4.2,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T44.4.2,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T44.4.2,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T44.4.2,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T44.4.2,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T44.4.2,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T44.4.2,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T44.4.2,c01,2007281,snp,55/133,synonymous_variant c.165C>G p.Thr55Thr,ssb_1,Single-stranded DNA-binding protein
+T44.4.2,c01,2007330,complex,72/133,missense_variant c.214_216delCAAinsGAG p.Gln72Glu,ssb_1,Single-stranded DNA-binding protein
+T44.4.2,c01,2007347,snp,77/133,synonymous_variant c.231T>C p.Gly77Gly,ssb_1,Single-stranded DNA-binding protein
+T44.4.2,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2022330,complex,382/840,synonymous_variant c.1146_1149delCGCCinsTGCT p.384,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023532,complex,783/840,missense_variant c.2348_2352delACGGTinsGCGGC p.Asp783Gly,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023545,complex,787/840,synonymous_variant c.2361_2364delTGCAinsCGCT p.789,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c01,2023554,snp,790/840,synonymous_variant c.2370C>G p.Leu790Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.2,c02,436029,snp,508/1377,synonymous_variant c.1524T>A p.Ala508Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.2,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.2,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.2,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.2,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.2,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440156,snp,438/1400,synonymous_variant c.1314C>T p.Ala438Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440165,complex,441/1400,missense_variant c.1323_1325delCACinsGAT p.Thr442Met,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440172,snp,444/1400,missense_variant c.1330A>G p.Ile444Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440282,snp,480/1400,synonymous_variant c.1440T>G p.Leu480Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,440288,snp,482/1400,synonymous_variant c.1446A>G p.Ala482Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441065,snp,741/1400,synonymous_variant c.2223T>C p.Arg741Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441071,snp,743/1400,synonymous_variant c.2229T>G p.Leu743Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441077,snp,745/1400,synonymous_variant c.2235C>A p.Ala745Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,441203,complex,787/1400,synonymous_variant c.2361_2364delTGCTinsGGCG p.789,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.2,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T44.4.2,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T44.4.2,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T44.4.2,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T44.4.2,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T44.4.2,c02,446174,snp,422/694,missense_variant c.1265C>G p.Ala422Gly,fusA,Elongation factor G
+T44.4.2,c02,451017,complex,245/277,synonymous_variant c.735_738delTGTCinsGGTT p.247,rplB,50S ribosomal protein L2
+T44.4.2,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T44.4.2,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T44.4.2,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T44.4.2,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T44.4.2,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T44.4.2,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T44.4.2,c02,698351,snp,242/424,synonymous_variant c.726G>C p.Thr242Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698505,complex,190/424,synonymous_variant c.570_572delCAGinsTTC p.192,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698627,snp,150/424,synonymous_variant c.450G>C p.Thr150Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698633,snp,148/424,synonymous_variant c.444A>G p.Thr148Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,698726,complex,116/424,missense_variant c.348_351delTCTTinsCATG p.Leu117Met,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.2,c02,1908916,complex,185/566,synonymous_variant c.555_558delGGAAinsCGAG p.187,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T44.4.2,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T44.4.3,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T44.4.3,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T44.4.3,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T44.4.3,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T44.4.3,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T44.4.3,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T44.4.3,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T44.4.3,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T44.4.3,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T44.4.3,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T44.4.3,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T44.4.3,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T44.4.3,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T44.4.3,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T44.4.3,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T44.4.3,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T44.4.3,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T44.4.3,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T44.4.3,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T44.4.3,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T44.4.3,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T44.4.3,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.3,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.3,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.3,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.3,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,439997,complex,385/1400,synonymous_variant c.1155_1161delACGTCTTinsCCGCCTC p.388,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.3,c02,445987,snp,360/694,synonymous_variant c.1078T>C p.Leu360Leu,fusA,Elongation factor G
+T44.4.3,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T44.4.3,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T44.4.3,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T44.4.3,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T44.4.3,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T44.4.3,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T44.4.3,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T44.4.3,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T44.4.3,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T44.4.3,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T44.4.3,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.3,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.3,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.3,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.3,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T44.4.3,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T44.4.4,c01,96450,snp,174/546,synonymous_variant c.522G>C p.Val174Val,groL,60 kDa chaperonin
+T44.4.4,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T44.4.4,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T44.4.4,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T44.4.4,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T44.4.4,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T44.4.4,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T44.4.4,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T44.4.4,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T44.4.4,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T44.4.4,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T44.4.4,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T44.4.4,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T44.4.4,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T44.4.4,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T44.4.4,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T44.4.4,c01,96795,snp,289/546,synonymous_variant c.867C>G p.Leu289Leu,groL,60 kDa chaperonin
+T44.4.4,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T44.4.4,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T44.4.4,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T44.4.4,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022330,complex,382/840,synonymous_variant c.1146_1149delCGCCinsTGCT p.384,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2022339,snp,385/840,synonymous_variant c.1155A>C p.Ala385Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023532,complex,783/840,missense_variant c.2348_2352delACGGTinsGCGGC p.Asp783Gly,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023545,complex,787/840,synonymous_variant c.2361_2364delTGCAinsCGCT p.789,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c01,2023554,snp,790/840,synonymous_variant c.2370C>G p.Leu790Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.4,c02,436029,snp,508/1377,synonymous_variant c.1524T>A p.Ala508Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436035,snp,510/1377,synonymous_variant c.1530A>C p.Ala510Ala,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436041,snp,512/1377,synonymous_variant c.1536G>T p.Val512Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436047,snp,514/1377,synonymous_variant c.1542G>A p.Glu514Glu,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436083,complex,526/1377,missense_variant c.1578_1584delTCAGACCinsCCAGGTG p.Thr528Val,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436125,snp,540/1377,synonymous_variant c.1620C>T p.Leu540Leu,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,436143,snp,546/1377,synonymous_variant c.1638C>T p.Gly546Gly,rpoB,DNA-directed RNA polymerase subunit beta
+T44.4.4,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440172,snp,444/1400,missense_variant c.1330A>G p.Ile444Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441065,snp,741/1400,synonymous_variant c.2223T>C p.Arg741Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441071,snp,743/1400,synonymous_variant c.2229T>G p.Leu743Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441077,snp,745/1400,synonymous_variant c.2235C>A p.Ala745Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,441203,complex,787/1400,synonymous_variant c.2361_2364delTGCTinsGGCG p.789,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.4,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T44.4.4,c02,446133,complex,408/694,missense_variant c.1224_1227delGGATinsCGAG p.Asp409Glu,fusA,Elongation factor G
+T44.4.4,c02,446142,complex,411/694,missense_variant c.1233_1239delTATCGAAinsCATCCAG p.Glu413Gln,fusA,Elongation factor G
+T44.4.4,c02,446154,snp,415/694,synonymous_variant c.1245T>G p.Ala415Ala,fusA,Elongation factor G
+T44.4.4,c02,451011,snp,243/277,synonymous_variant c.729T>C p.Arg243Arg,rplB,50S ribosomal protein L2
+T44.4.4,c02,451017,complex,245/277,synonymous_variant c.735_738delTGTCinsGGTT p.247,rplB,50S ribosomal protein L2
+T44.4.4,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T44.4.4,c02,451051,complex,257/277,missense_variant c.769_777delAAGACGCGCinsCGCACCCGT p.Lys257Arg,rplB,50S ribosomal protein L2
+T44.4.4,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T44.4.4,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T44.4.4,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T44.4.4,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T44.4.4,c02,698357,snp,240/424,synonymous_variant c.720C>T p.Asp240Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,698505,complex,190/424,synonymous_variant c.570_572delCAGinsTTC p.192,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.4,c02,1908916,complex,185/566,synonymous_variant c.555_558delGGAAinsCGAG p.187,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909097,complex,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1
+T44.4.4,c02,1909108,snp,249/566,synonymous_variant c.747G>T p.Val249Val,rpsA,30S ribosomal protein S1
+T44.4.4,c02,2279042,snp,9/134,synonymous_variant c.27T>C p.Gly9Gly,ssb_4,Single-stranded DNA-binding protein
+T44.4.4,c02,2279055,complex,14/134,missense_variant c.40_41delGAinsAC p.Asp14Thr,ssb_4,Single-stranded DNA-binding protein
+T44.4.4,c02,2279075,complex,20/134,missense_variant c.60_61delCCinsTG p.Gln21Glu,ssb_4,Single-stranded DNA-binding protein
+T44.4.4,c02,2279084,snp,23/134,synonymous_variant c.69C>T p.Gly23Gly,ssb_4,Single-stranded DNA-binding protein
+T44.4.5.rep,c01,96456,snp,176/546,synonymous_variant c.528G>C p.Thr176Thr,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96534,snp,202/546,synonymous_variant c.606T>C p.Pro202Pro,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96543,snp,205/546,synonymous_variant c.615C>G p.Val205Val,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96549,complex,207/546,synonymous_variant c.621_624delCCCTinsTCCG p.209,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96567,snp,213/546,synonymous_variant c.639T>G p.Ala213Ala,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96609,snp,227/546,synonymous_variant c.681C>T p.Leu227Leu,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96624,complex,232/546,missense_variant c.696_699delTCTTinsCATG p.Leu233Met,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96633,snp,235/546,synonymous_variant c.705G>T p.Pro235Pro,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96639,snp,237/546,synonymous_variant c.711G>C p.Leu237Leu,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96658,mnp,244/546,missense_variant c.730_731delTCinsGG p.Ser244Gly,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96732,snp,268/546,synonymous_variant c.804C>T p.Arg268Arg,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96741,snp,271/546,synonymous_variant c.813G>C p.Leu271Leu,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96753,snp,275/546,synonymous_variant c.825T>C p.Ala275Ala,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96777,snp,283/546,synonymous_variant c.849T>C p.Asp283Asp,groL,60 kDa chaperonin
+T44.4.5.rep,c01,96786,snp,286/546,synonymous_variant c.858A>G p.Lys286Lys,groL,60 kDa chaperonin
+T44.4.5.rep,c01,1008848,del,218/239,frameshift_variant c.653delG p.Gly218fs,ydcO_1,Inner membrane protein YdcO
+T44.4.5.rep,c01,1008861,del,214/239,frameshift_variant c.640delC p.Arg214fs,ydcO_1,Inner membrane protein YdcO
+T44.4.5.rep,c01,1010254,del,2/429,frameshift_variant c.4delG p.Ala2fs,gabR_1,HTH-type transcriptional regulatory protein GabR
+T44.4.5.rep,c01,2007330,complex,72/133,missense_variant c.214_216delCAAinsGAG p.Gln72Glu,ssb_1,Single-stranded DNA-binding protein
+T44.4.5.rep,c01,2007347,snp,77/133,synonymous_variant c.231T>C p.Gly77Gly,ssb_1,Single-stranded DNA-binding protein
+T44.4.5.rep,c01,2021961,snp,259/840,synonymous_variant c.777G>C p.Ser259Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2021973,complex,263/840,missense_variant c.789_793delTCTGAinsCCTGC p.Met265Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2021999,snp,272/840,missense_variant c.815G>A p.Arg272Lys,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022018,snp,278/840,synonymous_variant c.834C>T p.Arg278Arg,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022111,snp,309/840,synonymous_variant c.927C>A p.Ala309Ala,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022120,mnp,312/840,missense_variant c.936_938delTGCinsGCT p.Ala313Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022133,snp,317/840,missense_variant c.949C>A p.Leu317Met,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022138,complex,318/840,synonymous_variant c.954_957delGCTAinsCTTG p.320,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022160,complex,326/840,missense_variant c.976_978delATCinsGTG p.Ile326Val,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022206,complex,341/840,missense_variant c.1022_1031delCCGATGCCGCinsAGGACGCCCG p.AlaAspAlaAla341GluAspAlaArg,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022225,snp,347/840,missense_variant c.1041A>C p.Glu347Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022253,snp,357/840,missense_variant c.1069A>G p.Ile357Val,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022276,snp,364/840,synonymous_variant c.1092G>C p.Val364Val,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022318,snp,378/840,synonymous_variant c.1134C>G p.Ser378Ser,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2022324,snp,380/840,synonymous_variant c.1140G>C p.Pro380Pro,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2023443,snp,753/840,synonymous_variant c.2259C>T p.Gly753Gly,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2023509,snp,775/840,synonymous_variant c.2325T>C p.Asp775Asp,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2023515,snp,777/840,synonymous_variant c.2331C>A p.Leu777Leu,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c01,2023521,snp,779/840,synonymous_variant c.2337G>A p.Glu779Glu,virB4_2,Type IV secretion system protein virB4
+T44.4.5.rep,c02,439856,snp,338/1400,synonymous_variant c.1014T>C p.Gly338Gly,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,439865,snp,341/1400,synonymous_variant c.1023T>C p.Arg341Arg,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,439874,snp,344/1400,synonymous_variant c.1032G>T p.Leu344Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,439910,snp,356/1400,synonymous_variant c.1068C>T p.Val356Val,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,439931,snp,363/1400,synonymous_variant c.1089C>G p.Leu363Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,439985,snp,381/1400,synonymous_variant c.1143A>G p.Pro381Pro,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440186,snp,448/1400,synonymous_variant c.1344T>C p.Ala448Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440198,snp,452/1400,synonymous_variant c.1356T>C p.His452His,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440207,complex,455/1400,synonymous_variant c.1365_1368delTTGTinsCTGC p.457,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440216,snp,458/1400,synonymous_variant c.1374G>C p.Ala458Ala,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440264,snp,474/1400,synonymous_variant c.1422G>C p.Leu474Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440270,snp,476/1400,synonymous_variant c.1428C>G p.Leu476Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,440282,snp,480/1400,synonymous_variant c.1440T>G p.Leu480Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,441101,complex,753/1400,synonymous_variant c.2259_2262delAACCinsGACG p.755,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,441110,snp,756/1400,synonymous_variant c.2268A>C p.Ile756Ile,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,441195,snp,785/1400,synonymous_variant c.2353T>C p.Leu785Leu,rpoC,DNA-directed RNA polymerase subunit beta'
+T44.4.5.rep,c02,446031,complex,374/694,synonymous_variant c.1122_1125delTGCAinsCGCC p.376,fusA,Elongation factor G
+T44.4.5.rep,c02,451038,snp,252/277,synonymous_variant c.756T>C p.Pro252Pro,rplB,50S ribosomal protein L2
+T44.4.5.rep,c02,453539,snp,13/122,synonymous_variant c.39C>T p.Asn13Asn,rplN,50S ribosomal protein L14
+T44.4.5.rep,c02,453590,complex,30/122,missense_variant c.90_96delGCGTTACinsCAAATAT p.Arg31Lys,rplN,50S ribosomal protein L14
+T44.4.5.rep,c02,453602,snp,34/122,synonymous_variant c.102C>T p.Ser34Ser,rplN,50S ribosomal protein L14
+T44.4.5.rep,c02,453620,complex,40/122,synonymous_variant c.120_126delGGTGTCGinsCGTTTCC p.43,rplN,50S ribosomal protein L14
+T44.4.5.rep,c02,698399,snp,226/424,synonymous_variant c.678A>G p.Gln226Gln,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.5.rep,c02,698420,snp,219/424,synonymous_variant c.657C>G p.Thr219Thr,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.5.rep,c02,698474,snp,201/424,synonymous_variant c.603C>T p.Arg201Arg,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.5.rep,c02,698492,snp,195/424,synonymous_variant c.585T>C p.Asp195Asp,clpX,ATP-dependent Clp protease ATP-binding subunit ClpX
+T44.4.5.rep,c02,1908928,snp,189/566,synonymous_variant c.567G>T p.Ser189Ser,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1908937,snp,192/566,synonymous_variant c.576C>T p.Val192Val,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1908946,snp,195/566,synonymous_variant c.585T>C p.Leu195Leu,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1908955,snp,198/566,synonymous_variant c.594T>C p.Gly198Gly,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1908961,snp,200/566,synonymous_variant c.600C>T p.Val200Val,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1908967,snp,202/566,missense_variant c.606A>C p.Glu202Asp,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1909027,complex,222/566,synonymous_variant c.666_669delTCTCinsCCTG p.224,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1909039,snp,226/566,synonymous_variant c.678G>T p.Val226Val,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1909072,snp,237/566,synonymous_variant c.711G>T p.Pro237Pro,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1909086,complex,242/566,missense_variant c.725_729delCCATCinsACATT p.Thr242Asn,rpsA,30S ribosomal protein S1
+T44.4.5.rep,c02,1909097,mnp,246/566,missense_variant c.736_737delACinsCA p.Thr246Gln,rpsA,30S ribosomal protein S1

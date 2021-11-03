@@ -1,0 +1,97 @@
+sample,CHROM,POS,TYPE,AA_POS,EFFECT,GENE,PRODUCT
+T11.1.1,c01,703340,snp,66/348,stop_gained c.196C>T p.Gln66*,ropA_2,Outer membrane protein IIIA
+T11.1.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.1.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.3.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.3.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.3.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.3.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.3.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.4.1,c02,555455,snp,506/905,missense_variant c.1517G>T p.Gly506Val,secA,Protein translocase subunit SecA
+T11.4.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.4.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.4.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.4.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T11.4.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.1.1,c01,83654,snp,275/569,missense_variant c.824G>A p.Cys275Tyr,fadD,Long-chain-fatty-acid--CoA ligase
+T22.1.1,c01,703340,snp,66/348,stop_gained c.196C>T p.Gln66*,ropA_2,Outer membrane protein IIIA
+T22.1.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.1.2,c01,83654,snp,275/569,missense_variant c.824G>A p.Cys275Tyr,fadD,Long-chain-fatty-acid--CoA ligase
+T22.1.2,c01,703263,ins,41/348,frameshift_variant c.120dupC p.Asp41fs,ropA_2,Outer membrane protein IIIA
+T22.1.2,c01,2352216,ins,38/226,frameshift_variant c.112dupT p.Tyr38fs,rbn_3,Ribonuclease BN
+T22.1.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.3.1,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T22.3.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.3.2,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T22.3.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.3.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.3.4,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T22.3.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.3.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.1,c02,555455,snp,506/905,missense_variant c.1517G>T p.Gly506Val,secA,Protein translocase subunit SecA
+T22.4.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.3,c01,2351459,del,60/151,frameshift_variant c.178delG p.Val60fs,crp,CRP-like cAMP-activated global transcriptional regulator
+T22.4.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.4,c01,2351324,del,17/151,frameshift_variant c.49delT p.Ser17fs,crp,CRP-like cAMP-activated global transcriptional regulator
+T22.4.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.4,p02,181352,snp,71/93,stop_gained c.211C>T p.Gln71*,frmR,Transcriptional repressor FrmR
+T22.4.5,c01,2351347,snp,22/151,stop_gained c.65C>A p.Ser22*,crp,CRP-like cAMP-activated global transcriptional regulator
+T22.4.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T22.4.5,p02,181297,snp,89/93,missense_variant c.266G>C p.Arg89Pro,frmR,Transcriptional repressor FrmR
+T33.1.1,c01,703340,snp,66/348,stop_gained c.196C>T p.Gln66*,ropA_2,Outer membrane protein IIIA
+T33.1.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.1.2,c01,83654,snp,275/569,missense_variant c.824G>A p.Cys275Tyr,fadD,Long-chain-fatty-acid--CoA ligase
+T33.1.2,c01,703263,ins,41/348,frameshift_variant c.120dupC p.Asp41fs,ropA_2,Outer membrane protein IIIA
+T33.1.2,c01,2352216,ins,38/226,frameshift_variant c.112dupT p.Tyr38fs,rbn_3,Ribonuclease BN
+T33.1.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.3.1,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T33.3.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.3.2,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T33.3.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.3.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.3.4,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T33.3.4,c01,2863371,snp,326/356,synonymous_variant c.978C>A p.Gly326Gly,yjgN,Inner membrane protein YjgN
+T33.3.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.3.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.4.1,c01,2361041,snp,440/630,stop_gained c.1320T>G p.Tyr440*,gsiA_2,Glutathione import ATP-binding protein GsiA
+T33.4.1,c02,555455,snp,506/905,missense_variant c.1517G>T p.Gly506Val,secA,Protein translocase subunit SecA
+T33.4.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.4.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.4.3.rep,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.4.4,c01,2351324,del,17/151,frameshift_variant c.49delT p.Ser17fs,crp,CRP-like cAMP-activated global transcriptional regulator
+T33.4.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T33.4.4,p02,181352,snp,71/93,stop_gained c.211C>T p.Gln71*,frmR,Transcriptional repressor FrmR
+T33.4.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.1.1,c01,703340,snp,66/348,stop_gained c.196C>T p.Gln66*,ropA_2,Outer membrane protein IIIA
+T44.1.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.1.2,c01,83654,snp,275/569,missense_variant c.824G>A p.Cys275Tyr,fadD,Long-chain-fatty-acid--CoA ligase
+T44.1.2,c01,703263,ins,41/348,frameshift_variant c.120dupC p.Asp41fs,ropA_2,Outer membrane protein IIIA
+T44.1.2,c01,2352216,ins,38/226,frameshift_variant c.112dupT p.Tyr38fs,rbn_3,Ribonuclease BN
+T44.1.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.3.1,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T44.3.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.3.2,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T44.3.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.3.3.rep,c01,222268,snp,348/468,missense_variant c.1043G>A p.Gly348Asp,fliI,Flagellum-specific ATP synthase
+T44.3.3.rep,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.3.4,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T44.3.4,c01,2863371,snp,326/356,synonymous_variant c.978C>A p.Gly326Gly,yjgN,Inner membrane protein YjgN
+T44.3.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.3.5,c01,83654,snp,275/569,missense_variant c.824G>A p.Cys275Tyr,fadD,Long-chain-fatty-acid--CoA ligase
+T44.3.5,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.1,c01,2361041,snp,440/630,stop_gained c.1320T>G p.Tyr440*,gsiA_2,Glutathione import ATP-binding protein GsiA
+T44.4.1,c02,555455,snp,506/905,missense_variant c.1517G>T p.Gly506Val,secA,Protein translocase subunit SecA
+T44.4.1,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.2,c01,238024,del,201/223,disruptive_inframe_deletion c.603_614delGCGCAAGAAGCT p.Arg202_Leu205del,ftcR,Flagellar transcriptional regulator FtcR
+T44.4.2,c01,2359915,del,68/630,conservative_inframe_deletion c.202_213delAACGGCCGCGTG p.Asn68_Val71del,gsiA_2,Glutathione import ATP-binding protein GsiA
+T44.4.2,c01,2695602,snp,240/443,missense_variant c.719T>G p.Val240Gly,regB,Sensor histidine kinase RegB
+T44.4.2,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.3,c01,2351459,del,60/151,frameshift_variant c.178delG p.Val60fs,crp,CRP-like cAMP-activated global transcriptional regulator
+T44.4.3,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.4,c01,2351324,del,17/151,frameshift_variant c.49delT p.Ser17fs,crp,CRP-like cAMP-activated global transcriptional regulator
+T44.4.4,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.4,p02,181352,snp,71/93,stop_gained c.211C>T p.Gln71*,frmR,Transcriptional repressor FrmR
+T44.4.5.rep,c01,2351347,snp,22/151,stop_gained c.65C>A p.Ser22*,crp,CRP-like cAMP-activated global transcriptional regulator
+T44.4.5.rep,c02,1946877,del,4/825,frameshift_variant c.10delG p.Val4fs,bmaC,Adhesin BmaC autotransporter
+T44.4.5.rep,p02,181297,snp,89/93,missense_variant c.266G>C p.Arg89Pro,frmR,Transcriptional repressor FrmR

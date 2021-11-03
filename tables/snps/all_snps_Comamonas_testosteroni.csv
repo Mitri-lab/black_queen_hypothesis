@@ -1,0 +1,62 @@
+sample,CHROM,POS,TYPE,AA_POS,EFFECT,GENE,PRODUCT
+T11.2.2.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T11.2.3,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T11.2.4.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T11.2.5.rep,c01,5466537,snp,149/424,missense_variant c.446A>C p.Asp149Ala,nasR,Nitrate regulatory protein
+T11.3.5,c01,1863692,snp,258/389,synonymous_variant c.772C>T p.Leu258Leu,acoR_2,Acetoin catabolism regulatory protein
+T11.4.1,c01,5466493,mnp,163/424,missense_variant c.489_490delGCinsAA p.MetGln163IleLys,nasR,Nitrate regulatory protein
+T22.2.1,c01,1957165,snp,241/319,missense_variant c.722T>C p.Leu241Pro,hdaH,Histone deacetylase-like amidohydrolase
+T22.2.1,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T22.2.2,c01,1048937,snp,129/439,synonymous_variant c.387G>A p.Glu129Glu,hslU,ATP-dependent protease ATPase subunit HslU
+T22.2.2,c01,1956772,ins,112/319,frameshift_variant c.334dupG p.Ala112fs,hdaH,Histone deacetylase-like amidohydrolase
+T22.2.2,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T22.2.3,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T22.2.4,c01,1957165,snp,241/319,missense_variant c.722T>C p.Leu241Pro,hdaH,Histone deacetylase-like amidohydrolase
+T22.2.4,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T22.2.5,c01,5466537,snp,149/424,missense_variant c.446A>C p.Asp149Ala,nasR,Nitrate regulatory protein
+T22.2.5,c01,5690520,snp,459/558,missense_variant c.1376G>A p.Arg459His,fadD_4,Long-chain-fatty-acid--CoA ligase
+T22.3.5,c01,1220563,snp,63/336,missense_variant c.187G>C p.Gly63Arg,czcD,"Cadmium, cobalt and zinc/H(+)-K(+) antiporter"
+T22.3.5,c01,1863692,snp,258/389,synonymous_variant c.772C>T p.Leu258Leu,acoR_2,Acetoin catabolism regulatory protein
+T22.3.5,c01,5466534,snp,150/424,missense_variant c.449C>G p.Pro150Arg,nasR,Nitrate regulatory protein
+T22.4.1,c01,5466493,mnp,163/424,missense_variant c.489_490delGCinsAA p.MetGln163IleLys,nasR,Nitrate regulatory protein
+T33.2.1.rep,c01,5466695,snp,96/424,missense_variant c.288T>G p.Asn96Lys,nasR,Nitrate regulatory protein
+T33.2.2.rep,c01,1048937,snp,129/439,synonymous_variant c.387G>A p.Glu129Glu,hslU,ATP-dependent protease ATPase subunit HslU
+T33.2.2.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T33.2.2.rep,c01,5538482,snp,13/474,missense_variant c.37C>A p.His13Asn,hsrA_2,putative transport protein HsrA
+T33.2.3.rep,c01,1957328,snp,295/319,missense_variant c.885C>A p.Ser295Arg,hdaH,Histone deacetylase-like amidohydrolase
+T33.2.3.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T33.2.3.rep,c01,5643748,snp,378/488,missense_variant c.1132C>G p.His378Asp,trkH,Trk system potassium uptake protein TrkH
+T33.2.4.rep,c01,215827,snp,316/450,missense_variant c.946A>C p.Thr316Pro,amtB_2,Ammonia channel
+T33.2.4.rep,c01,1957165,snp,241/319,missense_variant c.722T>C p.Leu241Pro,hdaH,Histone deacetylase-like amidohydrolase
+T33.2.4.rep,c01,1982399,snp,294/311,missense_variant c.881T>A p.Val294Asp,cmpR_4,HTH-type transcriptional activator CmpR
+T33.2.4.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T33.2.5.rep,c01,5466537,snp,149/424,missense_variant c.446A>C p.Asp149Ala,nasR,Nitrate regulatory protein
+T33.2.5.rep,c01,5690520,snp,459/558,missense_variant c.1376G>A p.Arg459His,fadD_4,Long-chain-fatty-acid--CoA ligase
+T33.3.3,c01,5466905,snp,26/424,missense_variant c.78C>A p.Ser26Arg,nasR,Nitrate regulatory protein
+T33.3.4,c01,5466552,snp,144/424,missense_variant c.431C>T p.Ala144Val,nasR,Nitrate regulatory protein
+T33.4.1,c01,5466493,mnp,163/424,missense_variant c.489_490delGCinsAA p.MetGln163IleLys,nasR,Nitrate regulatory protein
+T33.4.4,c01,1041598,snp,198/296,missense_variant c.593A>C p.Asn198Thr,dapF,Diaminopimelate epimerase
+T33.4.4,c01,2625799,snp,3/495,missense_variant c.9A>C p.Gln3His,rng,Ribonuclease G
+T33.4.4,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T44.2.1,c01,5466695,snp,96/424,missense_variant c.288T>G p.Asn96Lys,nasR,Nitrate regulatory protein
+T44.2.2.rep,c01,1048937,snp,129/439,synonymous_variant c.387G>A p.Glu129Glu,hslU,ATP-dependent protease ATPase subunit HslU
+T44.2.2.rep,c01,1956772,ins,112/319,frameshift_variant c.334dupG p.Ala112fs,hdaH,Histone deacetylase-like amidohydrolase
+T44.2.2.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T44.2.2.rep,c01,5538482,snp,13/474,missense_variant c.37C>A p.His13Asn,hsrA_2,putative transport protein HsrA
+T44.2.3.rep,c01,1957328,snp,295/319,missense_variant c.885C>A p.Ser295Arg,hdaH,Histone deacetylase-like amidohydrolase
+T44.2.3.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T44.2.3.rep,c01,5643748,snp,378/488,missense_variant c.1132C>G p.His378Asp,trkH,Trk system potassium uptake protein TrkH
+T44.2.4.rep,c01,215827,snp,316/450,missense_variant c.946A>C p.Thr316Pro,amtB_2,Ammonia channel
+T44.2.4.rep,c01,1957165,snp,241/319,missense_variant c.722T>C p.Leu241Pro,hdaH,Histone deacetylase-like amidohydrolase
+T44.2.4.rep,c01,1982399,snp,294/311,missense_variant c.881T>A p.Val294Asp,cmpR_4,HTH-type transcriptional activator CmpR
+T44.2.4.rep,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T44.2.5.rep,c01,5466537,snp,149/424,missense_variant c.446A>C p.Asp149Ala,nasR,Nitrate regulatory protein
+T44.2.5.rep,c01,5690520,snp,459/558,missense_variant c.1376G>A p.Arg459His,fadD_4,Long-chain-fatty-acid--CoA ligase
+T44.3.3.rep,c01,5466905,snp,26/424,missense_variant c.78C>A p.Ser26Arg,nasR,Nitrate regulatory protein
+T44.3.4,c01,5466552,snp,144/424,missense_variant c.431C>T p.Ala144Val,nasR,Nitrate regulatory protein
+T44.4.1,c01,5466493,mnp,163/424,missense_variant c.489_490delGCinsAA p.MetGln163IleLys,nasR,Nitrate regulatory protein
+T44.4.2,c01,785206,snp,272/531,missense_variant c.815A>C p.Glu272Ala,rebO,Flavin-dependent L-tryptophan oxidase RebO
+T44.4.4,c01,1041598,snp,198/296,missense_variant c.593A>C p.Asn198Thr,dapF,Diaminopimelate epimerase
+T44.4.4,c01,5466897,snp,29/424,missense_variant c.86T>G p.Val29Gly,nasR,Nitrate regulatory protein
+T44.4.4,c01,5529374,snp,357/452,missense_variant c.1069A>C p.Thr357Pro,mepM_2,Murein DD-endopeptidase MepM
+T44.4.4,c01,5644708,del,57/488,frameshift_variant c.171delG p.Leu58fs,trkH,Trk system potassium uptake protein TrkH
