@@ -6,6 +6,18 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import json
 
+"""
+################################################################################
+Author: https://github.com/nahanoo
+This script is not important anymore. It analyses deletions identified by a previous
+analysis. We wanted to check, if the identified deletions have a reasonable sequence
+composition. Unfortunately we saw, that most deletions have extremely high,
+or extremely low GC conten. This is visualized by plotting the GC conten of a
+deleted sequence and comparing it to the histogram showing the GC content of every
+150-mer.
+################################################################################
+"""
+
 #Globally initiating samples class
 s = Samples()
 
