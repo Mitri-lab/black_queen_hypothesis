@@ -1,10 +1,21 @@
-# Testing the Black Queen Hypothesis
+# Sequencing data analysis for Piccardis evolution experiment
 
-This repository hosts figures and code for testing the black queen hypothesis.  
-So far I tested if I see more deletions in co-evolved samples in PacBio data.  
-This analysis was carried out using the [deletion_detection](https://github.com/nahanoo/deletion_detection).  
+The name of this repository is depreciated and will change soon. 
 
-Double checking the identified PacBio deletions I realized that some deletions found in the Illumina data were probably due to low coverage areas rather than actual deletions.  
-I suspected that this could be due tho high GC areas in the *Microbacterium saperdae* which already has a very high average GC content.  
-In order to test this I developed [gc_bias](https://github.com/nahanoo/gc_bias).
-This analysis indeed showed that for *Microbacterium saperdae* there are areas in the genome with no coverage correlating with high GC content in such areas.
+This repository hosts code for analyzing the sequencing data derived from a community evolution experiment.
+Four strains were cultured together over 44 weeks. As a control, if possible, the strains were also grown in monoculture.
+From this experiment we have metagenomic Illumina sequencing data available for the timepoints 11, 22, 33 and 44 (in weeks).
+At week 44, samples were plated and picked colonies were amplified. The DNA was isolated and sequenced with pacbio.
+
+If you want to have a glims at the results you can do that by having a look at this [report](https://github.com/nahanoo/black_queen_hypothesis/blob/main/reports/report.pdf).  
+For sample processing, a Snakemake workflow was implemented for the PacBio and the Illumina data.
+The PacBio workflow can be found [here](https://github.com/nahanoo/black_queen_hypothesis/tree/main/scripts/workflows/pacbio) and the
+Illumina workflow [here](https://github.com/nahanoo/black_queen_hypothesis/tree/main/scripts/workflows/illumina)
+
+The data resulting from those workflows was analyzed in [analyze_pacbio.py](https://github.com/nahanoo/black_queen_hypothesis/blob/main/scripts/analyze_pacbio.py) and in [analyze_illumina.py](https://github.com/nahanoo/black_queen_hypothesis/blob/main/scripts/analyze_illumina.py).
+
+
+For this analysis I made use of package that I wrote called [deletion_detection](https://github.com/nahanoo/deletion_detection).
+It allows to identify regions with no coverage and reads with deletions. Those regions are then annotated by using a parsed
+genbank file.  
+Alignment files derived from Illumina data were analyzed using [gc_bias](https://github.com/nahanoo/gc_bias).
