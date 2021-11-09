@@ -1,0 +1,60 @@
+from os.path import join
+from os.path import exists
+import glob
+from samples import Samples
+
+s = Samples()
+work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
+
+def get_strain(wildcards):
+    """Returns the full strain name"""
+    return s.abbreviations[wildcards.strain].replace(' ','_')
+
+rule metaphlan:
+    input:
+        read1 = join(work,'{sample}','read1.fq.gz'),
+        read2 = join(work,'{sample}','read2.fq.gz')
+    output:
+        sam = join(work,'{sample}','{sample}'+'.sam.bz2'),
+        bowtie = join(work,'{sample}','{sample}'+'.bowtie2.bz2'),
+        profile = join(work,'{sample}','{sample}'+'.profiled.tsv')
+    threads:
+        16
+    shell:
+        """
+        metaphlan --nproc 16 {input.read1},{input.read2} --input_type fastq -s {output.sam}\
+        --bowtie2out {output.bowtie} -o {output.profile}
+        """
+
+rule markers:
+    input:
+        join(work,'{sample}','{sample}'+'.sam.bz2')
+    output:
+        join(work,'{sample}','{sample}'+'.pkl')
+    params:
+        join(work,'{sample}')
+    threads:
+        16
+    shell:
+        """
+        sample2markers.py -i {input} -o {params} -n {threads}
+        """
+
+rule strainphlan:
+    input:
+        markers = join(work,'metaphlan','db_markers','s__'+'{strain}'+'.fna'),
+        reference = join(work,'metaphlan','references','{strain}'+'.fasta')
+    output:
+        join(work,'metaphlan','output','RAxML_bestTree.s__'+'{strain}'+'.StrainPhlAn3.tre')
+    params:
+        name = 's__'+'{strain}',
+        outdir = join(work,'metaphlan','output'),
+        consensus_markers = join(work,'metaphlan','consensus_markers','*.pkl')
+    threads:
+        32
+    shell:
+        """
+        strainphlan -s {params.consensus_markers} -m {input.markers} -r {input.reference} -o {params.outdir} \
+        -n {threads} -c {params.name} --mutation_rates
+        """
+

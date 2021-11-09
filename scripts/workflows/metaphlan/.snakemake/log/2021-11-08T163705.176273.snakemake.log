@@ -1,0 +1,1984 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job          count    min threads    max threads
+---------  -------  -------------  -------------
+markers         68             16             16
+metaphlan       68             16             16
+total          136             16             16
+
+Select jobs to execute...
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/T33.3.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/T33.3.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/T33.3.1.profiled.tsv
+    jobid: 77
+    wildcards: sample=T33.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 77 with external jobid 'Submitted batch job 3385514'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/T22.3.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/T22.3.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/T22.3.2.profiled.tsv
+    jobid: 87
+    wildcards: sample=T22.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 87 with external jobid 'Submitted batch job 3385515'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/T11.4.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/T11.4.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/T11.4.1.profiled.tsv
+    jobid: 3
+    wildcards: sample=T11.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 3 with external jobid 'Submitted batch job 3385516'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/T22.1.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/T22.1.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/T22.1.2.profiled.tsv
+    jobid: 115
+    wildcards: sample=T22.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 115 with external jobid 'Submitted batch job 3385517'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/T22.2.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/T22.2.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/T22.2.5.profiled.tsv
+    jobid: 129
+    wildcards: sample=T22.2.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 129 with external jobid 'Submitted batch job 3385518'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/T44.4.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/T44.4.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/T44.4.4.profiled.tsv
+    jobid: 17
+    wildcards: sample=T44.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 17 with external jobid 'Submitted batch job 3385519'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/T11.2.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/T11.2.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/T11.2.1.profiled.tsv
+    jobid: 31
+    wildcards: sample=T11.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 31 with external jobid 'Submitted batch job 3385520'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/T33.4.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/T33.4.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/T33.4.5.profiled.tsv
+    jobid: 45
+    wildcards: sample=T33.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 45 with external jobid 'Submitted batch job 3385521'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/T44.2.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/T44.2.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/T44.2.1.profiled.tsv
+    jobid: 59
+    wildcards: sample=T44.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 59 with external jobid 'Submitted batch job 3385522'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/T33.4.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/T33.4.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/T33.4.1.profiled.tsv
+    jobid: 11
+    wildcards: sample=T33.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 11 with external jobid 'Submitted batch job 3385523'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/T44.4.5.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/T44.4.5.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/T44.4.5.rep.profiled.tsv
+    jobid: 109
+    wildcards: sample=T44.4.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 109 with external jobid 'Submitted batch job 3385524'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/T44.3.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/T44.3.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/T44.3.1.profiled.tsv
+    jobid: 123
+    wildcards: sample=T44.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 123 with external jobid 'Submitted batch job 3385525'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/T33.3.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/T33.3.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/T33.3.5.profiled.tsv
+    jobid: 25
+    wildcards: sample=T33.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 25 with external jobid 'Submitted batch job 3385526'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/T22.3.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/T22.3.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/T22.3.3.profiled.tsv
+    jobid: 67
+    wildcards: sample=T22.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 67 with external jobid 'Submitted batch job 3385527'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/T44.4.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/T44.4.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/T44.4.2.profiled.tsv
+    jobid: 81
+    wildcards: sample=T44.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 81 with external jobid 'Submitted batch job 3385528'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/T22.4.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/T22.4.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/T22.4.2.profiled.tsv
+    jobid: 39
+    wildcards: sample=T22.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 39 with external jobid 'Submitted batch job 3385529'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/T33.2.3.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/T33.2.3.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/T33.2.3.rep.profiled.tsv
+    jobid: 53
+    wildcards: sample=T33.2.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 53 with external jobid 'Submitted batch job 3385530'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/T22.4.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/T22.4.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/T22.4.5.profiled.tsv
+    jobid: 95
+    wildcards: sample=T22.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 95 with external jobid 'Submitted batch job 3385531'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/T11.3.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/T11.3.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/T11.3.2.profiled.tsv
+    jobid: 93
+    wildcards: sample=T11.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 93 with external jobid 'Submitted batch job 3385532'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/T22.3.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/T22.3.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/T22.3.5.profiled.tsv
+    jobid: 117
+    wildcards: sample=T22.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 117 with external jobid 'Submitted batch job 3385533'.
+
+[Mon Nov  8 16:37:06 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/T44.1.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/T44.1.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/T44.1.2.profiled.tsv
+    jobid: 131
+    wildcards: sample=T44.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 131 with external jobid 'Submitted batch job 3385534'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/T33.2.4.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/T33.2.4.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/T33.2.4.rep.profiled.tsv
+    jobid: 19
+    wildcards: sample=T33.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 19 with external jobid 'Submitted batch job 3385535'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/T11.3.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/T11.3.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/T11.3.4.profiled.tsv
+    jobid: 5
+    wildcards: sample=T11.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 5 with external jobid 'Submitted batch job 3385536'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/T11.1.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/T11.1.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/T11.1.1.profiled.tsv
+    jobid: 33
+    wildcards: sample=T11.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 33 with external jobid 'Submitted batch job 3385537'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/T22.3.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/T22.3.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/T22.3.1.profiled.tsv
+    jobid: 47
+    wildcards: sample=T22.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 47 with external jobid 'Submitted batch job 3385538'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/T11.1.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/T11.1.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/T11.1.2.profiled.tsv
+    jobid: 61
+    wildcards: sample=T11.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 61 with external jobid 'Submitted batch job 3385539'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/T22.2.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/T22.2.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/T22.2.3.profiled.tsv
+    jobid: 75
+    wildcards: sample=T22.2.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 75 with external jobid 'Submitted batch job 3385540'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/T22.4.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/T22.4.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/T22.4.1.profiled.tsv
+    jobid: 83
+    wildcards: sample=T22.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 83 with external jobid 'Submitted batch job 3385541'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/T44.1.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/T44.1.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/T44.1.1.profiled.tsv
+    jobid: 55
+    wildcards: sample=T44.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 55 with external jobid 'Submitted batch job 3385542'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/T33.3.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/T33.3.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/T33.3.4.profiled.tsv
+    jobid: 135
+    wildcards: sample=T33.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 135 with external jobid 'Submitted batch job 3385543'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/T11.4.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/T11.4.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/T11.4.4.profiled.tsv
+    jobid: 27
+    wildcards: sample=T11.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 27 with external jobid 'Submitted batch job 3385544'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/T44.4.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/T44.4.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/T44.4.1.profiled.tsv
+    jobid: 125
+    wildcards: sample=T44.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 125 with external jobid 'Submitted batch job 3385545'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/T33.2.5.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/T33.2.5.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/T33.2.5.rep.profiled.tsv
+    jobid: 23
+    wildcards: sample=T33.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 23 with external jobid 'Submitted batch job 3385546'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/T11.2.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/T11.2.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/T11.2.3.profiled.tsv
+    jobid: 103
+    wildcards: sample=T11.2.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 103 with external jobid 'Submitted batch job 3385547'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/T22.2.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/T22.2.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/T22.2.4.profiled.tsv
+    jobid: 13
+    wildcards: sample=T22.2.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 13 with external jobid 'Submitted batch job 3385548'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/T44.2.3.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/T44.2.3.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/T44.2.3.rep.profiled.tsv
+    jobid: 73
+    wildcards: sample=T44.2.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 73 with external jobid 'Submitted batch job 3385549'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/T11.4.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/T11.4.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/T11.4.5.profiled.tsv
+    jobid: 41
+    wildcards: sample=T11.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 41 with external jobid 'Submitted batch job 3385550'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/T44.2.5.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/T44.2.5.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/T44.2.5.rep.profiled.tsv
+    jobid: 101
+    wildcards: sample=T44.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 101 with external jobid 'Submitted batch job 3385551'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/T11.3.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/T11.3.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/T11.3.5.profiled.tsv
+    jobid: 51
+    wildcards: sample=T11.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 51 with external jobid 'Submitted batch job 3385552'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/T33.3.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/T33.3.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/T33.3.2.profiled.tsv
+    jobid: 79
+    wildcards: sample=T33.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 79 with external jobid 'Submitted batch job 3385553'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/T22.3.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/T22.3.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/T22.3.4.profiled.tsv
+    jobid: 57
+    wildcards: sample=T22.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 57 with external jobid 'Submitted batch job 3385554'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/T22.2.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/T22.2.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/T22.2.2.profiled.tsv
+    jobid: 107
+    wildcards: sample=T22.2.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 107 with external jobid 'Submitted batch job 3385555'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/T11.2.4.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/T11.2.4.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/T11.2.4.rep.profiled.tsv
+    jobid: 89
+    wildcards: sample=T11.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 89 with external jobid 'Submitted batch job 3385556'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/T44.2.2.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/T44.2.2.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/T44.2.2.rep.profiled.tsv
+    jobid: 119
+    wildcards: sample=T44.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 119 with external jobid 'Submitted batch job 3385557'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/T44.4.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/T44.4.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/T44.4.3.profiled.tsv
+    jobid: 21
+    wildcards: sample=T44.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 21 with external jobid 'Submitted batch job 3385558'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/T33.2.2.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/T33.2.2.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/T33.2.2.rep.profiled.tsv
+    jobid: 133
+    wildcards: sample=T33.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 133 with external jobid 'Submitted batch job 3385559'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/T22.4.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/T22.4.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/T22.4.4.profiled.tsv
+    jobid: 7
+    wildcards: sample=T22.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 7 with external jobid 'Submitted batch job 3385560'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/T11.2.5.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/T11.2.5.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/T11.2.5.rep.profiled.tsv
+    jobid: 35
+    wildcards: sample=T11.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 35 with external jobid 'Submitted batch job 3385561'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/T44.3.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/T44.3.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/T44.3.4.profiled.tsv
+    jobid: 49
+    wildcards: sample=T44.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 49 with external jobid 'Submitted batch job 3385562'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/T33.4.3.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/T33.4.3.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/T33.4.3.rep.profiled.tsv
+    jobid: 121
+    wildcards: sample=T33.4.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 121 with external jobid 'Submitted batch job 3385563'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/T44.3.5.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/T44.3.5.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/T44.3.5.profiled.tsv
+    jobid: 63
+    wildcards: sample=T44.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 63 with external jobid 'Submitted batch job 3385564'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/T11.3.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/T11.3.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/T11.3.3.profiled.tsv
+    jobid: 71
+    wildcards: sample=T11.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 71 with external jobid 'Submitted batch job 3385565'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/T33.2.1.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/T33.2.1.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/T33.2.1.rep.profiled.tsv
+    jobid: 85
+    wildcards: sample=T33.2.1.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 85 with external jobid 'Submitted batch job 3385566'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/T11.4.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/T11.4.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/T11.4.2.profiled.tsv
+    jobid: 99
+    wildcards: sample=T11.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 99 with external jobid 'Submitted batch job 3385567'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/T33.1.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/T33.1.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/T33.1.2.profiled.tsv
+    jobid: 113
+    wildcards: sample=T33.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 113 with external jobid 'Submitted batch job 3385568'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/T44.3.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/T44.3.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/T44.3.2.profiled.tsv
+    jobid: 29
+    wildcards: sample=T44.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 29 with external jobid 'Submitted batch job 3385569'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/T22.4.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/T22.4.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/T22.4.3.profiled.tsv
+    jobid: 127
+    wildcards: sample=T22.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 127 with external jobid 'Submitted batch job 3385570'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/T44.3.3.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/T44.3.3.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/T44.3.3.rep.profiled.tsv
+    jobid: 69
+    wildcards: sample=T44.3.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 69 with external jobid 'Submitted batch job 3385571'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/T22.2.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/T22.2.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/T22.2.1.profiled.tsv
+    jobid: 1
+    wildcards: sample=T22.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 1 with external jobid 'Submitted batch job 3385572'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/T11.4.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/T11.4.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/T11.4.3.profiled.tsv
+    jobid: 15
+    wildcards: sample=T11.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 15 with external jobid 'Submitted batch job 3385573'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/T33.3.3.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/T33.3.3.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/T33.3.3.profiled.tsv
+    jobid: 43
+    wildcards: sample=T33.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 43 with external jobid 'Submitted batch job 3385574'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/T44.2.4.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/T44.2.4.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/T44.2.4.rep.profiled.tsv
+    jobid: 37
+    wildcards: sample=T44.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 37 with external jobid 'Submitted batch job 3385575'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/T33.4.2.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/T33.4.2.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/T33.4.2.profiled.tsv
+    jobid: 105
+    wildcards: sample=T33.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 105 with external jobid 'Submitted batch job 3385576'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/T22.1.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/T22.1.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/T22.1.1.profiled.tsv
+    jobid: 111
+    wildcards: sample=T22.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 111 with external jobid 'Submitted batch job 3385577'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/T33.1.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/T33.1.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/T33.1.1.profiled.tsv
+    jobid: 9
+    wildcards: sample=T33.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 9 with external jobid 'Submitted batch job 3385578'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/T11.2.2.rep.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/T11.2.2.rep.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/T11.2.2.rep.profiled.tsv
+    jobid: 65
+    wildcards: sample=T11.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 65 with external jobid 'Submitted batch job 3385579'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/T11.3.1.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/T11.3.1.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/T11.3.1.profiled.tsv
+    jobid: 91
+    wildcards: sample=T11.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 91 with external jobid 'Submitted batch job 3385580'.
+
+[Mon Nov  8 16:37:07 2021]
+rule metaphlan:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/read1.fq.gz, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/read2.fq.gz
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/T33.4.4.sam.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/T33.4.4.bowtie2.bz2, /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/T33.4.4.profiled.tsv
+    jobid: 97
+    wildcards: sample=T33.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 97 with external jobid 'Submitted batch job 3385581'.
+[Mon Nov  8 16:39:24 2021]
+Finished job 115.
+1 of 136 steps (1%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:24 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/T22.1.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.2/T22.1.2.pkl
+    jobid: 114
+    wildcards: sample=T22.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 114 with external jobid 'Submitted batch job 3385584'.
+[Mon Nov  8 16:39:24 2021]
+Finished job 129.
+2 of 136 steps (1%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:24 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/T22.2.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.5/T22.2.5.pkl
+    jobid: 128
+    wildcards: sample=T22.2.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 128 with external jobid 'Submitted batch job 3385585'.
+[Mon Nov  8 16:39:26 2021]
+Finished job 75.
+3 of 136 steps (2%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:26 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/T22.2.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.3/T22.2.3.pkl
+    jobid: 74
+    wildcards: sample=T22.2.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 74 with external jobid 'Submitted batch job 3385586'.
+[Mon Nov  8 16:39:27 2021]
+Finished job 13.
+4 of 136 steps (3%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:27 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/T22.2.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.4/T22.2.4.pkl
+    jobid: 12
+    wildcards: sample=T22.2.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 12 with external jobid 'Submitted batch job 3385587'.
+[Mon Nov  8 16:39:29 2021]
+Finished job 1.
+5 of 136 steps (4%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:29 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/T22.2.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.1/T22.2.1.pkl
+    jobid: 0
+    wildcards: sample=T22.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 0 with external jobid 'Submitted batch job 3385588'.
+[Mon Nov  8 16:39:30 2021]
+Finished job 111.
+6 of 136 steps (4%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:39:30 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/T22.1.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.1.1/T22.1.1.pkl
+    jobid: 110
+    wildcards: sample=T22.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 110 with external jobid 'Submitted batch job 3385589'.
+[Mon Nov  8 16:40:13 2021]
+Finished job 128.
+7 of 136 steps (5%) done
+[Mon Nov  8 16:40:13 2021]
+Finished job 74.
+8 of 136 steps (6%) done
+[Mon Nov  8 16:40:19 2021]
+Finished job 110.
+9 of 136 steps (7%) done
+[Mon Nov  8 16:40:29 2021]
+Finished job 114.
+10 of 136 steps (7%) done
+[Mon Nov  8 16:40:29 2021]
+Finished job 12.
+11 of 136 steps (8%) done
+[Mon Nov  8 16:40:29 2021]
+Finished job 0.
+12 of 136 steps (9%) done
+[Mon Nov  8 16:40:48 2021]
+Finished job 107.
+13 of 136 steps (10%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:40:48 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/T22.2.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.2.2/T22.2.2.pkl
+    jobid: 106
+    wildcards: sample=T22.2.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 106 with external jobid 'Submitted batch job 3385591'.
+[Mon Nov  8 16:41:35 2021]
+Finished job 55.
+14 of 136 steps (10%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:41:35 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/T44.1.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.1/T44.1.1.pkl
+    jobid: 54
+    wildcards: sample=T44.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 54 with external jobid 'Submitted batch job 3385593'.
+[Mon Nov  8 16:41:49 2021]
+Finished job 106.
+15 of 136 steps (11%) done
+[Mon Nov  8 16:41:51 2021]
+Finished job 131.
+16 of 136 steps (12%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:41:51 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/T44.1.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.1.2/T44.1.2.pkl
+    jobid: 130
+    wildcards: sample=T44.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 130 with external jobid 'Submitted batch job 3385594'.
+[Mon Nov  8 16:42:09 2021]
+Finished job 113.
+17 of 136 steps (12%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:09 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/T33.1.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.2/T33.1.2.pkl
+    jobid: 112
+    wildcards: sample=T33.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 112 with external jobid 'Submitted batch job 3385595'.
+[Mon Nov  8 16:42:22 2021]
+Finished job 53.
+18 of 136 steps (13%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:22 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/T33.2.3.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.3.rep/T33.2.3.rep.pkl
+    jobid: 52
+    wildcards: sample=T33.2.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 52 with external jobid 'Submitted batch job 3385596'.
+[Mon Nov  8 16:42:24 2021]
+Finished job 23.
+19 of 136 steps (14%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:24 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/T33.2.5.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.5.rep/T33.2.5.rep.pkl
+    jobid: 22
+    wildcards: sample=T33.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 22 with external jobid 'Submitted batch job 3385597'.
+[Mon Nov  8 16:42:24 2021]
+Finished job 73.
+20 of 136 steps (15%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:24 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/T44.2.3.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.3.rep/T44.2.3.rep.pkl
+    jobid: 72
+    wildcards: sample=T44.2.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 72 with external jobid 'Submitted batch job 3385598'.
+[Mon Nov  8 16:42:24 2021]
+Finished job 101.
+21 of 136 steps (15%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:24 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/T44.2.5.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.5.rep/T44.2.5.rep.pkl
+    jobid: 100
+    wildcards: sample=T44.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 100 with external jobid 'Submitted batch job 3385599'.
+[Mon Nov  8 16:42:25 2021]
+Finished job 85.
+22 of 136 steps (16%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:25 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/T33.2.1.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.1.rep/T33.2.1.rep.pkl
+    jobid: 84
+    wildcards: sample=T33.2.1.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 84 with external jobid 'Submitted batch job 3385600'.
+[Mon Nov  8 16:42:38 2021]
+Finished job 59.
+23 of 136 steps (17%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:38 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/T44.2.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.1/T44.2.1.pkl
+    jobid: 58
+    wildcards: sample=T44.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 58 with external jobid 'Submitted batch job 3385601'.
+[Mon Nov  8 16:42:39 2021]
+Finished job 19.
+24 of 136 steps (18%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:39 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/T33.2.4.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.4.rep/T33.2.4.rep.pkl
+    jobid: 18
+    wildcards: sample=T33.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 18 with external jobid 'Submitted batch job 3385602'.
+[Mon Nov  8 16:42:42 2021]
+Finished job 37.
+25 of 136 steps (18%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:42 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/T44.2.4.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.4.rep/T44.2.4.rep.pkl
+    jobid: 36
+    wildcards: sample=T44.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 36 with external jobid 'Submitted batch job 3385603'.
+[Mon Nov  8 16:42:54 2021]
+Finished job 54.
+26 of 136 steps (19%) done
+[Mon Nov  8 16:42:54 2021]
+Finished job 31.
+27 of 136 steps (20%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:54 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/T11.2.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.1/T11.2.1.pkl
+    jobid: 30
+    wildcards: sample=T11.2.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 30 with external jobid 'Submitted batch job 3385604'.
+[Mon Nov  8 16:42:57 2021]
+Finished job 89.
+28 of 136 steps (21%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:42:57 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/T11.2.4.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.4.rep/T11.2.4.rep.pkl
+    jobid: 88
+    wildcards: sample=T11.2.4.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 88 with external jobid 'Submitted batch job 3385605'.
+[Mon Nov  8 16:43:10 2021]
+Finished job 130.
+29 of 136 steps (21%) done
+[Mon Nov  8 16:43:14 2021]
+Finished job 65.
+30 of 136 steps (22%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:43:14 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/T11.2.2.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.2.rep/T11.2.2.rep.pkl
+    jobid: 64
+    wildcards: sample=T11.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 64 with external jobid 'Submitted batch job 3385606'.
+[Mon Nov  8 16:43:25 2021]
+Finished job 52.
+31 of 136 steps (23%) done
+[Mon Nov  8 16:43:25 2021]
+Finished job 72.
+32 of 136 steps (24%) done
+[Mon Nov  8 16:43:25 2021]
+Finished job 100.
+33 of 136 steps (24%) done
+[Mon Nov  8 16:43:25 2021]
+Finished job 84.
+34 of 136 steps (25%) done
+[Mon Nov  8 16:43:26 2021]
+Finished job 112.
+35 of 136 steps (26%) done
+[Mon Nov  8 16:43:29 2021]
+Finished job 35.
+36 of 136 steps (26%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:43:29 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/T11.2.5.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.5.rep/T11.2.5.rep.pkl
+    jobid: 34
+    wildcards: sample=T11.2.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 34 with external jobid 'Submitted batch job 3385706'.
+[Mon Nov  8 16:43:40 2021]
+Finished job 58.
+37 of 136 steps (27%) done
+[Mon Nov  8 16:43:40 2021]
+Finished job 18.
+38 of 136 steps (28%) done
+[Mon Nov  8 16:43:40 2021]
+Finished job 36.
+39 of 136 steps (29%) done
+[Mon Nov  8 16:43:43 2021]
+Finished job 103.
+40 of 136 steps (29%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:43:43 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/T11.2.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.2.3/T11.2.3.pkl
+    jobid: 102
+    wildcards: sample=T11.2.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 102 with external jobid 'Submitted batch job 3385707'.
+[Mon Nov  8 16:43:55 2021]
+Finished job 22.
+41 of 136 steps (30%) done
+[Mon Nov  8 16:43:58 2021]
+Finished job 119.
+42 of 136 steps (31%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:43:58 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/T44.2.2.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.2.2.rep/T44.2.2.rep.pkl
+    jobid: 118
+    wildcards: sample=T44.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 118 with external jobid 'Submitted batch job 3385708'.
+[Mon Nov  8 16:44:25 2021]
+Finished job 30.
+43 of 136 steps (32%) done
+[Mon Nov  8 16:44:25 2021]
+Finished job 88.
+44 of 136 steps (32%) done
+[Mon Nov  8 16:44:28 2021]
+Finished job 133.
+45 of 136 steps (33%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:44:28 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/T33.2.2.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.2.2.rep/T33.2.2.rep.pkl
+    jobid: 132
+    wildcards: sample=T33.2.2.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 132 with external jobid 'Submitted batch job 3385709'.
+[Mon Nov  8 16:44:29 2021]
+Finished job 64.
+46 of 136 steps (34%) done
+[Mon Nov  8 16:44:40 2021]
+Finished job 34.
+47 of 136 steps (35%) done
+[Mon Nov  8 16:44:54 2021]
+Finished job 118.
+48 of 136 steps (35%) done
+[Mon Nov  8 16:44:56 2021]
+Finished job 61.
+49 of 136 steps (36%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:44:56 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/T11.1.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.2/T11.1.2.pkl
+    jobid: 60
+    wildcards: sample=T11.1.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 60 with external jobid 'Submitted batch job 3385711'.
+[Mon Nov  8 16:45:08 2021]
+Finished job 102.
+50 of 136 steps (37%) done
+[Mon Nov  8 16:45:12 2021]
+Finished job 9.
+51 of 136 steps (38%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:45:12 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/T33.1.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.1.1/T33.1.1.pkl
+    jobid: 8
+    wildcards: sample=T33.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 8 with external jobid 'Submitted batch job 3385712'.
+[Mon Nov  8 16:45:22 2021]
+Finished job 132.
+52 of 136 steps (38%) done
+[Mon Nov  8 16:46:04 2021]
+Finished job 60.
+53 of 136 steps (39%) done
+[Mon Nov  8 16:46:22 2021]
+Finished job 8.
+54 of 136 steps (40%) done
+[Mon Nov  8 16:47:57 2021]
+Finished job 33.
+55 of 136 steps (40%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:47:57 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/T11.1.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.1.1/T11.1.1.pkl
+    jobid: 32
+    wildcards: sample=T11.1.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 32 with external jobid 'Submitted batch job 3385714'.
+[Mon Nov  8 16:49:07 2021]
+Finished job 32.
+56 of 136 steps (41%) done
+[Mon Nov  8 16:50:20 2021]
+Finished job 127.
+57 of 136 steps (42%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:50:20 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/T22.4.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.3/T22.4.3.pkl
+    jobid: 126
+    wildcards: sample=T22.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 126 with external jobid 'Submitted batch job 3385717'.
+[Mon Nov  8 16:51:00 2021]
+Finished job 39.
+58 of 136 steps (43%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:51:00 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/T22.4.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.2/T22.4.2.pkl
+    jobid: 38
+    wildcards: sample=T22.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 38 with external jobid 'Submitted batch job 3385719'.
+[Mon Nov  8 16:51:42 2021]
+Finished job 67.
+59 of 136 steps (43%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:51:42 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/T22.3.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.3/T22.3.3.pkl
+    jobid: 66
+    wildcards: sample=T22.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 66 with external jobid 'Submitted batch job 3385720'.
+[Mon Nov  8 16:52:10 2021]
+Finished job 117.
+60 of 136 steps (44%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:52:10 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/T22.3.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.5/T22.3.5.pkl
+    jobid: 116
+    wildcards: sample=T22.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 116 with external jobid 'Submitted batch job 3385722'.
+[Mon Nov  8 16:52:40 2021]
+Finished job 126.
+61 of 136 steps (45%) done
+[Mon Nov  8 16:53:04 2021]
+Finished job 87.
+62 of 136 steps (46%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:53:04 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/T22.3.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.2/T22.3.2.pkl
+    jobid: 86
+    wildcards: sample=T22.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 86 with external jobid 'Submitted batch job 3385724'.
+[Mon Nov  8 16:53:18 2021]
+Finished job 47.
+63 of 136 steps (46%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:53:18 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/T22.3.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.1/T22.3.1.pkl
+    jobid: 46
+    wildcards: sample=T22.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 46 with external jobid 'Submitted batch job 3385725'.
+[Mon Nov  8 16:53:30 2021]
+Finished job 66.
+64 of 136 steps (47%) done
+[Mon Nov  8 16:53:30 2021]
+Finished job 38.
+65 of 136 steps (48%) done
+[Mon Nov  8 16:53:56 2021]
+Finished job 116.
+66 of 136 steps (49%) done
+[Mon Nov  8 16:54:11 2021]
+Finished job 57.
+67 of 136 steps (49%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:54:11 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/T22.3.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.3.4/T22.3.4.pkl
+    jobid: 56
+    wildcards: sample=T22.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 56 with external jobid 'Submitted batch job 3385726'.
+[Mon Nov  8 16:54:37 2021]
+Finished job 7.
+68 of 136 steps (50%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:54:37 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/T22.4.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.4/T22.4.4.pkl
+    jobid: 6
+    wildcards: sample=T22.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 6 with external jobid 'Submitted batch job 3385727'.
+[Mon Nov  8 16:55:01 2021]
+Finished job 86.
+69 of 136 steps (51%) done
+[Mon Nov  8 16:55:53 2021]
+Finished job 46.
+70 of 136 steps (51%) done
+[Mon Nov  8 16:56:19 2021]
+Finished job 56.
+71 of 136 steps (52%) done
+[Mon Nov  8 16:56:45 2021]
+Finished job 6.
+72 of 136 steps (53%) done
+[Mon Nov  8 16:58:30 2021]
+Finished job 83.
+73 of 136 steps (54%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:58:30 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/T22.4.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.1/T22.4.1.pkl
+    jobid: 82
+    wildcards: sample=T22.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 82 with external jobid 'Submitted batch job 3385729'.
+[Mon Nov  8 16:59:09 2021]
+Finished job 79.
+74 of 136 steps (54%) done
+Select jobs to execute...
+
+[Mon Nov  8 16:59:09 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/T33.3.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.2/T33.3.2.pkl
+    jobid: 78
+    wildcards: sample=T33.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 78 with external jobid 'Submitted batch job 3385731'.
+[Mon Nov  8 17:00:52 2021]
+Finished job 82.
+75 of 136 steps (55%) done
+[Mon Nov  8 17:01:31 2021]
+Finished job 78.
+76 of 136 steps (56%) done
+[Mon Nov  8 17:06:18 2021]
+Finished job 95.
+77 of 136 steps (57%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:06:18 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/T22.4.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T22.4.5/T22.4.5.pkl
+    jobid: 94
+    wildcards: sample=T22.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 94 with external jobid 'Submitted batch job 3385754'.
+[Mon Nov  8 17:08:41 2021]
+Finished job 94.
+78 of 136 steps (57%) done
+[Mon Nov  8 17:15:57 2021]
+Finished job 43.
+79 of 136 steps (58%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:15:57 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/T33.3.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.3/T33.3.3.pkl
+    jobid: 42
+    wildcards: sample=T33.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 42 with external jobid 'Submitted batch job 3385758'.
+[Mon Nov  8 17:18:31 2021]
+Finished job 45.
+80 of 136 steps (59%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:18:31 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/T33.4.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.5/T33.4.5.pkl
+    jobid: 44
+    wildcards: sample=T33.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 44 with external jobid 'Submitted batch job 3385762'.
+[Mon Nov  8 17:18:31 2021]
+Finished job 25.
+81 of 136 steps (60%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:18:31 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/T33.3.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.5/T33.3.5.pkl
+    jobid: 24
+    wildcards: sample=T33.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 24 with external jobid 'Submitted batch job 3385763'.
+[Mon Nov  8 17:19:21 2021]
+Finished job 105.
+82 of 136 steps (60%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:19:21 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/T33.4.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.2/T33.4.2.pkl
+    jobid: 104
+    wildcards: sample=T33.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 104 with external jobid 'Submitted batch job 3385764'.
+[Mon Nov  8 17:19:21 2021]
+Finished job 42.
+83 of 136 steps (61%) done
+[Mon Nov  8 17:19:44 2021]
+Finished job 135.
+84 of 136 steps (62%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:19:44 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/T33.3.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.4/T33.3.4.pkl
+    jobid: 134
+    wildcards: sample=T33.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 134 with external jobid 'Submitted batch job 3385765'.
+[Mon Nov  8 17:20:07 2021]
+Finished job 11.
+85 of 136 steps (62%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:20:07 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/T33.4.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.1/T33.4.1.pkl
+    jobid: 10
+    wildcards: sample=T33.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 10 with external jobid 'Submitted batch job 3385767'.
+[Mon Nov  8 17:20:56 2021]
+Finished job 121.
+86 of 136 steps (63%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:20:56 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/T33.4.3.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.3.rep/T33.4.3.rep.pkl
+    jobid: 120
+    wildcards: sample=T33.4.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 120 with external jobid 'Submitted batch job 3385768'.
+[Mon Nov  8 17:22:09 2021]
+Finished job 91.
+87 of 136 steps (64%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:22:09 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/T11.3.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.1/T11.3.1.pkl
+    jobid: 90
+    wildcards: sample=T11.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 90 with external jobid 'Submitted batch job 3385771'.
+[Mon Nov  8 17:22:19 2021]
+Finished job 44.
+88 of 136 steps (65%) done
+[Mon Nov  8 17:22:19 2021]
+Finished job 24.
+89 of 136 steps (65%) done
+[Mon Nov  8 17:22:20 2021]
+Finished job 21.
+90 of 136 steps (66%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:22:20 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/T44.4.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.3/T44.4.3.pkl
+    jobid: 20
+    wildcards: sample=T44.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 20 with external jobid 'Submitted batch job 3385772'.
+[Mon Nov  8 17:22:20 2021]
+Finished job 63.
+91 of 136 steps (67%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:22:20 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/T44.3.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.5/T44.3.5.pkl
+    jobid: 62
+    wildcards: sample=T44.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 62 with external jobid 'Submitted batch job 3385773'.
+[Mon Nov  8 17:23:09 2021]
+Finished job 104.
+92 of 136 steps (68%) done
+[Mon Nov  8 17:23:31 2021]
+Finished job 10.
+93 of 136 steps (68%) done
+[Mon Nov  8 17:23:31 2021]
+Finished job 134.
+94 of 136 steps (69%) done
+[Mon Nov  8 17:24:55 2021]
+Finished job 120.
+95 of 136 steps (70%) done
+[Mon Nov  8 17:24:56 2021]
+Finished job 29.
+96 of 136 steps (71%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:24:56 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/T44.3.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.2/T44.3.2.pkl
+    jobid: 28
+    wildcards: sample=T44.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 28 with external jobid 'Submitted batch job 3385774'.
+[Mon Nov  8 17:25:31 2021]
+Finished job 109.
+97 of 136 steps (71%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:25:31 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/T44.4.5.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.5.rep/T44.4.5.rep.pkl
+    jobid: 108
+    wildcards: sample=T44.4.5.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 108 with external jobid 'Submitted batch job 3385775'.
+[Mon Nov  8 17:25:33 2021]
+Finished job 90.
+98 of 136 steps (72%) done
+[Mon Nov  8 17:25:56 2021]
+Finished job 69.
+99 of 136 steps (73%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:25:56 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/T44.3.3.rep.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.3.rep/T44.3.3.rep.pkl
+    jobid: 68
+    wildcards: sample=T44.3.3.rep
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 68 with external jobid 'Submitted batch job 3385776'.
+[Mon Nov  8 17:26:07 2021]
+Finished job 62.
+100 of 136 steps (74%) done
+[Mon Nov  8 17:26:19 2021]
+Finished job 20.
+101 of 136 steps (74%) done
+[Mon Nov  8 17:27:38 2021]
+Finished job 123.
+102 of 136 steps (75%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:27:38 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/T44.3.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.1/T44.3.1.pkl
+    jobid: 122
+    wildcards: sample=T44.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 122 with external jobid 'Submitted batch job 3385777'.
+[Mon Nov  8 17:28:11 2021]
+Finished job 28.
+103 of 136 steps (76%) done
+[Mon Nov  8 17:29:17 2021]
+Finished job 108.
+104 of 136 steps (76%) done
+[Mon Nov  8 17:29:28 2021]
+Finished job 68.
+105 of 136 steps (77%) done
+[Mon Nov  8 17:30:45 2021]
+Finished job 93.
+106 of 136 steps (78%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:30:45 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/T11.3.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.2/T11.3.2.pkl
+    jobid: 92
+    wildcards: sample=T11.3.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 92 with external jobid 'Submitted batch job 3385783'.
+[Mon Nov  8 17:31:07 2021]
+Finished job 122.
+107 of 136 steps (79%) done
+[Mon Nov  8 17:31:40 2021]
+Finished job 5.
+108 of 136 steps (79%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:31:40 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/T11.3.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.4/T11.3.4.pkl
+    jobid: 4
+    wildcards: sample=T11.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 4 with external jobid 'Submitted batch job 3385784'.
+[Mon Nov  8 17:31:40 2021]
+Finished job 27.
+109 of 136 steps (80%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:31:40 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/T11.4.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.4/T11.4.4.pkl
+    jobid: 26
+    wildcards: sample=T11.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 26 with external jobid 'Submitted batch job 3385785'.
+[Mon Nov  8 17:34:36 2021]
+Finished job 92.
+110 of 136 steps (81%) done
+[Mon Nov  8 17:34:47 2021]
+Finished job 41.
+111 of 136 steps (82%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:34:47 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/T11.4.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.5/T11.4.5.pkl
+    jobid: 40
+    wildcards: sample=T11.4.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 40 with external jobid 'Submitted batch job 3385820'.
+[Mon Nov  8 17:35:42 2021]
+Finished job 4.
+112 of 136 steps (82%) done
+[Mon Nov  8 17:36:04 2021]
+Finished job 26.
+113 of 136 steps (83%) done
+[Mon Nov  8 17:36:26 2021]
+Finished job 71.
+114 of 136 steps (84%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:36:26 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/T11.3.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.3/T11.3.3.pkl
+    jobid: 70
+    wildcards: sample=T11.3.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 70 with external jobid 'Submitted batch job 3385840'.
+[Mon Nov  8 17:37:33 2021]
+Finished job 15.
+115 of 136 steps (85%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:37:33 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/T11.4.3.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.3/T11.4.3.pkl
+    jobid: 14
+    wildcards: sample=T11.4.3
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 14 with external jobid 'Submitted batch job 3385841'.
+[Mon Nov  8 17:38:16 2021]
+Finished job 40.
+116 of 136 steps (85%) done
+[Mon Nov  8 17:38:28 2021]
+Finished job 81.
+117 of 136 steps (86%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:38:28 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/T44.4.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.2/T44.4.2.pkl
+    jobid: 80
+    wildcards: sample=T44.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 80 with external jobid 'Submitted batch job 3385843'.
+[Mon Nov  8 17:38:39 2021]
+Finished job 99.
+118 of 136 steps (87%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:38:39 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/T11.4.2.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.2/T11.4.2.pkl
+    jobid: 98
+    wildcards: sample=T11.4.2
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 98 with external jobid 'Submitted batch job 3385846'.
+[Mon Nov  8 17:39:34 2021]
+Finished job 77.
+119 of 136 steps (88%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:39:34 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/T33.3.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.3.1/T33.3.1.pkl
+    jobid: 76
+    wildcards: sample=T33.3.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 76 with external jobid 'Submitted batch job 3385888'.
+[Mon Nov  8 17:40:29 2021]
+Finished job 70.
+120 of 136 steps (88%) done
+[Mon Nov  8 17:41:46 2021]
+Finished job 49.
+121 of 136 steps (89%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:41:46 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/T44.3.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.3.4/T44.3.4.pkl
+    jobid: 48
+    wildcards: sample=T44.3.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 48 with external jobid 'Submitted batch job 3385904'.
+[Mon Nov  8 17:42:08 2021]
+Finished job 80.
+122 of 136 steps (90%) done
+[Mon Nov  8 17:42:08 2021]
+Finished job 14.
+123 of 136 steps (90%) done
+[Mon Nov  8 17:42:39 2021]
+Finished job 76.
+124 of 136 steps (91%) done
+[Mon Nov  8 17:42:49 2021]
+Finished job 98.
+125 of 136 steps (92%) done
+[Mon Nov  8 17:44:29 2021]
+Finished job 51.
+126 of 136 steps (93%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:44:29 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/T11.3.5.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.3.5/T11.3.5.pkl
+    jobid: 50
+    wildcards: sample=T11.3.5
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 50 with external jobid 'Submitted batch job 3385951'.
+[Mon Nov  8 17:45:49 2021]
+Finished job 48.
+127 of 136 steps (93%) done
+[Mon Nov  8 17:46:19 2021]
+Finished job 97.
+128 of 136 steps (94%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:46:19 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/T33.4.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T33.4.4/T33.4.4.pkl
+    jobid: 96
+    wildcards: sample=T33.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 96 with external jobid 'Submitted batch job 3385991'.
+[Mon Nov  8 17:48:49 2021]
+Finished job 50.
+129 of 136 steps (95%) done
+[Mon Nov  8 17:49:59 2021]
+Finished job 96.
+130 of 136 steps (96%) done
+[Mon Nov  8 17:53:10 2021]
+Finished job 125.
+131 of 136 steps (96%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:53:10 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/T44.4.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.1/T44.4.1.pkl
+    jobid: 124
+    wildcards: sample=T44.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 124 with external jobid 'Submitted batch job 3385992'.
+[Mon Nov  8 17:57:00 2021]
+Finished job 124.
+132 of 136 steps (97%) done
+[Mon Nov  8 17:57:40 2021]
+Finished job 17.
+133 of 136 steps (98%) done
+Select jobs to execute...
+
+[Mon Nov  8 17:57:40 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/T44.4.4.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T44.4.4/T44.4.4.pkl
+    jobid: 16
+    wildcards: sample=T44.4.4
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 16 with external jobid 'Submitted batch job 3386711'.
+[Mon Nov  8 18:01:40 2021]
+Finished job 16.
+134 of 136 steps (99%) done
+[Mon Nov  8 18:05:41 2021]
+Finished job 3.
+135 of 136 steps (99%) done
+Select jobs to execute...
+
+[Mon Nov  8 18:05:41 2021]
+rule markers:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/T11.4.1.sam.bz2
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/T11.4.1/T11.4.1.pkl
+    jobid: 2
+    wildcards: sample=T11.4.1
+    threads: 16
+    resources: tmpdir=/tmp/3385513
+
+Submitted job 2 with external jobid 'Submitted batch job 3388254'.
+[Mon Nov  8 18:09:51 2021]
+Finished job 2.
+136 of 136 steps (100%) done
+Complete log: /users/eulrich/black_queen_hypothesis/scripts/workflows/metaphlan/.snakemake/log/2021-11-08T163705.176273.snakemake.log

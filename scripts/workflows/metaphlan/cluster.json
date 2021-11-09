@@ -1,0 +1,22 @@
+{
+    "metaphlan":
+    {
+        "mem": "128G",
+        "time": "3:0:0"
+    },
+    "markers":
+    {
+        "mem": "64G",
+        "time": "0:30:0"
+    },
+    "db_markers":
+    {
+        "mem": "64G",
+        "time": "0:30:0"
+    },
+    "strainphlan":
+    {
+        "mem": "64G",
+        "time": "3:0:0"
+    }
+}
