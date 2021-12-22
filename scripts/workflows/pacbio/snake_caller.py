@@ -12,7 +12,6 @@
 import subprocess
 from os.path import join
 from samples import Samples
-import sys
 
 """
 ################################################################################
