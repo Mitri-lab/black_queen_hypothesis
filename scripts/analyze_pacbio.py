@@ -114,7 +114,7 @@ def plot_indel():
 
                 #Storing sum of inserted base pairs to df derived from
                 #https://github.com/nahanoo/deletion_detection
-                insertions = join(sample['dir_name'],'insertions.tsv')
+                insertions = join(sample['dir_name'],'mutant_to_parent.noalignments.tsv')
                 if exists(insertions):
                     #Writing sum of inserted base pairs to df
                     inserted_bases.at[sample['name'],sample['treatment']] = sum(pd.read_csv(insertions,sep='\t',\
