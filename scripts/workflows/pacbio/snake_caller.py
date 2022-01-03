@@ -48,4 +48,4 @@ if __name__ == '__main__':
     """Example how to run this script: sbatch snake_caller.py at
     It's nice that this script then also runs as a sleeper on the cluster.
     """
-    all_caller('mutant_to_parent.noalignments.tsv')
+    submit(join(work,'At42.1','mutant_to_parent.noalignments.tsv'))
