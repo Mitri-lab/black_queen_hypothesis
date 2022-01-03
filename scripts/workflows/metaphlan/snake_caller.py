@@ -9,11 +9,12 @@
 #
 #SBATCH --time=72:00:00
 #
+from os import mkdir
 from subprocess import call
 from os.path import join
 from os.path import exists
 from samples import Samples
-from os import mkdir
+from glob import glob
 
 """
 ################################################################################
@@ -50,6 +51,24 @@ def db_markers():
     for strain in s.strains.keys():
         call(['extract_markers.py','-c','s__'+strain.replace(' ','_')\
             ,'-o',work+s.abbreviations[strain]])
+
+def get_pkls(strain,regex):
+    treatments = s.treatments[s.abbreviations[strain]]
+    return join(work,regex+'.'+str(treatments).replace(' ','')+'*',regex+'*.pkl')
+
+def strainphlan(strain,regex):
+    name = 's__'+s.abbreviations[strain].replace(' ','_')
+    pkls = get_pkls(strain,regex)
+    db_marker = join(work,strain,name+'.fna')
+    reference = s.references[s.abbreviations[strain]]
+    clade = name
+    out = join(work,strain,'strainphlan')
+    if not exists(out):
+        mkdir(out)
+    #'-r',reference,
+    cmd = ['strainphlan','-s',pkls,'-m',db_marker,\
+        '-c',clade,'-n','16','--mutation_rates','-o',out]
+    call(' '.join(cmd),shell=True)
 
 if __name__ == '__main__':
     """Example how to run this script: sbatch snake_caller.py at
