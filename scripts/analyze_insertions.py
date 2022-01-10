@@ -45,10 +45,29 @@ def parse_insertions():
     return out
 
 
-def filter_insertions(min_distance):
-    
-    pass
-
+def filter_insertions(insertions,min_distance):
+    """To rule out assembly bias we look at insertion sequence
+    which are not located at the end or the start of the assembly."""
+    to_pop = []
+    for i, row in insertions.iterrows():
+        contig_length = len(row['fasta'][row['chromosome']])
+        if row['length'] == contig_length:
+            pass
+        elif row['position'] < min_distance:
+            to_pop.append(i)
+        elif contig_length - row['position'] < min_distance:
+            to_pop.append(i)
+        else:
+            pass
+    print('To drop')
+    for element in to_pop:
+        row = insertions.loc[element]
+        print(row['sample_name'],row['chromosome'],row['position'],row['length'],len(row['fasta'][row['chromosome']]))
+        insertions = insertions.drop(element)
+    print('To keep')
+    for i,row in insertions.iterrows():
+        print(row['sample_name'],row['chromosome'],row['position'],row['length'],len(row['fasta'][row['chromosome']]))
+    #return insertions
 
 def get_sequences():
     work = "/users/eulrich/work/genome_size/data"
