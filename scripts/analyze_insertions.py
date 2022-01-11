@@ -1,8 +1,11 @@
 from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
+from Bio.Seq import Seq
 import pandas as pd
 from os.path import join, exists
 from samples import Samples
 from plotting import Plotting
+from analyze_sequences import Hgt
 
 p = Plotting()
 s = Samples()
@@ -51,6 +54,36 @@ def fiilter_insertions(min_distance):
                     sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
                 )
                 df.to_csv(target, sep="\t")
+
+
+def analyze_insertions():
+    for strain, samples in s.strains.items():
+        for sample in samples:
+            if sample["platform"] == "pacbio":
+                hgt = Hgt(sample)
+                f = join(
+                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
+                )
+                df = pd.read_csv(f, sep="\t")
+                if len(df) > 0:
+                    for i, row in df.iterrows():
+                        id = row["chromosome"] + "." + str(row["position"])
+                        seq = SeqRecord(Seq(row["sequence"].upper()), id=id, name=id)
+                        chunks = hgt.chunker(seq, 1000, 500)
+                        target = join(
+                            sample["dir_name"], "hgt", "chunked_sequences.fasta"
+                        )
+                        with open(target, "w") as handle:
+                            SeqIO.write(chunks, handle, "fasta")
+                        # hgt.mapper()
+                        if hgt.get_cross_mapping():
+                            print(
+                                sample["name"],
+                                row["chromosome"],
+                                row["position"],
+                                row["length"],
+                                row["sequence"],
+                            )
 
 
 def plot_filtered_insertions():
