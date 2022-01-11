@@ -1,7 +1,6 @@
 from Bio import SeqIO
 import pandas as pd
-from glob import glob
-from os.path import join
+from os.path import join, exists
 from samples import Samples
 from plotting import Plotting
 
@@ -17,9 +16,7 @@ def get_contigs(fasta):
     return c
 
 
-def parse_insertions():
-    """Parses all identified Pacbio sequences and stors them with
-    inserted sequence in a dataframe."""
+def fiilter_insertions(min_distance):
     dfs = []
     for strain, samples in s.strains.items():
         for sample in samples:
@@ -29,72 +26,71 @@ def parse_insertions():
                     sep="\t",
                     usecols=["chromosome", "position", "length"],
                 ).drop_duplicates()
-                df.insert(0,'strain',sample['strain'])
-                df.insert(1, "sample_name", sample["name"])
-                df.insert(2,'treatment',sample['treatment'])
-                df.insert(6, "sequence", None)
-                df.insert(7, "fasta", None)
+                df.insert(3, "sequence", None)
                 fasta = join(sample["dir_name"], "assembly.fasta")
                 contigs = get_contigs(fasta)
+                to_pop = []
                 for i, row in df.iterrows():
                     df.at[i, "sequence"] = str(
                         contigs[row.chromosome][
                             row.position - 1 : row.position - 1 + row.length
                         ]
                     )
-                    df.at[i, "fasta"] = contigs
-                dfs.append(df)
-    out = pd.concat(dfs)
-    out.index = range(len(out))
-    return out
+                    contig_length = len(contigs[row["chromosome"]])
+                    if row["length"] == contig_length:
+                        pass
+                    elif row["position"] < min_distance:
+                        to_pop.append(i)
+                    elif contig_length - row["position"] < min_distance:
+                        to_pop.append(i)
+                    else:
+                        pass
+                for element in to_pop:
+                    df = df.drop(element)
+                target = join(
+                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
+                )
+                df.to_csv(target, sep="\t")
 
 
-def filter_insertions(insertions, min_distance):
-    """To rule out assembly bias we look at insertion sequence
-    which are not located at the end or the start of the assembly."""
-    to_pop = []
-    for i, row in insertions.iterrows():
-        contig_length = len(row["fasta"][row["chromosome"]])
-        if row["length"] == contig_length:
-            pass
-        elif row["position"] < min_distance:
-            to_pop.append(i)
-        elif contig_length - row["position"] < min_distance:
-            to_pop.append(i)
-        else:
-            pass
-    for element in to_pop:
-        insertions = insertions.drop(element)
-    return insertions
-
-def plot_insertions(insertions):
+def plot_filtered_insertions():
+    """This function plots the sum of deleted and inserted base pairs."""
+    i = {strain: None for strain in s.strains}
     for strain in s.strains:
-        df = insertions[insertions['strain'] == strain]
-        samples = set(df['sample_name'])
-        out = pd.DataFrame(0,columns=s.treatments[strain],index=samples)
-        for sample,treatment,length in zip(df['sample_name'],df['treatment'],df['length']):
-            out.at[sample,treatment] += length
-        fig = p.subplot_treatments(strain,out)
-        title = 'Filtered inserted bases in '+strain
-        fig.update_layout(
-            xaxis_title='samples',
-            yaxis_title='inserted bp',
-            title=title)
+        treatments = s.treatments[strain]
+        inserted_bases = pd.DataFrame(
+            columns=treatments,
+            index=[
+                sample["name"]
+                for sample in s.strains[strain]
+                if sample["platform"] == "pacbio"
+            ],
+        )
+        for sample in s.strains[strain]:
+            if sample["platform"] == "pacbio":
+                insertions = join(
+                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
+                )
+                if exists(insertions):
+                    inserted_bases.at[sample["name"], sample["treatment"]] = sum(
+                        pd.read_csv(
+                            insertions,
+                            sep="\t",
+                            usecols=["chromosome", "position", "length"],
+                        ).drop_duplicates()["length"]
+                    )
+        i[strain] = inserted_bases
+        fig = p.subplot_treatments(strain, inserted_bases)
+        title = "Filtered inserted bases in " + strain
+        fig.update_layout(xaxis_title="samples", yaxis_title="inserted bp", title=title)
         fig.update_traces(showlegend=False)
-        fig.write_image(join('..','plots','corrected_inserted_bases',title.replace(' ','_')+'.png'))
+        fig.write_image(
+            join(
+                "..",
+                "plots",
+                "corrected_inserted_bases",
+                title.replace(" ", "_") + ".png",
+            )
+        )
 
-
-
-def get_sequences():
-    work = "/users/eulrich/work/genome_size/data"
-    df = pd.read_csv("sequences_of_interest.csv")
-    df.insert(5, "sequence", None)
-    for i, row in df.iterrows():
-        c = row.chromosome
-        p = row.position
-        l = row.length
-        s = row.sample_name
-        fasta = join(work, s, "assembly.fasta")
-        contigs = get_contigs(fasta)
-        df.at[i, "sequence"] = str(contigs[c][p : p + l])
-    return df
+    return i
