@@ -44,7 +44,7 @@ def filter_insertions(min_distance):
                     # Adding inserted sequence
                     df.at[i, "sequence"] = str(
                         contigs[row.chromosome][
-                            row.position - 1 : row.position - 1 + row.length
+                            row.position - 1: row.position - 1 + row.length
                         ]
                     )
                     contig_length = len(contigs[row["chromosome"]])
@@ -80,7 +80,8 @@ def track_insertions():
         for sample in samples:
             if sample["platform"] == "pacbio":
                 hgt = Hgt(sample)
-                f = join(sample["dir_name"], "insertions.noalignments.filtered.tsv")
+                f = join(sample["dir_name"],
+                         "insertions.noalignments.filtered.tsv")
                 # Reading filtered inserted sequences
                 df = pd.read_csv(f, sep="\t")
                 df = df.dropna(subset=["nt_pos"])
@@ -96,7 +97,8 @@ def track_insertions():
                             int(element) for element in row["nt_pos"].split("-")
                         ]
                         # Getting sequence from assembly
-                        seq = contigs[row["chromosome"]][gene_pos[0] : gene_pos[1]]
+                        seq = contigs[row["chromosome"]
+                                      ][gene_pos[0]: gene_pos[1]]
                         # Creating seq record
                         seq = SeqRecord(Seq(seq), id=id)
                         # This chunks the sequence with a window size of 500 and 250 steps
@@ -104,11 +106,12 @@ def track_insertions():
                         chunks = hgt.chunker(seq, 500, 250)
                         # Aligns sequences to all present ancesteral genomes
                         hgt.mapper()
-                        # Gets the contig name of the reference 
+                        # Gets the contig name of the reference
                         mapped_sequences = hgt.get_mapping_stats()
                         if len(mapped_sequences) > 0:
                             # Writing conting name of origin of sequence
                             df.at[i, "origin"] = " ".join(mapped_sequences)
-                target = join(sample['dir_name'],'insertions.noalignments.filtered.tracked.tsv')
-                # Dumping to csv         
-                df.to_csv(target,sep='\t',index=False)
+                target = join(
+                    sample['dir_name'], 'insertions.noalignments.filtered.tracked.tsv')
+                # Dumping to csv
+                df.to_csv(target, sep='\t', index=False)
