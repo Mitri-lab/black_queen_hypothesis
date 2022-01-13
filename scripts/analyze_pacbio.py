@@ -114,7 +114,7 @@ def plot_indel():
 
                 #Storing sum of inserted base pairs to df derived from
                 #https://github.com/nahanoo/deletion_detection
-                insertions = join(sample['dir_name'],'mutant_to_parent.noalignments.tsv')
+                insertions = join(sample['dir_name'],'insertions.noalignments.tsv')
                 if exists(insertions):
                     #Writing sum of inserted base pairs to df
                     inserted_bases.at[sample['name'],sample['treatment']] = sum(pd.read_csv(insertions,sep='\t',\
@@ -199,7 +199,7 @@ def inserted_products():
     affected by insertions. It sums the counts of how many times a product
     was mutated."""
     #Getting all products affected by insertions
-    affected_products = get_affected_products('mutant_to_parent.noalignments.tsv')
+    affected_products = get_affected_products('insertions.noalignments.tsv')
     #Iterating over every strain
     for strain in s.strains:
         #Getting all treatments per strain

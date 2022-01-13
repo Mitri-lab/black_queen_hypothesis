@@ -2,7 +2,27 @@ import shutil
 import glob
 import pandas as pd
 import os
+from os.path import join,exists
 from samples import Samples
+
+def create_dirs():
+    """This creates the directory sturcture for the hgt analysis of the pacbio data"""
+    s = Samples()
+    for ancestral, samples in s.strains.items():
+        for sample in samples:
+            if sample["platform"] == "pacbio":
+                p = join(sample["dir_name"], "hgt")
+                if not exists(p):
+                    mkdir(p)
+                for strain in s.strains_per_treatment[sample["treatment"]]:
+                    reference = join(
+                        sample["dir_name"], "hgt", s.abbreviations[strain] + ".fasta"
+                    )
+                    if not exists(reference):
+                        symlink(
+                            s.references[strain],
+                            reference,
+                        )
 
 
 class Illumina():

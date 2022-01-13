@@ -81,7 +81,8 @@ rule mutant_to_parent:
         8
     shell:
         """minimap2 -ax asm5 {input} | \
-        samtools sort --threads 16 -o {output}"""
+        samtools sort --threads 16 -o {output}
+        samtools index {output}"""
 
 #In order to annotate insertions we need to annotate the assembly using prokka
 rule prokka:
@@ -104,13 +105,13 @@ rule mutant_to_parent_deletions:
         bam = join(work,'{sample}','aligned.sorted.bam'),
         gbk = join(work,'{sample}','prokka','prokka.gbk')
     output:
-        join(work,'{sample}','mutant_to_parent.noalignments.tsv')
+        join(work,'{sample}','insertions.noalignments.tsv')
     params:
         join(work,'{sample}')
     threads:
         16
     shell:
-        "detect_deletions --no_alignment_only --prefix mutant_to_parent --genbank {input.gbk} {input.bam} {params}"
+        "detect_deletions --no_alignment_only --prefix insertions --genbank {input.gbk} {input.bam} {params}"
 
 #We also creat a report for the alignment file given us interesting stats
 #For the report we need to store the labels of the plots as json
