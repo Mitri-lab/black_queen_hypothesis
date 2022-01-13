@@ -19,15 +19,14 @@ def get_contigs(fasta):
     return c
 
 
-def fiilter_insertions(min_distance):
+def filter_insertions(min_distance):
     dfs = []
     for strain, samples in s.strains.items():
         for sample in samples:
             if sample["platform"] == "pacbio":
                 df = pd.read_csv(
-                    join(sample["dir_name"], "mutant_to_parent.noalignments.tsv"),
+                    join(sample["dir_name"], "insertions.noalignments.tsv"),
                     sep="\t",
-                    usecols=["chromosome", "position", "length"],
                 ).drop_duplicates()
                 df.insert(3, "sequence", None)
                 fasta = join(sample["dir_name"], "assembly.fasta")
@@ -51,9 +50,9 @@ def fiilter_insertions(min_distance):
                 for element in to_pop:
                     df = df.drop(element)
                 target = join(
-                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
+                    sample["dir_name"], "insertions.noalignments.filtered.tsv"
                 )
-                df.to_csv(target, sep="\t")
+                df.to_csv(target, sep="\t", index=False)
 
 
 def analyze_insertions():
@@ -61,29 +60,27 @@ def analyze_insertions():
         for sample in samples:
             if sample["platform"] == "pacbio":
                 hgt = Hgt(sample)
-                f = join(
-                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
-                )
+                f = join(sample["dir_name"], "insertions.noalignments.filtered.tsv")
                 df = pd.read_csv(f, sep="\t")
+                df = df.dropna(subset=["nt_pos"])
+                df.insert(len(df.columns), "origin", None)
+                fasta = join(sample["dir_name"], "assembly.fasta")
+                contigs = get_contigs(fasta)
                 if len(df) > 0:
                     for i, row in df.iterrows():
                         id = row["chromosome"] + "." + str(row["position"])
-                        seq = SeqRecord(Seq(row["sequence"].upper()), id=id, name=id)
-                        chunks = hgt.chunker(seq, 1000, 500)
-                        target = join(
-                            sample["dir_name"], "hgt", "chunked_sequences.fasta"
-                        )
-                        with open(target, "w") as handle:
-                            SeqIO.write(chunks, handle, "fasta")
-                        # hgt.mapper()
-                        if hgt.get_cross_mapping():
-                            print(
-                                sample["name"],
-                                row["chromosome"],
-                                row["position"],
-                                row["length"],
-                                row["sequence"],
-                            )
+                        gene_pos = [
+                            int(element) for element in row["nt_pos"].split("-")
+                        ]
+                        seq = contigs[row["chromosome"]][gene_pos[0] : gene_pos[1]]
+                        seq = SeqRecord(Seq(seq), id=id)
+                        chunks = hgt.chunker(seq, 500, 250)
+                        hgt.mapper()
+                        mapped_sequences = hgt.get_mapping_stats()
+                        if len(mapped_sequences) > 0:
+                            df.at[i, "origin"] = " ".join(mapped_sequences)
+                target = join(sample['dir_name'],'insertions.noalignments.filtered.tracked.tsv')                
+                df.to_csv(target,sep='\t',index=False)
 
 
 def plot_filtered_insertions():
@@ -102,7 +99,7 @@ def plot_filtered_insertions():
         for sample in s.strains[strain]:
             if sample["platform"] == "pacbio":
                 insertions = join(
-                    sample["dir_name"], "mutant_to_parent.noalignments.filtered.tsv"
+                    sample["dir_name"], "insertions.noalignments.filtered.tsv"
                 )
                 if exists(insertions):
                     inserted_bases.at[sample["name"], sample["treatment"]] = sum(
