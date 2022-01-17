@@ -1,4 +1,3 @@
-from turtle import pos
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 from samples import Samples
@@ -29,35 +28,40 @@ def assembly():
 
                 print(sample['name'],set(contigs))
 
-def get_reference_names():
-    r_names = {strain:None for strain in s.strains}
+def get_contig_names():
+    contig_names = {strain:None for strain in s.strains}
+    reference_names = dict()
     for strain,reference in s.references.items():
-        r_names[strain] = [contig.id for contig in SeqIO.parse(reference,'fasta')]
-    return r_names
+        contig_names[strain] = [contig.id for contig in SeqIO.parse(reference,'fasta')]
+        for contig_id in contig_names[strain]:
+            reference_names[contig_id] = strain
+    return contig_names,reference_names
 
 
 
-def reads():
-    sample = s.strains['Agrobacterium tumefaciens'][9]
-    contigs = get_contigs(join(sample['dir_name'],'assembly.fasta'))
-    hgts = {key:dict() for key in contigs.keys()}
-    reference = get_contigs(s.references[sample['strain']])
-    r_names = get_reference_names()
-    hgt = Hgt(sample)
-    window_size = 50000
-    step = 50000
-    for name,contig in contigs.items():
-        record = SeqRecord(contig,id=name)
-        seqs = hgt.chunker(record,window_size,step)
-        for seq in seqs:
-            c = '.'.join(seq.id.split('.')[:-1])
-            p = seq.id.split('.')[-1]*step
-            target = join(sample['dir_name'],'hgt','chunked_sequences.fasta')
-            SeqIO.write(seq,target,'fasta')
-            hgt.mapper()
-            positions = hgt.get_mapping_stats()
-            for n,p in positions:
-                if n not in r_names[sample['strain']]:
-                    print(seq,positions)
 
-    
+sample = s.strains['Agrobacterium tumefaciens'][9]
+contigs = get_contigs(join(sample['dir_name'],'assembly.fasta'))
+origin = {contig:dict() for contig in contigs}
+for name,contig in contigs.items():
+    for position,base in enumerate(contig):
+        origin[name][position] = sample['strain']
+hgts = {key:dict() for key in contigs.keys()}
+c_names,r_names = get_contig_names()
+hgt = Hgt(sample)
+window_size = 500
+step = 100
+hgts = []
+for name,contig in contigs.items():
+    record = SeqRecord(contig,id=name)
+    seqs = hgt.chunker(record,window_size,step)
+    hgt.mapper()
+    mapped_seqs = hgt.get_mapping_stats()
+    for name,hits in mapped_seqs.items():
+        c_name = '.'.join(name.split('.')[:-1])
+        pos = int(name.split('.')[-1])*step
+        for ref,p,start,end,query_seq in hits:
+            if ref not in c_names['Agrobacterium tumefaciens']:
+                hgts.append((ref,p,query_seq))
+                for j in range(pos+start,pos+end):
+                    origin[c_name][j] = r_names[ref]
