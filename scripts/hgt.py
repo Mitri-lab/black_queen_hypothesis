@@ -5,6 +5,7 @@ from subprocess import call
 import subprocess
 import pysam
 import pandas as pd
+from Bio.SeqRecord import SeqRecord
 
 
 s = Samples()
@@ -70,6 +71,7 @@ class Hgt:
         """Checks all mapped sequences and returns contig name
         of reference."""
         mapped_sequences = []
+        mapped_sequences = dict()
         for strain in s.strains_per_treatment[self.sample["treatment"]]:
             sam = join(
                 self.sample["dir_name"], "hgt", s.abbreviations[strain] + ".sam"
@@ -82,6 +84,12 @@ class Hgt:
                     reads.append(read)
             # Appends contig name of reference
             for read in reads:
-                mapped_sequences.append(read.reference_name)
+                if read.qname in mapped_sequences.keys():
+                    mapped_sequences[read.qname].append(
+                        (read.reference_name, read.pos,read.qstart,read.qend,SeqRecord(read.query_alignment_sequence,id=read.qname)))
+                else:
+                    mapped_sequences[read.qname] = []
+                    mapped_sequences[read.qname].append(
+                        (read.reference_name, read.pos,read.qstart,read.qend,SeqRecord(read.query_alignment_sequence,id=read.qname)))
         # Returns set of contig names of references
-        return set(mapped_sequences)
+        return mapped_sequences
