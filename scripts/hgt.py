@@ -63,12 +63,11 @@ class Hgt:
         assembly_chunks = []
         for name, contig in self.contigs.items():
             record = SeqRecord(contig, id=name)
-            assembly_chunks += self.chunker(record, 1000, 500)
+            assembly_chunks += self.chunker(record, 500, 100)
         target = join(self.sample["dir_name"], "hgt",
                       "chunked_sequences.fasta")
         with open(target, "w") as handle:
             SeqIO.write(assembly_chunks, handle, "fasta")
-        self.chunks = assembly_chunks
 
     def mapper(self):
         """Maps chunked sequence to all ancesteral genomes
@@ -104,7 +103,7 @@ class Hgt:
             reads = []
             # Iterating over all mapped primary reads
             for read in a:
-                if (not read.is_unmapped) & (not read.is_secondary):
+                if (not read.is_unmapped) & (not read.is_secondary) & (read.mapq == 60):
                     reads.append(read)
             # Appends contig name of reference
             for read in reads:
@@ -123,7 +122,6 @@ class Hgt:
         self.mapped_sequences = mapped_sequences
 
     def dump_origins(self):
-        r_names,c_names = self.get_contig_names()
         self.filtered = {key: dict() for key in self.contigs.keys()}
         for name, contig in self.mapped_sequences.items():
             for pos, strains in contig.items():
