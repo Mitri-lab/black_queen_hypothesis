@@ -1,6 +1,5 @@
 from os.path import join
 from samples import Samples
-import json
 
 """
 ################################################################################
@@ -51,67 +50,35 @@ rule mapping_corrected_reads:
         samtools index {output}
         """
 
-#Detecting deletions in alignemnts
-rule deletion_detection:
-    input:
-        bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam'),
-        genbank = get_genbank
-    output:
-        join(work,'{sample}','in_read_deletions.tsv'),
-        join(work,'{sample}','no_alignment_regions.tsv')
-    params:
-        outdir = join(work,'{sample}')
-    threads:
-        16
-    shell:
-        """
-        detect_deletions --genbank {input.genbank} --min_counts 10 --min_frequency 0.8 \
-        {input.bam} {params.outdir}
-        """
 
-#Detecting insertions. Refernece is aligned to assemblye and no coveragae areas
-#are identified (which are insertions because not present in wild-type)
-rule mutant_to_parent:
-    input:
-        assembly = join(work,'{sample}','assembly.fasta'),
-        reference = get_reference
-    output:
-        join(work,'{sample}','aligned.sorted.bam')
-    threads:
-        8
-    shell:
-        """minimap2 -ax asm5 {input} | \
-        samtools sort --threads 16 -o {output}
-        samtools index {output}"""
-
-#In order to annotate insertions we need to annotate the assembly using prokka
-rule prokka:
+rule bakta:
     input:
         join(work,'{sample}','assembly.fasta')
     output:
-        join(work,'{sample}','prokka','prokka.gbk')
+        join(work,'{sample}','bakta','assembly.gbff')
     params:
-        join(work,'{sample}','prokka')
+        join(work,'{sample}','bakta')
     threads:
         16
     shell:
-        """prokka --outdir {params} --force --prefix prokka --kingdom Bacteria --cpus {threads} {input}
+        """bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input} --output {params}
         """
 
 #Areas with no coverage are identified which are insertions (sequence present
 #in evolded strain but not in wild-type)
-rule mutant_to_parent_deletions:
+rule insertion_detection:
     input:
-        bam = join(work,'{sample}','aligned.sorted.bam'),
-        gbk = join(work,'{sample}','prokka','prokka.gbk')
+        reference = get_reference,
+        gbk = join(work,'{sample}','bakta','assembly.gbff')
     output:
-        join(work,'{sample}','insertions.noalignments.tsv')
+        join(work,'{sample}','insertions.tsv'),
+        join(work,'{sample}','insertions.annotated.tsv')
     params:
         join(work,'{sample}')
     threads:
         16
     shell:
-        "detect_deletions --no_alignment_only --prefix insertions --genbank {input.gbk} {input.bam} {params}"
+        "detect_insertions --plot {input} {params}"
 
 #We also creat a report for the alignment file given us interesting stats
 #For the report we need to store the labels of the plots as json
