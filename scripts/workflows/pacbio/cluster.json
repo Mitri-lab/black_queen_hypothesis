@@ -24,6 +24,11 @@
         "mem": "32G",
         "time": "0:30:0"
     },
+    "hgt_detection":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
     "labels":
     {
         "mem": "1G",
