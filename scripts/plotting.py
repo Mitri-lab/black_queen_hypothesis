@@ -1,3 +1,5 @@
+from turtle import width
+from unicodedata import name
 from samples import Samples
 from samples import Experiment
 import plotly.graph_objects as go
@@ -39,6 +41,70 @@ class Plotting():
             subset = df[treatment].dropna()
             fig.add_trace(go.Scatter(x=subset.index,y=subset.values,mode='markers',marker_color=color),\
                 row=1,col=counter+1)
+        return fig
+
+    def subplot_strains(self,d):
+        titles = [strain.replace(' ','<br>') for strain in s.strains]
+        fig = make_subplots(rows=1, cols=4, shared_yaxes=True,
+                            subplot_titles=titles)
+        for counter, strain in enumerate(s.strains):
+            df = d[strain]
+            xs = list(df.columns) * len(df)
+            ys = []
+            for row in df.values:
+                for item in row:
+                    ys.append(item)
+
+            fig.add_trace(go.Scatter(x=xs, y=ys,
+                        mode='markers',marker_color=color), row=1, col=counter+1)
+        return fig
+        
+    def subplot_strains_violin(self,d):
+        titles = [strain.replace(' ','<br>') for strain in s.strains]
+        fig = make_subplots(rows=1, cols=len(s.strains), shared_yaxes=False,
+                                subplot_titles=titles)
+        
+        for counter, strain in enumerate(s.strains):
+            df = d[strain]
+            xs = list(df.columns) * len(df)
+            ys = []
+            for row in df.values:
+                for item in row:
+                    ys.append(item)
+
+            fig.add_trace(go.Violin(x=xs, y=ys,
+                        points='all',pointpos=0,marker_color=color,spanmode='hard'), row=1, col=counter+1)
+        return fig
+
+    def subplot_snps(self,snps):
+        titles = [strain.replace(' ','<br>') for strain in s.strains]
+        fig = make_subplots(rows=1, cols=4, shared_yaxes=True,
+                            subplot_titles=titles)
+        label_added = []
+
+        colors = {'synonymous_variant':'#1f77b4',
+            'missense_variant':'#7f7f7f',
+            'disruptive_inframe_deletion':'#9467bd',
+            'stop_gained':'#e377c2',
+            'conservative_inframe_deletion':'#17becf',
+            'conservative_inframe_insertion':'blue',
+            'frameshift_variant':'purple'}
+
+        for counter, strain in enumerate(s.strains):
+            df = snps[strain]
+            for effect,row in df.iterrows():
+                xs = list(df.columns)
+                ys = row.to_list()
+                try:
+                    if not effect in label_added:
+                        fig.add_trace(go.Scatter(x=xs, y=ys,
+                                    mode='markers',name=effect.replace('_',' '),legendgroup=effect,marker_color=colors[effect]), row=1, col=counter+1)
+                        label_added.append(effect)
+                    else:
+                        fig.add_trace(go.Scatter(x=xs, y=ys,
+                                    mode='markers',name=effect.replace('_',' '),legendgroup=effect,showlegend=False,marker_color=colors[effect]), row=1, col=counter+1)
+                except KeyError:
+                    print(effect)
         return fig
 
     def subplot_products(self,strain,df):
@@ -83,3 +149,5 @@ class Plotting():
         for counter,trace in enumerate(fig.data):
             trace.line.dash = random.choice(styles)
         return fig
+
+    
