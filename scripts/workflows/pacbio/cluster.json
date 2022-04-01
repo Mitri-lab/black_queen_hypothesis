@@ -14,6 +14,11 @@
         "mem": "32G",
         "time": "0:30:0"
     },
+    "deletion_detection":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
     "insertion_detection":
     {
         "mem": "32G",

@@ -72,13 +72,29 @@ rule bakta:
     shell:
         """bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input} --output {params}
         """
+        
+rule deletion_detection:
+    input:
+        mutant = join(work,'{sample}','assembly.fasta'),
+        reference = get_genbank
+    output:
+        join(work,'{sample}','deletions.annotated.tsv'),
+        join(work,'{sample}','plasmids.annotated.tsv')
+    params:
+        join(work,'{sample}'),
+
+    threads:
+        16
+    shell:
+        "detect_deletions {input} {params}"
+
 
 #Areas with no coverage are identified which are insertions (sequence present
 #in evolded strain but not in wild-type)
 rule insertion_detection:
     input:
-        reference = get_reference,
-        gbk = join(work,'{sample}','bakta','assembly.gbff')
+        gbk = join(work,'{sample}','bakta','assembly.gbff'),
+        reference = get_reference
     output:
         join(work,'{sample}','insertions.tsv'),
         join(work,'{sample}','insertions.annotated.tsv')
@@ -88,21 +104,21 @@ rule insertion_detection:
     threads:
         16
     shell:
-        "detect_insertions --plot {input} {params}"
+        "detect_insertions {input} {params}"
 
 rule hgt_detection:
     input:
-        references = join(work,'references'),
-        gbk = join(work,'{sample}','bakta','assembly.gbff')
+        mutant = join(work,'{sample}','bakta','assembly.gbff'),
+        ancestor = get_reference,
+        references = join(work,'references')
     output:
-        join(work,'{sample}','hgt','origins.tsv'),
+        join(work,'{sample}','hgts.annotated.tsv'),
     params:
-        strain = get_strain_abbreviation,
-        out_dir = join(work,'{sample}','hgt')
+        out_dir = join(work,'{sample}')
     threads:
         16
     shell:
-        "detect_hgts --plot {input} {params}"
+        "detect_hgts {input} {params}"
 
 #We also creat a report for the alignment file given us interesting stats
 #For the report we need to store the labels of the plots as json

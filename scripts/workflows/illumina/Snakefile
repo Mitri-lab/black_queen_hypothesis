@@ -93,7 +93,7 @@ rule snippy:
         outdir = join(work,'{sample}','{strain}','snippy')
     shell:
         """
-        snippy --cpus 32 --force --ram 256 --minfrac 0.8 --cleanup --outdir \
+        snippy --cpus 32 --force --ram 256 --minfrac 0 --cleanup --outdir \
         {params} --reference {input.reference} --bam {input.bam}
         """
 

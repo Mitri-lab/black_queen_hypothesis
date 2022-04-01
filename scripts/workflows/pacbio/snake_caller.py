@@ -48,5 +48,5 @@ if __name__ == '__main__':
     """Example how to run this script: sbatch snake_caller.py at
     It's nice that this script then also runs as a sleeper on the cluster.
     """
-    #submit(join(work,'At42.1','hgt','origins.tsv'))
-    all_caller(join('hgt','origins.tsv'))
+    #submit(join(work,'At42.1','hgts.annotated.tsv'))
+    all_caller(join('hgts.annotated.tsv'))
