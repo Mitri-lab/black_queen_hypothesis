@@ -6,7 +6,10 @@ from os.path import join
 from os.path import exists
 import math
 from Bio import SeqIO
-import glob
+import re
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
 
 """
 ################################################################################
@@ -21,118 +24,151 @@ All plots call this small plotting class in plotting.py
 s = Samples()
 p = Plotting()
 
-def plot_snps():
-    """Plots n SNPs of every strain per treatment."""
-    for strain in s.strains:
-        #Get all treatments of a strain
-        treatments = s.treatments[strain]
-        #df for storing n_snps
-        n_snps = pd.DataFrame(columns=treatments,index=[sample['name'] \
-            for sample in s.strains[strain] if sample['platform']== 'illumina'])
-        #Iterating over every sample of a strain
-        for sample in s.strains[strain]:
-            if sample['platform'] == 'illumina':
-                snps = join(sample['dir_name'],'snippy','snps.tab')
-                if exists(snps):
-                    #Storing found n snps in df
-                    n_snps.at[sample['name'],sample['treatment']] = \
-                        len(pd.read_csv(snps,sep='\t'))
 
-        #Plotting n snps
-        fig = p.subplot_treatments(strain,n_snps)
-        #Updating plot labels and dumping to png
-        title = 'N SNPs in '+strain
-        fig.update_layout(
-            xaxis_title='samples',
-            yaxis_title='n SNPs',
-            width=len(n_snps) * 30,
-            title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(join('..','plots','snps',title.replace(' ','_')+'.png'))
-
-def plot_genes():
-    """This plots the counts of a mutated gene over the time series
-    of an experiment. This visualizes in how many microcosms we see
-    a mutation arise."""
-    #Iterating over strains
-    for strain,samples in s.strains.items():
-        treatments = s.treatments[strain]
-        samples = [sample for sample in samples if sample['platform'] == 'illumina']
-        #We create a plot per treatment, which is why we iterate over all treatments.
-        for treatment in treatments:
-            timepoints = ['T11','T22','T33','T44']
-            out = pd.DataFrame(columns=timepoints)
-            for sample in samples:
-                #We only want matching treatments
-                if sample['treatment'] == treatment:
-                    snps = join(sample['dir_name'],'snippy','snps.tab')
-                    if exists(snps):
-                        for gene in set(pd.read_csv(snps,sep='\t').dropna()['GENE']):
-                            #If gene not in index we neet to set value to 1 else we
-                            #add 1 to the count
-                            if gene in out['treatment'].dropna().index:
-                                out.at[gene,sample['timepoint']] += 1
-                            else:
-                                out.at[gene,sample['timepoint']] = 1
-
-            #Plotting gene counts
-            fig = p.trajectories(out)
-            #Changing labels and dumping to png
-            title = ['Mutated','genes','in',strain,'in','treatment',str(treatment)]
-            fig.update_layout(
-                    title = ' '.join(title),
-                    xaxis_title = 'timepoints',
-                    yaxis_title = 'observed in n microcosms'
-                )
-            fig.write_image(join('..','plots','genes',' '.join(title).replace(' ','_')+'.png'))
-
-def plot_products():
-    """Plotting in how many samples a product was mutated."""
-    #Iterating over all strains
-    for strain,samples in s.strains.items():
-        treatments = s.treatments[strain]
-        #Setting up df
-        n_products = pd.DataFrame(columns=treatments)
+def plot_effects():
+    snps = {strain: None for strain in s.strains}
+    effects = []
+    for strain, samples in s.strains.items():
         for sample in samples:
             if sample['platform'] == 'illumina':
-                f = join(sample['dir_name'],'snippy','snps.tab')
-                if exists(f):
-                    products = set(pd.read_csv(f,sep='\t').dropna()['PRODUCT'])
-                    for product in products:
-                        #Checking if product is in df already, if so adding 1
-                        if product in n_products[sample['treatment']].dropna().index:
-                            n_products.at[product,sample['treatment']] += 1
-                        else:
-                            n_products.at[product,sample['treatment']] = 1
+                f = join(sample['dir_name'], 'snippy', 'snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates()
+                df = df[df['EFFECT'].notna()]
+                for effect in df['EFFECT']:
+                    effects.append(effect.split(' ')[0])
+    effects = list(set(effects))
 
-        #Creating plo
-        fig = p.subplot_products(strain,n_products)
-        title = ['Products','affected','by','mutations','in',strain]
-        #Updating labels and dumping plot to png
-        fig.update_layout(overwrite=True,
-                title = ' '.join(title),
-                height = len(n_products) * 50
-            )
-        fig.update_xaxes(title_text='observed mutated product n times',row=len(treatments),col=1)
-        fig.update_yaxes(title_text='products',row=int(math.ceil(len(treatments)/2)),col=1)
-        fig.update_traces(showlegend=False)
-        fig.write_image(join('..','plots','products',' '.join(title).replace(' ','_')+'.png'))
+    for strain, samples in s.strains.items():
+        effects = []
+        for sample in samples:
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'], 'snippy', 'snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates()
+                df = df[df['EFFECT'].notna()]
+                for effect in df['EFFECT']:
+                    effects.append(effect.split(' ')[0])
+        effects = list(set(effects))
+        columns = s.treatments[strain]
+        snp = pd.DataFrame(columns=columns, index=effects)
+        for sample in samples:
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'], 'snippy', 'snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates()
+                df = df[df['EFFECT'].notna()]
+                effects = []
+                for effect in df['EFFECT']:
+                    effects.append(effect.split(' ')[0])
+
+                for effect in set(effects):
+                    mask = []
+                    for e in df['EFFECT']:
+                        if re.search(effect, e, flags=re.IGNORECASE):
+                            mask.append(True)
+                        else:
+                            mask.append(False)
+                    if pd.isna(snp.at[effect, sample['treatment']]):
+                        snp.at[effect, sample['treatment']] = len(df[mask])
+                    else:
+                        snp.at[effect, sample['treatment']] += len(df[mask])
+        snps[strain] = snp
+    fig = p.subplot_snps(snps)
+    fig.update_layout(
+        xaxis_title='Treatments',
+        yaxis_title='SNPs ',
+        margin=dict(
+            l=0,
+            r=10,
+            b=0,
+            t=45,
+            pad=4
+        ),
+        width=800
+    )
+    fig.update_yaxes(type='log')
+    fig.update_xaxes(type='category')
+    fig.write_image(join('..', 'plots', 'snps', 'snps.png'), scale=2)
+    return snps
+
+def get_differences_snps(df,strain,treatments,platform):
+    p_mono = dict()
+    p_co = dict()
+    for sample in s.strains[strain]:
+        if (sample['treatment'] in treatments) & (sample['platform'] == platform): 
+            f = join(sample['dir_name'],df)
+            if platform == 'illumina':
+                column = 'PRODUCT'
+            else:
+                column = 'product'
+            products = set(pd.read_csv(f,sep='\t')[column])
+            if sample['treatment'] == treatments[0]:
+                for product in products:
+                    if product in p_mono.keys():
+                        p_mono[product] += 1
+                    else:
+                        p_mono[product] = 1
+            if sample['treatment'] == treatments[1]:
+                for product in products:
+                    if product in p_co.keys():
+                        p_co[product] += 1
+                    else:
+                        p_co[product] = 1
+
+    co_only = set(p_co.keys()) - set(p_mono.keys())
+    print(co_only)
+    for product in co_only:
+        if p_co[product] > 1:
+            print(product,p_co[product])
+
+def plot_all_snps():
+    snps = {strain: None for strain in s.strains}
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        snp = pd.DataFrame(columns=treatments, index=[sample['name']
+                                                      for sample in s.strains[strain] if sample['platform'] == 'illumina'])
+        for sample in s.strains[strain]:
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'], 'snippy', 'snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates()
+                snp.at[sample['name'], sample['treatment']] = len(df)
+        snps[strain] = snp
+    fig = p.subplot_strains_violin(snps)
+
+    #fig = p.subplot_treatments(s.abbreviations['at'],snps[s.abbreviations['at']])
+    fig.update_layout(
+        xaxis_title='Treatments',
+        yaxis_title='SNPs ',
+        margin=dict(
+            l=0,
+            r=10,
+            b=0,
+            t=45,
+            pad=4
+        ),
+        width=800
+    )
+    #fig.update_yaxes(type='log')
+    fig.update_xaxes(type='category')
+    fig.update_traces(showlegend=False)
+    fig.write_image(join('..', 'plots', 'snps', 'snps_all2.png'), scale=2)
+
+    return snps
+
 
 def write_gc_content():
     """This is a little helper function to get the GC content of the wild-type genomes"""
-    #Setting up df and iterating over all strains
+    # Setting up df and iterating over all strains
     df = pd.DataFrame(columns=['gc content'])
     for strain in s.strains:
         sequence = str()
         reference = s.references[strain]
-        contigs = [contig for contig in SeqIO.parse(reference,'fasta')]
+        contigs = [contig for contig in SeqIO.parse(reference, 'fasta')]
         for contig in contigs:
-            #Adding sequence as string
+            # Adding sequence as string
             sequence += contig.seq
-        #Getting gc content of sequence
+        # Getting gc content of sequence
         gc_content = get_gc_content(sequence)
-        #Writing to df and to file
-        df.at[strain,'gc content'] = gc_content
+        # Writing to df and to file
+        df.at[strain, 'gc content'] = gc_content
     df.index.name = 'strain'
-    fname = join('..','tables','gc_content','gc_content.csv')
+    fname = join('..', 'tables', 'gc_content', 'gc_content.csv')
     df.to_csv(fname)
