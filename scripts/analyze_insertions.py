@@ -5,7 +5,7 @@ import pandas as pd
 from os.path import join, exists
 from samples import Samples
 from plotting import Plotting
-from hgt import Hgt
+#from hgt import Hgt
 
 p = Plotting()
 s = Samples()
@@ -29,7 +29,7 @@ def filter_insertions(min_distance):
             if sample["platform"] == "pacbio":
                 # Reading output of deletion detection
                 df = pd.read_csv(
-                    join(sample["dir_name"], "insertions.noalignments.tsv"),
+                    join(sample["dir_name"], "insertions.tsv"),
                     sep="\t",
                 ).drop_duplicates()
                 # Adding insertion sequence for later processing
@@ -63,7 +63,7 @@ def filter_insertions(min_distance):
                 for element in to_pop:
                     df = df.drop(element)
                 target = join(
-                    sample["dir_name"], "insertions.noalignments.filtered.tsv"
+                    sample["dir_name"], "insertions.filtered.tsv"
                 )
                 # Dumping csv
                 df.to_csv(target, sep="\t", index=False)

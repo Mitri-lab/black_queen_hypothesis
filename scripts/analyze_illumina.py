@@ -26,22 +26,13 @@ p = Plotting()
 
 
 def plot_effects():
+    """This plots the summed effects grouped per treatment per species
+    """
     snps = {strain: None for strain in s.strains}
-    effects = []
-    for strain, samples in s.strains.items():
-        for sample in samples:
-            if sample['platform'] == 'illumina':
-                f = join(sample['dir_name'], 'snippy', 'snps.tab')
-                df = pd.read_csv(f, sep='\t').drop_duplicates()
-                df = df[df['EFFECT'].notna()]
-                for effect in df['EFFECT']:
-                    effects.append(effect.split(' ')[0])
-    effects = list(set(effects))
-
     for strain, samples in s.strains.items():
         effects = []
         for sample in samples:
-            if sample['platform'] == 'illumina':
+            if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):
                 f = join(sample['dir_name'], 'snippy', 'snps.tab')
                 df = pd.read_csv(f, sep='\t').drop_duplicates()
                 df = df[df['EFFECT'].notna()]
@@ -51,7 +42,7 @@ def plot_effects():
         columns = s.treatments[strain]
         snp = pd.DataFrame(columns=columns, index=effects)
         for sample in samples:
-            if sample['platform'] == 'illumina':
+            if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):
                 f = join(sample['dir_name'], 'snippy', 'snps.tab')
                 df = pd.read_csv(f, sep='\t').drop_duplicates()
                 df = df[df['EFFECT'].notna()]
@@ -71,25 +62,27 @@ def plot_effects():
                     else:
                         snp.at[effect, sample['treatment']] += len(df[mask])
         snps[strain] = snp
-    fig = p.subplot_snps(snps)
-    fig.update_layout(
-        xaxis_title='Treatments',
-        yaxis_title='SNPs ',
-        margin=dict(
-            l=0,
-            r=10,
-            b=0,
-            t=45,
-            pad=4
-        ),
-        width=800
-    )
-    fig.update_yaxes(type='log')
-    fig.update_xaxes(type='category')
-    fig.write_image(join('..', 'plots', 'snps', 'snps.png'), scale=2)
-    return snps
+    p.plot_effects(snps)
+
+def plot_all_snps():
+    """This function plots the sum of SNPs for a timepoint."""
+    snps = {strain: None for strain in s.strains}
+    for strain in s.strains:
+        treatments = s.treatments[strain]
+        snp = pd.DataFrame(columns=treatments, index=[sample['name']
+                                                      for sample in s.strains[strain] if sample['platform'] == 'illumina'])
+        for sample in s.strains[strain]:
+            if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):
+                f = join(sample['dir_name'], 'snippy', 'snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates()
+                snp.at[sample['name'], sample['treatment']] = len(df)
+        snps[strain] = snp
+    fig = p.subplot_violin(snps)
 
 def get_differences_snps(df,strain,treatments,platform):
+    """This is a simple function which lets you identify mutations uniquely found
+    in one treatment.
+    """
     p_mono = dict()
     p_co = dict()
     for sample in s.strains[strain]:
@@ -119,42 +112,11 @@ def get_differences_snps(df,strain,treatments,platform):
         if p_co[product] > 1:
             print(product,p_co[product])
 
-def plot_all_snps():
-    snps = {strain: None for strain in s.strains}
-    for strain in s.strains:
-        treatments = s.treatments[strain]
-        snp = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                      for sample in s.strains[strain] if sample['platform'] == 'illumina'])
-        for sample in s.strains[strain]:
-            if sample['platform'] == 'illumina':
-                f = join(sample['dir_name'], 'snippy', 'snps.tab')
-                df = pd.read_csv(f, sep='\t').drop_duplicates()
-                snp.at[sample['name'], sample['treatment']] = len(df)
-        snps[strain] = snp
-    fig = p.subplot_strains_violin(snps)
-
-    #fig = p.subplot_treatments(s.abbreviations['at'],snps[s.abbreviations['at']])
-    fig.update_layout(
-        xaxis_title='Treatments',
-        yaxis_title='SNPs ',
-        margin=dict(
-            l=0,
-            r=10,
-            b=0,
-            t=45,
-            pad=4
-        ),
-        width=800
-    )
-    #fig.update_yaxes(type='log')
-    fig.update_xaxes(type='category')
-    fig.update_traces(showlegend=False)
-    fig.write_image(join('..', 'plots', 'snps', 'snps_all2.png'), scale=2)
-
-    return snps
-
-
 def write_gc_content():
+    """Small function to get gc content of references."""
+    def get_gc_content(sequence):
+        """This function returns gc content for string sequence"""
+        return 100.0*len([base for base in sequence if base in "GC"])/len(sequence)
     """This is a little helper function to get the GC content of the wild-type genomes"""
     # Setting up df and iterating over all strains
     df = pd.DataFrame(columns=['gc content'])

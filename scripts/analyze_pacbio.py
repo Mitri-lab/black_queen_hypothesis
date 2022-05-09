@@ -97,6 +97,7 @@ def get_indels():
     d = {strain: None for strain in s.strains}
     i = {strain: None for strain in s.strains}
     i_filtered = {strain: None for strain in s.strains}
+    is_e = {strain: None for strain in s.strains}
 
     # Iterating over every strain
     for strain in s.strains:
@@ -110,6 +111,8 @@ def get_indels():
                                                                  for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
         # df for storing sum of filtered inserted bases
         filtered_inserted_bases = pd.DataFrame(columns=treatments, index=[sample['name']
+                                                                          for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
+        inserted_elements = pd.DataFrame(columns=treatments, index=[sample['name']
                                                                           for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
 
         # Iterating over every sample of a strain
@@ -139,13 +142,18 @@ def get_indels():
                     # Writing sum of inserted base pairs to df
                     filtered_inserted_bases.at[sample['name'], sample['treatment']] = sum(pd.read_csv(filtered_insertions, sep='\t',
                                                                                                       usecols=['chromosome', 'position', 'length']).drop_duplicates()['length'])
+                is_elements = join(sample['dir_name'],'ise_scan',sample['name'],'assembly.fasta.tsv')
+                print(is_elements)
+                if exists(is_elements):
+                    inserted_elements.at[sample['name'],sample['treatment']] = len(pd.read_csv(is_elements).drop_duplicates())
 
         # Storing dfs in dictionary for future processing
         d[strain] = deleted_bases
         i[strain] = inserted_bases
         i_filtered[strain] = filtered_inserted_bases
+        is_e[strain] = inserted_elements
 
-    return d, i, i_filtered
+    return d, i, i_filtered,is_e
 
 
 def plot_deletions(d):
@@ -161,10 +169,11 @@ def plot_deletions(d):
             b=0,
             t=45,
             pad=4
-        )
+        ),
+        width=180,
+        height=300
     )
     fig.update_traces(showlegend=False)
-    fig.update_xaxes(type='category')
     fig.update_yaxes(type='log')
     fig.write_image(join('..', 'plots', 'deleted_bases',
                     title.replace(' ', '_')+'.png'), scale=2)
@@ -194,10 +203,10 @@ def plot_insertions(i_filtered):
             b=0,
             t=45,
             pad=4
-        )
+        ),
+        width=380,
+        height=300
     )
-    fig.update_traces(showlegend=False)
-    fig.update_xaxes(type='category')
     fig.update_yaxes(type='log')
     fig.write_image(join('..', 'plots', 'inserted_bases',
                     title.replace(' ', '_')+'.png'), scale=2)
@@ -225,17 +234,18 @@ def get_transposons_insertions():
         t = pd.DataFrame(columns=treatments, index=[sample['name']
                                                     for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
         for sample in samples:
-            if sample['platform'] == 'pacbio':
-                f = join(sample['dir_name'], 'insertions.annotated.tsv')
-                df = pd.read_csv(f, sep='\t').drop_duplicates()
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'], 'snippy','snps.tab')
+                df = pd.read_csv(f, sep='\t').drop_duplicates().dropna(subset='PRODUCT')
                 mask = []
-                for product in df['product']:
-                    if (re.search('transpos', product, flags=re.IGNORECASE)) or \
-                        ((re.search('integr', product, flags=re.IGNORECASE))) or \
-                        (re.search('Is', product, flags=re.IGNORECASE)):
-                        mask.append(True)
-                    else:
-                        mask.append(False)
+                for product in df['PRODUCT']:
+                    try:
+                        if (re.search('transc', product, flags=re.IGNORECASE)):
+                            mask.append(True)
+                        else:
+                            mask.append(False)
+                    except TypeError:
+                        pass
                 df = df[mask]
                 t.at[sample['name'], sample['treatment']] = len(df)
         ts[strain] = t
@@ -253,26 +263,9 @@ def get_transposons_insertions():
             pad=4
         )
     )
-    fig.update_traces(showlegend=False)
-    fig.update_xaxes(type='category')
-    # fig.update_yaxes(type='log')
     fig.write_image(join('..', 'plots', 'hgts',
                     title.replace(' ', '_')+'.png'), scale=2)
-
-    for strain in s.strains:
-        fig = p.subplot_treatments(strain, ts[strain])
-        title = "Tranpositions bases in " + strain
-        fig.update_layout(xaxis_title="samples",
-                          yaxis_title="transpositions", title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(
-            join(
-                "..",
-                "plots",
-                "hgts",
-                title.replace(" ", "_") + ".png",
-            )
-        )
+    return ts
 
 
 def get_transposons_gbk():
@@ -292,10 +285,10 @@ def get_transposons_gbk():
                         except KeyError:
                             pass
                 for product in products:
-                    transpos = re.search('transpos', product, flags=re.IGNORECASE)
+                    transpos = re.search('ribosomal', product, flags=re.IGNORECASE)
                     integr = re.search('integr', product, flags=re.IGNORECASE)
                     IS = re.search('IS', product)
-                    if (transpos) or (integr) or (IS):
+                    if (transpos):# or (integr) or (IS):
                         if pd.isna(t.at[sample['name'], sample['treatment']]):
                             t.at[sample['name'], sample['treatment']] = 0
                         else:
@@ -314,81 +307,7 @@ def get_transposons_gbk():
             pad=4
         )
     )
-    fig.update_traces(showlegend=False)
-    fig.update_xaxes(type='category')
-    # fig.update_yaxes(type='log')
+    #fig.update_yaxes(type='log')
     fig.write_image(join('..', 'plots', 'hgts',
                     title.replace(' ', '_')+'.png'), scale=2)
     return ts
-
-
-def get_affected_products(df_name):
-    """This function returns all products which were affected
-    by deletions or insertions per strain. Counts of observed mutated
-    products are summed."""
-    affected_products = {strain: None for strain in s.strains}
-    # Iterating over every strain
-    for strain, samples in s.strains.items():
-        # Getting all treatments of a strain
-        treatments = s.treatments[strain]
-        # Setting up df
-        sorted_products = pd.DataFrame(columns=treatments)
-        for sample in samples:
-            if sample['platform'] == 'pacbio':
-                f = join(sample['dir_name'], df_name)
-                if exists(f):
-                    # Getting all mutated products per sample
-                    products = set(pd.read_csv(
-                        f, sep='\t').dropna()['product'])
-                    for product in products:
-                        # Storing how many time product was mutated
-                        if product in sorted_products[sample['treatment']].dropna().index:
-                            sorted_products.at[product,
-                                               sample['treatment']] += 1
-                        else:
-                            sorted_products.at[product,
-                                               sample['treatment']] = 1
-        # Sorting index
-        sorted_products.index.name = 'product'
-        # Storing as dictionary
-        affected_products[strain] = sorted_products
-
-    return affected_products
-
-
-def deleted_products():
-    """This function creates a table listing all products which were
-    affected by deletions. It sums the counts of how many times a product
-    was mutated."""
-    # Getting all deleted products
-    affected_products = get_affected_products('no_alignment_regions.tsv')
-    # Iterating over every strain
-    for strain in s.strains:
-        # Getting all treatments per strain
-        treatments = s.treatments[strain]
-        # Creating full column names
-        column_names = ['treatment '+str(treatment)
-                        for treatment in treatments]
-        fname = 'deleted_products_'+strain.replace(' ', '_')+'.csv'
-        # Dumping counts of deleted products to csv
-        affected_products[strain].to_csv(
-            join('..', 'tables', 'pacbio_deletions', fname), header=column_names)
-
-
-def inserted_products():
-    """This function creates a table listing all products which were
-    affected by insertions. It sums the counts of how many times a product
-    was mutated."""
-    # Getting all products affected by insertions
-    affected_products = get_affected_products('insertions.noalignments.tsv')
-    # Iterating over every strain
-    for strain in s.strains:
-        # Getting all treatments per strain
-        treatments = s.treatments[strain]
-        # Creating full column names
-        column_names = ['treatment '+str(treatment)
-                        for treatment in treatments]
-        fname = 'inserted_products_'+strain.replace(' ', '_')+'.csv'
-        # Dumping counts of inserted products to csv
-        affected_products[strain].to_csv(
-            join('..', 'tables', 'pacbio_insertions', fname), header=column_names)
