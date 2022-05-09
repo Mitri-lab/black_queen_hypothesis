@@ -120,6 +120,18 @@ rule hgt_detection:
     shell:
         "detect_hgts {input} {params}"
 
+rule ise_scan:
+    input:
+        mutant = join(work,'{sample}','assembly.fasta')
+    output:
+        join(work,'{sample}','ise_scan','assembly.fasta.tsv')
+    params:
+        out_dir = join(work,'{sample}','ise_scan')
+    threads:
+        16
+    shell:
+        "isescan.py --seqfile {input} --output {params} --nthread {threads}"
+
 #We also creat a report for the alignment file given us interesting stats
 #For the report we need to store the labels of the plots as json
 rule labels:
