@@ -8,3 +8,4 @@ scripts/workflows/metaphlan/.snakemake
 scripts/filesystem/__pycache__
 scripts/tmp.py
 plots/effects/
+.*DS_Store
