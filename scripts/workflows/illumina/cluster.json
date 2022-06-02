@@ -14,6 +14,11 @@
         "mem": "256G",
         "time": "6:0:0"
     },
+    "freebayes":
+    {
+        "mem": "256",
+        "time": "24:0:0"
+    },
     "labels":
     {
         "mem": "1G",

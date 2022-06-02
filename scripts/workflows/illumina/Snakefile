@@ -93,8 +93,24 @@ rule snippy:
         outdir = join(work,'{sample}','{strain}','snippy')
     shell:
         """
-        snippy --cpus 32 --force --ram 256 --minfrac 0 --cleanup --outdir \
+        snippy --cpus 32 --force --ram 256 --minfrac 0 --outdir \
         {params} --reference {input.reference} --bam {input.bam}
+        """
+
+#Low frequency SNP calling with freebayes
+rule freebayes:
+    input:
+        reference = join(work,'{strain}','reference.fasta'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        outfile = join(work,'{sample}','{strain}','var.vcf')
+    threads:
+        16
+    shell:
+        """
+        freebayes -f {input.reference} {input.bam} --min-alternate-count 3 \
+        --min-alternate-fraction 0.05 --pooled-continuous --haplotype-length 0 \
+        --standard-filters > {output}
         """
 
 #This rule is not used currently but would allow to indentify regions with no coverage
