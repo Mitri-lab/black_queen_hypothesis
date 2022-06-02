@@ -139,7 +139,7 @@ class Plotting():
             subset = df[treatment].dropna()
             fig.add_trace(go.Scatter(x=subset.index,y=subset.values,mode='markers',marker_color=color),\
                 row=1,col=counter+1)
-        return fig
+        return fig       
 
     def subplot_products(self,strain,df):
         """This function plots the products impacted by mutations.
