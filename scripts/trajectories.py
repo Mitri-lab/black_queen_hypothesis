@@ -4,6 +4,8 @@ from os.path import join, exists
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
 from Bio import SeqIO
 from colour import Color
 
@@ -89,6 +91,7 @@ class SNPs:
                 self.df.at[i, 'qual'] = snp['qual']
                 self.df.at[i, 'color'] = key
                 self.df.at[i, 'product'] = snp['product']
+                self.df.at[i, 'treatment'] = sample['treatment']
                 i += 1
 
         if filter_genes:
@@ -127,7 +130,7 @@ class SNPs:
         labels = {snp: product for snp, product in zip(
             df['color'], df['product'])}
 
-        fig = px.line(df, x='timepoint', y='freq', line_group='color',color='product',
+        fig = px.line(df, x='timepoint', y='freq', line_group='color', color='product',
                       facet_col='micro_treat', facet_col_wrap=5,
                       hover_data=['product'],
                       category_orders={'micro_treat': list(
@@ -135,7 +138,7 @@ class SNPs:
                       color_discrete_map=products)
         fig.update_xaxes(categoryorder='array', categoryarray=[
                          'T11', 'T22', 'T33', 'T44'])
-        #fig.update_traces(showlegend=True)
+        # fig.update_traces(showlegend=True)
         fig.write_html(out + '_trajectories.html')
         """names = set()
         fig.for_each_trace(
@@ -150,6 +153,41 @@ class SNPs:
                            category_orders={'micro_treat': list(sorted(self.df['micro_treat']))})
         fig.write_html(out + '_frequencies.html')
 
+    def plot_freq_histogram(self, out):
+        fig = px.histogram(self.df, x='freq', facet_col='micro_treat', log_y=False,
+                           facet_col_wrap=5, title='Freq dist',
+                           category_orders={'micro_treat': list(sorted(self.df['micro_treat']))})
+        fig.write_html(out + '_frequencies_hist.html')
+
+    def plot_freq_violin(self, species, out):
+        treatments = s.treatments[species]
+        fig = make_subplots(rows=1, cols=len(treatments),
+                            shared_yaxes=True, subplot_titles=treatments)
+        for counter, treatment in enumerate(treatments):
+            for timepoint in ['T11', 'T22', 'T33', 'T44']:
+                df = self.df[self.df['timepoint'] == timepoint]
+                df = df[df['treatment'] == treatment]
+                fig.add_trace(go.Violin(y=df['freq'], points='all', spanmode='hard', marker_color='blue',
+                                        pointpos=0, name=timepoint, legendgroup=timepoint, showlegend=False), row=1, col=counter+1)
+        fig.write_html(out + '_frequencies_violin.html')
+
+    def plot_snps_bar(self, species, out):
+        colors = {1: 'red',
+                  2: 'red',
+                  3: 'purple',
+                  4: 'orange'}
+        treatments = s.treatments[species]
+        fig = go.Figure()
+        for counter, treatment in enumerate(treatments):
+            for timepoint in ['T11', 'T22', 'T33', 'T44']:
+                df = self.df[self.df['timepoint'] == timepoint]
+                df = df[df['treatment'] == treatment]
+                n_samples = len(set(df['micro_treat']))
+                fig.add_trace(go.Scatter(x=[timepoint], y=[len(
+                    df)/n_samples], name=treatment, legendgroup=treatment, showlegend=True,line_color=colors[treatment], mode='markers'))
+        fig.update_xaxes(type='category')
+        fig.write_html(out + '_snps_bar.html')
+
     def plot_products(self, out):
         fig = px.histogram(self.df, x='product', facet_col='micro_treat', log_y=True,
                            facet_col_wrap=5, title='SNP frequencies',
@@ -160,13 +198,16 @@ class SNPs:
         fig.write_html(out + '_products.html')
 
 
-snps = SNPs(filter=0,parse=True)
+snps = SNPs(filter=20, parse=True)
 snps.join_genbank()
-strain = s.abbreviations['ms']
+strain = s.abbreviations['at']
 out = s.abbreviations[strain]
 snps.get_data_frame(strain)
+snps.plot_freq_violin(strain, out)
+snps.plot_snps_bar(strain, out)
+# snps.plot_freq_histogram(out)
 # snps.plot_products(out)
-fig = snps.plot_trajectories(out)
+#fig = snps.plot_trajectories(out)
 # snps.plot_phred_score(out)
 # snps.plot_frequencies(out)
 # snps.plot_trajectories(out)
