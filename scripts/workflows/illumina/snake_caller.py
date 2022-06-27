@@ -46,10 +46,22 @@ def strain_caller(strain,output_file):
         s.abbreviations[strain],output_file)
     submit(files)
 
+def sample_caller(output_file):
+    output = []
+    for species,samples in s.strains.items():
+        for sample in samples:
+            if sample['platform'] == 'illumina':
+                output.append(sample['name'])
+                break
+    submit(join(work,'{'+','.join(output)+'}',\
+        output_file))
+
+
 
 if __name__ == '__main__':
     """Example of a function call. Super nice that abbrevieations work.
     Example how to run this script: sbatch snake_caller.py at
     It's nice that this script then also runs as a sleeper on the cluster.
     """
-    strain_caller(s.abbreviations[sys.argv[1]],join('var.vcf'))
+    #strain_caller(s.abbreviations[sys.argv[1]],join('var.vcf'))
+    strain_caller(s.abbreviations['ms'],'reads.sig')

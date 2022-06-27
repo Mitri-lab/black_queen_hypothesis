@@ -129,3 +129,27 @@ rule no_alignments:
         """
         detect_deletions --no_alignment_only --min_mapping_quality 0 --genbank {input} --min_count 10 {params}
         """
+
+rule mapped_reads_only:
+    input:
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        join(work,'{sample}','{strain}','mapped_reads.fastq.gz')
+    threads:
+        32
+    shell:
+        """
+        samtools fastq -F 4 {input} | gzip -c > {output}
+        """
+
+rule sourmash:
+    input:
+        join(work,'{sample}','{strain}','mapped_reads.fastq.gz')
+    output:
+        join(work,'{sample}','{strain}','reads.sig')
+    threads:
+        32
+    shell:
+        """
+        sourmash sketch dna -p scaled=1000,k=31 {input} -o {output}
+        """

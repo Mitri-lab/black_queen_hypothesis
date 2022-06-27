@@ -38,5 +38,15 @@
     {
         "mem": "64G",
         "time": "1:0:0"
+    },
+    "sourmash":
+    {
+        "mem": "64G",
+        "time": "1:0:0"
+    },
+    "mapped_reads_only":
+    {
+        "mem": "64G",
+        "time": "1:0:0"
     }
 }
