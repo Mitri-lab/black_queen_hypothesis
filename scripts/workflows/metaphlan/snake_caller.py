@@ -54,19 +54,19 @@ def db_markers():
 
 def get_pkls(strain,regex):
     treatments = s.treatments[s.abbreviations[strain]]
-    return join(work,regex+'.'+str(treatments).replace(' ','')+'*',regex+'*.pkl')
+    return join(work,regex,regex+'.pkl')
 
 def strainphlan(strain,regex):
     name = 's__'+s.abbreviations[strain].replace(' ','_')
     pkls = get_pkls(strain,regex)
+    print(pkls)
     db_marker = join(work,strain,name+'.fna')
     reference = s.references[s.abbreviations[strain]]
     clade = name
     out = join(work,strain,'strainphlan')
     if not exists(out):
         mkdir(out)
-    #'-r',reference,
-    cmd = ['strainphlan','-s',pkls,'-m',db_marker,\
+    cmd = ['strainphlan','-s',pkls,'-m',db_marker,'-r',reference,\
         '-c',clade,'-n','16','--mutation_rates','-o',out]
     call(' '.join(cmd),shell=True)
 
