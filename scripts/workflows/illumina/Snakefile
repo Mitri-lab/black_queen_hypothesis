@@ -97,6 +97,7 @@ rule snippy:
         {params} --reference {input.reference} --bam {input.bam}
         """
 
+
 #Low frequency SNP calling with freebayes
 rule freebayes:
     input:
@@ -139,8 +140,23 @@ rule mapped_reads_only:
         32
     shell:
         """
-        samtools fastq -F 4 {input} | gzip -c > {output}
+        samtools fastq -f 2 {input} | gzip -c > {output}
         """
+
+rule spades:
+    input:
+        reads = join(work,'{sample}','{strain}','mapped_reads.fastq.gz')
+    output:
+        assembly = join(work,'{sample}','{strain}','spades','contigs.fasta')
+    params:
+        out_dir = join(work,'{sample}','{strain}','spades')
+    threads:
+        32
+    shell:
+        """
+        spades.py --12 {input.reads} --careful -t {threads}  -o {params.out_dir}
+        """
+
 
 rule sourmash:
     input:

@@ -64,4 +64,5 @@ if __name__ == '__main__':
     It's nice that this script then also runs as a sleeper on the cluster.
     """
     #strain_caller(s.abbreviations[sys.argv[1]],join('var.vcf'))
-    strain_caller(s.abbreviations['ms'],'reads.sig')
+    for name in ['ms','at','ct']:
+        strain_caller(s.abbreviations[name],'mapped_reads.fastq.gz')
