@@ -1,0 +1,119 @@
+from os.path import join
+from samples import Samples
+
+s = Samples()
+
+
+#Setting global data path
+work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ancestors'
+
+def get_genome_length(wildcards):
+    genome_sizes = {
+        'at':'5.3m',
+        'ct':'6.1m',
+        'ms':'3.7m',
+        'oa':'5.1m'}
+    return genome_sizes[wildcards.strain]
+
+def get_genus(wildcards):
+    return s.abbreviations[wildcards.strain].split(' ')[0]
+
+def get_species(wildcards):
+    return s.abbreviations[wildcards.strain].split(' ')[1]
+
+rule canu:
+    input:
+        pacbio = join(work,'{strain}','pacbio_reads.filtered.fastq.gz')
+    params:
+        genome_length = get_genome_length,
+        out_dir = join(work,'{strain}','canu'),
+        prefix = 'assembly'
+    output:
+        join(work,'{strain}','canu','assembly.contigs.fasta')
+    threads:
+        32
+    shell:
+        """
+        canu -p {params.prefix} -d {params.out_dir} useGrid=false genomeSize={params.genome_length} \
+        -pacbio {input.pacbio}
+        """
+
+rule map_long_reads:
+    input:
+        reads = join(work,'{strain}','pacbio_reads.filtered.fastq.gz'),
+        assembly = join(work,'{strain}','canu','assembly.contigs.fasta')
+    output:
+        join(work,'{strain}','mapped_pacbio_reads.sam')
+    threads:
+        16
+    shell:
+        """
+        minimap2 -ax map-pb {input.assembly} {input.reads} > {output}
+        """
+    
+
+rule racon:
+    input:
+        fasta = join(work,'{strain}','canu','assembly.contigs.fasta'),
+        fastq = join(work,'{strain}','pacbio_reads.filtered.fastq.gz'),
+        alignment = join(work,'{strain}','mapped_pacbio_reads.sam')
+    threads:
+        32
+    output:
+        join(work,'{strain}','assembly.contigs.racon.fasta')
+    shell:
+        """
+        racon {input.fastq} {input.alignment} {input.fasta} > {output}
+        """
+
+rule map_short_reads:
+    input:
+        read1 = join(work,'{strain}','read1.filtered.fastq'),
+        read2 = join(work,'{strain}','read2.filtered.fastq'),
+        assembly = join(work,'{strain}','assembly.contigs.racon.fasta')
+    output:
+        sam_read1 = join(work,'{strain}','mapped_illumina_read1.sam'),
+        sam_read2 = join(work,'{strain}','mapped_illumina_read2.sam'),
+    threads:
+        16  
+    shell:
+        """
+        bwa index {input.assembly}
+        bwa mem -t {threads} -a {input.assembly} {input.read1} > {output.sam_read1}
+        bwa mem -t {threads} -a {input.assembly} {input.read2} > {output.sam_read2}
+        """
+    
+rule polypolish:
+    input:
+        sam_read1 = join(work,'{strain}','mapped_illumina_read1.sam'),
+        sam_read2 = join(work,'{strain}','mapped_illumina_read2.sam'),
+        assembly = join(work,'{strain}','assembly.contigs.racon.fasta')
+    output:
+        sam_read1 = join(work,'{strain}','mapped_illumina_read1.filtered.sam'),
+        sam_read2 = join(work,'{strain}','mapped_illumina_read2.filtered.sam'),
+        assembly = join(work,'{strain}','assembly.contigs.polypolish.fasta')
+    threads:
+        16
+    shell:
+        """
+        polypolish_insert_filter.py --in1 {input.sam_read1} --in2 {input.sam_read2} \
+        --out1 {output.sam_read1} --out2 {output.sam_read2}
+        polypolish {input.assembly} {output.sam_read1} {output.sam_read2} > {output.assembly} 
+        """
+
+rule annotate:
+    input:
+        assembly = join(work,'{strain}','assembly.contigs.polypolish.fasta')
+    params:
+        out_dir = join(work,'{strain}','bakta'),
+        genus = get_genus,
+        species = get_species
+    output:
+        join(work,'{strain}','bakta','assembly.contigs.polypolish.gbff')
+    threads:
+        16
+    shell:
+        """
+        bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input.assembly} --output {params.out_dir}\
+        --genus {params.genus} --species {params.species}
+        """

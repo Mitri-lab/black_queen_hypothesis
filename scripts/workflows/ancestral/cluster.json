@@ -1,0 +1,32 @@
+{
+    "canu":
+    {
+        "mem": "128G",
+        "time": "12:0:0"
+    },
+    "map_long_reads":
+    {
+        "mem": "64G",
+        "time": "02:0:0"
+    },
+    "racon":
+    {
+        "mem": "128G",
+        "time": "06:0:0"
+    },
+    "map_short_reads":
+    {
+        "mem": "64G",
+        "time": "06:0:0"
+    },
+    "polypolish":
+    {
+        "mem": "64G",
+        "time": "06:0:0"
+    },
+    "annotate":
+    {
+        "mem": "64G",
+        "time": "02:0:0"
+    }
+}
