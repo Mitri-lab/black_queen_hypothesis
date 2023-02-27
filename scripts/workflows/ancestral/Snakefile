@@ -111,7 +111,7 @@ rule annotate:
     output:
         join(work,'{strain}','bakta','assembly.contigs.polypolish.gbff')
     threads:
-        16
+        1
     shell:
         """
         bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input.assembly} --output {params.out_dir}\

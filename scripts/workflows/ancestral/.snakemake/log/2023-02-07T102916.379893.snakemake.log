@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 100
+Job stats:
+job         count    min threads    max threads
+--------  -------  -------------  -------------
+annotate        2              1              1
+total           2              1              1
+
+Select jobs to execute...
+
+[Tue Feb  7 10:29:17 2023]
+rule annotate:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ancestors/ct/assembly.contigs.polypolish.fasta
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ancestors/ct/bakta/assembly.contigs.polypolish.gbff
+    jobid: 12
+    wildcards: strain=ct
+    resources: tmpdir=/tmp/24489995
+
+Submitted job 12 with external jobid 'Submitted batch job 24490000'.
+
+[Tue Feb  7 10:29:17 2023]
+rule annotate:
+    input: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ancestors/oa/assembly.contigs.polypolish.fasta
+    output: /work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/ancestors/oa/bakta/assembly.contigs.polypolish.gbff
+    jobid: 0
+    wildcards: strain=oa
+    resources: tmpdir=/tmp/24489995
+
+Submitted job 0 with external jobid 'Submitted batch job 24490001'.
