@@ -13,7 +13,7 @@ s = Samples()
 
 
 class SNPs:
-    def __init__(self, filter=20, parse=False):
+    def __init__(self, filter=20, parse=False, strain=None):
         if parse:
             self.snps = {strain: [] for strain in s.strains}
             for strain, samples in s.strains.items():
@@ -48,7 +48,8 @@ class SNPs:
                         sample['snps'] = snps
                         self.snps[strain].append(sample)
         else:
-            self.df = pd.read_csv(join(s.work, 'bulk', 'snps.csv'))
+            f = join(s.work, strain, 'snps.csv')
+            self.df = pd.read_csv(f)
 
     def join_genbank(self):
         genbanks = {}
@@ -127,8 +128,6 @@ class SNPs:
         for snp, product in zip(df['color'], df['product']):
             colors[snp] = products[product]
 
-        labels = {snp: product for snp, product in zip(
-            df['color'], df['product'])}
 
         fig = px.line(df, x='timepoint', y='freq', line_group='color', color='product',
                       facet_col='micro_treat', facet_col_wrap=5,
@@ -140,24 +139,7 @@ class SNPs:
                          'T11', 'T22', 'T33', 'T44'])
         # fig.update_traces(showlegend=True)
         fig.write_html(out + '_trajectories.html')
-        """names = set()
-        fig.for_each_trace(
-            lambda trace:
-                trace.update(showlegend=False)
-                if (trace.name in names) else names.add(trace.name))"""
         return fig
-
-    def plot_frequencies(self, out):
-        fig = px.histogram(self.df, x='freq', facet_col='micro_treat', log_y=True,
-                           facet_col_wrap=4, title='SNP frequencies',
-                           category_orders={'micro_treat': list(sorted(self.df['micro_treat']))})
-        fig.write_html(out + '_frequencies.html')
-
-    def plot_freq_histogram(self, out):
-        fig = px.histogram(self.df, x='freq', facet_col='micro_treat', log_y=False,
-                           facet_col_wrap=5, title='Freq dist',
-                           category_orders={'micro_treat': list(sorted(self.df['micro_treat']))})
-        fig.write_html(out + '_frequencies_hist.html')
 
     def plot_freq_violin(self, species, out):
         treatments = s.treatments[species]
@@ -171,22 +153,6 @@ class SNPs:
                                         pointpos=0, name=timepoint, legendgroup=timepoint, showlegend=False), row=1, col=counter+1)
         fig.write_html(out + '_frequencies_violin.html')
 
-    def plot_snps_bar(self, species, out):
-        colors = {1: 'red',
-                  2: 'red',
-                  3: 'purple',
-                  4: 'orange'}
-        treatments = s.treatments[species]
-        fig = go.Figure()
-        for counter, treatment in enumerate(treatments):
-            for timepoint in ['T11', 'T22', 'T33', 'T44']:
-                df = self.df[self.df['timepoint'] == timepoint]
-                df = df[df['treatment'] == treatment]
-                n_samples = len(set(df['micro_treat']))
-                fig.add_trace(go.Scatter(x=[timepoint], y=[len(
-                    df)/n_samples], name=treatment, legendgroup=treatment, showlegend=True,line_color=colors[treatment], mode='markers'))
-        fig.update_xaxes(type='category')
-        fig.write_html(out + '_snps_bar.html')
 
     def plot_products(self, out):
         fig = px.histogram(self.df, x='product', facet_col='micro_treat', log_y=True,
@@ -197,26 +163,32 @@ class SNPs:
                          categoryarray=list(set(self.df['product'])))
         fig.write_html(out + '_products.html')
 
+    def plot_n_snps(self, strain, out, filter=0.8):
+        cosms = {treatment: 0 for treatment in s.treatments[strain]}
+        for micro_treat in set(self.df['micro_treat']):
+            treat = int(str(micro_treat).split('.')[0])
+            cosms[treat] += 1
+        df = pd.DataFrame(0, columns=['treatment', 'SNPs'],
+                          index=s.treatments[strain])
+        df['treatment'] = df.index
+        t44 = self.df[self.df['timepoint'] == 'T44']
+        for treatment, freq in zip(t44['treatment'], t44['freq']):
+            if freq >= filter:
+                df.at[treatment, 'SNPs'] += 1
+        for treatment, snps in zip(df['treatment'], df['SNPs']):
+            df.at[treatment, 'SNPs'] = snps/cosms[treatment]
+        fig = px.bar(df, x='treatment', y='SNPs')
+        fig.update_xaxes(type='category')
+        fig.update_layout(yaxis_title='n SNPs', xaxis_title='Treatment',
+                          title='n SNPs normalized by samples')
+        fig.write_html(out + 'n_snps_' + str(filter) + '.html')
 
-snps = SNPs(filter=20, parse=True)
-snps.join_genbank()
-strain = s.abbreviations['at']
-out = s.abbreviations[strain]
-snps.get_data_frame(strain)
-snps.plot_freq_violin(strain, out)
-snps.plot_snps_bar(strain, out)
-# snps.plot_freq_histogram(out)
-# snps.plot_products(out)
-#fig = snps.plot_trajectories(out)
-# snps.plot_phred_score(out)
-# snps.plot_frequencies(out)
-# snps.plot_trajectories(out)
-# snps.get_data_frame(strain,filter_genes=True)
-#out = 'unique_genes_' + out
-# snps.plot_frequencies(out)
-# snps.plot_trajectories(out)
-"""freqs = snps.plot_trajectories()
-cosms = set(freqs['micro_treat'])
-for cosm in cosms:
-    tmp = freqs[freqs['micro_treat'] == cosm]
-    print(cosm,len(tmp))"""
+
+snps = SNPs(filter=20, parse=False, strain='at')
+abbr = 'at'
+strain = s.abbreviations[abbr]
+d = join('..', 'plots', 'freqs', abbr, '')
+snps.plot_n_snps(strain, d,filter=0.8)
+snps.plot_freq_violin(strain, d)
+snps.plot_trajectories(d)
+#snps.plot_snps_bar(strain, out)
