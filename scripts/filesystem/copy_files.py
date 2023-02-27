@@ -2,8 +2,10 @@ import shutil
 import glob
 import pandas as pd
 import os
-from os.path import join,exists
+from os.path import join, exists
 from samples import Samples
+from os import symlink
+
 
 def create_dirs():
     """This creates the directory sturcture for the hgt analysis of the pacbio data"""
@@ -30,6 +32,7 @@ class Illumina():
     Those moved files can then be used for the Snakemkae workflow
     https://github.com/nahanoo/black_queen_hypothesis/tree/main/scripts/workflows/illumina
     """
+
     def __init__(self):
         self.target_dir = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
         self.src_dir = '/nas/FAC/FBM/DMF/smitri/evomicrocomm/D2c/00_ILLUMINA_DATA/02_TRIMMOMATIC/'
@@ -42,23 +45,40 @@ class Illumina():
                 if sample['platform'] == 'illumina':
                     if not os.path.exists(sample['dir']):
                         os.makedirs(sample['dir'])
-    
+
     def copy_references(self):
         """Copying references to every directory. Bit overkill but convenient."""
         for strain in self.samples.strains:
             for sample in self.samples.strains[strain]:
                 if sample['platform'] == 'illumina':
-                    if not os.path.exists(os.path.join(sample['dir'],'reference.fasta')):
-                        shutil.copyfile(self.samples.references[strain],os.path.join(sample['dir'],'reference.fasta'))
+                    if not os.path.exists(os.path.join(sample['dir'], 'reference.fasta')):
+                        shutil.copyfile(self.samples.references[strain], os.path.join(
+                            sample['dir'], 'reference.fasta'))
 
     def copy_reads(self):
         df = pd.read_csv('illumina_names.csv')
-        for fname,sample in zip(df['fname'],df['sample']):
-            reads = sorted(glob.glob(os.path.join(self.src_dir,fname+'*trimmed.fq.gz')))
-            names = ['read1.fq.gz','read2.fq.gz']
-            for read,name in zip(reads,names):
-                cmd = ['sbatch','copy_files.sh',read,\
-                    os.path.join(self.target_dir,sample,name)]
-                if not os.path.exists(os.path.join(self.target_dir,sample,name)):
+        for fname, sample in zip(df['fname'], df['sample']):
+            reads = sorted(glob.glob(os.path.join(
+                self.src_dir, fname+'*trimmed.fq.gz')))
+            names = ['read1.fq.gz', 'read2.fq.gz']
+            for read, name in zip(reads, names):
+                cmd = ['sbatch', 'copy_files.sh', read,
+                       os.path.join(self.target_dir, sample, name)]
+                if not os.path.exists(os.path.join(self.target_dir, sample, name)):
                     print(sample)
-                    shutil.copyfile(read,os.path.join(self.target_dir,sample,name))
+                    shutil.copyfile(read, os.path.join(
+                        self.target_dir, sample, name))
+
+    def symlink_illumina(self):
+        s = Samples()
+        df = pd.read_csv('illumina_names.csv')
+        target_dir = '/nas/FAC/FBM/DMF/smitri/evomicrocomm/D2c/illumina_samples'
+        for fname, sample in zip(df['fname'], df['sample']):
+            reads = sorted(glob.glob(os.path.join(
+                self.src_dir, fname+'*trimmed.fq.gz')))
+            names = ['read1.fq.gz', 'read2.fq.gz']
+            for read, name in zip(reads, names):
+                if not os.path.exists(os.path.join(target_dir, sample, name)):
+                    symlink(read, os.path.join(
+                        target_dir, sample, name))
+
