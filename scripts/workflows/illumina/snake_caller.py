@@ -25,37 +25,49 @@ and creates missing input files.
 """
 
 
-#Defining some globals
+# Defining some globals
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data/'
 s = Samples()
+
 
 def submit(files):
     """Basic snakemake calling taking the desired output file as input."""
     cluster_config = '--cluster-config cluster.json --cluster \
         "sbatch --mem={cluster.mem} -t {cluster.time} -c {threads}"'
-    cmd = ['snakemake','--rerun-incomplete','-j','100',cluster_config,files]
-    subprocess.call(' '.join(cmd),shell=True)
+    cmd = ['snakemake', '--rerun-incomplete',
+           '-j', '500', cluster_config, files]
+    subprocess.call(' '.join(cmd), shell=True)
 
-def strain_caller(strain,output_file):
+
+def strain_caller(strain, output_file):
     """This allows to create desired files per strain."""
     output = []
     for sample in s.strains[strain]:
         if sample['platform'] == 'illumina':
             output.append(sample['name'])
-    files = join(work,'{'+','.join(output)+'}',\
-        s.abbreviations[strain],output_file)
+    files = join(work, '{'+','.join(output)+'}',
+                 s.abbreviations[strain], output_file)
     submit(files)
+
+def all_caller(output_file):
+    output = []
+    for strain,samples in s.strains.items():
+        for sample in samples:
+            if sample['platform'] == 'illumina':
+                output.append(join(sample['name'],s.abbreviations[strain]))
+    files = join(work, '{'+','.join(output)+'}', output_file)
+    submit(files)
+
 
 def sample_caller(output_file):
     output = []
-    for species,samples in s.strains.items():
+    for species, samples in s.strains.items():
         for sample in samples:
             if sample['platform'] == 'illumina':
                 output.append(sample['name'])
                 break
-    submit(join(work,'{'+','.join(output)+'}',\
-        output_file))
-
+    submit(join(work, '{'+','.join(output)+'}',
+                output_file))
 
 
 if __name__ == '__main__':
@@ -63,6 +75,9 @@ if __name__ == '__main__':
     Example how to run this script: sbatch snake_caller.py at
     It's nice that this script then also runs as a sleeper on the cluster.
     """
-    #strain_caller(s.abbreviations[sys.argv[1]],join('var.vcf'))
-    for name in ['at']:
-        strain_caller(s.abbreviations[name],join('spades','contigs.fasta'))
+    #strain_caller(s.abbreviations[sys.argv[1]],join('snippy', 'snps.tab'))
+    #strain_caller(s.abbreviations['ms'], join('snippy', 'snps.tab'))
+    strain_caller(s.abbreviations[sys.argv[1]],'reads.sig')
+    #strain_caller(s.abbreviations['ct'],'mapped_reads.filtered.sorted.bam')
+    #all_caller(join('snippy','snps.tab'))
+
