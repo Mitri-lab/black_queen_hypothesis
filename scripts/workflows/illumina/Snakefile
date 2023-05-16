@@ -23,21 +23,28 @@ def get_strain(wildcards):
     abbreviations and full strian name."""
     return Samples().abbreviations[wildcards.strain]
 
+
+def get_reference(wildcards):
+    """Returns reference fasta based on sample name"""
+    return join(work,'ancestors',wildcards.strain,'assembly.contigs.polypolish.fasta')
+
+
 #Mapping illumina reads to wild-type genomes
 #Read group in minimap2 command must match the output direcotry in snippy rule
 rule mapping:
     input:
-        reference = join(work,'{strain}','reference.fasta'),
+        #reference = join(work,'ancestors','{strain}','assembly.contigs.polypolish.fasta'),
+        reference = get_reference,
         read1 = join(work,'{sample}','read1.fq.gz'),
         read2 = join(work,'{sample}','read2.fq.gz')
     output:
         join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     threads:
-        16
+        8
     shell:
         """
-        minimap2 -t 16 -R '@RG\\tID:snippy\\tSM:snippy' -ax sr {input} | \
-        samtools sort --threads 16 -o {output}
+        minimap2 -t 8 -R '@RG\\tID:snippy\\tSM:snippy' -ax sr {input} | \
+        samtools view -b -F 4 -q 60 | samtools sort --threads 16 -o {output}
         samtools index {output}
         """
 
@@ -48,7 +55,7 @@ rule flagstat:
     output:
         join(work,'{sample}','{strain}','flagstat.tsv')
     threads:
-        16
+        2
     shell:
         "samtools flagstat --threads {threads} -O tsv {input} > {output}"
 
@@ -64,36 +71,50 @@ rule labels:
     shell:
         "python create_labels.py {wildcards.sample} {params.strain} {params.outdir}"
 
+rule depth:
+    input:
+        ref = get_reference,
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    output:
+        join(work,'{sample}','{strain}','coverage.txt')
+    params:
+        outdir = join(work,'{sample}','{strain}')
+    threads:
+        1
+    shell:
+        "python coverage.py {input.ref} {input.bam} {params.outdir}"
+
+
 #Creating repord markdown with
 #https://github.com/nahanoo/gc_bias/tree/report
 rule report:
     input:
         labels = join(work,'{sample}','{strain}','labels.json'),
-        reference = join(work,'{strain}','reference.fasta'),
+        reference = join(work,'ancestors','{strain}','assembly.contigs.polypolish.fasta'),
         bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     output:
         join(work,'{sample}','{strain}','report.md')
     params:
         outdir = join(work,'{sample}','{strain}')
     threads:
-        16
+        1
     shell:
         "report_bam_stats {input.reference} {input.bam} {input.labels} {params.outdir}"
 
 #Identifying SNPs using snippy
 rule snippy:
     input:
-        reference = join(work,'{strain}','reference.gbk'),
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+        reference = join(work,'ancestors','{strain}','bakta','assembly.contigs.polypolish.gbff'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
     output:
         outfile = join(work,'{sample}','{strain}','snippy','snps.tab')
     threads:
-        32
+        4
     params:
         outdir = join(work,'{sample}','{strain}','snippy')
     shell:
         """
-        snippy --cpus 32 --force --ram 256 --minfrac 0 --outdir \
+        snippy --cpus 4 --force --minfrac 0 --outdir \
         {params} --reference {input.reference} --bam {input.bam}
         """
 
@@ -101,12 +122,13 @@ rule snippy:
 #Low frequency SNP calling with freebayes
 rule freebayes:
     input:
-        reference = join(work,'{strain}','reference.fasta'),
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+        #reference = join(work,'ancestors','{strain}','assembly.contigs.polypolish.fasta'),
+        reference = get_reference,
+        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
     output:
         outfile = join(work,'{sample}','{strain}','var.vcf')
     threads:
-        16
+        1
     shell:
         """
         freebayes -f {input.reference} {input.bam} --min-alternate-count 3 \
@@ -118,29 +140,58 @@ rule freebayes:
 #It's not used because of sequence biased coverage issues.
 rule no_alignments:
     input:
-        genbank = join(work,'{strain}','reference_stripped.gbk'),
+        genbank = join(work,'ancestors','{strain}','bakta','assembly.contigs.polypolish.fasta'),
         bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     output:
         join(work,'{sample}','{strain}','no_alignment_regions.tsv')
     params:
         outdir = join(work,'{sample}','{strain}')
     threads:
-        16
+        1
     shell:
         """
         detect_deletions --no_alignment_only --min_mapping_quality 0 --genbank {input} --min_count 10 {params}
         """
 
-rule mapped_reads_only:
+rule dump_read_ids:
     input:
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+        d_name = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     output:
-        join(work,'{sample}','{strain}','mapped_reads.fastq.gz')
+        join(work,'{sample}','{strain}','read_ids.txt')
     threads:
-        32
+        1
     shell:
         """
-        samtools fastq -f 2 {input} | gzip -c > {output}
+        python dump_read_ids.py {input}
+        """
+
+rule filter_bam:
+    input:
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+    params:
+
+    output:
+        join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam'),
+        join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam.bai')
+    threads:
+        1
+    shell:
+        """
+        python filter_bam.py {wildcards.sample} {input}
+        samtools index {output}
+        """
+
+rule mapped_reads_only:
+    input:
+        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
+    output:
+        read1 = join(work,'{sample}','{strain}','read1.fastq.gz'),
+        read2 = join(work,'{sample}','{strain}','read2.fastq.gz'),
+    threads:
+        1
+    shell:
+        """
+        samtools fastq -1 {output.read1} -2 {output.read2} {input}
         """
 
 rule spades:
@@ -157,15 +208,42 @@ rule spades:
         spades.py --12 {input.reads} --isolate -t {threads}  -o {params.out_dir}
         """
 
+rule trim_read1:
+    input:
+        read1 = join(work,'{sample}','{strain}','read1.fastq.gz')
+    output:
+        filtered1 = join(work,'{sample}','{strain}','read1.filtered.fastq.gz'),
+    params:
+        out_dir = join(work,'{sample}','{strain}')
+    threads:
+        8
+    shell:
+        """
+        trim-low-abund.py -C 2 -M 2e9 -T {params} --gzip -o {output.filtered1} {input.read1}
+        """
 
+rule trim_read2:
+    input:
+        read2 = join(work,'{sample}','{strain}','read2.fastq.gz')
+    output:
+        filtered2 = join(work,'{sample}','{strain}','read2.filtered.fastq.gz')
+    threads:
+        8
+    params:
+        out_dir = join(work,'{sample}','{strain}')
+    shell:
+        """
+        trim-low-abund.py -C 2 -M 2e9 -T {params} --gzip -o {output.filtered2} {input.read2}
+        """
 rule sourmash:
     input:
-        join(work,'{sample}','{strain}','mapped_reads.fastq.gz')
+        read1 = join(work,'{sample}','{strain}','read1.filtered.fastq.gz'),
+        read2 = join(work,'{sample}','{strain}','read2.filtered.fastq.gz')
     output:
         join(work,'{sample}','{strain}','reads.sig')
     threads:
-        32
+        1
     shell:
         """
-        sourmash sketch dna -p scaled=1000,k=31 {input} -o {output}
+        sourmash sketch dna -p scaled=1000,k=31,k=51 {input} --merge merged -o {output}
         """
