@@ -199,10 +199,16 @@ def diversity_illumina(f,y_label, title):
     colors = px.colors.sample_colorscale(
         "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     hover_data = ['treatment', 'timepoint', 'strain', 'hill', 'cosm']
-    titles = ['T11', 'T22', 'T33', 'T44']
+
     fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
                     points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']},
                     hover_data=hover_data, height=250, width=400)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                      pointpos=0, jitter=1)
+    
+    # Plot annotations
+    titles = ['T11', 'T22', 'T33', 'T44']
+
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = titles[i]
 
@@ -211,29 +217,29 @@ def diversity_illumina(f,y_label, title):
     fig.update_xaxes(title=None)
     fig['layout']['legend']['title']['text'] = 'Treatment'
     fig.update_layout(title=title, boxgroupgap=0.2, boxgap=0.3)
+    # Setting offsetgroups not ideal
     offsetgroups = ['1', '1', '1', '1',
                     '1', '1', '1', '1',
                     '2', '2', '2', '2',
                     '3', '3', '3', '3']
     for i, d in enumerate(fig['data']):
         d['offsetgroup'] = offsetgroups[i]
-    fig.update_traces(boxmean=True, quartilemethod="exclusive",
-                      pointpos=0, jitter=1)
+    
+    # Setting dticks depending if plotting fixed SNPs or variants
     if 'snps' in f:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(
             tickmode='linear', dtick=1))
     else:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+
     fig = font_size(fig)
     fig.write_image(join('..', 'plots', 'snps_figures',
-                    y_label.replace(' ', '_')+'_variants.svg'))
+                    y_label.replace(' ', '_')+'.svg'))
     return fig
 
-fig = diversity(join('..','variants','variants_comp_mapping.csv'),'Variant richness','','illumina')
-
-
 def ct_box(f, y_label, title):
-    df = get_variants(f, 0)
+    """Plots Ct SNPs/variatns with timepoints on x scale"""
+    df = get_variants(join('..','variants','variants_comp_mapping.csv'),platform='illumina')
     df = df[df['strain'] == strains[s.abbreviations['ct']]]
     n_colors = len(set(df['treatment']))
     colors = px.colors.sample_colorscale(
@@ -251,45 +257,43 @@ def ct_box(f, y_label, title):
 
 
 def heterogenity(f, abb, timepoint, subset=False, add_clusters=False):
-    snps = pd.read_csv(f, dtype={'cosm': str, 'treatment': str})
-    strain = snps[snps['strain'] == s.abbreviations[abb]]
-    strain = strain[strain['timepoint'] == timepoint]
-    strain.index = range(len(strain))
-    strain.insert(0, 'ID', strain.index)
+    """Plots variant distributions over genome.
+    Allows to annotate "clusters". Subsetting possible with treatment
+    as string."""
+    hill = pd.read_csv(f, dtype={'cosm': str, 'treatment': str})
+    hill = hill[hill['strain'] == s.abbreviations[abb]]
+    hill = hill[hill['timepoint'] == timepoint]
+    hill.index = range(len(hill))
+    hill.insert(0, 'ID', hill.index)
     if subset:
-        strain = strain[strain['treatment'] == subset]
+        hill = hill[hill['treatment'] == subset]
+
     hover_data = ['pos', 'depth', 'qual', 'cosm', 'ID']
 
     if subset:
-        n_colors = len(set(strain['cosm']))
+        n_colors = len(set(hill['cosm']))
         colors = px.colors.sample_colorscale(
             "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-        fig = px.scatter(strain, x='pos', y='freq', color='cosm', color_discrete_sequence=colors,
+        fig = px.scatter(hill, x='pos', y='freq', color='cosm', color_discrete_sequence=colors,
                          facet_col='chrom', facet_col_wrap=1, 
-                         facet_row_spacing=0.12, hover_data=hover_data)
+                         facet_row_spacing=0.12, hover_data=hover_data,width=400,height=300)
     else:
-        n_colors = len(set(strain['cosm']))
+        n_colors = len(set(hill['cosm']))
         colors = px.colors.sample_colorscale(
             "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-        fig = px.scatter(strain, x='pos', y='freq', color='treatment', color_discrete_sequence=colors,
+        fig = px.scatter(hill, x='pos', y='freq', color='treatment', color_discrete_sequence=colors,
                          facet_col='chrom', facet_col_wrap=1,
-                         facet_row_spacing=0.12, hover_data=hover_data)
+                         facet_row_spacing=0.12, hover_data=hover_data,width=400,height=300)
     fig.update_xaxes(matches=None, showticklabels=True)
     fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig.add_annotation(x=-0.07, y=0.5,
-                       text="Variant frequency", textangle=-90,
-                       xref="paper", yref="paper")
-    fig.for_each_xaxis(lambda x: x.update(title=''))
-    fig.add_annotation(x=0.5, y=-0.15,
-                       text="Position", textangle=0,
-                       xref="paper", yref="paper", showarrow=False)
+    fig['layout']['yaxis']['title']['text'] = 'Variant frequency'
+    fig['layout']['xaxis']['title']['text'] = 'Position'
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = t['text'].replace('chrom=', '')
 
-    for d in fig['data']:
-        d['marker']['size'] = 6
-    fig.update_layout(font={'size': 14})
+
     if add_clusters:
+        # Annotations for plot
         annot = pd.read_csv('clusters_'+abb+'.csv')
         for i, chrom in enumerate(sorted(set(annot['chrom']))):
             annot_sub = annot[annot['chrom'] == chrom]
@@ -300,17 +304,22 @@ def heterogenity(f, abb, timepoint, subset=False, add_clusters=False):
                 x1 = asid.loc[len(asid)-1].pos
                 fig.add_vline(x=(x0+x1)/2, row=i, annotation_text=id,
                               opacity=0.25)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
     if subset:
         n = abb+'_positions_cosm.svg'
         fig.update_layout(
             title='Variants colored by microcosm for treatment 4 in '+strains[s.abbreviations[abb]])
+        fig['layout']['legend']['title']['text'] = 'Microcosm'
+
+
     else:
         fig.update_layout(title='Variant distribution along the genome')
         n = abb+'_positions.svg'
+    fig = font_size(fig)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+            tickmode='linear', dtick=0.2))
     fig.write_image(join('..', 'plots', 'snps_figures',
                     n))
-    fig.show()
+    return fig
 
 
 def coverage():
