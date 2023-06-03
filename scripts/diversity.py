@@ -5,19 +5,20 @@ import vcfpy
 import pandas as pd
 import plotly.express as px
 from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 
-fig = make_subplots(rows=1, cols=2)
-
+# Sample class for parsing contact me for infos
+# eric.ulrich@unil.ch
 s = Samples()
 
-strains = {s.abbreviations['at']: '<i>A. tumefaciens</i>',
-           s.abbreviations['ct']: '<i>C. testosteroni</i>',
-           s.abbreviations['oa']: '<i>O. anthropi</i>',
-           s.abbreviations['ms']: '<i>M. saperdae</i>'}
+# Global names for species used for plotting
+strains = {s.abbreviations['at']: 'At',
+           s.abbreviations['ct']: 'Ct',
+           s.abbreviations['oa']: 'Oa',
+           s.abbreviations['ms']: 'Ms'}
 
 
 def parse_variants():
+    """Parses vcf files and dumps variants with metdadata as csv."""
     dfs = []
     for strain, samples in s.strains.items():
         for sample in samples:
@@ -35,9 +36,11 @@ def parse_variants():
                             snp['freq'] = record.INFO['AO'][i] / \
                                 record.INFO['DP']
                             snp['alt'] = r
+                            # Creates unique key per variant used for plotting trajectories
                             key = '.'.join([snp['chrom'], str(snp['pos']),
                                             str(sample['treatment']), str(sample['cosm']), str(snp['alt'])])
                             snp['linegroup'] = key
+                            # Quality cutoff
                             if snp['qual'] >= 20:
                                 if (sample['strain'] == s.abbreviations['oa']) & (snp['chrom'] == 'tig00000002_polypolish') & (snp['pos'] in range(119960, 120700)):
                                     pass
@@ -49,27 +52,11 @@ def parse_variants():
     out = out[out['freq'] != 0]
     out['treatment'] = out['treatment'].astype(str)
     out['cosm'] = out['cosm'].astype(str)
-    out.to_csv('variants_strip_f3.csv', index=False)
-    #out[out['freq'] >= 0.75].to_csv('variants_strip_fixed.csv',index=False)
-    #out[out['freq'] < 0.75].to_csv('variants_strip_low.csv',index=False)
-
-
-def font_size(fig):
-    j = 10
-    fig.update_layout(font={'size': j,'color':'black'})
-    for a in fig['layout']['annotations']:
-        a['font']['size'] = j
-        a['font']['color'] = 'black'
-    fig['layout']['title']['font']['size'] = j
-    fig['layout']['title']['font']['color'] = 'black'
-    fig['layout']['legend']['title']['font']['size'] = j
-    fig['layout']['legend']['title']['font']['color'] = 'black'
-    fig.for_each_xaxis(lambda axis: axis.title.update(font=dict(size=j,color='black')))
-    fig.for_each_yaxis(lambda axis: axis.title.update(font=dict(size=j,color='black')))
-    return fig
+    out.to_csv(join('..','variants_comp_mapping.csv'), index=False)
 
 
 def parse_snps():
+    """Parses fixed SNPs from snippy"""
     dfs = []
     for strain, samples in s.strains.items():
         for sample in samples:
@@ -101,10 +88,14 @@ def parse_snps():
     out = out[out['freq'] != 0]
     out['treatment'] = out['treatment'].astype(str)
     out['cosm'] = out['cosm'].astype(str)
-    out.to_csv('snps_split_f3.csv', index=False)
+    out.to_csv(join('..','variants','snps_comp_mapping.csv'), index=False)
+
 
 
 def parse_snps_pacbio():
+    """Parses SNPs from pacbio data.
+    Clonal data, SNPs identified with assemblies.
+    Data equal to strain data."""
     dfs = []
     for strain, samples in s.strains.items():
         for sample in samples:
@@ -136,10 +127,11 @@ def parse_snps_pacbio():
     out = out[out['freq'] != 0]
     out['treatment'] = out['treatment'].astype(str)
     out['cosm'] = out['cosm'].astype(str)
-    out.to_csv('snps_pacbio.csv', index=False)
+    out.to_csv(join('..','snps_pacbio.csv'), index=False)
 
 
 def depth():
+    """Parses coverage textfiles created with snakemake workflow."""
     df = pd.DataFrame(columns=['sample', 'timepoint',
                                'species', 'treatment', 'depth', 'cosm'])
     i = 0
@@ -156,15 +148,36 @@ def depth():
     df.to_csv(
         'depth.csv', index=False)
 
+def font_size(fig):
+    """Style function for figures setting fot size and true black color."""
+    for d in fig['data']:
+        d['marker']['size'] = 3
+        d['line']['width'] = 0.5
+    # Font size
+    j = 10
+    fig.update_layout(font={'size': j,'color':'black'})
+    for a in fig['layout']['annotations']:
+        a['font']['size'] = j
+        a['font']['color'] = 'black'
+    fig['layout']['title']['font']['size'] = j
+    fig['layout']['title']['font']['color'] = 'black'
+    fig['layout']['legend']['title']['font']['size'] = j
+    fig['layout']['legend']['title']['font']['color'] = 'black'
+    fig.for_each_xaxis(lambda axis: axis.title.update(font=dict(size=j,color='black')))
+    fig.for_each_yaxis(lambda axis: axis.title.update(font=dict(size=j,color='black')))
+    return fig
 
-def get_variants(f, q):
+def get_variants(f, platform):
+    """Sums up SNPs or variants from variant csv files in ../variants"""
     snps = pd.read_csv(f)
+    # Hill name from hill numbers, q = 0. Artifiact from old analysis still valid.
     hill = pd.DataFrame(
         columns=['strain', 'treatment', 'hill', 'timepoint', 'cosm'])
     i = 0
     for strain, samples in s.strains.items():
         for sample in samples:
-            if sample['platform'] == 'illumina':
+            if sample['platform'] == platform:
+                # Subsetting dataframe per species per sample
                 sub = snps[(snps['strain'] == strain) & (
                     snps['name'] == sample['name'])]
                 hill.loc[i] = [strains[strain], sample['treatment'],
@@ -175,29 +188,23 @@ def get_variants(f, q):
     return hill
 
 
-def diversity(f, q, y_label, title, pacbio=False):
-    hill = get_variants(f, q)
+def diversity_illumina(f,y_label, title):
+    """Plots summed variants or SNPs"""
+    hill = get_variants(f, 'illumina')
+    # Subsetting for species At and Ct
     a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
     hill = hill[(hill['strain'] == a) | (hill['strain'] == c)]
+    # Color sampling 
     n_colors = len(set(hill['treatment']))
     colors = px.colors.sample_colorscale(
         "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     hover_data = ['treatment', 'timepoint', 'strain', 'hill', 'cosm']
     titles = ['T11', 'T22', 'T33', 'T44']
-    if not pacbio:
-        fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
-                     points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']},
-                     hover_data=hover_data, height=300, width=450)
-        for i, t in enumerate(fig['layout']['annotations']):
-            t['text'] = titles[i]
-    else:
-        fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
-                     boxmode='group', points='all', log_y=False,
-                     hover_data=hover_data, height=300, width=500)
-
-    for d in fig['data']:
-        d['marker']['size'] = 3
-        d['line']['width'] = 0.5
+    fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
+                    points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']},
+                    hover_data=hover_data, height=250, width=400)
+    for i, t in enumerate(fig['layout']['annotations']):
+        t['text'] = titles[i]
 
     fig.for_each_yaxis(lambda y: y.update(title=''))
     fig['layout']['yaxis']['title']['text'] = y_label
@@ -222,6 +229,8 @@ def diversity(f, q, y_label, title, pacbio=False):
                     y_label.replace(' ', '_')+'_variants.svg'))
     return fig
 
+fig = diversity(join('..','variants','variants_comp_mapping.csv'),'Variant richness','','illumina')
+
 
 def ct_box(f, y_label, title):
     df = get_variants(f, 0)
@@ -230,7 +239,7 @@ def ct_box(f, y_label, title):
     colors = px.colors.sample_colorscale(
         "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     fig = px.box(df, x='timepoint', y='hill', color='treatment', color_discrete_sequence=colors,
-                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=350, height=350)
+                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=350, height=300)
     fig['layout']['legend']['title']['text'] = 'Treatment'
     fig.update_xaxes(title='Timepoint')
     fig.update_yaxes(title=y_label)
@@ -357,7 +366,7 @@ def trajectories(species, title):
     hover_data = ['treatment', 'timepoint', 'cosm', 'depth']
     fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors,
                   facet_col='treatment', facet_col_wrap=4, color='cosm', hover_data=hover_data, facet_col_spacing=0.05,
-                  category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=350, width=450)
+                  category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=250, width=400)
     for d in fig['data']:
         d['marker']['size'] = 3
         d['line']['width'] = 1
@@ -371,6 +380,8 @@ def trajectories(species, title):
     fig.update_layout(xaxis2=dict(title="Timepoint"))
     fig.update_layout(title=title)
     fig['layout']['legend']['title']['text'] = 'Microcosm'
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+            tickmode='linear', dtick=0.2))
     fig = font_size(fig)
     fig.write_image(join('..', 'plots', 'snps_figures',
                     species+'_trajectories.svg'))
