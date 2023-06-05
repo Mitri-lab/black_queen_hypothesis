@@ -21,210 +21,6 @@ All plots call this small plotting class in plotting.py
 """
 
 s = Samples()
-p = Plotting()
-e = Experiment()
-
-
-def plot_genome_length():
-    """This function plots the assembly length and the number of contigs
-    produced by assembling the PacBio data of the evolved strains."""
-    # Storing all generated dfs per strain for potential future applications.
-    genome_length = {strain: None for strain in s.strains}
-
-    # Iterating over all strains
-    for strain in s.strains:
-        # Get all treatments of a strain
-        treatments = s.treatments[strain]
-        # df for assembly length
-        length = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                         for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-        # df for n contigs
-        n_contigs = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                            for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-
-        # Iterating over all samples of a strain
-        for sample in s.strains[strain]:
-            # Getting genome lenght and n contigs
-            if sample['platform'] == 'pacbio':
-                # Parsing contigs of assembly
-                contigs = [contig for contig in SeqIO.parse(
-                    join(sample['dir_name'], 'assembly.fasta'), 'fasta')]
-                # Storing assembly length
-                length.at[sample['name'], sample['treatment']] = sum(
-                    [len(contig) for contig in contigs])
-                # Storing n contigs
-                n_contigs.at[sample['name'],
-                             sample['treatment']] = len(contigs)
-
-        # Wrtiting to dictionary for potential future applications
-        genome_length[strain] = length
-
-        # Plotting genome length
-        fig = p.subplot_treatments(strain, length)
-        # Adding genome length of wild-type
-        reference_length = sum(
-            [len(contig) for contig in SeqIO.parse(s.references[strain], 'fasta')])
-        fig.add_hline(y=reference_length,
-                      annotation_text='reference', line_dash="dash")
-        title = 'Assembly length in '+strain
-        # Updating labels and dumping to png
-        fig.update_layout(
-            xaxis_title='samples',
-            yaxis_title='assembly length in bp',
-            title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(join('..', 'plots', 'genome_length',
-                        title.replace(' ', '_')+'.png'))
-
-        # Plotting n contigs
-        fig = p.subplot_treatments(strain, n_contigs)
-        # Updating labels and dumping to png
-        title = 'N contigs in '+strain
-        fig.update_layout(
-            xaxis_title='samples',
-            yaxis_title='n contigs',
-            title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(join('..', 'plots', 'contigs',
-                        title.replace(' ', '_')+'.png'))
-
-    return genome_length
-
-
-def get_indels():
-    """This function plots the sum of deleted and inserted base pairs."""
-    # Storing dfs per strain for potential future applications.
-    d = {strain: None for strain in s.strains}
-    i = {strain: None for strain in s.strains}
-    i_filtered = {strain: None for strain in s.strains}
-    is_e = {strain: None for strain in s.strains}
-
-    # Iterating over every strain
-    for strain in s.strains:
-        # Getting all treatments of a strain
-        treatments = s.treatments[strain]
-        # df for storing sum of deleted bases
-        deleted_bases = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                                for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-        # df for storing sum of inserted bases
-        inserted_bases = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                                 for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-        # df for storing sum of filtered inserted bases
-        filtered_inserted_bases = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                                          for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-        inserted_elements = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                                          for sample in s.strains[strain] if sample['platform'] == 'pacbio'])
-
-        # Iterating over every sample of a strain
-        for sample in s.strains[strain]:
-            if sample['platform'] == 'pacbio':
-                # Biggest impact have regions with no coverage outputted from
-                # https://github.com/nahanoo/deletion_detection
-                no_coverage = join(
-                    sample['dir_name'], 'no_coverage.tsv')
-                if exists(no_coverage):
-                    # Writing sum ob base paris with no alignment to df
-                    deleted_bases.at[sample['name'], sample['treatment']] = sum(pd.read_csv(no_coverage, sep='\t',
-                                                                                            usecols=['chromosome', 'position', 'length']).drop_duplicates()['length'])
-                # Storing sum of inserted base pairs to df derived from
-                # https://github.com/nahanoo/deletion_detection
-                insertions = join(sample['dir_name'],
-                                  'insertions.tsv')
-                if exists(insertions):
-                    # Writing sum of inserted base pairs to df
-                    inserted_bases.at[sample['name'], sample['treatment']] = sum(pd.read_csv(insertions, sep='\t',
-                                                                                             usecols=['chromosome', 'position', 'length']).drop_duplicates()['length'])
-
-                # Storing sum of filtered inserted base pairs
-                filtered_insertions = join(
-                    sample['dir_name'], 'insertions.filtered.tsv')
-                if exists(insertions):
-                    # Writing sum of inserted base pairs to df
-                    filtered_inserted_bases.at[sample['name'], sample['treatment']] = sum(pd.read_csv(filtered_insertions, sep='\t',
-                                                                                                      usecols=['chromosome', 'position', 'length']).drop_duplicates()['length'])
-                is_elements = join(sample['dir_name'],'ise_scan',sample['name'],'assembly.fasta.tsv')
-                print(is_elements)
-                if exists(is_elements):
-                    inserted_elements.at[sample['name'],sample['treatment']] = len(pd.read_csv(is_elements).drop_duplicates())
-
-        # Storing dfs in dictionary for future processing
-        d[strain] = deleted_bases
-        i[strain] = inserted_bases
-        i_filtered[strain] = filtered_inserted_bases
-        is_e[strain] = inserted_elements
-
-    return d, i, i_filtered,is_e
-
-
-def plot_deletions(d):
-    # Plotting deleted base pairs
-    fig = p.subplot_strains(d)
-    title = 'Deletions'
-    fig.update_layout(
-        xaxis_title='Treatments',
-        yaxis_title='Deleted base-pairs',
-        margin=dict(
-            l=0,
-            r=10,
-            b=0,
-            t=45,
-            pad=4
-        ),
-        width=180,
-        height=300
-    )
-    fig.update_traces(showlegend=False)
-    fig.update_yaxes(type='log')
-    fig.write_image(join('..', 'plots', 'deleted_bases',
-                    title.replace(' ', '_')+'.png'), scale=2)
-
-    # Plotting delete base pairs per sample
-    for strain in s.strains:
-        fig = p.subplot_treatments(strain, d[strain])
-        title = 'Deleted bases in '+strain
-        fig.update_layout(
-            xaxis_title='samples',
-            yaxis_title='deleted bp',
-            title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(join('..', 'plots', 'deleted_bases',
-                        title.replace(' ', '_')+'.png'), scale=2)
-
-
-def plot_insertions(i_filtered):
-    fig = p.subplot_strains(i_filtered)
-    title = 'Insertions'
-    fig.update_layout(
-        xaxis_title='Treatments',
-        yaxis_title='Inserted base-pairs',
-        margin=dict(
-            l=0,
-            r=10,
-            b=0,
-            t=45,
-            pad=4
-        ),
-        width=380,
-        height=300
-    )
-    fig.update_yaxes(type='log')
-    fig.write_image(join('..', 'plots', 'inserted_bases',
-                    title.replace(' ', '_')+'.png'), scale=2)
-
-    for strain in s.strains:
-        fig = p.subplot_treatments(strain, i_filtered[strain])
-        title = "Filtered inserted bases in " + strain
-        fig.update_layout(xaxis_title="samples",
-                          yaxis_title="inserted bp", title=title)
-        fig.update_traces(showlegend=False)
-        fig.write_image(
-            join(
-                "..",
-                "plots",
-                "corrected_inserted_bases",
-                title.replace(" ", "_") + ".png",
-            )
-        )
 
 
 def get_transposons_insertions():
@@ -311,3 +107,121 @@ def get_transposons_gbk():
     fig.write_image(join('..', 'plots', 'hgts',
                     title.replace(' ', '_')+'.png'), scale=2)
     return ts
+
+from Bio import SeqIO
+from Bio.SeqRecord import SeqRecord
+from Bio.Seq import Seq
+import pandas as pd
+from os.path import join, exists
+from samples import Samples
+from plotting import Plotting
+#from hgt import Hgt
+
+p = Plotting()
+s = Samples()
+
+
+def get_contigs(fasta):
+    """Parses fastas and returns dictionary with contig name as
+    key and sequence as value."""
+    contigs = [contig for contig in SeqIO.parse(fasta, "fasta")]
+    c = {contig.id: contig.seq for contig in contigs}
+    return c
+
+
+def filter_insertions(min_distance):
+    """Filtering output from deleteion_detection.
+    Filtering is necessary because many inserted sequences
+    are located at start or end of contig which is probably
+    a result of using different assemblers."""
+    for strain, samples in s.strains.items():
+        for sample in samples:
+            if sample["platform"] == "pacbio":
+                # Reading output of deletion detection
+                df = pd.read_csv(
+                    join(sample["dir_name"], "insertions.tsv"),
+                    sep="\t",
+                ).drop_duplicates()
+                # Adding insertion sequence for later processing
+                df.insert(3, "sequence", None)
+                fasta = join(sample["dir_name"], "assembly.fasta")
+                contigs = get_contigs(fasta)
+                # List which stors the index of items to delete because
+                # they don't pass filter criteria
+                to_pop = []
+                # Iterating over every insertion
+                for i, row in df.iterrows():
+                    # Adding inserted sequence
+                    df.at[i, "sequence"] = str(
+                        contigs[row.chromosome][
+                            row.position - 1: row.position - 1 + row.length
+                        ]
+                    )
+                    contig_length = len(contigs[row["chromosome"]])
+                    # We keep insertion sequences which span the entire contig
+                    if row["length"] == contig_length:
+                        pass
+                    # Filtering sequences at beginning of contig
+                    elif row["position"] < min_distance:
+                        to_pop.append(i)
+                    # Filtering sequences at the end of contig
+                    elif contig_length - row["position"] < min_distance:
+                        to_pop.append(i)
+                    else:
+                        pass
+                # Applying filter
+                for element in to_pop:
+                    df = df.drop(element)
+                target = join(
+                    sample["dir_name"], "insertions.filtered.tsv"
+                )
+                # Dumping csv
+                df.to_csv(target, sep="\t", index=False)
+
+
+def track_insertions():
+    """We iterate over every inserted nucleotide protein coding sequence
+    and align it to every ancesteral strain present in the treatment.
+    This allows us to see from where the insertions is coming.
+    We were interested to see if the inserted sequences are potentially
+    products of horizontal gene transfer.
+    """
+    for strain, samples in s.strains.items():
+        for sample in samples:
+            if sample["platform"] == "pacbio":
+                hgt = Hgt(sample)
+                f = join(sample["dir_name"],
+                         "insertions.noalignments.filtered.tsv")
+                # Reading filtered inserted sequences
+                df = pd.read_csv(f, sep="\t")
+                df = df.dropna(subset=["nt_pos"])
+                df.insert(len(df.columns), "origin", None)
+                fasta = join(sample["dir_name"], "assembly.fasta")
+                contigs = get_contigs(fasta)
+                if len(df) > 0:
+                    # Iterating over every inserted protein coding sequence
+                    for i, row in df.iterrows():
+                        id = row["chromosome"] + "." + str(row["position"])
+                        # Position of protein sequence
+                        gene_pos = [
+                            int(element) for element in row["nt_pos"].split("-")
+                        ]
+                        # Getting sequence from assembly
+                        seq = contigs[row["chromosome"]
+                                      ][gene_pos[0]: gene_pos[1]]
+                        # Creating seq record
+                        seq = SeqRecord(Seq(seq), id=id)
+                        # This chunks the sequence with a window size of 500 and 250 steps
+                        # Often this does nothing because sequence are often shorter than 500
+                        chunks = hgt.chunker(seq, 500, 250)
+                        # Aligns sequences to all present ancesteral genomes
+                        hgt.mapper()
+                        # Gets the contig name of the reference
+                        mapped_sequences = hgt.get_mapping_stats()
+                        if len(mapped_sequences) > 0:
+                            # Writing conting name of origin of sequence
+                            df.at[i, "origin"] = " ".join(mapped_sequences)
+                target = join(
+                    sample['dir_name'], 'insertions.noalignments.filtered.tracked.tsv')
+                # Dumping to csv
+                df.to_csv(target, sep='\t', index=False)
