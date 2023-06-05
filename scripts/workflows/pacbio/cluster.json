@@ -1,7 +1,7 @@
 {
     "mapping_corrected_reads":
     {
-        "mem": "32G",
+        "mem": "8G",
         "time": "3:0:0"
     },
     "overlapping_corrected_reads":
@@ -22,7 +22,7 @@
     "insertion_detection":
     {
         "mem": "32G",
-        "time": "0:30:0"
+        "time": "3:0:0"
     },
     "bakta":
     {
@@ -41,12 +41,37 @@
     },
     "labels":
     {
-        "mem": "1G",
+        "mem": "4G",
         "time": "0:10:0"
     },
     "report":
     {
         "mem": "256G",
         "time": "1:0:0"
+    },
+    "sourmash":
+    {
+        "mem": "2G",
+        "time": "1:0:0"
+    },
+    "canu":
+    {
+        "mem": "128G",
+        "time": "12:0:0"
+    },
+    "map_long_reads":
+    {
+        "mem": "64G",
+        "time": "2:0:0"
+    },
+    "racon":
+    {
+        "mem": "128G",
+        "time": "06:0:0"
+    },
+    "snippy":
+    {
+        "mem": "8G",
+        "time": "3:0:0"
     }
 }

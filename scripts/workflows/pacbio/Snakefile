@@ -34,29 +34,46 @@ def get_genbank(wildcards):
     for strain,samples in Samples().strains.items():
         for sample in samples:
             if sample['name'] == wildcards.sample:
-                return join(work,Samples().abbreviations[strain],'reference_stripped.gbk')
+                return join(work,'ancestors',Samples().abbreviations[strain],'bakta','assembly.contigs.polypolish.gbff')
 
 def get_reference(wildcards):
     """Returns reference fasta based on sample name"""
     for strain,samples in Samples().strains.items():
         for sample in samples:
             if sample['name'] == wildcards.sample:
-                return join(work,Samples().abbreviations[strain],'reference.fasta')
+                return join(work,'ancestors',Samples().abbreviations[strain],'assembly.contigs.polypolish.fasta')
 
 
 #Aligning corrected reads to wild-type genome
 rule mapping_corrected_reads:
     input:
-        reference = join(work,'{sample}','reference.fasta'),
+        reference = get_reference,
         corrected_reads = join(work,'{sample}','corrected_reads.fasta')
     output:
         join(work,'{sample}','mapped_corrected_reads.sorted.bam')
     threads:
-        16
+        4
     shell:
         """
-        minimap2 --secondary=no -t 16 -ax map-pb {input} | samtools sort --threads 16 -o {output}
+        minimap2 --secondary=no -R '@RG\\tID:snippy\\tSM:snippy' -t 4 -ax map-pb {input} | samtools sort --threads 16 -o {output}
         samtools index {output}
+        """
+
+rule snippy:
+    input:
+        reference = get_genbank,
+        bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam'),
+        contigs = join(work,'{sample}','assembly.fasta')
+    output:
+        outfile = join(work,'{sample}','snippy','snps.tab')
+    threads:
+        4
+    params:
+        outdir = join(work,'{sample}','snippy')
+    shell:
+        """
+        snippy --cpus 4 --force --outdir \
+        {params} --reference {input.reference} --ctgs {input.contigs}
         """
 
 
@@ -68,7 +85,7 @@ rule bakta:
     params:
         join(work,'{sample}','bakta')
     threads:
-        16
+        1
     shell:
         """bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input} --output {params}
         """
@@ -84,9 +101,9 @@ rule deletion_detection:
         join(work,'{sample}'),
 
     threads:
-        16
+        1
     shell:
-        "detect_deletions {input} {params}"
+        "detect_deletions --plot {input} {params}"
 
 
 #Areas with no coverage are identified which are insertions (sequence present
@@ -102,9 +119,17 @@ rule insertion_detection:
         join(work,'{sample}'),
 
     threads:
-        16
+        1
     shell:
-        "detect_insertions {input} {params}"
+        "detect_insertions --plot {input} {params}"
+
+def get_genome_length(wildcards):
+    genome_sizes = {
+        'At':'5.3m',
+        'Ct':'6.1m',
+        'Ms':'3.7m',
+        'Oa':'5.1m'}
+    return genome_sizes[wildcards.sample[:2]]
 
 rule hgt_detection:
     input:
@@ -116,7 +141,7 @@ rule hgt_detection:
     params:
         out_dir = join(work,'{sample}')
     threads:
-        16
+        1
     shell:
         "detect_hgts {input} {params}"
 
@@ -128,7 +153,7 @@ rule ise_scan:
     params:
         out_dir = join(work,'{sample}','ise_scan')
     threads:
-        16
+        1
     shell:
         "isescan.py --seqfile {input} --output {params} --nthread {threads}"
 
@@ -159,7 +184,7 @@ rule report:
     params:
         outdir = join(work,'{sample}')
     threads:
-        16
+        1
     shell:
         "report_bam_stats {input.reference} {input.bam} {input.labels} {params.outdir}"
 
@@ -172,7 +197,7 @@ rule overlapping_corrected_reads:
     output:
         join(work,'{sample}','overlapped_corrected_reads.paf')
     threads:
-        16
+        4
     shell:
         "minimap2 -x ava-pb -t {threads} {input} {input} > {output}"
 
@@ -185,8 +210,63 @@ rule miniasm:
         gfa = join(work,'{sample}','assembly.miniasm.gfa'),
         fasta = join(work,'{sample}','assembly.miniasm.fasta')
     threads:
-        16
+        4
     shell:
         """miniasm -f {input} > {output.gfa}
         awk '/^S/{{print ">"$2"\\n"$3}}' {output.gfa} > {output.fasta}
+        """
+rule canu:
+    input:
+        pacbio = join(work,'{sample}','reads.fastq.gz')
+    params:
+        genome_length = get_genome_length,
+        out_dir = join(work,'{sample}','canu'),
+        prefix = 'assembly'
+    output:
+        join(work,'{sample}','canu','assembly.contigs.fasta')
+    threads:
+        32
+    shell:
+        """
+        canu -p {params.prefix} -d {params.out_dir} useGrid=false genomeSize={params.genome_length} \
+        -pacbio {input.pacbio}
+        """
+
+rule map_long_reads:
+    input:
+        reads = join(work,'{sample}','reads.fastq.gz'),
+        assembly = join(work,'{sample}','canu','assembly.contigs.fasta')
+    output:
+        join(work,'{sample}','assembly_correction.sam')
+    threads:
+        16
+    shell:
+        """
+        minimap2 -ax map-pb {input.assembly} {input.reads} > {output}
+        """
+
+rule racon:
+    input:
+        fasta = join(work,'{sample}','canu','assembly.contigs.fasta'),
+        fastq = join(work,'{sample}','reads.fastq.gz'),
+        alignment = join(work,'{sample}','assembly_correction.sam')
+    threads:
+        32
+    output:
+        join(work,'{sample}','assembly.contigs.racon.fasta')
+    shell:
+        """
+        racon {input.fastq} {input.alignment} {input.fasta} > {output}
+        """
+
+rule sourmash:
+    input:
+        join(work,'{sample}','assembly.fasta')
+    output:
+        join(work,'{sample}','assembly.sig')
+    threads:
+        1
+    shell:
+        """
+        sourmash sketch dna -p scaled=1000,k=31 {input} -o {output}
         """
