@@ -1,8 +1,13 @@
 {
     "mapping":
     {
-        "mem": "128G",
-        "time": "3:0:0"
+        "mem": "16G",
+        "time": "6:0:0"
+    },
+    "split_reads":
+    {
+        "mem": "16G",
+        "time": "6:0:0"
     },
     "spades":
     {
@@ -16,22 +21,37 @@
     },
     "snippy":
     {
-        "mem": "256G",
-        "time": "6:0:0"
+        "mem": "64G",
+        "time": "06:0:0"
+    },
+    "snippy_core":
+    {
+        "mem": "64G",
+        "time": "06:0:0"
     },
     "freebayes":
     {
-        "mem": "256",
-        "time": "24:0:0"
+        "mem": "16G",
+        "time": "48:0:0"
     },
     "labels":
     {
         "mem": "1G",
         "time": "0:2:0"
     },
+    "depth":
+    {
+        "mem": "4G",
+        "time": "1:0:0"
+    },
+    "samtools_depth":
+    {
+        "mem": "32G",
+        "time": "1:0:0"
+    },
     "report":
     {
-        "mem": "256G",
+        "mem": "64G",
         "time": "1:0:0"
     },
     "md_pdf":
@@ -46,12 +66,32 @@
     },
     "sourmash":
     {
-        "mem": "64G",
-        "time": "1:0:0"
+        "mem": "4G",
+        "time": "3:0:0"
     },
     "mapped_reads_only":
     {
         "mem": "64G",
+        "time": "3:0:0"
+    },
+    "trim_read1":
+    {
+        "mem": "2G",
+        "time": "3:0:0"
+    },
+    "trim_read2":
+    {
+        "mem": "2G",
+        "time": "3:0:0"
+    },
+    "dump_read_ids":
+    {
+        "mem": "128G",
         "time": "1:0:0"
+    },
+    "filter_bam":
+    {
+        "mem": "128G",
+        "time": "24:0:0"
     }
 }
