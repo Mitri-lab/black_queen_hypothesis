@@ -145,43 +145,5 @@ def caller(cosm, timepoint, treatment, specie, platform, prefix):
         move(f, join(t, split(f)[-1]))
 
 
-#caller('all', ['T44'], [1,3,4], 'at', 'illumina', 'at')
+#caller('all', ['T44'], [2,3,4], 'ct', 'illumina', 'ct')
 #caller('all', ['T11','T22', 'T33', 'T44'], [2, 3, 4], 'ct', 'illumina', 'ct')
-
-
-"""caller('all', 'T44', 'at', 'illumina', 't44_illumina')
-caller(1, 'all', 'at', 'illumina', 'c1_illumina')
-caller(2, 'all', 'at', 'illumina', 'c2_illumina')
-caller('all', 'all', 'at', 'illumina', 'all_illumina')
-caller('all', 'all', 'at', 'pacbio', 'pacbio')
-
-
-caller('all', 'T44', 'ct', 'illumina', 't44_illumina')
-caller(1, 'all', 'ct', 'illumina', 'c1_illumina')
-caller(2, 'all', 'ct', 'illumina', 'c2_illumina')
-caller(3, 'all', 'ct', 'illumina', 'c3_illumina')
-caller(4, 'all', 'ct', 'illumina', 'c4_illumina')
-caller(5, 'all', 'ct', 'illumina', 'c5_illumina')
-caller('all', 'all', 'ct', 'illumina', 'all_illumina')
-caller('all', 'all', 'ct', 'pacbio', 'pacbio')"""
-
-
-"""caller('all', 'T44', 'oa', 'illumina', 't44_illumina')
-caller(1, 'all', 'oa', 'illumina', 'c1_illumina')
-caller(2, 'all', 'oa', 'illumina', 'c2_illumina')
-caller(3, 'all', 'oa', 'illumina', 'c3_illumina')
-caller(4, 'all', 'oa', 'illumina', 'c4_illumina')
-caller(5, 'all', 'oa', 'illumina', 'c5_illumina')
-caller('all', 'all', 'oa', 'illumina', 'all_illumina')
-caller('all', 'all', 'oa', 'pacbio', 'pacbio')
-
-
-caller('all', 'T44', 'ms', 'illumina', 't44_illumina')
-caller(1, 'all', 'ms', 'illumina', 'c1_illumina')
-caller(2, 'all', 'ms', 'illumina', 'c2_illumina')
-caller(3, 'all', 'ms', 'illumina', 'c3_illumina')
-caller(4, 'all', 'ms', 'illumina', 'c4_illumina')
-caller(5, 'all', 'ms', 'illumina', 'c5_illumina')
-caller('all', 'all', 'ms', 'illumina', 'all_illumina')
-caller('all', 'all', 'ms', 'pacbio', 'pacbio')
-"""
