@@ -34,6 +34,32 @@ def parse_deletions():
     df.to_csv(join('..', 'variants', 'deletions.csv'), index=False)
 
 
+def parse_deletions_illumina():
+    df = pd.DataFrame(columns=['strain', 'treatment',
+                      'timepoint', 'cosm', 'deletions'])
+    species = [s.abbreviations[sp] for sp in ['at', 'ct']]
+    i = 0
+    for strain in species:
+        for sample in s.strains[strain]:
+            if sample['platform'] == 'illumina':
+                f = join(sample['dir_name'], 'depth.tsv')
+                if exists(f):
+                    print(sample['name'])
+                    ds = pd.read_csv(f, sep='\t', names=[
+                                     'contig', 'pos', 'depth'])
+                    mask = []
+                    for c, d in zip(ds['contig'], ds['depth']):
+                        if (c[:2] == s.abbreviations[strain]) & (d == 0):
+                            mask.append(True)
+                        else:
+                            mask.append(False)
+                    ds = ds[mask]
+                    df.loc[i] = [strains[strain], sample['treatment'],
+                                 sample['timepoint'], sample['cosm'], len(ds)]
+                    i += 1
+    df.to_csv(join('..', 'variants', 'deletions_illumina.csv'))
+
+
 def parse_genome_length():
     df = pd.DataFrame(columns=['strain', 'treatment', 'cosm', 'deletions'])
     i = 0
@@ -107,11 +133,49 @@ def plot_assembly_length(f):
     return fig
 
 
+def plot_deletions_illumina(f):
+    df = pd.read_csv(join('..','variants','deletions_illumina.csv'))
+    df = df.sort_values(by='treatment', ascending=True)
+    n_colors = len(set(df['treatment']))
+    colors = px.colors.sample_colorscale(
+        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
+    fig = px.box(df, x='strain', y='deletions', color='treatment', facet_col='timepoint', points='all',
+                 category_orders={'timepoint': [
+                       'T11', 'T22', 'T33', 'T44']}, color_discrete_sequence=colors,
+                 log_y=True, height=250, width=450)
+    titles = ['T11', 'T22', 'T33', 'T44']
+    for i, t in enumerate(fig['layout']['annotations']):
+        t['text'] = titles[i]
+
+    fig.for_each_yaxis(lambda y: y.update(title=''))
+    fig['layout']['yaxis']['title']['text'] = 'Deleted basepairs'
+    fig.update_xaxes(title=None)
+    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                      pointpos=0, jitter=1)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+
+    offsetgroups = ['1', '1', '1', '1',
+                    '1', '1', '1', '1',
+                    '2', '2', '2', '2',
+                    '3', '3', '3', '3']
+    for i, d in enumerate(fig['data']):
+        d['offsetgroup'] = offsetgroups[i]
+
+    fig = font_size(fig)
+    fig.write_image(join('..','plots','snps_figures','deletions_illumina.svg'))
+    return fig
+
+
+
+
 def caller():
     fig = plot_deletions(join('..', 'variants', 'deletions.csv'))
     fig.show()
     fig = plot_assembly_length(join('..', 'variants', 'assembly_length.csv'))
     fig.show()
+    fig = plot_deletions_illumina(join('..', 'variants', 'deletions_illumina.csv'))
 
 
-caller()
+
