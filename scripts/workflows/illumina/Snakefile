@@ -48,6 +48,19 @@ rule mapping:
         samtools index {output}
         """
 
+rule split_reads:
+    input:
+        read1 = join(work,'{sample}','read1.fq.gz'),
+        read2 = join(work,'{sample}','read2.fq.gz')
+    output:
+        join(work,'{sample}','done.txt')
+    threads:
+        8
+    shell:
+        """
+        python comp_mapping.py {wildcards.sample}
+        """
+
 #Getting mapping stats of aligment files.
 rule flagstat:
     input:
@@ -74,7 +87,7 @@ rule labels:
 rule depth:
     input:
         ref = get_reference,
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
+        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
     output:
         join(work,'{sample}','{strain}','coverage.txt')
     params:
@@ -83,6 +96,16 @@ rule depth:
         1
     shell:
         "python coverage.py {input.ref} {input.bam} {params.outdir}"
+
+rule samtools_depth:
+    input:
+        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
+    output:
+        join(work,'{sample}','{strain}','depth.tsv')
+    threads:
+        1
+    shell:
+        "samtools depth -aa -Q 0 {input.bam} > {output}"
 
 
 #Creating repord markdown with
@@ -104,14 +127,31 @@ rule report:
 #Identifying SNPs using snippy
 rule snippy:
     input:
-        reference = join(work,'ancestors','{strain}','bakta','assembly.contigs.polypolish.gbff'),
-        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
+        join(work,'{sample}','done.txt'),
+        reference = join(work,'ancestors','{strain}','bakta','snippy.gbff')
     output:
         outfile = join(work,'{sample}','{strain}','snippy','snps.tab')
     threads:
         4
     params:
-        outdir = join(work,'{sample}','{strain}','snippy')
+        outdir = join(work,'{sample}','{strain}','snippy'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
+    shell:
+        """
+        snippy --cpus 4 --force --outdir \
+        {params} --reference {input.reference} --bam {params.bam}
+        """
+
+rule snippy_core:
+    input:
+        reference = join(work,'ancestors','{strain}','bakta','assembly.contigs.polypolish.gbff'),
+        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
+    output:
+        outfile = join(work,'{sample}','{strain}','snippy-core','snps.tab')
+    threads:
+        4
+    params:
+        outdir = join(work,'{sample}','{strain}','snippy-core')
     shell:
         """
         snippy --cpus 4 --force --minfrac 0 --outdir \
@@ -123,35 +163,22 @@ rule snippy:
 rule freebayes:
     input:
         #reference = join(work,'ancestors','{strain}','assembly.contigs.polypolish.fasta'),
-        reference = get_reference,
-        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
+        reference = join(work,'{sample}','reference.fasta'),
+        check = join(work,'{sample}','done.txt')
     output:
         outfile = join(work,'{sample}','{strain}','var.vcf')
+    params:
+        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
     threads:
         1
     shell:
         """
-        freebayes -f {input.reference} {input.bam} --min-alternate-count 3 \
+        freebayes -f {input.reference} {params.bam} --min-alternate-count 3 \
         --min-alternate-fraction 0.05 --pooled-continuous --haplotype-length 0 \
         --standard-filters > {output}
         """
 
-#This rule is not used currently but would allow to indentify regions with no coverage
-#It's not used because of sequence biased coverage issues.
-rule no_alignments:
-    input:
-        genbank = join(work,'ancestors','{strain}','bakta','assembly.contigs.polypolish.fasta'),
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
-    output:
-        join(work,'{sample}','{strain}','no_alignment_regions.tsv')
-    params:
-        outdir = join(work,'{sample}','{strain}')
-    threads:
-        1
-    shell:
-        """
-        detect_deletions --no_alignment_only --min_mapping_quality 0 --genbank {input} --min_count 10 {params}
-        """
+
 
 rule dump_read_ids:
     input:
@@ -219,7 +246,7 @@ rule trim_read1:
         8
     shell:
         """
-        trim-low-abund.py -C 2 -M 2e9 -T {params} --gzip -o {output.filtered1} {input.read1}
+        trim-low-abund.py -C 10 -M 2e9 -T {params} --gzip -o {output.filtered1} {input.read1}
         """
 
 rule trim_read2:
@@ -233,7 +260,7 @@ rule trim_read2:
         out_dir = join(work,'{sample}','{strain}')
     shell:
         """
-        trim-low-abund.py -C 2 -M 2e9 -T {params} --gzip -o {output.filtered2} {input.read2}
+        trim-low-abund.py -C 10 -M 2e9 -T {params} --gzip -o {output.filtered2} {input.read2}
         """
 rule sourmash:
     input:
