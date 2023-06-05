@@ -1,28 +1,20 @@
 from samples import Samples
-from plotting import Plotting
-from analyze_marcs_deletions import get_gc_content
 import pandas as pd
-from os.path import join
-from os.path import exists
-import math
+from os.path import join,exists
 from Bio import SeqIO
 import re
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+
 
 
 """
 ################################################################################
 Author: https://github.com/nahanoo
-This script analyzes all outputs generated from illumina sample processing.
-If you are interested in the sample processing you can check out the Snakemake
-workflow: https://github.com/nahanoo/black_queen_hypothesis/blob/main/scripts/workflows/illumina/Snakefile.
-All plots call this small plotting class in plotting.py
+This is a collection of functions for illumina data that are not relevant for the paper
+but worth keeping.
 ################################################################################
 """
 
 s = Samples()
-p = Plotting()
 
 
 def plot_effects():
@@ -62,55 +54,8 @@ def plot_effects():
                     else:
                         snp.at[effect, sample['treatment']] += len(df[mask])
         snps[strain] = snp
-    p.plot_effects(snps)
+    return snps
 
-def plot_all_snps():
-    """This function plots the sum of SNPs for a timepoint."""
-    snps = {strain: None for strain in s.strains}
-    for strain in s.strains:
-        treatments = s.treatments[strain]
-        snp = pd.DataFrame(columns=treatments, index=[sample['name']
-                                                      for sample in s.strains[strain] if sample['platform'] == 'illumina'])
-        for sample in s.strains[strain]:
-            if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):
-                f = join(sample['dir_name'], 'snippy', 'snps.tab')
-                df = pd.read_csv(f, sep='\t').drop_duplicates()
-                snp.at[sample['name'], sample['treatment']] = len(df)
-        snps[strain] = snp
-    fig = p.subplot_violin(snps)
-
-def get_differences_snps(df,strain,treatments,platform):
-    """This is a simple function which lets you identify mutations uniquely found
-    in one treatment.
-    """
-    p_mono = dict()
-    p_co = dict()
-    for sample in s.strains[strain]:
-        if (sample['treatment'] in treatments) & (sample['platform'] == platform): 
-            f = join(sample['dir_name'],df)
-            if platform == 'illumina':
-                column = 'PRODUCT'
-            else:
-                column = 'product'
-            products = set(pd.read_csv(f,sep='\t')[column])
-            if sample['treatment'] == treatments[0]:
-                for product in products:
-                    if product in p_mono.keys():
-                        p_mono[product] += 1
-                    else:
-                        p_mono[product] = 1
-            if sample['treatment'] == treatments[1]:
-                for product in products:
-                    if product in p_co.keys():
-                        p_co[product] += 1
-                    else:
-                        p_co[product] = 1
-
-    co_only = set(p_co.keys()) - set(p_mono.keys())
-    print(co_only)
-    for product in co_only:
-        if p_co[product] > 1:
-            print(product,p_co[product])
 
 def write_gc_content():
     """Small function to get gc content of references."""
