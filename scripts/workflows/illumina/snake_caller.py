@@ -7,7 +7,7 @@
 #
 # Request it to run this for DD:HH:MM with ?G per core
 #
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #
 import subprocess
 from os.path import join
@@ -61,13 +61,13 @@ def all_caller(output_file):
 
 def sample_caller(output_file):
     output = []
-    for species, samples in s.strains.items():
+    for strain,samples in s.strains.items():
         for sample in samples:
             if sample['platform'] == 'illumina':
                 output.append(sample['name'])
-                break
-    submit(join(work, '{'+','.join(output)+'}',
-                output_file))
+    output = list(set(output))
+    files = join(work, '{'+','.join(output)+'}', output_file)
+    submit(files)
 
 
 if __name__ == '__main__':
@@ -77,7 +77,10 @@ if __name__ == '__main__':
     """
     #strain_caller(s.abbreviations[sys.argv[1]],join('snippy', 'snps.tab'))
     #strain_caller(s.abbreviations['ms'], join('snippy', 'snps.tab'))
-    strain_caller(s.abbreviations[sys.argv[1]],'reads.sig')
+    #strain_caller(s.abbreviations[sys.argv[1]],'reads.sig')
     #strain_caller(s.abbreviations['ct'],'mapped_reads.filtered.sorted.bam')
-    #all_caller(join('snippy','snps.tab'))
+    all_caller('no_alignment_regions.tsv')
+
+    #sample_caller('done.txt')
+    #test_caller(join(s.work,'T22.4.1','done.txt'))
 
