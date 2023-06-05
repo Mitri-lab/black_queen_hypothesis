@@ -7,7 +7,7 @@
 #
 # Request it to run this for DD:HH:MM with ?G per core
 #
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #
 import subprocess
 from os.path import join
@@ -49,4 +49,4 @@ if __name__ == '__main__':
     It's nice that this script then also runs as a sleeper on the cluster.
     """
     #submit(join(work,'At42.1','deletions.annotated.tsv'))
-    all_caller(join('deletions.annotated.tsv'))
+    all_caller(join('insertions.tsv'))
