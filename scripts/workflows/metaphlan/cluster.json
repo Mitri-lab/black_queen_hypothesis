@@ -1,7 +1,7 @@
 {
     "metaphlan":
     {
-        "mem": "128G",
+        "mem": "64G",
         "time": "3:0:0"
     },
     "markers":

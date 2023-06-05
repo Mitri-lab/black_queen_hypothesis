@@ -19,10 +19,10 @@ rule metaphlan:
         bowtie = join(work,'{sample}','{sample}'+'.bowtie2.bz2'),
         profile = join(work,'{sample}','{sample}'+'.profiled.tsv')
     threads:
-        16
+        1
     shell:
         """
-        metaphlan --nproc 16 {input.read1},{input.read2} --input_type fastq -s {output.sam}\
+        metaphlan --nproc 1 --bowtie2db /work/FAC/FBM/DMF/smitri/evomicrocomm/metaphlan {input.read1},{input.read2} --input_type fastq -s {output.sam}\
         --bowtie2out {output.bowtie} -o {output.profile}
         """
 
