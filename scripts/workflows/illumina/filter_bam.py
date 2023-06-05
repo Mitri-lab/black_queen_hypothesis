@@ -6,7 +6,8 @@ from os import symlink
 
 s = Samples()
 
-
+"""This script filters bam files for reads that map to multiple species.
+Not used for this analysis, switched to competitive mapping in comp_mapping.py"""
 def get_strains(d):
     strains = []
     for strain, samples in s.strains.items():
