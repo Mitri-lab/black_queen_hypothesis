@@ -43,9 +43,10 @@ def parse_deletions_illumina():
         for sample in s.strains[strain]:
             if sample['platform'] == 'illumina':
                 f = join(sample['dir_name'], 'depth.tsv')
-                if exists(f):
+                f_marc = join(sample['dir_name'], 'depth_marc.tsv')
+                if exists(f_marc):
                     print(sample['name'])
-                    ds = pd.read_csv(f, sep='\t', names=[
+                    ds = pd.read_csv(f_marc, sep='\t', names=[
                                      'contig', 'pos', 'depth'])
                     mask = []
                     for c, d in zip(ds['contig'], ds['depth']):
@@ -57,7 +58,9 @@ def parse_deletions_illumina():
                     df.loc[i] = [strains[strain], sample['treatment'],
                                  sample['timepoint'], sample['cosm'], len(ds)]
                     i += 1
-    df.to_csv(join('..', 'variants', 'deletions_illumina.csv'))
+    f = join('..', 'variants', 'deletions_illumina.csv')
+    f_marc = join('..', 'variants', 'deletions_illumina_marc.csv')
+    df.to_csv(f_marc)
 
 
 def parse_genome_length():
@@ -68,7 +71,7 @@ def parse_genome_length():
         for sample in s.strains[strain]:
             if sample['platform'] == 'pacbio':
                 ds = 0
-                f = join(sample['dir_name'], 'assembly.fasta')
+                f = join(sample['dir_name'], 'assembly.contigs.racon.fasta')
                 if exists(f):
                     l = sum([len(contig)
                             for contig in SeqIO.parse(f, 'fasta')])
@@ -121,7 +124,7 @@ def plot_deletions(f):
     fig = plot(f)
     fig.update_xaxes(title='')
     fig.update_yaxes(title='Deleted basepairs')
-    fig.write_image(join('..', 'plots', 'snps_figures', 'deletions.svg'))
+    fig.write_image(join('..', 'plots', 'plots', 'deletions.svg'))
     return fig
 
 
@@ -129,12 +132,12 @@ def plot_assembly_length(f):
     fig = plot(f)
     fig.update_xaxes(title='')
     fig.update_yaxes(title='Assembly length')
-    fig.write_image(join('..', 'plots', 'snps_figures', 'assmblies.svg'))
+    fig.write_image(join('..', 'plots', 'plots', 'assmblies.svg'))
     return fig
 
 
 def plot_deletions_illumina(f):
-    df = pd.read_csv(join('..','variants','deletions_illumina.csv'))
+    df = pd.read_csv(f)
     df = df.sort_values(by='treatment', ascending=True)
     n_colors = len(set(df['treatment']))
     colors = px.colors.sample_colorscale(
@@ -164,9 +167,8 @@ def plot_deletions_illumina(f):
         d['offsetgroup'] = offsetgroups[i]
 
     fig = font_size(fig)
-    fig.write_image(join('..','plots','snps_figures','deletions_illumina.svg'))
+    fig.write_image(join('..','plots','plots','deletions_illumina.svg'))
     return fig
-
 
 
 
@@ -179,3 +181,4 @@ def caller():
 
 
 
+#fig = plot_deletions_illumina(join('..', 'variants', 'deletions_illumina_marc.csv'))
