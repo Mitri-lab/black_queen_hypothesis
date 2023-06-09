@@ -9,6 +9,11 @@
         "mem": "16G",
         "time": "6:0:0"
     },
+    "split_reads_marc":
+    {
+        "mem": "16G",
+        "time": "6:0:0"
+    },
     "spades":
     {
         "mem": "64G",
@@ -45,6 +50,11 @@
         "time": "1:0:0"
     },
     "samtools_depth":
+    {
+        "mem": "32G",
+        "time": "1:0:0"
+    },
+    "samtools_depth_marc":
     {
         "mem": "32G",
         "time": "1:0:0"

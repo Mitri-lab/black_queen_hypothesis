@@ -44,9 +44,11 @@ rule mapping:
     shell:
         """
         minimap2 -t 8 -R '@RG\\tID:snippy\\tSM:snippy' -ax sr {input} | \
-        samtools view -b -F 4 -q 60 | samtools sort --threads 16 -o {output}
+        samtools view -b -f 3 -q 60 | samtools sort --threads 16 -o {output}
         samtools index {output}
         """
+
+
 
 rule split_reads:
     input:
@@ -59,6 +61,19 @@ rule split_reads:
     shell:
         """
         python comp_mapping.py {wildcards.sample}
+        """
+
+rule split_reads_marc:
+    input:
+        read1 = join(work,'{sample}','read1.fq.gz'),
+        read2 = join(work,'{sample}','read2.fq.gz')
+    output:
+        join(work,'{sample}','done_marc.txt')
+    threads:
+        8
+    shell:
+        """
+        python comp_mapping_marc.py {wildcards.sample}
         """
 
 #Getting mapping stats of aligment files.
@@ -102,6 +117,16 @@ rule samtools_depth:
         bam = join(work,'{sample}','{strain}','mapped_reads.bam')
     output:
         join(work,'{sample}','{strain}','depth.tsv')
+    threads:
+        1
+    shell:
+        "samtools depth -aa -Q 0 {input.bam} > {output}"
+
+rule samtools_depth_marc:
+    input:
+        bam = join(work,'{sample}','{strain}','mapped_reads_marc.bam')
+    output:
+        join(work,'{sample}','{strain}','depth_marc.tsv')
     threads:
         1
     shell:
