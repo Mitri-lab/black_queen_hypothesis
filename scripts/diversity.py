@@ -1,10 +1,11 @@
-from scipy.stats import ttest_ind
+from scipy.stats import ttest_ind, kruskal
 from samples import Samples
 from os.path import join, exists
 import vcfpy
 import pandas as pd
 import plotly.express as px
 from plotly.subplots import make_subplots
+import math
 
 # Sample class for parsing contact me for infos
 # eric.ulrich@unil.ch
@@ -25,7 +26,7 @@ def parse_variants():
     for strain, samples in s.strains.items():
         for sample in samples:
             if sample['platform'] == 'illumina':
-                f = join(sample['dir_name'], 'var.vcf')
+                f = join(sample['dir_name'], 'var.annot.vcf')
                 if exists(f):
                     reader = vcfpy.Reader.from_path(f)
                     for record in reader:
@@ -37,10 +38,14 @@ def parse_variants():
                             snp['depth'] = record.INFO['DP']
                             snp['freq'] = record.INFO['AO'][i] / \
                                 record.INFO['DP']
+                            snp['total_freq'] = sum(
+                                record.INFO['AO']) / record.INFO['DP']
                             snp['alt'] = r
+                            snp['alt_count'] = record.INFO['AO'][i]
                             snp['ref'] = record.REF
                             snp['type'] = record.INFO['TYPE'][i]
                             snp['len'] = record.INFO['LEN'][i]
+                            snp['eff'] = record.INFO['ANN'][i].split('|')[1]
                             # Creates unique key per variant used for plotting trajectories
                             key = '.'.join([snp['chrom'], str(snp['pos']),
                                             str(sample['treatment']), str(sample['cosm']), str(snp['alt'])])
@@ -54,10 +59,25 @@ def parse_variants():
                                         [pd.DataFrame(snp, index=[0]), pd.DataFrame(sample, index=[0])], axis=1))
                                     dfs.append(df)
     out = pd.concat(dfs)
-    out = out[out['freq'] != 0]
     out['treatment'] = out['treatment'].astype(str)
     out['cosm'] = out['cosm'].astype(str)
     out.to_csv(join('..', 'variants', 'variants_comp_mapping.csv'), index=False)
+    filter = (out['alt_count'] >= 3) & (out['freq'] >= 0.1) & (
+        out['qual'] >= 20) & (out['eff'] != 'synonymous_variant')
+    out[filter].to_csv(
+        join('..', 'variants', 'ns_variants_comp_mapping.csv'), index=False)
+    filter = (out['alt_count'] >= 3) & (out['freq'] >= 0.1) & (
+        out['qual'] >= 20)
+    out[filter].to_csv(
+        join('..', 'variants', 'variants_comp_mapping.csv'), index=False)
+    filter = (out['alt_count'] >= 3) & (out['total_freq'] >= 0.95) & (
+        out['qual'] >= 20) & (out['eff'] != 'synonymous_variant')
+    out[filter].to_csv(
+        join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'), index=False)
+    filter = (out['alt_count'] >= 3) & (out['total_freq'] >= 0.95) & (
+        out['qual'] >= 20)
+    out[filter].to_csv(
+        join('..', 'variants', 'snps_freebayes_comp_mapping.csv'), index=False)
 
 
 def parse_snps():
@@ -84,6 +104,7 @@ def parse_snps():
                                             str(sample['treatment']), str(sample['cosm']), str(snp['alt'])])
                             snp['linegroup'] = key
                             snp['type'] = record.INFO['TYPE'][i]
+                            snp['eff'] = record.INFO['ANN'][i].split('|')[1]
                             if snp['qual'] >= 20:
                                 if (sample['strain'] == s.abbreviations['oa']) & (snp['chrom'] == 'tig00000002_polypolish') & (snp['pos'] in range(119960, 120700)):
                                     pass
@@ -96,6 +117,8 @@ def parse_snps():
     out['treatment'] = out['treatment'].astype(str)
     out['cosm'] = out['cosm'].astype(str)
     out.to_csv(join('..', 'variants', 'snps_comp_mapping.csv'), index=False)
+    out = out[out['eff'] != 'synonymous_variant']
+    out.to_csv(join('..', 'variants', 'ns_snps_comp_mapping.csv'), index=False)
 
 
 def parse_snps_pacbio():
@@ -184,6 +207,7 @@ def get_variants(f, platform):
     """Sums up SNPs or variants from variant csv files in ../variants"""
     snps = pd.read_csv(f)
     # Hill name from hill numbers, q = 0. Artifiact from old analysis still valid.
+    #snps = snps[snps['eff'] != 'synonymous_variant']
     hill = pd.DataFrame(
         columns=['strain', 'treatment', 'hill', 'timepoint', 'cosm'])
     i = 0
@@ -202,8 +226,10 @@ def get_variants(f, platform):
 
 
 def get_mutations(add_T0=True):
-    variants = pd.read_csv(join('..','variants','variants_comp_mapping.csv'))
-    snps = pd.read_csv(join('..','variants','snps_comp_mapping.csv'))
+    variants = pd.read_csv(
+    join('..', 'variants', 'ns_variants_comp_mapping.csv'))
+    snps = pd.read_csv(
+        join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
     out = pd.DataFrame(columns=['strain', 'name', 'cosm',
                                 'treatment', 'timepoint', 'mutations', 'fixed', 'linegroup'])
     for strain, samples in s.strains.items():
@@ -216,13 +242,19 @@ def get_mutations(add_T0=True):
                 fixed = snps[(snps['strain'] == strain) & (
                     snps['name'] == sample['name'])]
                 out.loc[len(out)] = [strains[strain], sample['name'], sample['cosm'],
-                                     sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed), lg]
+                                        sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed),  lg]
                 if add_T0:
                     out.loc[len(out)] = [strains[strain], sample['name'],
-                                         sample['cosm'], sample['treatment'], 'T0', 0, 0, lg]
+                                            sample['cosm'], sample['treatment'], 'T0', 0, 0, lg]
+    for i,(f,m) in enumerate(zip(out['fixed'],out['mutations'])):
+        try:
+            out.at[i,'fixed_total_ratio'] = f/m
+        except ZeroDivisionError:
+            out.at[i,'fixed_total_ratio'] = None
     out = out.sort_values(by='treatment', ascending=True)
+    out['hill'] = out['mutations']
+    out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'),index=False)
     return out
-
 
 def mutations(y_label, title):
     hill = get_mutations(add_T0=False)
@@ -263,7 +295,6 @@ def mutations(y_label, title):
     # Setting dticks depending if plotting fixed SNPs or variants
 
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
-  
 
     fig = font_size(fig)
     fig.write_image(join('..', 'plots', 'plots', 'mutations.svg'))
@@ -278,10 +309,10 @@ def mutations_longitudinal(abb):
     colors = {str(k): v for k, v in zip(s.treatments[s.abbreviations[abb]], px.colors.sample_colorscale(
         "Agsunset", [n/(n_colors - 1) for n in range(n_colors)]))}
     fig = px.line(df, x='timepoint', y='mutations', width=350, height=300,
-                  color='treatment', line_group='linegroup')
+                  color='treatment', line_group='linegroup', markers=True)
     fig = font_size(fig)
     fig.update_xaxes(title='Timepoint')
-    fig.update_yaxes(title='Mutations')
+    fig.update_yaxes(title='Total alllele frequency')
     fig['layout']['legend']['title']['text'] = 'Treatment'
     for d in fig['data']:
         d['line']['color'] = colors[d['name']]
@@ -292,7 +323,6 @@ def mutations_longitudinal(abb):
 
 
 def fixed_mutations(abb):
-    f = join('..', 'variants', 'variants_comp_mapping.csv')
     df = get_mutations(add_T0=False)
     df = df.sort_values(by='treatment', ascending=True)
     df = df[df['strain'] == strains[s.abbreviations[abb]]]
@@ -302,16 +332,53 @@ def fixed_mutations(abb):
     colors = px.colors.sample_colorscale(
         "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     fig = px.scatter(df, x='mutations', y='fixed', width=350, height=300,
-                     color='treatment', hover_data=hover_data, color_discrete_sequence=colors,opacity=0.7)
-    fig.add_scatter(x=list(range(0,12)), y=list(range(0,12)), line={
+                     color='treatment', hover_data=hover_data, color_discrete_sequence=colors, opacity=0.7)
+    fig.add_scatter(x=list(range(0, 12)), y=list(range(0, 12)), line={
                     'color': 'gray', 'width': 1}, mode='lines', showlegend=False)
     fig = font_size(fig)
     for d in fig['data']:
         d['marker']['size'] = 6
     fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig.update_xaxes(title='Mutations')
+    fig.update_xaxes(title='Total alllele frequency')
     fig.update_yaxes(title='Fixed mutations')
     fig.write_image(join('..', 'plots', 'plots', abb+'_fixed_correlation.svg'))
+    return fig
+
+
+def ratio_fixed_mutations():
+    df = get_mutations(add_T0=False)
+    df = df.sort_values(by='treatment', ascending=True)
+    a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
+    df = df[(df['strain'] == c)]
+    df['treatment'] = df['treatment'].astype(str)
+    hover_data = ['cosm', 'treatment', 'timepoint']
+    n_colors = len(set(df['treatment']))
+    colors = px.colors.sample_colorscale(
+        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
+    fig = px.box(df, x='timepoint', y='fixed_total_ratio', height=250, width=350,
+                 color='treatment', hover_data=hover_data, color_discrete_sequence=colors,
+                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']})
+    fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                      pointpos=0, jitter=1)
+    titles = ['T11', 'T22', 'T33', 'T44']
+
+    for i, t in enumerate(fig['layout']['annotations']):
+        t['text'] = titles[i]
+    offsetgroups = ['1', '1', '1', '1',
+                    '1', '1', '1', '1',
+                    '2', '2', '2', '2',
+                    '3', '3', '3', '3']
+    for i, d in enumerate(fig['data']):
+        #d['offsetgroup'] = offsetgroups[i]
+        pass
+    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig.update_xaxes(title='')
+    fig.update_layout(title='')
+    fig.for_each_yaxis(lambda y: y.update(title=''))
+    fig['layout']['yaxis']['title']['text'] = 'Fixed mutations/Total allele frequency'
+    fig = font_size(fig)
+    fig.write_image(join('..', 'plots', 'plots', 'ratio_fixed_total.svg'))
     return fig
 
 
@@ -408,7 +475,8 @@ def ct_box(f, y_label, title):
     fig.update_yaxes(title=y_label)
     fig.update_layout(title=title)
     fig = font_size(fig)
-    fig.update_traces(boxmean=True)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                      pointpos=0, jitter=1)
     if 'snps' in f:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(
             tickmode='linear', dtick=1))
@@ -496,7 +564,8 @@ def snp_distribution(f, abb, timepoint, subset=False, add_clusters=False):
 
     if add_clusters:
         # Annotations for plot
-        annot = pd.read_csv('clusters_'+abb+'.csv')
+        annot = pd.read_csv(
+            join('..', 'variants', 'clusters', 'clusters_'+abb+'.csv'))
         for i, chrom in enumerate(sorted(set(annot['chrom']))):
             annot_sub = annot[annot['chrom'] == chrom]
             for id in set(annot_sub['id']):
@@ -597,7 +666,7 @@ def trajectories(f, species, title):
 
 def cluster_trajectories(abb):
     """This allows to follow the trajectories of SNP clusters of interest."""
-    df = pd.read_csv(join('..', 'variants', 'variants_comp_mapping.csv'), dtype={
+    df = pd.read_csv(join('..', 'variants', 'ns_variants_comp_mapping.csv'), dtype={
                      'cosm': str, 'treatment': str})
     df = df[df['strain'] == s.abbreviations[abb]]
     cluster = pd.read_csv('clusters_'+abb+'.csv')
@@ -663,7 +732,8 @@ def annotate_clusters(abb):
         gbk[row['Sequence Id']][(row['Start'], row['Stop'])] = (gene, product)
 
     out = pd.DataFrame(columns=['cluster', 'chrom', 'pos', 'gene', 'product'])
-    cluster = pd.read_csv('clusters_'+abb+'.csv')
+    #cluster = pd.read_csv('clusters_'+abb+'.csv')
+    cluster = pd.read_csv(snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
     for j, (i, c, p) in enumerate(zip(cluster['id'], cluster['chrom'], cluster['pos'])):
         a = annotate_pos(gbk, c, p)
         if a:
@@ -672,18 +742,18 @@ def annotate_clusters(abb):
             a = ['Not annotated', 'Not annotated']
         out.loc[j] = [i, c, p, a[0], a[1]]
     out = out.drop_duplicates(subset=['cluster', 'product'])
+
     print(out.to_string(index=False))
 
 
-def t_test():
+def t_test(df, column):
     """T test for testing variant richness significance."""
-    df = get_variants(join('..', 'variants', 'variants_comp_mapping.csv'), 0)
     at = df[df['strain'] == strains[s.abbreviations['at']]]
     for j in ['T11', 'T22', 'T33', 'T44']:
         g1 = at[(at['timepoint'] == j) & (
-            at['treatment'] == 3)]['hill'].to_numpy()
+            at['treatment'] == 3)][column].to_numpy()
         g2 = at[(at['timepoint'] == j) & (
-            at['treatment'] == 4)]['hill'].to_numpy()
+            at['treatment'] == 4)][column].to_numpy()
         t, p = ttest_ind(g1, g2)
         if p < 0.05:
             print('At', j)
@@ -692,20 +762,20 @@ def t_test():
     ct = df[df['strain'] == strains[s.abbreviations['ct']]]
     for j in ['T11', 'T22', 'T33', 'T44']:
         g1 = ct[(ct['timepoint'] == j) & (
-            ct['treatment'] == 2)]['hill'].to_numpy()
+            ct['treatment'] == 2)][column].to_numpy()
         g2 = ct[(ct['timepoint'] == j) & (
-            ct['treatment'] == 3)]['hill'].to_numpy()
+            ct['treatment'] == 3)][column].to_numpy()
         g3 = ct[(ct['timepoint'] == j) & (
-            ct['treatment'] == 4)]['hill'].to_numpy()
-        t, p = ttest_ind(g1, g2)
+            ct['treatment'] == 4)][column].to_numpy()
+        t, p = kruskal(g1, g2)
         if p < 0.05:
             print('Ct treatment 2 and 3', j)
             print('T-Statistic', t, 'P-Value', p)
-        t, p = ttest_ind(g1, g3)
+        t, p = kruskal(g1, g3)
         if p < 0.05:
             print('Ct treatment 2 and 4', j)
             print('T-Statistic', t, 'P-Value', p)
-        t, p = ttest_ind(g2, g3)
+        t, p = kruskal(g2, g3)
         if p < 0.05:
             print('Ct treatment 3 and 4', j)
             print('T-Statistic', t, 'P-Value', p)
@@ -713,21 +783,70 @@ def t_test():
 
 def plotter():
     variants = join('..', 'variants', 'variants_comp_mapping.csv')
-    snps = join('..', 'variants', 'snps_comp_mapping.csv')
+    ns_variants = join('..', 'variants', 'ns_variants_comp_mapping.csv')
+    snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv')
     fig = diversity_illumina(snps, 'Fixed variant richness', '')
-    fig = diversity_illumina(variants, 'Variant richness', '')
-    fig = snp_distribution(variants, 'ct', 'T44', add_clusters=True)
+    fig = diversity_illumina(ns_variants, 'Variant richness', '')
+    fig = snp_distribution(snps, 'ct', 'T44', add_clusters=False)
     fig = snp_distribution(variants, 'at', 'T44', add_clusters=True)
     fig = coverage()
     fig = trajectories(variants, 'at', '')
-    fig = trajectories(variants, 'ct', '')
+    fig = trajectories(ns_variants, 'ct', '')
     fig = ct_box(variants, 'Variants', '')
     fig = ct_box(snps, 'Variants', '')
     fig = ct_scatter(variants, 'Summed SNPs')
-    fig = ct_scatter(variants, 'Summed SNPs')
-    fig = mutations(variants, 'Mutations', '')
+    fig = mutations('Mutations', '')
     fig = mutations_longitudinal('ct')
     fig = fixed_mutations('ct')
+    fig = ratio_fixed_mutations()
 
 
-fig = fixed_mutations('at')
+def statistics():
+    # Allele richness
+    print('######Variants#########')
+    df = get_variants(
+        join('..', 'variants', 'ns_variants_comp_mapping.csv'), 'illumina')
+    t_test(df, 'hill')
+    df = get_variants(
+        join('..', 'variants', 'ns_snps_comp_mapping.csv'), 'illumina')
+    print('######SNPs#########')
+    t_test(df, 'hill')
+    print('###########Mut ratio############')
+    df = pd.read_csv(join('..', 'variants', 'total_allele_frequncies.csv'))
+    t_test(df, 'fixed_total_ratio')
+    print('#####Allele frequency#########')
+    df = get_mutations()
+    df[df['strain'] == 'At'] = s.abbreviations['at']
+    df[df['strain'] == 'Ct'] = s.abbreviations['ct']
+    t_test(df, 'mutations')
+    df = pd.read_csv(join('..', 'variants', 'assembly_length.csv'))
+    df[df['strain'] == 'At'] = s.abbreviations['at']
+    df[df['strain'] == 'Ct'] = s.abbreviations['ct']
+    df['timepoint'] = 'T44'
+    print('########Assembly length#########')
+    t_test(df, 'deletions')
+
+def generation_time():
+    out = pd.DataFrame(columns=['treatment', 'microcosm',
+                                'generation_time', 'time', 'lg'])
+    df = pd.read_csv(join('..', 'variants', 'cfus_ct.csv'))
+    for c in df.columns:
+        for i in df.index[:-1]:
+            try:
+                Nt = df[c][i + 1] * 100
+                N0 = df[c][i]
+                gt = 7*24 / (math.log2(Nt / N0))
+            except ValueError:
+                gt = None
+            except ZeroDivisionError:
+                gt = None
+            t, m = c.split('.')[1], c.split('.')[2]
+            out.loc[len(out)] = [t, m, gt, i, c]
+    out = out[(out['treatment'] == '2') | (out['treatment'] == '4')]
+    colors = px.colors.sample_colorscale(
+        "Agsunset", [n/(2 - 1) for n in range(2)])
+    fig = px.box(out, x='treatment', y='generation_time', points='all', color_discrete_sequence=colors,
+                 color='treatment')
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                      pointpos=0, jitter=1)
+    fig.show()
