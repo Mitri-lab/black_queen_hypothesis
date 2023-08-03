@@ -1,0 +1,246 @@
+chrom,pos,gene,product,treatment,timepoint,cosm
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,1
+ct_0,2606256,hutC,Histidine utilization repressor,2,T11,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T11,1
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T11,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,2
+ct_0,2606256,hutC,Histidine utilization repressor,2,T11,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T11,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,3
+ct_0,2606256,hutC,Histidine utilization repressor,2,T11,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T11,3
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T11,4
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,4
+ct_0,2606256,hutC,Histidine utilization repressor,2,T11,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T11,4
+ct_0,964248,Unknown,hypothetical protein,2,T11,5
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,5
+ct_0,2606251,hutC,Histidine utilization repressor,2,T11,5
+ct_0,2606256,hutC,Histidine utilization repressor,2,T11,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T11,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T11,1
+ct_0,2606256,hutC,Histidine utilization repressor,3,T11,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T11,1
+ct_0,2606251,hutC,Histidine utilization repressor,3,T11,2
+ct_0,2606256,hutC,Histidine utilization repressor,3,T11,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T11,2
+ct_0,2606251,hutC,Histidine utilization repressor,3,T11,3
+ct_0,2606256,hutC,Histidine utilization repressor,3,T11,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T11,3
+ct_0,2606251,hutC,Histidine utilization repressor,3,T11,4
+ct_0,2606256,hutC,Histidine utilization repressor,3,T11,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T11,4
+ct_0,2606251,hutC,Histidine utilization repressor,3,T11,5
+ct_0,2606256,hutC,Histidine utilization repressor,3,T11,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T11,5
+ct_0,1994237,amiR,ANTAR domain-containing protein,4,T11,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T11,1
+ct_0,2606256,hutC,Histidine utilization repressor,4,T11,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T11,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T11,2
+ct_0,2606256,hutC,Histidine utilization repressor,4,T11,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T11,2
+ct_0,2606251,hutC,Histidine utilization repressor,4,T11,3
+ct_0,2606256,hutC,Histidine utilization repressor,4,T11,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T11,3
+ct_0,2606251,hutC,Histidine utilization repressor,4,T11,4
+ct_0,2606256,hutC,Histidine utilization repressor,4,T11,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T11,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T11,5
+ct_0,2606256,hutC,Histidine utilization repressor,4,T11,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T11,5
+ct_0,238876,Not annotated,Not annotated,2,T22,1
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T22,1
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,1
+ct_0,2606256,hutC,Histidine utilization repressor,2,T22,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T22,1
+ct_0,4393195,acuC,Histone deacetylase superfamily,2,T22,1
+ct_0,4393195,acuC,Histone deacetylase superfamily,2,T22,1
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T22,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,2
+ct_0,2606256,hutC,Histidine utilization repressor,2,T22,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T22,2
+ct_0,3484966,hslU,ATP-dependent protease ATPase subunit HslU,2,T22,2
+ct_1,137911,Unknown,LysR family transcriptional regulator,2,T22,2
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T22,3
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,3
+ct_0,2606256,hutC,Histidine utilization repressor,2,T22,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T22,3
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,4
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,4
+ct_0,2606256,hutC,Histidine utilization repressor,2,T22,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T22,4
+ct_0,964248,Unknown,hypothetical protein,2,T22,5
+ct_0,1994281,amiR,ANTAR domain-containing protein,2,T22,5
+ct_0,2606251,hutC,Histidine utilization repressor,2,T22,5
+ct_0,2606256,hutC,Histidine utilization repressor,2,T22,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T22,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T22,1
+ct_0,2606256,hutC,Histidine utilization repressor,3,T22,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T22,1
+ct_0,2606251,hutC,Histidine utilization repressor,3,T22,2
+ct_0,2606256,hutC,Histidine utilization repressor,3,T22,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T22,2
+ct_0,2606251,hutC,Histidine utilization repressor,3,T22,3
+ct_0,2606256,hutC,Histidine utilization repressor,3,T22,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T22,3
+ct_0,2606251,hutC,Histidine utilization repressor,3,T22,4
+ct_0,2606256,hutC,Histidine utilization repressor,3,T22,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T22,4
+ct_0,1994278,amiR,ANTAR domain-containing protein,3,T22,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T22,5
+ct_0,2606256,hutC,Histidine utilization repressor,3,T22,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T22,5
+ct_0,3656592,czcD,CDF family Co(II)/Ni(II) efflux transporter DmeF,3,T22,5
+ct_1,137148,Not annotated,Not annotated,3,T22,5
+ct_0,1994237,amiR,ANTAR domain-containing protein,4,T22,1
+ct_0,2606256,hutC,Histidine utilization repressor,4,T22,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T22,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T22,2
+ct_0,2606256,hutC,Histidine utilization repressor,4,T22,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T22,2
+ct_0,2606251,hutC,Histidine utilization repressor,4,T22,3
+ct_0,2606256,hutC,Histidine utilization repressor,4,T22,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T22,3
+ct_0,2606251,hutC,Histidine utilization repressor,4,T22,4
+ct_0,2606256,hutC,Histidine utilization repressor,4,T22,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T22,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T22,5
+ct_0,2606256,hutC,Histidine utilization repressor,4,T22,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T22,5
+ct_1,145422,intI1,class 1 integron integrase IntI1,4,T22,5
+ct_0,1994439,amiR,ANTAR domain-containing protein,2,T33,1
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,1
+ct_0,2606256,hutC,Histidine utilization repressor,2,T33,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T33,1
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T33,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,2
+ct_0,2606256,hutC,Histidine utilization repressor,2,T33,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T33,2
+ct_1,137911,Unknown,LysR family transcriptional regulator,2,T33,2
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T33,3
+ct_0,2171492,Unknown,Trk system potassium uptake protein,2,T33,3
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,3
+ct_0,2606256,hutC,Histidine utilization repressor,2,T33,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T33,3
+ct_0,4393358,acuC,Histone deacetylase superfamily,2,T33,3
+ct_1,137734,Unknown,LysR family transcriptional regulator,2,T33,3
+ct_0,238876,Not annotated,Not annotated,2,T33,4
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,4
+ct_0,2606256,hutC,Histidine utilization repressor,2,T33,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T33,4
+ct_0,964248,Unknown,hypothetical protein,2,T33,5
+ct_0,1994281,amiR,ANTAR domain-containing protein,2,T33,5
+ct_0,2218264,"menE,fadK",Long-chain-fatty-acid--CoA ligase,2,T33,5
+ct_0,2606251,hutC,Histidine utilization repressor,2,T33,5
+ct_0,2606256,hutC,Histidine utilization repressor,2,T33,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T33,5
+ct_1,138019,Unknown,LysR family transcriptional regulator,2,T33,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T33,1
+ct_0,2606256,hutC,Histidine utilization repressor,3,T33,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T33,1
+ct_0,2606256,hutC,Histidine utilization repressor,3,T33,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T33,2
+ct_0,2606251,hutC,Histidine utilization repressor,3,T33,3
+ct_0,2606256,hutC,Histidine utilization repressor,3,T33,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T33,3
+ct_0,1994296,amiR,ANTAR domain-containing protein,3,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,3,T33,4
+ct_0,2606256,hutC,Histidine utilization repressor,3,T33,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,3,T33,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T33,5
+ct_0,2606256,hutC,Histidine utilization repressor,3,T33,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T33,5
+ct_0,1994237,amiR,ANTAR domain-containing protein,4,T33,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T33,1
+ct_0,2606256,hutC,Histidine utilization repressor,4,T33,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T33,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T33,2
+ct_0,2606256,hutC,Histidine utilization repressor,4,T33,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T33,2
+ct_0,2606251,hutC,Histidine utilization repressor,4,T33,3
+ct_0,2606256,hutC,Histidine utilization repressor,4,T33,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T33,3
+ct_0,1994641,amiR,ANTAR domain-containing protein,4,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T33,4
+ct_0,2606256,hutC,Histidine utilization repressor,4,T33,4
+ct_0,3222213,Not annotated,Not annotated,4,T33,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T33,4
+ct_0,3477627,dapF,Diaminopimelate epimerase,4,T33,4
+ct_0,5061829,Unknown,Ribonuclease G,4,T33,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T33,5
+ct_0,2606256,hutC,Histidine utilization repressor,4,T33,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T33,5
+ct_0,1994439,amiR,ANTAR domain-containing protein,2,T44,1
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,1
+ct_0,2606256,hutC,Histidine utilization repressor,2,T44,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T44,1
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T44,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,2
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,2
+ct_0,2606256,hutC,Histidine utilization repressor,2,T44,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T44,2
+ct_0,3484966,hslU,ATP-dependent protease ATPase subunit HslU,2,T44,2
+ct_1,137911,Unknown,LysR family transcriptional regulator,2,T44,2
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T44,3
+ct_0,2171492,Unknown,Trk system potassium uptake protein,2,T44,3
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,3
+ct_0,2606256,hutC,Histidine utilization repressor,2,T44,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T44,3
+ct_0,4393358,acuC,Histone deacetylase superfamily,2,T44,3
+ct_1,137734,Unknown,LysR family transcriptional regulator,2,T44,3
+ct_0,238876,Not annotated,Not annotated,2,T44,4
+ct_0,1994641,amiR,ANTAR domain-containing protein,2,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,4
+ct_0,2606256,hutC,Histidine utilization repressor,2,T44,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T44,4
+ct_0,4393195,acuC,Histone deacetylase superfamily,2,T44,4
+ct_0,4418429,lysR,"DNA-binding transcriptional regulator, LysR family",2,T44,4
+ct_0,964248,Unknown,hypothetical protein,2,T44,5
+ct_0,1994281,amiR,ANTAR domain-containing protein,2,T44,5
+ct_0,2218264,"menE,fadK",Long-chain-fatty-acid--CoA ligase,2,T44,5
+ct_0,2606251,hutC,Histidine utilization repressor,2,T44,5
+ct_0,2606256,hutC,Histidine utilization repressor,2,T44,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,2,T44,5
+ct_1,138019,Unknown,LysR family transcriptional regulator,2,T44,5
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,1
+ct_0,2606256,hutC,Histidine utilization repressor,3,T44,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T44,1
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,2
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,2
+ct_0,2606256,hutC,Histidine utilization repressor,3,T44,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T44,2
+ct_0,1994649,amiR,ANTAR domain-containing protein,3,T44,3
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,3
+ct_0,2606256,hutC,Histidine utilization repressor,3,T44,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T44,3
+ct_0,1994296,amiR,ANTAR domain-containing protein,3,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,4
+ct_0,2606256,hutC,Histidine utilization repressor,3,T44,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,3,T44,5
+ct_0,2606256,hutC,Histidine utilization repressor,3,T44,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,3,T44,5
+ct_0,1994237,amiR,ANTAR domain-containing protein,4,T44,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,1
+ct_0,2606256,hutC,Histidine utilization repressor,4,T44,1
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T44,1
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,2
+ct_0,2606256,hutC,Histidine utilization repressor,4,T44,2
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T44,2
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,3
+ct_0,2606256,hutC,Histidine utilization repressor,4,T44,3
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T44,3
+ct_0,1994641,amiR,ANTAR domain-containing protein,4,T44,4
+ct_0,2172452,Unknown,Trk system potassium uptake protein,4,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,4
+ct_0,2606256,hutC,Histidine utilization repressor,4,T44,4
+ct_0,3222213,Not annotated,Not annotated,4,T44,4
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T44,4
+ct_0,2606251,hutC,Histidine utilization repressor,4,T44,5
+ct_0,2606256,hutC,Histidine utilization repressor,4,T44,5
+ct_0,3312045,Unknown,Phosphoribosyltransferase,4,T44,5

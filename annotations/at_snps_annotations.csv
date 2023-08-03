@@ -1,0 +1,71 @@
+chrom,pos,gene,product,treatment,timepoint,cosm
+at_0,526386,Unknown,Porin,1,T11,1
+at_0,2174947,Not annotated,Not annotated,1,T11,1
+at_1,1397348,secA,Protein translocase subunit SecA,4,T11,1
+at_0,526386,Unknown,Porin,1,T22,1
+at_0,2174947,Not annotated,Not annotated,1,T22,1
+at_0,526309,Unknown,Porin,1,T22,2
+at_0,2175264,Unknown,Metal dependent beta lactamase,1,T22,2
+at_0,2879000,"menE,fadK",Long-chain-fatty-acid--CoA ligase (Long-chain acyl-CoA synthetase) (Acyl-CoA synthetase),1,T22,2
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T22,1
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T22,2
+at_1,1397348,secA,Protein translocase subunit SecA,4,T22,1
+at_0,2124244,Unknown,hypothetical protein,4,T22,3
+at_0,2174507,crp,Lysophospholipase nte1,4,T22,3
+at_1,1393799,Not annotated,Not annotated,4,T22,3
+at_0,1627346,Not annotated,Not annotated,4,T22,4
+at_0,1939269,Unknown,hypothetical protein,4,T22,4
+at_0,2174372,crp,Lysophospholipase nte1,4,T22,4
+at_3,78812,Unknown,Uncharacterized protein in bioA 5'region,4,T22,4
+at_0,66722,fliQ,Flagellar biosynthetic protein FliQ,4,T22,5
+at_0,2174395,crp,Lysophospholipase nte1,4,T22,5
+at_3,78867,Unknown,Uncharacterized protein in bioA 5'region,4,T22,5
+at_0,526386,Unknown,Porin,1,T33,1
+at_0,2174947,Not annotated,Not annotated,1,T33,1
+at_0,526309,Unknown,Porin,1,T33,2
+at_0,2175264,Unknown,Metal dependent beta lactamase,1,T33,2
+at_0,2879000,"menE,fadK",Long-chain-fatty-acid--CoA ligase (Long-chain acyl-CoA synthetase) (Acyl-CoA synthetase),1,T33,2
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T33,1
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T33,2
+at_0,1627323,Not annotated,Not annotated,3,T33,3
+at_0,2525984,23S_rrna,23S ribosomal RNA,3,T33,3
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T33,4
+at_0,2686419,Unknown,Membrane protein,3,T33,4
+at_1,1397348,secA,Protein translocase subunit SecA,4,T33,1
+at_0,1627346,Not annotated,Not annotated,4,T33,4
+at_0,1939269,Unknown,hypothetical protein,4,T33,4
+at_0,1939269,Unknown,hypothetical protein,4,T33,4
+at_0,2174372,crp,Lysophospholipase nte1,4,T33,4
+at_3,78812,Unknown,Uncharacterized protein in bioA 5'region,4,T33,4
+at_0,526386,Unknown,Porin,1,T44,1
+at_0,2174947,Not annotated,Not annotated,1,T44,1
+at_0,526309,Unknown,Porin,1,T44,2
+at_0,2175264,Unknown,Metal dependent beta lactamase,1,T44,2
+at_0,2879000,"menE,fadK",Long-chain-fatty-acid--CoA ligase (Long-chain acyl-CoA synthetase) (Acyl-CoA synthetase),1,T44,2
+at_1,393925,csa3,IS630 family transposase,1,T44,2
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T44,1
+at_0,1627323,Not annotated,Not annotated,3,T44,1
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T44,2
+at_0,500582,yjbI,Pentapeptide repeat-containing protein,3,T44,2
+at_0,1231305,rssA,PNPLA domain-containing protein,3,T44,2
+at_0,2184703,ddpA,Periplasmic alpha-galactoside-binding protein,3,T44,2
+at_0,45315,fliI,Flagellum-specific ATP synthase,3,T44,3
+at_0,1627323,Not annotated,Not annotated,3,T44,3
+at_0,2525221,23S_rrna,23S ribosomal RNA,3,T44,3
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,3,T44,4
+at_0,2185647,ddpA,Periplasmic alpha-galactoside-binding protein,3,T44,4
+at_0,2686419,Unknown,Membrane protein,3,T44,4
+at_1,1397348,secA,Protein translocase subunit SecA,4,T44,1
+at_0,61071,ompR,Flagellar transcriptional regulator FtcR,4,T44,2
+at_0,500636,yjbI,Pentapeptide repeat-containing protein,4,T44,2
+at_0,2518650,baeS,Histidine kinase,4,T44,2
+at_0,1627346,Not annotated,Not annotated,4,T44,4
+at_0,1939269,Unknown,hypothetical protein,4,T44,4
+at_0,1939269,Unknown,hypothetical protein,4,T44,4
+at_0,2174372,crp,Lysophospholipase nte1,4,T44,4
+at_3,78812,Unknown,Uncharacterized protein in bioA 5'region,4,T44,4
+at_0,66722,fliQ,Flagellar biosynthetic protein FliQ,4,T44,5
+at_0,1195470,Unknown,hypothetical protein,4,T44,5
+at_0,1196349,Unknown,hypothetical protein,4,T44,5
+at_0,2174395,crp,Lysophospholipase nte1,4,T44,5
+at_3,78867,Unknown,Uncharacterized protein in bioA 5'region,4,T44,5
