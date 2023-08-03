@@ -17,7 +17,7 @@ strains = {s.abbreviations['at']: 'At',
 def parse_deletions():
     df = pd.DataFrame(columns=['strain', 'treatment', 'cosm', 'deletions'])
     i = 0
-    species = [s.abbreviations[sp] for sp in ['at', 'ct']]
+    species = [s.abbreviations[sp] for sp in ['at', 'ct','oa','ms']]
     for strain in species:
         for sample in s.strains[strain]:
             if sample['platform'] == 'pacbio':
@@ -66,7 +66,7 @@ def parse_deletions_illumina():
 def parse_genome_length():
     df = pd.DataFrame(columns=['strain', 'treatment', 'cosm', 'deletions'])
     i = 0
-    species = [s.abbreviations[sp] for sp in ['at', 'ct']]
+    species = [s.abbreviations[sp] for sp in ['at', 'ct','oa','ms']]
     for strain in species:
         for sample in s.strains[strain]:
             if sample['platform'] == 'pacbio':
@@ -175,7 +175,7 @@ def plot_deletions_illumina(f):
 def caller():
     fig = plot_deletions(join('..', 'variants', 'deletions.csv'))
     fig.show()
-    fig = plot_assembly_length(join('..', 'variants', 'assembly_length.csv'))
+    fig = plot_assembly_length(join('..', 'variants', 'assembly_length_ct_at.csv'))
     fig.show()
     fig = plot_deletions_illumina(join('..', 'variants', 'deletions_illumina.csv'))
 
