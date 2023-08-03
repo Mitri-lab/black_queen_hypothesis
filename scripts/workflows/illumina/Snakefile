@@ -203,6 +203,17 @@ rule freebayes:
         --standard-filters > {output}
         """
 
+rule snpEff:
+    input:
+        join(work,'{sample}','{strain}','var.vcf')
+    output:
+        join(work,'{sample}','{strain}','var.annot.vcf')
+    threads:
+        1
+    shell:
+        """
+        java -Xmx8g -jar ~/apps/snpEff/snpEff.jar {wildcards.strain} {input} > {output}
+        """
 
 
 rule dump_read_ids:

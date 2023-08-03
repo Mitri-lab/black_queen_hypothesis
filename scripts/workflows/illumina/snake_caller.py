@@ -79,7 +79,7 @@ if __name__ == '__main__':
     #strain_caller(s.abbreviations['ms'], join('snippy', 'snps.tab'))
     #strain_caller(s.abbreviations[sys.argv[1]],'reads.sig')
     #strain_caller(s.abbreviations['ct'],'mapped_reads.filtered.sorted.bam')
-    all_caller('depth_marc.tsv')
+    all_caller('var.annot.vcf')
 
     #sample_caller('done.txt')
     #test_caller(join(s.work,'T22.4.1','done.txt'))
