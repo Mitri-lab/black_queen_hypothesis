@@ -229,7 +229,7 @@ def get_mutations(add_T0=True):
     variants = pd.read_csv(
     join('..', 'variants', 'ns_variants_comp_mapping.csv'))
     snps = pd.read_csv(
-        join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
+        join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'))
     out = pd.DataFrame(columns=['strain', 'name', 'cosm',
                                 'treatment', 'timepoint', 'mutations', 'fixed', 'linegroup'])
     for strain, samples in s.strains.items():
@@ -783,21 +783,19 @@ def t_test(df, column):
 
 def plotter():
     variants = join('..', 'variants', 'variants_comp_mapping.csv')
-    ns_variants = join('..', 'variants', 'ns_variants_comp_mapping.csv')
-    snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv')
+    snps = join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv')
     fig = diversity_illumina(snps, 'Fixed variant richness', '')
-    fig = diversity_illumina(ns_variants, 'Variant richness', '')
+    fig = diversity_illumina(variants, 'Variant richness', '')
     fig = snp_distribution(snps, 'ct', 'T44', add_clusters=False)
     fig = snp_distribution(variants, 'at', 'T44', add_clusters=True)
     fig = coverage()
-    fig = trajectories(variants, 'at', '')
-    fig = trajectories(ns_variants, 'ct', '')
+    fig = trajectories(variants, 'ct', '')
     fig = ct_box(variants, 'Variants', '')
     fig = ct_box(snps, 'Variants', '')
     fig = ct_scatter(variants, 'Summed SNPs')
     fig = mutations('Mutations', '')
     fig = mutations_longitudinal('ct')
-    fig = fixed_mutations('ct')
+    fig = fixed_mutations('at')
     fig = ratio_fixed_mutations()
 
 
@@ -808,7 +806,7 @@ def statistics():
         join('..', 'variants', 'ns_variants_comp_mapping.csv'), 'illumina')
     t_test(df, 'hill')
     df = get_variants(
-        join('..', 'variants', 'ns_snps_comp_mapping.csv'), 'illumina')
+        join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'), 'illumina')
     print('######SNPs#########')
     t_test(df, 'hill')
     print('###########Mut ratio############')
