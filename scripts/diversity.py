@@ -852,29 +852,3 @@ def generation_time():
                       pointpos=0, jitter=1)
     fig.show()
 
-
-freq_low = 0.5
-freq_high = 1
-abb = 'ct'
-variants = join('..', 'variants', 'variants_comp_mapping.csv')
-out = pd.DataFrame(columns=['strain', 'treatment',
-                   'timepoint', 'cosm', 'dN/dS'])
-df = pd.read_csv(variants)
-df = df[df['strain'] == s.abbreviations[abb]]
-ts, cosms, tps = set(df['treatment']), set(df['cosm']), set(df['timepoint'])
-for t in ts:
-    for c in cosms:
-        for tp in tps:
-            tmp = df[(df['treatment'] == t) & (
-                df['cosm'] == c) & (df['timepoint'] == tp)]
-            tmp = tmp[(tmp['freq'] >= freq_low) & (tmp['freq'] <= freq_high)]
-            dS = len(tmp[tmp['eff'] == 'synonymous_variant'])
-            dN = len(tmp[tmp['eff'] != 'synonymous_variant'])
-            try:
-                out.loc[len(out)] = [s.abbreviations[abb], t, tp, c, dN/dS]
-            except ZeroDivisionError:
-                out.loc[len(out)] = [s.abbreviations[abb], t, tp, c, None]
-
-fig = px.box(out, x='timepoint', y='dN/dS', facet_col='treatment',points='all',
-             category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']})
-fig.show()
