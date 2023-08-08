@@ -227,7 +227,7 @@ def get_variants(f, platform):
 
 def get_mutations(add_T0=True):
     variants = pd.read_csv(
-    join('..', 'variants', 'ns_variants_comp_mapping.csv'))
+        join('..', 'variants', 'ns_variants_comp_mapping.csv'))
     snps = pd.read_csv(
         join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'))
     out = pd.DataFrame(columns=['strain', 'name', 'cosm',
@@ -242,19 +242,20 @@ def get_mutations(add_T0=True):
                 fixed = snps[(snps['strain'] == strain) & (
                     snps['name'] == sample['name'])]
                 out.loc[len(out)] = [strains[strain], sample['name'], sample['cosm'],
-                                        sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed),  lg]
+                                     sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed),  lg]
                 if add_T0:
                     out.loc[len(out)] = [strains[strain], sample['name'],
-                                            sample['cosm'], sample['treatment'], 'T0', 0, 0, lg]
-    for i,(f,m) in enumerate(zip(out['fixed'],out['mutations'])):
+                                         sample['cosm'], sample['treatment'], 'T0', 0, 0, lg]
+    for i, (f, m) in enumerate(zip(out['fixed'], out['mutations'])):
         try:
-            out.at[i,'fixed_total_ratio'] = f/m
+            out.at[i, 'fixed_total_ratio'] = f/m
         except ZeroDivisionError:
-            out.at[i,'fixed_total_ratio'] = None
+            out.at[i, 'fixed_total_ratio'] = None
     out = out.sort_values(by='treatment', ascending=True)
     out['hill'] = out['mutations']
-    out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'),index=False)
+    out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'), index=False)
     return out
+
 
 def mutations(y_label, title):
     hill = get_mutations(add_T0=False)
@@ -733,7 +734,8 @@ def annotate_clusters(abb):
 
     out = pd.DataFrame(columns=['cluster', 'chrom', 'pos', 'gene', 'product'])
     #cluster = pd.read_csv('clusters_'+abb+'.csv')
-    cluster = pd.read_csv(snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
+    cluster = pd.read_csv(
+        snps=join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
     for j, (i, c, p) in enumerate(zip(cluster['id'], cluster['chrom'], cluster['pos'])):
         a = annotate_pos(gbk, c, p)
         if a:
@@ -824,6 +826,7 @@ def statistics():
     print('########Assembly length#########')
     t_test(df, 'deletions')
 
+
 def generation_time():
     out = pd.DataFrame(columns=['treatment', 'microcosm',
                                 'generation_time', 'time', 'lg'])
@@ -848,3 +851,30 @@ def generation_time():
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
     fig.show()
+
+
+freq_low = 0.5
+freq_high = 1
+abb = 'ct'
+variants = join('..', 'variants', 'variants_comp_mapping.csv')
+out = pd.DataFrame(columns=['strain', 'treatment',
+                   'timepoint', 'cosm', 'dN/dS'])
+df = pd.read_csv(variants)
+df = df[df['strain'] == s.abbreviations[abb]]
+ts, cosms, tps = set(df['treatment']), set(df['cosm']), set(df['timepoint'])
+for t in ts:
+    for c in cosms:
+        for tp in tps:
+            tmp = df[(df['treatment'] == t) & (
+                df['cosm'] == c) & (df['timepoint'] == tp)]
+            tmp = tmp[(tmp['freq'] >= freq_low) & (tmp['freq'] <= freq_high)]
+            dS = len(tmp[tmp['eff'] == 'synonymous_variant'])
+            dN = len(tmp[tmp['eff'] != 'synonymous_variant'])
+            try:
+                out.loc[len(out)] = [s.abbreviations[abb], t, tp, c, dN/dS]
+            except ZeroDivisionError:
+                out.loc[len(out)] = [s.abbreviations[abb], t, tp, c, None]
+
+fig = px.box(out, x='timepoint', y='dN/dS', facet_col='treatment',points='all',
+             category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']})
+fig.show()
