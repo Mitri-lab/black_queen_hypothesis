@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.express as px
 from plotly.subplots import make_subplots
 import math
-
+from scipy.spatial import distance
 # Sample class for parsing contact me for infos
 # eric.ulrich@unil.ch
 s = Samples()
@@ -17,8 +17,22 @@ strains = {s.abbreviations['at']: 'At',
            s.abbreviations['oa']: 'Oa',
            s.abbreviations['ms']: 'Ms'}
 
-# This section is executed on the cluster for parsing data on cluster
 
+colors = {'ct': ['#a431a0', '#ea4f88', '#f89178'],
+          'at': ['#4b2991', '#ea4f88', '#f89178'],
+          'all': ['#4b2991', '#a431a0', '#ea4f88', '#f89178'],
+          'cosm': ['#4b2991', '#a431a0', '#ea4f88', '#f89178', '#edd9a3']
+          }
+
+colors_t = {'1': '#4b2991',
+            '2': '#a431a0',
+            '3': '#ea4f88',
+            '4': '#f89178'}
+
+
+# This section is executed on the cluster for parsing data on cluster
+w = 400
+h = 250
 
 def parse_variants():
     """Parses vcf files and dumps variants with metdadata as csv."""
@@ -200,6 +214,9 @@ def font_size(fig):
         font=dict(size=j, color='black')))
     fig.for_each_yaxis(lambda axis: axis.title.update(
         font=dict(size=j, color='black')))
+    fig.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+    )
     return fig
 
 
@@ -207,7 +224,7 @@ def get_variants(f, platform):
     """Sums up SNPs or variants from variant csv files in ../variants"""
     snps = pd.read_csv(f)
     # Hill name from hill numbers, q = 0. Artifiact from old analysis still valid.
-    #snps = snps[snps['eff'] != 'synonymous_variant']
+    # snps = snps[snps['eff'] != 'synonymous_variant']
     hill = pd.DataFrame(
         columns=['strain', 'treatment', 'hill', 'timepoint', 'cosm'])
     i = 0
@@ -227,9 +244,9 @@ def get_variants(f, platform):
 
 def get_mutations(add_T0=True):
     variants = pd.read_csv(
-        join('..', 'variants', 'ns_variants_comp_mapping.csv'))
+        join('..', 'variants', 'variants_comp_mapping.csv'))
     snps = pd.read_csv(
-        join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'))
+        join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
     out = pd.DataFrame(columns=['strain', 'name', 'cosm',
                                 'treatment', 'timepoint', 'mutations', 'fixed', 'linegroup'])
     for strain, samples in s.strains.items():
@@ -251,26 +268,31 @@ def get_mutations(add_T0=True):
             out.at[i, 'fixed_total_ratio'] = f/m
         except ZeroDivisionError:
             out.at[i, 'fixed_total_ratio'] = None
+    out.insert(len(out.columns), 'fixation_rate', None)
+    out.insert(len(out.columns), 'acc_rate', None)
+
+    for i, row in out.iterrows():
+        t, fixed, mutations = row['timepoint'], row['fixed'], row['mutations']
+        t = int(t[1])
+        out.at[i, 'fixation_rate'] = fixed / t
+        out.at[i, 'acc_rate'] = mutations / t
     out = out.sort_values(by='treatment', ascending=True)
     out['hill'] = out['mutations']
     out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'), index=False)
     return out
 
 
-def mutations(y_label, title):
+def total_freq_box(y_label, title):
+    # Plot for total allele frequency
     hill = get_mutations(add_T0=False)
     # Subsetting for species At and Ct
     a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
     hill = hill[(hill['strain'] == a) | (hill['strain'] == c)]
-    # Color sampling
-    n_colors = len(set(hill['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     hover_data = ['treatment', 'timepoint', 'strain',  'cosm']
 
-    fig = px.box(hill, x='strain', y='mutations', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
+    fig = px.box(hill, x='strain', y='mutations', color='treatment', color_discrete_sequence=colors['all'], facet_col='timepoint',
                  points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']},
-                 hover_data=hover_data, height=250, width=400)
+                 hover_data=hover_data, height=h, width=w)
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
 
@@ -282,8 +304,10 @@ def mutations(y_label, title):
 
     fig.for_each_yaxis(lambda y: y.update(title=''))
     fig['layout']['yaxis']['title']['text'] = y_label
+    fig.for_each_xaxis(lambda y: y.update(title=''))
+    fig['layout']['xaxis']['title']['text'] = 'Time-point'
     fig.update_xaxes(title=None)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_layout(title=title, boxgroupgap=0.2, boxgap=0.3)
     # Setting offsetgroups not ideal
     offsetgroups = ['1', '1', '1', '1',
@@ -298,28 +322,97 @@ def mutations(y_label, title):
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
 
     fig = font_size(fig)
-    fig.write_image(join('..', 'plots', 'plots', 'mutations.svg'))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..', 'plots', 'plots', 'total_allele_freq_box.svg'))
     return fig
 
 
-def mutations_longitudinal(abb):
+def total_freq_line(abb):
     df = get_mutations(add_T0=False)
-    df = df.sort_values(by='timepoint', ascending=True)
+    df = df.sort_values(by=['treatment','timepoint'], ascending=True)
     df = df[df['strain'] == strains[s.abbreviations[abb]]]
-    n_colors = len(set(df['treatment']))
-    colors = {str(k): v for k, v in zip(s.treatments[s.abbreviations[abb]], px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)]))}
-    fig = px.line(df, x='timepoint', y='mutations', width=350, height=300,
+    fig = px.line(df, x='timepoint', y='mutations', width=w/2, height=h,
                   color='treatment', line_group='linegroup', markers=True)
     fig = font_size(fig)
-    fig.update_xaxes(title='Timepoint')
+    fig.update_xaxes(title='Transfer')
     fig.update_yaxes(title='Total alllele frequency')
-    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig['layout']['legend']['title']['text'] = 'Condition'
     for d in fig['data']:
-        d['line']['color'] = colors[d['name']]
-        d['line']['width'] = 1
+        d['line']['color'] = colors_t[str(d['name'])]
+        d['line']['width'] = 1.5
+        d['opacity'] = 0.8
+        d['marker']['size'] = 5
+        d['x'] = [1,2,3,4]
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=2))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
     fig.write_image(join('..', 'plots', 'plots',
-                    abb+'_mutations_timeline.svg'))
+                    abb+'_total_allele_freq_line.svg'))
+    fig = px.line(df, x='timepoint', y='fixed_total_ratio', width=w/2, height=h,
+                  color='treatment', line_group='linegroup', markers=True)
+    fig = font_size(fig)
+    fig.update_xaxes(title='Transfer')
+    fig.update_yaxes(title='Ratio fixed variants')
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    for d in fig['data']:
+        d['line']['color'] = colors_t[str(d['name'])]
+        d['line']['width'] = 1.5
+        d['opacity'] = 0.8
+        d['marker']['size'] = 5
+        d['x'] = [1,2,3,4]
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    fig.write_image(join('..', 'plots', 'plots',
+                    abb+'_fixed_ratio_line.svg'))
+
+    fig = px.line(df, x='timepoint', y='fixed', width=w/2, height=h,
+                  color='treatment', line_group='linegroup', markers=True)
+    fig = font_size(fig)
+    fig.update_xaxes(title='Transfer')
+    fig.update_yaxes(title='Number of fixed variants')
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    for d in fig['data']:
+        d['line']['color'] = colors_t[str(d['name'])]
+        d['line']['width'] = 1.5
+        d['opacity'] = 0.8
+        d['marker']['size'] = 5
+        d['x'] = [1,2,3,4]
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=2))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    fig.write_image(join('..', 'plots', 'plots',
+                    abb+'_fixed_line.svg'))
+
+    f = join('..', 'variants', 'variants_comp_mapping.csv')
+    df = get_variants(f, 'illumina')
+    df = df[df['strain'] == strains[s.abbreviations[abb]]]
+    labels = {'T11':'1','T22':'2','T33':'3','T44':'4'}
+    df = df.sort_values(by=['treatment','timepoint'], ascending=True)
+    fig = px.line(df, x='timepoint', y='hill', width=w/2, height=h,labels=labels,
+                  color='treatment', line_group='cosm', markers=True)
+    fig = font_size(fig)
+    fig.update_xaxes(title='Transfer')
+    fig.update_yaxes(title='Number of variants')
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    for d in fig['data']:
+        d['line']['color'] = colors_t[str(d['name'])]
+        d['line']['width'] = 1.5
+        d['opacity'] = 0.8
+        d['marker']['size'] = 5
+        d['x'] = [1,2,3,4]
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=5))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    fig.write_image(join('..', 'plots', 'plots',
+                    abb+'_variants_line.svg'))
     return fig
 
 
@@ -329,35 +422,36 @@ def fixed_mutations(abb):
     df = df[df['strain'] == strains[s.abbreviations[abb]]]
     df['treatment'] = df['treatment'].astype(str)
     hover_data = ['cosm', 'treatment', 'timepoint']
-    n_colors = len(set(df['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-    fig = px.scatter(df, x='mutations', y='fixed', width=350, height=300,
-                     color='treatment', hover_data=hover_data, color_discrete_sequence=colors, opacity=0.7)
-    fig.add_scatter(x=list(range(0, 12)), y=list(range(0, 12)), line={
+    fig = px.scatter(df, x='mutations', y='fixed', width=w, height=h,
+                     color='treatment', hover_data=hover_data, color_discrete_sequence=colors[abb], opacity=0.7)
+    fig.add_scatter(x=list(range(2, 8)), y=list(range(2, 8)), line={
                     'color': 'gray', 'width': 1}, mode='lines', showlegend=False)
-    fig = font_size(fig)
-    for d in fig['data']:
-        d['marker']['size'] = 6
-    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_xaxes(title='Total alllele frequency')
     fig.update_yaxes(title='Fixed mutations')
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=2))
+    fig.for_each_xaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=2))
+    fig = font_size(fig)
+    for d in fig['data']:
+        d['marker']['size'] = 4
+    fig.update_yaxes(title_standoff=0)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
     fig.write_image(join('..', 'plots', 'plots', abb+'_fixed_correlation.svg'))
     return fig
 
 
-def ratio_fixed_mutations():
+def ratio_fixed_mutations(abb):
     df = get_mutations(add_T0=False)
     df = df.sort_values(by='treatment', ascending=True)
-    a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
-    df = df[(df['strain'] == c)]
+    df = df[(df['strain'] == strains[s.abbreviations[abb]])]
     df['treatment'] = df['treatment'].astype(str)
     hover_data = ['cosm', 'treatment', 'timepoint']
-    n_colors = len(set(df['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-    fig = px.box(df, x='timepoint', y='fixed_total_ratio', height=250, width=350,
-                 color='treatment', hover_data=hover_data, color_discrete_sequence=colors,
+
+    fig = px.box(df, x='timepoint', y='fixed_total_ratio', height=h, width=w,
+                 color='treatment', hover_data=hover_data, color_discrete_sequence=colors[abb],
                  points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']})
     fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
@@ -371,15 +465,17 @@ def ratio_fixed_mutations():
                     '2', '2', '2', '2',
                     '3', '3', '3', '3']
     for i, d in enumerate(fig['data']):
-        #d['offsetgroup'] = offsetgroups[i]
+        # d['offsetgroup'] = offsetgroups[i]
         pass
-    fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig.update_xaxes(title='')
+    fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_layout(title='')
     fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig['layout']['yaxis']['title']['text'] = 'Fixed mutations/Total allele frequency'
+    fig['layout']['yaxis']['title']['text'] = 'Ratio fixed mutations'
+    fig['layout']['xaxis']['title']['text'] = 'Time-point'
     fig = font_size(fig)
-    fig.write_image(join('..', 'plots', 'plots', 'ratio_fixed_total.svg'))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..', 'plots', 'plots', 'ratio_fixed_mutations.svg'))
     return fig
 
 
@@ -390,14 +486,11 @@ def diversity_illumina(f, y_label, title):
     a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
     hill = hill[(hill['strain'] == a) | (hill['strain'] == c)]
     # Color sampling
-    n_colors = len(set(hill['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     hover_data = ['treatment', 'timepoint', 'strain', 'hill', 'cosm']
 
-    fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, facet_col='timepoint',
+    fig = px.box(hill, x='strain', y='hill', color='treatment', color_discrete_sequence=colors['all'], facet_col='timepoint',
                  points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']},
-                 hover_data=hover_data, height=250, width=400)
+                 hover_data=hover_data, height=h, width=w)
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
 
@@ -410,7 +503,7 @@ def diversity_illumina(f, y_label, title):
     fig.for_each_yaxis(lambda y: y.update(title=''))
     fig['layout']['yaxis']['title']['text'] = y_label
     fig.update_xaxes(title=None)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_layout(title=title, boxgroupgap=0.2, boxgap=0.3)
     # Setting offsetgroups not ideal
     offsetgroups = ['1', '1', '1', '1',
@@ -424,12 +517,14 @@ def diversity_illumina(f, y_label, title):
     if 'snps' in f:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(
             tickmode='linear', dtick=1))
-        n = 'fixed_variants.svg'
+        n = 'number_of_fixed_variants.svg'
     else:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
-        n = 'variants.svg'
+        n = 'number_of_variants.svg'
 
     fig = font_size(fig)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
     fig.write_image(join('..', 'plots', 'plots',
                     n))
     return fig
@@ -439,14 +534,12 @@ def diversity_pacbio():
     """Plots Pacbio SNPs"""
     df = get_variants(
         join('..', 'variants', 'snps_pacbio.csv'), platform='pacbio')
-    n_colors = len(set(df['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
+
     hover_data = ['hill', 'cosm']
-    fig = px.box(df, x='strain', y='hill', color='treatment', color_discrete_sequence=colors, hover_data=hover_data,
-                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=350, height=300)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig.update_xaxes(title='Timepoint')
+    fig = px.box(df, x='strain', y='hill', color='treatment', color_discrete_sequence=colors['all'], hover_data=hover_data,
+                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=w, height=h)
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    fig.update_xaxes(title='Time-point')
     fig.update_yaxes(title='SNPs')
     fig.update_layout(title='')
     fig = font_size(fig)
@@ -462,17 +555,14 @@ def diversity_pacbio():
     return fig
 
 
-def ct_box(f, y_label, title):
+def diversity_ct_box(f, y_label, title):
     """Plots Ct SNPs/variatns with timepoints on x scale"""
     df = get_variants(f, platform='illumina')
     df = df[df['strain'] == strains[s.abbreviations['ct']]]
-    n_colors = len(set(df['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-    fig = px.box(df, x='timepoint', y='hill', color='treatment', color_discrete_sequence=colors,
-                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=350, height=300)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig.update_xaxes(title='Timepoint')
+    fig = px.box(df, x='timepoint', y='hill', color='treatment', color_discrete_sequence=colors['ct'],
+                 log_y=False, category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, points='all', width=w, height=h)
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    fig.update_xaxes(title='Time-point')
     fig.update_yaxes(title=y_label)
     fig.update_layout(title=title)
     fig = font_size(fig)
@@ -481,133 +571,26 @@ def ct_box(f, y_label, title):
     if 'snps' in f:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(
             tickmode='linear', dtick=1))
-        n = 'fixed_variants_ct.svg'
+        n = 'number_of_fixed_variants_ct.svg'
     else:
         fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
-        n = 'variants_ct.svg'
+        n = 'number_of_variants_ct.svg'
     fig.write_image(join('..', 'plots', 'plots', n))
-
-
-def ct_scatter(f, y_label):
-    df = get_variants(f, platform='illumina')
-    specie = 'ct'
-    df = df[df['strain'] == strains[s.abbreviations[specie]]]
-    out = pd.DataFrame(columns=['species', 'timepoint', 'treatment', 'snps'])
-    i = 0
-    for t in s.treatments[s.abbreviations[specie]]:
-        for j in ['T11', 'T22', 'T33', 'T44']:
-            snps = df[(df['strain'] == strains[s.abbreviations[specie]]) & (
-                df['treatment'] == t) & (df['timepoint'] == j)]
-            out.loc[i] = [strains[s.abbreviations[specie]],
-                          j, str(t), sum(snps['hill'])]
-            i += 1
-    out = out.sort_values(by='treatment', ascending=True)
-    n_colors = len(set(out['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-    fig = px.scatter(out, x='timepoint', y='snps', width=300, height=300,
-                     color='treatment', color_discrete_sequence=colors)
-    titles = ['T11', 'T22', 'T33', 'T44']
-
-    for i, t in enumerate(fig['layout']['annotations']):
-        t['text'] = titles[i]
-
-    fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig['layout']['yaxis']['title']['text'] = y_label
-    fig.update_xaxes(title='Timepoint')
-    fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
-    fig = font_size(fig)
-    for d in fig['data']:
-        d['marker']['size'] = 5
-    if 'snps' in f:
-        n = 'fixed_variants_ct_summed.svg'
-    else:
-        n = 'variants_ct_summed.svg'
-    fig.write_image(join('..', 'plots', 'plots', n))
-    return fig
-
-
-def snp_distribution(f, abb, timepoint, subset=False, add_clusters=False):
-    """Plots variant distributions over genome.
-    Allows to annotate "clusters". Subsetting possible with treatment
-    as string."""
-    hill = pd.read_csv(f, dtype={'cosm': str, 'treatment': str})
-    hill = hill[hill['strain'] == s.abbreviations[abb]]
-    hill = hill[hill['timepoint'] == timepoint]
-    hill.index = range(len(hill))
-    hill.insert(0, 'ID', hill.index)
-    if subset:
-        hill = hill[hill['treatment'] == subset]
-
-    hover_data = ['pos', 'depth', 'qual', 'cosm', 'ID']
-
-    if subset:
-        n_colors = len(set(hill['cosm']))
-        colors = px.colors.sample_colorscale(
-            "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-        fig = px.scatter(hill, x='pos', y='freq', color='cosm', color_discrete_sequence=colors,
-                         facet_col='chrom', facet_col_wrap=1,
-                         facet_row_spacing=0.12, hover_data=hover_data, width=400, height=300)
-    else:
-        n_colors = len(set(hill['cosm']))
-        colors = px.colors.sample_colorscale(
-            "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-        fig = px.scatter(hill, x='pos', y='freq', color='treatment', color_discrete_sequence=colors,
-                         facet_col='chrom', facet_col_wrap=1,
-                         facet_row_spacing=0.12, hover_data=hover_data, width=400, height=300)
-    fig.update_xaxes(matches=None, showticklabels=True)
-    fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig['layout']['yaxis']['title']['text'] = 'Variant frequency'
-    fig['layout']['xaxis']['title']['text'] = 'Position'
-    for i, t in enumerate(fig['layout']['annotations']):
-        t['text'] = t['text'].replace('chrom=', '')
-
-    if add_clusters:
-        # Annotations for plot
-        annot = pd.read_csv(
-            join('..', 'variants', 'clusters', 'clusters_'+abb+'.csv'))
-        for i, chrom in enumerate(sorted(set(annot['chrom']))):
-            annot_sub = annot[annot['chrom'] == chrom]
-            for id in set(annot_sub['id']):
-                asid = annot_sub[annot_sub['id'] == id]
-                asid.index = range(len(asid))
-                x0 = asid.loc[0].pos
-                x1 = asid.loc[len(asid)-1].pos
-                fig.add_vline(x=(x0+x1)/2, row=i, annotation_text=id,
-                              opacity=0.25)
-    if subset:
-        n = abb+'_positions_cosm.svg'
-        fig.update_layout(
-            title='Variants colored by microcosm for treatment 4 in '+strains[s.abbreviations[abb]])
-        fig['layout']['legend']['title']['text'] = 'Microcosm'
-
-    else:
-        fig.update_layout(title='Variant distribution along the genome')
-        n = abb+'_positions.svg'
-        fig['layout']['legend']['title']['text'] = 'Treatment'
-    fig = font_size(fig)
-    fig.for_each_yaxis(lambda yaxis: yaxis.update(
-        tickmode='linear', dtick=0.2))
-    fig.write_image(join('..', 'plots', 'plots',
-                    n))
-    return fig
 
 
 def coverage():
     df = pd.read_csv(join('..', 'variants', 'mean_coverage.csv'))
     # Possibility to subset for all species
-    #a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
-    #df = df[(df['species'] == a) | (df['species'] == c)]
+    # a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
+    # df = df[(df['species'] == a) | (df['species'] == c)]
     df = df.sort_values(by='treatment', ascending=True)
+    depth = [None if i == 0 else i for i in df['depth']]
+    df['depth'] = depth
     hover_data = ['treatment', 'timepoint', 'species', 'depth', 'cosm']
-    n_colors = len(set(df['treatment']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
     fig = px.box(df, x='species', y='depth', color='treatment', facet_col='timepoint', points='all',
                  category_orders={'timepoint': [
-                       'T11', 'T22', 'T33', 'T44']}, color_discrete_sequence=colors,
-                 log_y=True, hover_data=hover_data, height=250, width=450)
+                       'T11', 'T22', 'T33', 'T44']}, color_discrete_sequence=colors['all'],
+                 log_y=True, hover_data=hover_data, height=h, width=w)
     titles = ['T11', 'T22', 'T33', 'T44']
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = titles[i]
@@ -615,11 +598,11 @@ def coverage():
     fig.for_each_yaxis(lambda y: y.update(title=''))
     fig['layout']['yaxis']['title']['text'] = 'Mean coverage'
     fig.update_xaxes(title=None)
-    fig['layout']['legend']['title']['text'] = 'Treatment'
+    fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
-    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    #fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
 
     offsetgroups = ['1', '1', '1', '1',
                     '1', '1', '1', '1',
@@ -629,123 +612,70 @@ def coverage():
         d['offsetgroup'] = offsetgroups[i]
 
     fig = font_size(fig)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
     fig.write_image(join('..', 'plots', 'plots',
-                    'coverage.svg'))
+                    'coverage_2.svg'))
     return fig
     # fig.show()
+
+
+def mutation_rates(abb, y_label, rates):
+    h = 250
+    w = 200
+    df = get_mutations(add_T0=False)
+    df = df[df['strain'] == strains[s.abbreviations[abb]]]
+    df = df.sort_values(by='timepoint', ascending=True)
+    fig = px.line(df, x='timepoint', y=rates, width=w,
+                  height=h, color='treatment', line_group='linegroup', markers=True)
+    fig = font_size(fig)
+    fig.update_xaxes(title='Time-point')
+    fig.update_yaxes(title=y_label)
+    fig['layout']['legend']['title']['text'] = 'Condition'
+    for d in fig['data']:
+        d['line']['color'] = colors_t[str(d['name'])]
+        d['line']['width'] = 1.5
+        d['opacity'] = 0.7
+        d['marker']['size'] = 2
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(
+        tickmode='linear', dtick=2))
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    f = join('..', 'plots', 'plots', y_label.replace(' ', '_') + '.svg')
+    fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    fig.write_image(f)
 
 
 def trajectories(f, species, title):
     df = pd.read_csv(f, dtype={
                      'cosm': str, 'treatment': str})
     df = df[df['strain'] == s.abbreviations[species]]
-    n_colors = len(set(df['cosm']))
-    colors = px.colors.sample_colorscale(
-        "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
+
     hover_data = ['treatment', 'timepoint', 'cosm', 'depth']
-    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors,
+    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors['cosm'],
                   facet_col='treatment', facet_col_wrap=4, color='cosm', hover_data=hover_data, facet_col_spacing=0.05,
-                  category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=250, width=400)
+                  category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=h, width=w)
 
     fig.for_each_yaxis(lambda y: y.update(title=''))
     fig['layout']['yaxis']['title']['text'] = 'Variant frequency'
-    titles = ['Treatment ' + str(i)
+    titles = ['Condition ' + str(i)
               for i in sorted(list(set(df['treatment'])))]
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = titles[i]
     fig.update_xaxes(title='')
-    fig.update_layout(xaxis2=dict(title="Timepoint"))
+    fig.update_layout(xaxis2=dict(title="Transfer"))
     fig.update_layout(title=title)
     fig['layout']['legend']['title']['text'] = 'Microcosm'
     fig.for_each_yaxis(lambda yaxis: yaxis.update(
         tickmode='linear', dtick=0.2))
     fig = font_size(fig)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    for d in fig['data']:
+        d['x'] = [1,2,3,4]
     fig.write_image(join('..', 'plots', 'plots',
                     species+'_trajectories.svg'))
-    return fig
-
-
-def cluster_trajectories(abb):
-    """This allows to follow the trajectories of SNP clusters of interest."""
-    df = pd.read_csv(join('..', 'variants', 'ns_variants_comp_mapping.csv'), dtype={
-                     'cosm': str, 'treatment': str})
-    df = df[df['strain'] == s.abbreviations[abb]]
-    cluster = pd.read_csv('clusters_'+abb+'.csv')
-    out = pd.DataFrame(columns=['treatment', 'chrom', 'pos', 'cosm',
-                                'timepoint', 'freq', 'qual', 'linegroup', 'cluster', 'strain'])
-    k = 0
-    for i, c, p in zip(cluster['id'], cluster['chrom'], cluster['pos']):
-        df_c = df[df['chrom'] == c]
-        df_p = df_c[df_c['pos'] == p]
-        for j, row in df_p.iterrows():
-            out.loc[k] = [row['treatment'], row['chrom'], row['pos'],
-                          row['cosm'], row['timepoint'], row['freq'], row['qual'], row['linegroup'], i, 'ct']
-            k += 1
-    n_colors = len(set(cluster['id']))
-    if n_colors == 1:
-        colors = px.colors.sample_colorscale(
-            "Agsunset", [1])
-    else:
-        colors = px.colors.sample_colorscale(
-            "Agsunset", [n/(n_colors - 1) for n in range(n_colors)])
-    fig = px.line(out, x='timepoint', y='freq', line_group='linegroup',
-                  facet_col='treatment', facet_col_wrap=4, color='cluster', color_discrete_sequence=colors, width=400, height=350,
-                  category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44'], 'treatment': sorted(set(out['treatment']))}, markers=True)
-    titles = ['Treatment ' + str(i)
-              for i in sorted(list(set(df['treatment'])))]
-    for i, t in enumerate(fig['layout']['annotations']):
-        t['text'] = titles[i]
-    fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig['layout']['yaxis']['title']['text'] = 'Variant frequency'
-    fig.update_xaxes(title=None)
-    fig.for_each_xaxis(lambda x: x.update(title=''))
-    fig['layout']['xaxis']['title']['text'] = 'Variant frequency'
-    fig = font_size(fig)
-    fig.show()
-
-
-def annotate_clusters(abb):
-    """Prints annotations for identified SNPs."""
-    def annotate_pos(gbk, c, p):
-        for (start, end), (gene, product) in gbk[c].items():
-            if p in range(start, end):
-                return [gene, product]
-        return False
-
-    f = join('..', 'annotations', abb + '.tsv')
-    df = pd.read_csv(f, sep='\t')
-    # For plotting we renamed contigs to at_0 etc.
-    # Rename of contigs in annotations for hashing.
-    contigs = {c: abb+'_'+str(i)
-               for i, c in enumerate(sorted(set(df['Sequence Id'])))}
-    for i, chrom in enumerate(df['Sequence Id']):
-        df.at[i, 'Sequence Id'] = contigs[chrom]
-    gbk = {contig: {} for contig in sorted(set(df['Sequence Id']))}
-    for i, row in df.iterrows():
-        if pd.isna(row['Gene']):
-            gene = 'Unknown'
-        else:
-            gene = row['Gene']
-        if pd.isna(row['Product']):
-            product = 'hypothetical protein'
-        else:
-            product = row['Product']
-        gbk[row['Sequence Id']][(row['Start'], row['Stop'])] = (gene, product)
-
-    out = pd.DataFrame(columns=['cluster', 'chrom', 'pos', 'gene', 'product'])
-    #cluster = pd.read_csv('clusters_'+abb+'.csv')
-    cluster = pd.read_csv(
-        snps=join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
-    for j, (i, c, p) in enumerate(zip(cluster['id'], cluster['chrom'], cluster['pos'])):
-        a = annotate_pos(gbk, c, p)
-        if a:
-            pass
-        else:
-            a = ['Not annotated', 'Not annotated']
-        out.loc[j] = [i, c, p, a[0], a[1]]
-    out = out.drop_duplicates(subset=['cluster', 'product'])
-
-    print(out.to_string(index=False))
 
 
 def t_test(df, column):
@@ -785,47 +715,23 @@ def t_test(df, column):
 
 def plotter():
     variants = join('..', 'variants', 'variants_comp_mapping.csv')
-    snps = join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv')
-    fig = diversity_illumina(snps, 'Fixed variant richness', '')
-    fig = diversity_illumina(variants, 'Variant richness', '')
-    fig = snp_distribution(snps, 'ct', 'T44', add_clusters=False)
-    fig = snp_distribution(variants, 'at', 'T44', add_clusters=True)
-    fig = coverage()
-    fig = trajectories(variants, 'ct', '')
-    fig = ct_box(variants, 'Variants', '')
-    fig = ct_box(snps, 'Variants', '')
-    fig = ct_scatter(variants, 'Summed SNPs')
-    fig = mutations('Mutations', '')
-    fig = mutations_longitudinal('ct')
-    fig = fixed_mutations('at')
-    fig = ratio_fixed_mutations()
+    snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv')
+    total_freq_box('Total allele frequency', '')
+    total_freq_line('ct')
+    fixed_mutations('ct')
+    ratio_fixed_mutations('ct')
+    variants = join('..', 'variants', 'variants_comp_mapping.csv')
+    fig = diversity_illumina(variants, 'Number of variants', '')
+    fig = diversity_illumina(snps, 'Number of fixed mutations', '')
+    diversity_ct_box(variants, 'Number of variants', '')
+    trajectories(variants, 'ct', '')
+    mutation_rates('ct', 'Fixation rate', 'fixation_rate')
+    mutation_rates('ct', 'Accumulation rate', 'acc_rate')
+    coverage()
 
 
-def statistics():
-    # Allele richness
-    print('######Variants#########')
-    df = get_variants(
-        join('..', 'variants', 'ns_variants_comp_mapping.csv'), 'illumina')
-    t_test(df, 'hill')
-    df = get_variants(
-        join('..', 'variants', 'ns_snps_freebayes_comp_mapping.csv'), 'illumina')
-    print('######SNPs#########')
-    t_test(df, 'hill')
-    print('###########Mut ratio############')
-    df = pd.read_csv(join('..', 'variants', 'total_allele_frequncies.csv'))
-    t_test(df, 'fixed_total_ratio')
-    print('#####Allele frequency#########')
-    df = get_mutations()
-    df[df['strain'] == 'At'] = s.abbreviations['at']
-    df[df['strain'] == 'Ct'] = s.abbreviations['ct']
-    t_test(df, 'mutations')
-    df = pd.read_csv(join('..', 'variants', 'assembly_length.csv'))
-    df[df['strain'] == 'At'] = s.abbreviations['at']
-    df[df['strain'] == 'Ct'] = s.abbreviations['ct']
-    df['timepoint'] = 'T44'
-    print('########Assembly length#########')
-    t_test(df, 'deletions')
-
+variants = join('..', 'variants', 'variants_comp_mapping.csv')
+#total_freq_line('ct')
 
 def generation_time():
     out = pd.DataFrame(columns=['treatment', 'microcosm',
@@ -852,3 +758,58 @@ def generation_time():
                       pointpos=0, jitter=1)
     fig.show()
 
+f = join('..', 'variants', 'variants_comp_mapping.csv')
+df = pd.read_csv(f)
+filter = (df['strain'] == s.abbreviations['ct']) & (df['timepoint'] == 'T44')
+df = df[filter]
+mask = []
+for alt in df['alt']:
+    if 'SNV' in alt:
+        mask.append(True)
+    else:
+        mask.append(False)
+df = df[mask]
+
+vars = []
+lgs = list(set(df['linegroup']))
+for v in lgs:
+    if max(df[df['linegroup'] == v]['freq']) >= 0.2:
+        vars.append(v)
+d = [[0] * len(vars)]
+sample_name = ['Ancestor']
+for sample in s.strains[s.abbreviations['ct']]:
+    if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):    
+        tmp = df[df['name'] == sample['name']]
+        row = []
+        for v in vars:
+            i = tmp[tmp['linegroup'] == v]
+            if len(i) == 0:
+                row.append(0)
+            elif len(i) == 1:
+                row.append(i['freq'])
+            else:
+                print(i)
+        d.append(row)
+        sample_name.append(sample['name'])
+import numpy as np
+from scipy.spatial import distance
+from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
+
+d = np.array(d,dtype='float64')
+distance_matrix = distance.cdist(d, d, 'hamming')
+df = pd.DataFrame(distance_matrix)
+#df = df.replace(0,3)
+df.index,df.columns = sample_name,sample_name
+fig = px.imshow(df)
+fig.show()
+out = pd.DataFrame(columns=['treatment','distance'])
+row = df.loc['Ancestor']
+row.index = sample_name
+for i,j in row.items():
+    t = i[4]
+    if t == 's':
+        pass
+    else:
+        out.loc[len(out)] = [t,j]
+
+fig = px.box(out,x='treatment',y='distance',points='all')
