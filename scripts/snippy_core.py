@@ -1,4 +1,4 @@
-from Bio.Phylo.TreeConstruction import DistanceCalculator,DistanceTreeConstructor
+from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
 from Bio import AlignIO
 import plotly.express as px
 import dendropy
@@ -16,8 +16,10 @@ from ete4 import Tree, TreeStyle, AttrFace, faces
 import os
 from Bio import SeqIO
 os.environ['QT_QPA_PLATFORM'] = 'offscreen'
-import itertools
 s = Samples()
+colors = {'ct': ['#c0369d', '#fa7876', '#6a3f99'],
+          'at': ['#1f9e75', '#fa7876', '#6a3f99'],
+          'all': ['#fa7876', '#c0369d', '#6a3f99']}
 
 
 def leave_names():
@@ -84,16 +86,16 @@ def my_layout(node):
             "name", fsize=10, ftype='Open Sans', fgcolor='black')
         faces.add_face_to_node(name_face, node, column=0,
                                position="branch-right")
-        if node.name[4] == '1':
+        if node.name[5] == '1':
             name_face.background.color = '#a493c7'
             name_face.border.color = '#4b2991'
-        if node.name[4] == '2':
+        if node.name[5] == '2':
             name_face.background.color = '#df9acd'
             name_face.border.color = '#c0369d'
-        if node.name[4] == '3':
+        if node.name[5] == '3':
             name_face.background.color = '#fcbbba'
             name_face.border.color = '#c0369d'
-        if node.name[4] == '4':
+        if node.name[5] == '4':
             name_face.background.color = '#f5ebd0'
             name_face.border.color = '#edd9a3'
         name_face.border.width = 1
@@ -140,7 +142,8 @@ def caller(cosm, timepoint, treatment, specie, platform, prefix):
     cmd = ['snippy-clean_full_aln', prefix +
            '.full.aln', '>', prefix+'.clean.full.aln']
     call(' '.join(cmd), shell=True)
-    cmd = ['run_gubbins.py', '-p', 'gubbins','--outgroup', 'Reference', prefix+'.aln']
+    cmd = ['run_gubbins.py', '-p', 'gubbins', '--outgroup',
+           'Reference', prefix+'.clean.full.aln']
     call(' '.join(cmd), shell=True)
     if exists('gubbins.final_tree.tre'):
         style_tree(specie, prefix)
@@ -149,62 +152,53 @@ def caller(cosm, timepoint, treatment, specie, platform, prefix):
     os.chdir(join('/', 'users', 'eulrich', 'black_queen_hypothesis', 'scripts'))
 
 
-def newick_to_matrix(file):
-    t = Phylo.read(file, 'newick')
-
-    d = {}
-    for x, y in itertools.combinations(t.get_terminals(), 2):
-        v = t.distance(x, y)
-        d[x.name] = d.get(x.name, {})
-        d[x.name][y.name] = v
-        d[y.name] = d.get(y.name, {})
-        d[y.name][x.name] = v
-    for x in t.get_terminals():
-        d[x.name][x.name] = 0
-
-    m = pd.DataFrame(d)
-    return m
-
-
 #caller('all', ['T44'], [2, 3, 4], 'ct', 'illumina', 'ct')
+def font_size(fig):
+    """Style function for figures setting fot size and true black color."""
+    j = 7
+    fig.update_layout(font={'size': j, 'color': 'black'})
+    for a in fig['layout']['annotations']:
+        a['font']['size'] = j
+        a['font']['color'] = 'black'
+    fig['layout']['title']['font']['size'] = j
+    fig['layout']['title']['font']['color'] = 'black'
+    fig['layout']['legend']['title']['font']['size'] = j
+    fig['layout']['legend']['title']['font']['color'] = 'black'
+    fig.for_each_xaxis(lambda axis: axis.title.update(
+        font=dict(size=j, color='black')))
+    fig.for_each_yaxis(lambda axis: axis.title.update(
+        font=dict(size=j, color='black')))
+    fig.update_layout(
+        margin=dict(l=55, r=60, t=0, b=20,autoexpand=False),coloraxis_colorbar=dict(len=0.6,thickness=10))
 
-def distance_tree(f):
+    return fig
+
+def distance_tree(abb):
+    w = 300
+    h = 300
+    f = join(s.work, abb, 'trees', 'gubbins.filtered_polymorphic_sites.fasta')
+    #f = join(s.work, abb, 'trees', abb+'.aln')
     aln = AlignIO.read(open(f), 'fasta')
     calculator = DistanceCalculator('identity')
     dm = calculator.get_distance(aln)
+    s.labels['Reference'] = 'Ancestor'
+    labels = [s.labels[i] for i in dm.names]
+    dm.names = labels
     df = pd.DataFrame(columns=dm.names)
     for j, i in enumerate(dm):
         df.loc[j] = i
     df.index = dm.names
-    fig = px.imshow(df)
-    fig.write_image(join('..','plots','plots','distance_matrix.svg'))
+    fig = px.imshow(df,width=w,height=h)
+    fig = font_size(fig)
+    fig.write_image(join('..', 'plots', 'plots', 'distance_matrix.svg'))
     constructor = DistanceTreeConstructor()
     tree = constructor.upgma(dm)
-    tree.root_with_outgroup('Reference')
-    f_out = join(s.work, 'ct', 'trees', 'identity.tre')
-    with open(f_out,'w') as handle:
+    tree.root_with_outgroup('Ancestor')
+    f_out = join(s.work, abb, 'trees', 'identity.tre')
+    with open(f_out, 'w') as handle:
         handle.write(tree.format('newick'))
-    style_tree('ct','ct',f_out)
-    return df
+    style_tree(abb, abb, f_out)
 
-df = distance_tree(f = join(s.work, 'ct', 'trees', 'ct.aln'))
 
-"""combs = itertools.combinations(df.columns.to_list(),2)
-out  = pd.DataFrame(columns=['dist','treatment'])
-samples = list(df.columns)
-samples.remove('Reference')
-combs = itertools.combinations(samples,2)
-dist = {'2':[],'3':[],'4':[]}
-for (p1,p2) in combs:
-    if p1[4] != '2':
-        break
-    else:
-        d = tree.distance(p1,p2)
-        dist[p2[4]].append(d)
-        out.loc[len(out)] = [d,p2[4]]
-
-g1 = ['T44.2.1','T44.2.2.re','T44.2.3.re','T44.2.5.re']
-g2 = ['T44.3.1','T44.2.3','T44.3.3.re','T44.3.4']"""
 
 # caller('all', ['T11','T22', 'T33', 'T44'], [1, 3, 4], 'ct', 'illumina', 'at')
-
