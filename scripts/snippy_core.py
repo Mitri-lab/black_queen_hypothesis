@@ -3,18 +3,17 @@ from Bio import AlignIO
 import plotly.express as px
 import dendropy
 import numpy as np
-from Bio import Phylo
-import itertools
 from samples import Samples
 import pandas as pd
 from os.path import join, exists, split
 from os import symlink, remove, unlink, mkdir, chdir
 from shutil import move, copyfile
 from subprocess import call, DEVNULL, STDOUT
-from glob import glob
 from ete4 import Tree, TreeStyle, AttrFace, faces
 import os
 from Bio import SeqIO
+from scipy.spatial import distance
+
 os.environ['QT_QPA_PLATFORM'] = 'offscreen'
 s = Samples()
 colors = {'ct': ['#c0369d', '#fa7876', '#6a3f99'],
@@ -138,6 +137,7 @@ def caller(cosm, timepoint, treatment, specie, platform, prefix):
                             if sample['timepoint'] == timepoint:
                                 cmd.append(
                                     join(sample['dir_name'], sample['name']))
+    print(cmd)
     call(' '.join(cmd), shell=True)
     cmd = ['snippy-clean_full_aln', prefix +
            '.full.aln', '>', prefix+'.clean.full.aln']
@@ -176,8 +176,8 @@ def font_size(fig):
 def distance_tree(abb):
     w = 300
     h = 300
-    f = join(s.work, abb, 'trees', 'gubbins.filtered_polymorphic_sites.fasta')
-    #f = join(s.work, abb, 'trees', abb+'.aln')
+    #f = join(s.work, abb, 'trees', 'gubbins.filtered_polymorphic_sites.fasta')
+    f = join(s.work, abb, 'trees', abb+'.aln')
     aln = AlignIO.read(open(f), 'fasta')
     calculator = DistanceCalculator('identity')
     dm = calculator.get_distance(aln)
@@ -191,6 +191,7 @@ def distance_tree(abb):
     fig = px.imshow(df,width=w,height=h)
     fig = font_size(fig)
     fig.write_image(join('..', 'plots', 'plots', 'distance_matrix.svg'))
+    fig.write_html(join('..', 'plots', 'plots', 'distance_matrix.html'))
     constructor = DistanceTreeConstructor()
     tree = constructor.upgma(dm)
     tree.root_with_outgroup('Ancestor')
@@ -199,6 +200,62 @@ def distance_tree(abb):
         handle.write(tree.format('newick'))
     style_tree(abb, abb, f_out)
 
+def variant_distance():
+    f = join('..', 'variants', 'variants_comp_mapping.csv')
+    # Filetring variants
+    df = pd.read_csv(f)
+    filter = (df['strain'] == s.abbreviations['ct']) & (df['timepoint'] == 'T44')
+    df = df[filter]
+    mask = []
+    for alt in df['alt']:
+        if 'SNV' in alt:
+            mask.append(True)
+        else:
+            mask.append(False)
+    df = df[mask]
 
+    vars = []
+    lgs = list(set(df['linegroup']))
+    for v in lgs:
+        # Frequency threshold
+        if max(df[df['linegroup'] == v]['freq']) >= 0.1:
+            vars.append(v)
+    # Adding reference
+    d = [[0] * len(vars)]
+    sample_name = ['Ancestor']
+    for sample in s.strains[s.abbreviations['ct']]:
+        if (sample['platform'] == 'illumina') & (sample['timepoint'] == 'T44'):    
+            tmp = df[df['name'] == sample['name']]
+            row = []
+            for v in vars:
+                i = tmp[tmp['linegroup'] == v]
+                if len(i) == 0:
+                    row.append(0)
+                elif len(i) == 1:
+                    row.append(i['freq'])
+                else:
+                    print(i)
+            d.append(row)
+            sample_name.append(sample['name'])
+
+
+    d = np.array(d,dtype='float64')
+    distance_matrix = distance.cdist(d, d, 'hamming')
+    df = pd.DataFrame(distance_matrix)
+    df.index,df.columns = sample_name,sample_name
+    fig = px.imshow(df)
+    fig.write_image(join('..','plots','plots','distance_matrix_variants.svg'))
+    out = pd.DataFrame(columns=['treatment','distance'])
+    row = df.loc['Ancestor']
+    row.index = sample_name
+    for i,j in row.items():
+        t = i[4]
+        if t == 's':
+            pass
+        else:
+            out.loc[len(out)] = [t,j]
+
+    fig = px.box(out,x='treatment',y='distance',points='all')
+    fig.write_image(join('..','plots','plots','distance_box_variants.svg'))
 
 # caller('all', ['T11','T22', 'T33', 'T44'], [1, 3, 4], 'ct', 'illumina', 'at')
