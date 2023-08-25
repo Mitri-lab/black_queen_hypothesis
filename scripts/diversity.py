@@ -18,21 +18,22 @@ strains = {s.abbreviations['at']: 'At',
            s.abbreviations['ms']: 'Ms'}
 
 
-colors = {'ct': ['#a431a0', '#ea4f88', '#f89178'],
-          'at': ['#4b2991', '#ea4f88', '#f89178'],
-          'all': ['#4b2991', '#a431a0', '#ea4f88', '#f89178'],
+colors = {'ct': ['#7570B3', '#E6AB02', '#D95F02'],
+          'at': ['#1B9E771', '#E6AB02', '#D95F02'],
+          'all': ['#1B9E77', '#7570B3', '#E6AB02', '#D95F02'],
           'cosm': ['#4b2991', '#a431a0', '#ea4f88', '#f89178', '#edd9a3']
           }
 
-colors_t = {'1': '#4b2991',
-            '2': '#a431a0',
-            '3': '#ea4f88',
-            '4': '#f89178'}
+colors_t = {'1': '#1B9E77',
+            '2': '#7570B3',
+            '3': '#E6AB02',
+            '4': '#D95F02'}
 
 
 # This section is executed on the cluster for parsing data on cluster
 w = 400
 h = 250
+
 
 def parse_variants():
     """Parses vcf files and dumps variants with metdadata as csv."""
@@ -248,7 +249,7 @@ def get_mutations(add_T0=True):
     snps = pd.read_csv(
         join('..', 'variants', 'snps_freebayes_comp_mapping.csv'))
     out = pd.DataFrame(columns=['strain', 'name', 'cosm',
-                                'treatment', 'timepoint', 'mutations', 'fixed', 'linegroup'])
+                                'treatment', 'timepoint', 'mutations', 'fixed', 'linegroup', 'number_of_variants'])
     for strain, samples in s.strains.items():
         for sample in samples:
             if sample['platform'] == 'illumina':
@@ -259,13 +260,14 @@ def get_mutations(add_T0=True):
                 fixed = snps[(snps['strain'] == strain) & (
                     snps['name'] == sample['name'])]
                 out.loc[len(out)] = [strains[strain], sample['name'], sample['cosm'],
-                                     sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed),  lg]
+                                     sample['treatment'], sample['timepoint'], sum(tmp_var['freq']), len(fixed),  lg, len(tmp_var)]
                 if add_T0:
                     out.loc[len(out)] = [strains[strain], sample['name'],
-                                         sample['cosm'], sample['treatment'], 'T0', 0, 0, lg]
-    for i, (f, m) in enumerate(zip(out['fixed'], out['mutations'])):
+                                         sample['cosm'], sample['treatment'], 'T0', 0, 0, lg, len(tmp_var)]
+    for i, (f, m, n) in enumerate(zip(out['fixed'], out['mutations'], out['number_of_variants'])):
         try:
             out.at[i, 'fixed_total_ratio'] = f/m
+            out.at[i, 'fixed_total_ratio_number'] = f/n
         except ZeroDivisionError:
             out.at[i, 'fixed_total_ratio'] = None
     out.insert(len(out.columns), 'fixation_rate', None)
@@ -280,6 +282,34 @@ def get_mutations(add_T0=True):
     out['hill'] = out['mutations']
     out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'), index=False)
     return out
+
+def box_treatments():
+    df = get_mutations(add_T0=False)
+    filter = (df['strain'] == 'Ct') & (df['timepoint'] == 'T44')
+    df = df[filter]
+    fig = px.box(df, x='treatment', y='fixed_total_ratio_number',color='treatment',color_discrete_sequence=colors['ct'],
+                points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                    pointpos=0, jitter=1)
+    fig.update_layout(showlegend=False,title='Ct transfer 44',title_x=0.5)
+    fig.update_xaxes(title='Condition')
+    fig.update_yaxes(title='Proportion of fixed variants',rangemode='tozero')
+    fig = font_size(fig)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..','plots','plots','proportion.svg'))
+    fig = px.box(df, x='treatment', y='number_of_variants',color='treatment',color_discrete_sequence=colors['ct'],
+                points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+                    pointpos=0, jitter=1)
+    fig.update_layout(showlegend=False,title='Ct transfer 44',title_x=0.5)
+    fig.update_xaxes(title='Condition')
+    fig.update_yaxes(title='Number of variants',rangemode='tozero')
+    fig = font_size(fig)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..','plots','plots','number_of_variants.svg'))
+
 
 
 def total_freq_box(y_label, title):
@@ -330,7 +360,7 @@ def total_freq_box(y_label, title):
 
 def total_freq_line(abb):
     df = get_mutations(add_T0=False)
-    df = df.sort_values(by=['treatment','timepoint'], ascending=True)
+    df = df.sort_values(by=['treatment', 'timepoint'], ascending=True)
     df = df[df['strain'] == strains[s.abbreviations[abb]]]
     fig = px.line(df, x='timepoint', y='mutations', width=w/2, height=h,
                   color='treatment', line_group='linegroup', markers=True)
@@ -343,9 +373,10 @@ def total_freq_line(abb):
         d['line']['width'] = 1.5
         d['opacity'] = 0.8
         d['marker']['size'] = 5
-        d['x'] = [1,2,3,4]
     fig.for_each_yaxis(lambda yaxis: yaxis.update(
         tickmode='linear', dtick=2))
+    fig.update_xaxes(tickvals=['T11', 'T22', 'T33', 'T44'], ticktext=[
+                     '11', '22', '33', '44'])
     fig.update_yaxes(title_standoff=0)
     fig.update_xaxes(title_standoff=0)
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
@@ -362,7 +393,8 @@ def total_freq_line(abb):
         d['line']['width'] = 1.5
         d['opacity'] = 0.8
         d['marker']['size'] = 5
-        d['x'] = [1,2,3,4]
+    fig.update_xaxes(tickvals=['T11', 'T22', 'T33', 'T44'], ticktext=[
+                     '11', '22', '33', '44'])
     fig.update_yaxes(title_standoff=0)
     fig.update_xaxes(title_standoff=0)
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
@@ -380,21 +412,23 @@ def total_freq_line(abb):
         d['line']['width'] = 1.5
         d['opacity'] = 0.8
         d['marker']['size'] = 5
-        d['x'] = [1,2,3,4]
+    fig.update_xaxes(tickvals=['T11', 'T22', 'T33', 'T44'], ticktext=[
+                     '11', '22', '33', '44'])
     fig.for_each_yaxis(lambda yaxis: yaxis.update(
         tickmode='linear', dtick=2))
     fig.update_yaxes(title_standoff=0)
     fig.update_xaxes(title_standoff=0)
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    ret = fig
     fig.write_image(join('..', 'plots', 'plots',
                     abb+'_fixed_line.svg'))
 
     f = join('..', 'variants', 'variants_comp_mapping.csv')
     df = get_variants(f, 'illumina')
     df = df[df['strain'] == strains[s.abbreviations[abb]]]
-    labels = {'T11':'1','T22':'2','T33':'3','T44':'4'}
-    df = df.sort_values(by=['treatment','timepoint'], ascending=True)
-    fig = px.line(df, x='timepoint', y='hill', width=w/2, height=h,labels=labels,
+    labels = {'T11': '1', 'T22': '2', 'T33': '3', 'T44': '4'}
+    df = df.sort_values(by=['treatment', 'timepoint'], ascending=True)
+    fig = px.line(df, x='timepoint', y='hill', width=w/2, height=h, labels=labels,
                   color='treatment', line_group='cosm', markers=True)
     fig = font_size(fig)
     fig.update_xaxes(title='Transfer')
@@ -405,7 +439,8 @@ def total_freq_line(abb):
         d['line']['width'] = 1.5
         d['opacity'] = 0.8
         d['marker']['size'] = 5
-        d['x'] = [1,2,3,4]
+    fig.update_xaxes(tickvals=['T11', 'T22', 'T33', 'T44'], ticktext=[
+                     '11', '22', '33', '44'])
     fig.for_each_yaxis(lambda yaxis: yaxis.update(
         tickmode='linear', dtick=5))
     fig.update_yaxes(title_standoff=0)
@@ -413,7 +448,7 @@ def total_freq_line(abb):
     fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
     fig.write_image(join('..', 'plots', 'plots',
                     abb+'_variants_line.svg'))
-    return fig
+    return ret
 
 
 def fixed_mutations(abb):
@@ -653,29 +688,33 @@ def trajectories(f, species, title):
     df = df[df['strain'] == s.abbreviations[species]]
 
     hover_data = ['treatment', 'timepoint', 'cosm', 'depth']
-    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors['cosm'],
-                  facet_col='treatment', facet_col_wrap=4, color='cosm', hover_data=hover_data, facet_col_spacing=0.05,
+    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors['ct'], facet_row='cosm',
+                  facet_col='treatment', facet_col_wrap=4, color='treatment', hover_data=hover_data, facet_col_spacing=0.05,
                   category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=h, width=w)
 
-    fig.for_each_yaxis(lambda y: y.update(title=''))
-    fig['layout']['yaxis']['title']['text'] = 'Variant frequency'
-    titles = ['Condition ' + str(i)
-              for i in sorted(list(set(df['treatment'])))]
+    conditions = ['Ct condition 2','Ct condition 3','Ct condition 4']
+    cosms = ['M ' + str(i)
+             for i in sorted(list(set(df['cosm'])), reverse=True)]
+    titles = conditions + cosms
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = titles[i]
+
+    fig.update_xaxes(tickvals=['T11', 'T22', 'T33', 'T44'], ticktext=[
+                     '11', '22', '33', '44'])
     fig.update_xaxes(title='')
-    fig.update_layout(xaxis2=dict(title="Transfer"))
+    fig.for_each_yaxis(lambda y: y.update(title=''))
+    fig.update_layout(xaxis2=dict(title="Transfer"), yaxis7=dict(
+        title='Variant frequency'), showlegend=False)
     fig.update_layout(title=title)
     fig['layout']['legend']['title']['text'] = 'Microcosm'
     fig.for_each_yaxis(lambda yaxis: yaxis.update(
-        tickmode='linear', dtick=0.2))
+        tickmode='linear', dtick=0.5))
     fig = font_size(fig)
     fig.update_yaxes(title_standoff=0)
     fig.update_xaxes(title_standoff=0)
-    for d in fig['data']:
-        d['x'] = [1,2,3,4]
     fig.write_image(join('..', 'plots', 'plots',
                     species+'_trajectories.svg'))
+    return fig
 
 
 def t_test(df, column):
@@ -731,7 +770,9 @@ def plotter():
 
 
 variants = join('..', 'variants', 'variants_comp_mapping.csv')
-#total_freq_line('ct')
+fig = trajectories(variants, 'ct', '')
+# total_freq_line('ct')
+
 
 def generation_time():
     out = pd.DataFrame(columns=['treatment', 'microcosm',
@@ -757,4 +798,3 @@ def generation_time():
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
     fig.show()
-
