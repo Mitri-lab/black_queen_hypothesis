@@ -130,38 +130,37 @@ def products():
     filter = (df['timepoint'] == 'T44') & (
         df['freq'] >= 0.1) & (df['product'] != 'Not annotated')
     df = df[filter]
-    products = list(set(df['product']))
+    products = sorted(list(set(zip(df['product'], df['gene']))),key=lambda x: x[0].lower())
+    mult_freqs = []
     matrix = []
     sample_labels = []
-    product_labels = []
     for sample in s.strains[s.abbreviations['ct']]:
         if (sample['timepoint'] == 'T44') & (sample['platform'] == 'illumina'):
             sample_labels.append(sample['name'])
             row = []
             tmp = df[df['name'] == sample['name']]
-            for product in products:
-                i = tmp[tmp['product'] == product]
+            for product, gene in products:
+                filter = (tmp['product'] == product) & (tmp['gene'] == gene)
+                i = tmp[filter]
                 freqs = i['freq'].to_list()
                 if len(freqs) > 0:
                     row.append(np.average(freqs))
                     if len(freqs) > 1:
-                        print(product)
+                        mult_freqs.append((product,gene))
                 else:
                     row.append(0)
             matrix.append(row)
 
     dm = pd.DataFrame(matrix)
     dm.index = [s.labels[key] for key in sample_labels]
-    dm.columns = list(products)
-    colors = ['#7570B3', '#1B9E77', '#D95F02', '#E6AB02']
-    for i in dm.index:
-        if i not in ['T44.C2.M1', 'T44.C4.M2', 'T44.C4.M3']:
-            #dm = dm.drop(i)
-            pass
+    dm.columns = [' <i>' + gene + '</i> ' + product for product,gene in products]
+
+    colors = ['#7570B3', '#1B9E77', '#E6AB02']
+    #colors = ['#7570B3', '#1B9E77', '#D95F02', '#E6AB02']
+
     for c in dm.columns:
         if len(dm[dm[c] != 0]) <= 1:
             dm = dm.drop(c, axis=1)
-            
     fig = px.imshow(dm, color_continuous_scale=colors)
     fig.update_traces(colorbar=dict(thickness=1))
 
@@ -170,29 +169,30 @@ def products():
         xaxis=dict(tickangle=-45),  # Rotate x-axis labels by -45 degrees
     )
     fig.write_image(join('..', 'plots', 'plots', 'products.svg'))
-    #fig.show()
-    return list(dm.columns)
+    fig.show()
+k = []
+
 
 def annotate_pacbio():
     contigs = {'tig00000001_polypolish': '_0',
-            'tig00000002_polypolish': '_1',
-            'tig00000003_polypolish': '_2',
-            'tig00000004_polypolish': '_3',
-            'tig00000005_polypolish': '_4'}
+               'tig00000002_polypolish': '_1',
+               'tig00000003_polypolish': '_2',
+               'tig00000004_polypolish': '_3',
+               'tig00000005_polypolish': '_4'}
 
-    mapping = {s.abbreviations['at'] : 'at',
-            s.abbreviations['ct'] : 'ct',
-            s.abbreviations['oa'] : 'oa',
-            s.abbreviations['ms'] : 'ms'}
+    mapping = {s.abbreviations['at']: 'at',
+               s.abbreviations['ct']: 'ct',
+               s.abbreviations['oa']: 'oa',
+               s.abbreviations['ms']: 'ms'}
 
-    df = pd.read_csv(join('..','variants','snps_pacbio.csv'))
-    for i,(c,n) in enumerate(zip(df['chrom'],df['strain'])):
-        df.at[i,'chrom'] = mapping[n] + contigs[c]
+    df = pd.read_csv(join('..', 'variants', 'snps_pacbio.csv'))
+    for i, (c, n) in enumerate(zip(df['chrom'], df['strain'])):
+        df.at[i, 'chrom'] = mapping[n] + contigs[c]
 
-    df.to_csv(join('..','variants','snps_pacbio_renamed.csv'),index=False)
+    df.to_csv(join('..', 'variants', 'snps_pacbio_renamed.csv'), index=False)
 
     annotate_variants('ct')
 
-df = pd.read_csv(join('..','annotations','ct_pacbio_annotations.csv'))
-ct1 = df[df['name'] == 'Ct42.1']
-ct2 = df[df['name'] == 'Ct42.2']
+    df = pd.read_csv(join('..', 'annotations', 'ct_pacbio_annotations.csv'))
+    ct1 = df[df['name'] == 'Ct42.1']
+    ct2 = df[df['name'] == 'Ct42.2']
