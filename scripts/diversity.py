@@ -4,6 +4,7 @@ from os.path import join, exists
 import vcfpy
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import math
 from scipy.spatial import distance
@@ -19,7 +20,9 @@ strains = {s.abbreviations['at']: 'At',
 
 
 colors = {'ct': ['#7570B3', '#E6AB02', '#D95F02'],
-          'at': ['#1B9E771', '#E6AB02', '#D95F02'],
+          'at': ['#1B9E77', '#E6AB02', '#D95F02'],
+          'ms': ['#E6AB02', '#D95F02'],
+          'oa':['#D95F02'],
           'all': ['#1B9E77', '#7570B3', '#E6AB02', '#D95F02'],
           'cosm': ['#4b2991', '#a431a0', '#ea4f88', '#f89178', '#edd9a3']
           }
@@ -196,11 +199,11 @@ def depth():
 # Local execution starts here for plotting
 
 
-def font_size(fig):
+def font_size(fig, marker_size=3,line_size=0.5):
     """Style function for figures setting fot size and true black color."""
     for d in fig['data']:
-        d['marker']['size'] = 3
-        d['line']['width'] = 0.5
+        d['marker']['size'] = marker_size
+        d['line']['width'] = line_size
     # Font size
     j = 10
     fig.update_layout(font={'size': j, 'color': 'black'})
@@ -283,33 +286,35 @@ def get_mutations(add_T0=True):
     out.to_csv(join('..', 'variants', 'total_allele_frequncies.csv'), index=False)
     return out
 
-def box_treatments():
-    df = get_mutations(add_T0=False)
-    filter = (df['strain'] == 'Ct') & (df['timepoint'] == 'T44')
-    df = df[filter]
-    fig = px.box(df, x='treatment', y='fixed_total_ratio_number',color='treatment',color_discrete_sequence=colors['ct'],
-                points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
-    fig.update_traces(boxmean=True, quartilemethod="exclusive",
-                    pointpos=0, jitter=1)
-    fig.update_layout(showlegend=False,title='Ct transfer 44',title_x=0.5)
-    fig.update_xaxes(title='Condition')
-    fig.update_yaxes(title='Proportion of fixed variants',rangemode='tozero')
-    fig = font_size(fig)
-    fig.update_yaxes(title_standoff=0)
-    fig.update_xaxes(title_standoff=0)
-    fig.write_image(join('..','plots','plots','proportion.svg'))
-    fig = px.box(df, x='treatment', y='number_of_variants',color='treatment',color_discrete_sequence=colors['ct'],
-                points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
-    fig.update_traces(boxmean=True, quartilemethod="exclusive",
-                    pointpos=0, jitter=1)
-    fig.update_layout(showlegend=False,title='Ct transfer 44',title_x=0.5)
-    fig.update_xaxes(title='Condition')
-    fig.update_yaxes(title='Number of variants',rangemode='tozero')
-    fig = font_size(fig)
-    fig.update_yaxes(title_standoff=0)
-    fig.update_xaxes(title_standoff=0)
-    fig.write_image(join('..','plots','plots','number_of_variants.svg'))
 
+def box_treatments(abb):
+    df = get_mutations(add_T0=False)
+    filter = (df['strain'] == strains[s.abbreviations[abb]]) & (
+        df['timepoint'] == 'T44')
+    df = df[filter]
+    fig = px.box(df, x='treatment', y='fixed_total_ratio_number', color='treatment', color_discrete_sequence=colors[abb],
+                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+    fig.update_traces(boxmean=True, quartilemethod="linear",
+                      pointpos=0, jitter=1)
+    fig.update_layout(showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
+    fig.update_xaxes(title='Condition',type='category')
+    fig.update_yaxes(title='Proportion of fixed variants', rangemode='tozero')
+    fig = font_size(fig, marker_size=5)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..', 'plots', 'plots', abb+'_proportion.svg'))
+    fig = px.box(df, x='treatment', y='number_of_variants', color='treatment', color_discrete_sequence=colors[abb],
+                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+    fig.update_traces(boxmean=True, quartilemethod="linear",
+                      pointpos=0, jitter=1)
+    fig.update_layout(showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
+    fig.update_xaxes(title='Condition',type='category')
+    fig.update_yaxes(title='Number of variants', rangemode='tozero')
+    fig = font_size(fig, marker_size=5)
+    fig.update_yaxes(title_standoff=0)
+    fig.update_xaxes(title_standoff=0)
+    fig.write_image(join('..', 'plots', 'plots',
+                    abb+'_number_of_variants.svg'))
 
 
 def total_freq_box(y_label, title):
@@ -616,8 +621,8 @@ def diversity_ct_box(f, y_label, title):
 def coverage():
     df = pd.read_csv(join('..', 'variants', 'mean_coverage.csv'))
     # Possibility to subset for all species
-    # a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
-    # df = df[(df['species'] == a) | (df['species'] == c)]
+    a, c = strains[s.abbreviations['at']], strains[s.abbreviations['ct']]
+    df = df[(df['species'] == a) | (df['species'] == c)]
     df = df.sort_values(by='treatment', ascending=True)
     depth = [None if i == 0 else i for i in df['depth']]
     df['depth'] = depth
@@ -626,7 +631,7 @@ def coverage():
                  category_orders={'timepoint': [
                        'T11', 'T22', 'T33', 'T44']}, color_discrete_sequence=colors['all'],
                  log_y=True, hover_data=hover_data, height=h, width=w)
-    titles = ['T11', 'T22', 'T33', 'T44']
+    titles = ['Transfer 11', 'Transfer 22', 'Transfer 33', 'Transfer 44']
     for i, t in enumerate(fig['layout']['annotations']):
         t['text'] = titles[i]
 
@@ -635,7 +640,7 @@ def coverage():
     fig.update_xaxes(title=None)
     fig['layout']['legend']['title']['text'] = 'Condition'
     fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
-    fig.update_traces(boxmean=True, quartilemethod="exclusive",
+    fig.update_traces(boxmean=True, quartilemethod="linear",
                       pointpos=0, jitter=1)
     #fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
 
@@ -688,11 +693,11 @@ def trajectories(f, species, title):
     df = df[df['strain'] == s.abbreviations[species]]
 
     hover_data = ['treatment', 'timepoint', 'cosm', 'depth']
-    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors['ct'], facet_row='cosm',
+    fig = px.line(df, x='timepoint', y='freq', line_group='linegroup', color_discrete_sequence=colors[species], facet_row='cosm',
                   facet_col='treatment', facet_col_wrap=4, color='treatment', hover_data=hover_data, facet_col_spacing=0.05,
                   category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, markers=True, height=h, width=w)
 
-    conditions = ['Ct condition 2','Ct condition 3','Ct condition 4']
+    conditions = ['Ct condition 2', 'Ct condition 3', 'Ct condition 4']
     cosms = ['M ' + str(i)
              for i in sorted(list(set(df['cosm'])), reverse=True)]
     titles = conditions + cosms
@@ -754,6 +759,9 @@ def t_test(df, column):
 
 def plotter():
     variants = join('..', 'variants', 'variants_comp_mapping.csv')
+    # total_freq_line('at')
+    fig = trajectories(variants, 'ct', '')
+    variants = join('..', 'variants', 'variants_comp_mapping.csv')
     snps = join('..', 'variants', 'snps_freebayes_comp_mapping.csv')
     total_freq_box('Total allele frequency', '')
     total_freq_line('ct')
@@ -768,10 +776,6 @@ def plotter():
     mutation_rates('ct', 'Accumulation rate', 'acc_rate')
     coverage()
 
-
-variants = join('..', 'variants', 'variants_comp_mapping.csv')
-fig = trajectories(variants, 'ct', '')
-# total_freq_line('ct')
 
 
 def generation_time():
@@ -798,3 +802,139 @@ def generation_time():
     fig.update_traces(boxmean=True, quartilemethod="exclusive",
                       pointpos=0, jitter=1)
     fig.show()
+
+def ct_growth_curves():
+    df = pd.read_csv('../variants/cfus_ct.csv')
+    tmp = pd.DataFrame(columns=['Condition','lg','time','count'])
+
+    for c in df.columns:
+        for i,j in enumerate(df[c]):
+            tmp.loc[len(tmp)] = [c[3],c,i,j]
+    tmp = tmp.astype({'count':int})
+    fig = px.line(tmp,x='time',y='count',line_group='lg',color='Condition',log_y=True,width=w,height=h)
+    for d in fig['data']:
+        d['line']['color'] = colors_t[d['name']]
+    fig.update_xaxes(title='Transfer')
+    fig.update_yaxes(title='CFUs/mL')
+    fig.update_layout(yaxis=dict(exponentformat="E"))
+    fig = font_size(fig,line_size=1)
+    fig.write_image(join('..', 'plots', 'plots','ct_growth_curves.svg'))
+
+def annot_chrom():
+    pass
+abb = 'ct'
+df = pd.read_csv(join('..','annotations','ct_variants_annotations.csv'))
+mask = (df['strain'] == s.abbreviations[abb]) & (df['chrom'] == 'ct_0') #& (df['type'] == 'snp')
+df = df[mask]
+df = df.astype({'treatment':str,'cosm':str})
+df['freq_color'] = df['freq']
+df['freq'] = 0
+df['facet_row'] = df['treatment'] + '_' + df['cosm']
+df.insert(len(df.columns),'coding',None)
+for i,row in df.iterrows():
+    if row['gene'] == 'Not annotated':
+        df.at[i,'coding'] = False
+    else:
+        df.at[i,'coding'] = True
+df = df.sort_values(by='facet_row')
+fig = px.scatter(df, x='pos', y='freq',
+                        facet_row='facet_row',width=w/5*4,height=h,symbol='coding')
+fig.for_each_yaxis(lambda axis: axis.update(visible=False))
+fig.for_each_xaxis(lambda axis: axis.update(showgrid=False))
+#fig.for_each_yaxis(lambda axis: axis.update(layer="above traces"))
+
+#fig.for_each_annotation(lambda axis: axis.update(text=''))
+fig.update_xaxes(rangemode='tozero')
+symbols = {'True':'x-thin',
+        'False':'circle-open'}
+
+
+for d in fig['data']:
+    #treatment,coding = d['name'].split(',')[0],d['name'].split(',')[1].lstrip()
+    d['marker']['color'] = 'black'
+    d['marker']['symbol'] = symbols[d['name']]
+    d['marker']['line']['width'] = 0.8
+    d['marker']['line']['color'] = 'black'
+for i,n in enumerate(set(df['facet_row'])):
+    fig.add_trace(go.Scatter(x=[0,5931885], y=[0,0],mode='lines',line=dict(color='gray')),col=1,row=i+1)
+
+fig = font_size(fig,marker_size=3,line_size=4)
+for a in fig['layout']['annotations']:
+    text = a['text'].split('_')[-1]
+    a['text'] = ''
+    a['textangle'] = 0
+    a['font']['size'] = 4
+
+fig.update_layout(
+    plot_bgcolor='rgba(0,0,0,0)',  # Fully transparent background
+    paper_bgcolor='rgba(0,0,0,0)',
+    showlegend=False
+)
+fig.data = fig.data[::-1]
+for d in fig['data'][:5]:
+    d['line']['color'] = colors_t['2']
+for d in fig['data'][5:10]:
+    d['line']['color'] = colors_t['3']
+for d in fig['data'][10:15]:
+    d['line']['color'] = colors_t['4']
+fig.write_image(join('..','plots','plots','ct_chromosome_annot.svg'))
+
+def annot_plas():
+    abb = 'ct'
+    df = pd.read_csv(join('..','annotations','ct_variants_annotations.csv'))
+    mask = (df['strain'] == s.abbreviations[abb]) & (df['chrom'] == 'ct_1') #& (df['type'] == 'snp')
+    df = df[mask]
+    df = df.astype({'treatment':str,'cosm':str})
+    df['freq_color'] = df['freq']
+    df['freq'] = 0
+    df['facet_row'] = df['treatment'] + '_' + df['cosm']
+    df.insert(len(df.columns),'coding',None)
+    for i,row in df.iterrows():
+        if row['gene'] == 'Not annotated':
+            df.at[i,'coding'] = False
+        else:
+            df.at[i,'coding'] = True
+    df = df.sort_values(by='facet_row')
+    fig = px.scatter(df, x='pos', y='freq',
+                            facet_row='facet_row',width=w/5,height=h,symbol='coding')
+    fig.for_each_yaxis(lambda axis: axis.update(visible=False))
+    fig.for_each_xaxis(lambda axis: axis.update(showgrid=False))
+    #fig.for_each_yaxis(lambda axis: axis.update(layer="above traces"))
+
+    #fig.for_each_annotation(lambda axis: axis.update(text=''))
+    fig.update_xaxes(rangemode='tozero')
+    symbols = {'True':'x-thin',
+            'False':'circle-open'}
+
+
+    for d in fig['data']:
+        #treatment,coding = d['name'].split(',')[0],d['name'].split(',')[1].lstrip()
+        d['marker']['color'] = 'black'
+        d['marker']['symbol'] = symbols[d['name']]
+        d['marker']['line']['width'] = 0.8
+        d['marker']['line']['color'] = 'black'
+    for i,n in enumerate(set(df['facet_row'])):
+        fig.add_trace(go.Scatter(x=[0,198853], y=[0,0],mode='lines',line=dict(color='gray')),col=1,row=i+1)
+    for a in fig['layout']['annotations']:
+        text = a['text'].split('_')[-1]
+        a['text'] = 'M' + text
+        a['textangle'] = 0
+    fig = font_size(fig,marker_size=3,line_size=4)
+
+
+    fig.update_layout(
+        plot_bgcolor='rgba(0,0,0,0)',  # Fully transparent background
+        paper_bgcolor='rgba(0,0,0,0)',
+        showlegend=False
+    )
+    fig.data = fig.data[::-1]
+    for d in fig['data'][:5]:
+        d['line']['color'] = colors_t['2']
+    for d in fig['data'][5:10]:
+        d['line']['color'] = colors_t['3']
+    for d in fig['data'][10:15]:
+        d['line']['color'] = colors_t['4']
+    fig.write_image(join('..','plots','plots','ct_plasmid_annot.svg'))
+
+
+annot_plas()
