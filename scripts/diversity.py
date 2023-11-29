@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import math
 from scipy.spatial import distance
+from plotly.subplots import make_subplots
 # Sample class for parsing contact me for infos
 # eric.ulrich@unil.ch
 s = Samples()
@@ -22,7 +23,7 @@ strains = {s.abbreviations['at']: 'At',
 colors = {'ct': ['#7570B3', '#E6AB02', '#D95F02'],
           'at': ['#1B9E77', '#E6AB02', '#D95F02'],
           'ms': ['#E6AB02', '#D95F02'],
-          'oa':['#D95F02'],
+          'oa': ['#D95F02'],
           'all': ['#1B9E77', '#7570B3', '#E6AB02', '#D95F02'],
           'cosm': ['#4b2991', '#a431a0', '#ea4f88', '#f89178', '#edd9a3']
           }
@@ -199,13 +200,13 @@ def depth():
 # Local execution starts here for plotting
 
 
-def font_size(fig, marker_size=3,line_size=0.5):
+def font_size(fig, marker_size=3, line_size=0.5,fsize=10):
     """Style function for figures setting fot size and true black color."""
     for d in fig['data']:
         d['marker']['size'] = marker_size
         d['line']['width'] = line_size
     # Font size
-    j = 10
+    j = fsize
     fig.update_layout(font={'size': j, 'color': 'black'})
     for a in fig['layout']['annotations']:
         a['font']['size'] = j
@@ -293,22 +294,24 @@ def box_treatments(abb):
         df['timepoint'] == 'T44')
     df = df[filter]
     fig = px.box(df, x='treatment', y='fixed_total_ratio_number', color='treatment', color_discrete_sequence=colors[abb],
-                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/3)
     fig.update_traces(boxmean=True, quartilemethod="linear",
                       pointpos=0, jitter=1)
-    fig.update_layout(showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
-    fig.update_xaxes(title='Condition',type='category')
+    fig.update_layout(
+        showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
+    fig.update_xaxes(title='Condition', type='category')
     fig.update_yaxes(title='Proportion of fixed variants', rangemode='tozero')
     fig = font_size(fig, marker_size=5)
     fig.update_yaxes(title_standoff=0)
     fig.update_xaxes(title_standoff=0)
     fig.write_image(join('..', 'plots', 'plots', abb+'_proportion.svg'))
     fig = px.box(df, x='treatment', y='number_of_variants', color='treatment', color_discrete_sequence=colors[abb],
-                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/2)
+                 points='all', category_orders={'timepoint': ['T11', 'T22', 'T33', 'T44']}, height=h, width=w/3)
     fig.update_traces(boxmean=True, quartilemethod="linear",
                       pointpos=0, jitter=1)
-    fig.update_layout(showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
-    fig.update_xaxes(title='Condition',type='category')
+    fig.update_layout(
+        showlegend=False, title=strains[s.abbreviations[abb]] + ' transfer 44', title_x=0.5)
+    fig.update_xaxes(title='Condition', type='category')
     fig.update_yaxes(title='Number of variants', rangemode='tozero')
     fig = font_size(fig, marker_size=5)
     fig.update_yaxes(title_standoff=0)
@@ -642,7 +645,7 @@ def coverage():
     fig.update_layout(title='', boxgroupgap=0.2, boxgap=0.3)
     fig.update_traces(boxmean=True, quartilemethod="linear",
                       pointpos=0, jitter=1)
-    #fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
+    # fig.for_each_yaxis(lambda yaxis: yaxis.update(rangemode="tozero"))
 
     offsetgroups = ['1', '1', '1', '1',
                     '1', '1', '1', '1',
@@ -777,7 +780,6 @@ def plotter():
     coverage()
 
 
-
 def generation_time():
     out = pd.DataFrame(columns=['treatment', 'microcosm',
                                 'generation_time', 'time', 'lg'])
@@ -803,138 +805,138 @@ def generation_time():
                       pointpos=0, jitter=1)
     fig.show()
 
+
 def ct_growth_curves():
     df = pd.read_csv('../variants/cfus_ct.csv')
-    tmp = pd.DataFrame(columns=['Condition','lg','time','count'])
+    tmp = pd.DataFrame(columns=['Condition', 'lg', 'time', 'count'])
 
     for c in df.columns:
-        for i,j in enumerate(df[c]):
-            tmp.loc[len(tmp)] = [c[3],c,i,j]
-    tmp = tmp.astype({'count':int})
-    fig = px.line(tmp,x='time',y='count',line_group='lg',color='Condition',log_y=True,width=w,height=h)
+        for i, j in enumerate(df[c]):
+            tmp.loc[len(tmp)] = [c[3], c, i, j]
+    tmp = tmp.astype({'count': int})
+    fig = px.line(tmp, x='time', y='count', line_group='lg',
+                  color='Condition', log_y=True, width=w, height=h)
     for d in fig['data']:
         d['line']['color'] = colors_t[d['name']]
     fig.update_xaxes(title='Transfer')
     fig.update_yaxes(title='CFUs/mL')
     fig.update_layout(yaxis=dict(exponentformat="E"))
-    fig = font_size(fig,line_size=1)
-    fig.write_image(join('..', 'plots', 'plots','ct_growth_curves.svg'))
-
-def annot_chrom():
-    pass
-abb = 'ct'
-df = pd.read_csv(join('..','annotations','ct_variants_annotations.csv'))
-mask = (df['strain'] == s.abbreviations[abb]) & (df['chrom'] == 'ct_0') #& (df['type'] == 'snp')
-df = df[mask]
-df = df.astype({'treatment':str,'cosm':str})
-df['freq_color'] = df['freq']
-df['freq'] = 0
-df['facet_row'] = df['treatment'] + '_' + df['cosm']
-df.insert(len(df.columns),'coding',None)
-for i,row in df.iterrows():
-    if row['gene'] == 'Not annotated':
-        df.at[i,'coding'] = False
-    else:
-        df.at[i,'coding'] = True
-df = df.sort_values(by='facet_row')
-fig = px.scatter(df, x='pos', y='freq',
-                        facet_row='facet_row',width=w/5*4,height=h,symbol='coding')
-fig.for_each_yaxis(lambda axis: axis.update(visible=False))
-fig.for_each_xaxis(lambda axis: axis.update(showgrid=False))
-#fig.for_each_yaxis(lambda axis: axis.update(layer="above traces"))
-
-#fig.for_each_annotation(lambda axis: axis.update(text=''))
-fig.update_xaxes(rangemode='tozero')
-symbols = {'True':'x-thin',
-        'False':'circle-open'}
+    fig = font_size(fig, line_size=1)
+    fig.write_image(join('..', 'plots', 'plots', 'ct_growth_curves.svg'))
 
 
-for d in fig['data']:
-    #treatment,coding = d['name'].split(',')[0],d['name'].split(',')[1].lstrip()
-    d['marker']['color'] = 'black'
-    d['marker']['symbol'] = symbols[d['name']]
-    d['marker']['line']['width'] = 0.8
-    d['marker']['line']['color'] = 'black'
-for i,n in enumerate(set(df['facet_row'])):
-    fig.add_trace(go.Scatter(x=[0,5931885], y=[0,0],mode='lines',line=dict(color='gray')),col=1,row=i+1)
-
-fig = font_size(fig,marker_size=3,line_size=4)
-for a in fig['layout']['annotations']:
-    text = a['text'].split('_')[-1]
-    a['text'] = ''
-    a['textangle'] = 0
-    a['font']['size'] = 4
-
-fig.update_layout(
-    plot_bgcolor='rgba(0,0,0,0)',  # Fully transparent background
-    paper_bgcolor='rgba(0,0,0,0)',
-    showlegend=False
-)
-fig.data = fig.data[::-1]
-for d in fig['data'][:5]:
-    d['line']['color'] = colors_t['2']
-for d in fig['data'][5:10]:
-    d['line']['color'] = colors_t['3']
-for d in fig['data'][10:15]:
-    d['line']['color'] = colors_t['4']
-fig.write_image(join('..','plots','plots','ct_chromosome_annot.svg'))
-
-def annot_plas():
-    abb = 'ct'
-    df = pd.read_csv(join('..','annotations','ct_variants_annotations.csv'))
-    mask = (df['strain'] == s.abbreviations[abb]) & (df['chrom'] == 'ct_1') #& (df['type'] == 'snp')
+def annot_chrom(abb, chromosome, length, width, fname, cosm_names,fsize=10,height=h):
+    df = pd.read_csv(join('..', 'annotations', abb +
+                     '_variants_annotations.csv'))
+    mask = (df['strain'] == s.abbreviations[abb]) & (
+        df['chrom'] == chromosome) & (df['timepoint'] == 'T44')
     df = df[mask]
-    df = df.astype({'treatment':str,'cosm':str})
+    df = df.astype({'treatment': str, 'cosm': str})
     df['freq_color'] = df['freq']
     df['freq'] = 0
     df['facet_row'] = df['treatment'] + '_' + df['cosm']
-    df.insert(len(df.columns),'coding',None)
-    for i,row in df.iterrows():
+    df.insert(len(df.columns), 'coding', None)
+    for i, row in df.iterrows():
         if row['gene'] == 'Not annotated':
-            df.at[i,'coding'] = False
+            df.at[i, 'coding'] = False
         else:
-            df.at[i,'coding'] = True
+            df.at[i, 'coding'] = True
     df = df.sort_values(by='facet_row')
-    fig = px.scatter(df, x='pos', y='freq',
-                            facet_row='facet_row',width=w/5,height=h,symbol='coding')
+    lines = {'at': [(1, 1), (1, 2), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5)],
+             'ct': [(2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (4, 1), (4, 2), (4, 3), (4, 4), (4, 5)]}
+    row_titles = []
+    if cosm_names:
+        for t, m in lines[abb]:
+            row_titles.append('M'+str(m))
+    fig = make_subplots(
+        rows=len(lines[abb]), cols=1, shared_xaxes=True, row_titles=row_titles)
+    for i, j in enumerate(lines[abb]):
+        fig.add_trace(go.Scatter(x=[0, length], y=[
+                      0, 0], mode='lines', line=dict(color='gray')), col=1, row=i+1)
+
+    for i, (t, m) in enumerate(lines[abb]):
+        mask = (df['treatment'] == str(t)) & (df['cosm'] == str(m))
+        tmp = df[mask]
+        for j, row in tmp.iterrows():
+            if row['coding']:
+                symbol = 'x-thin'
+            else:
+                symbol = 'circle-open'
+
+            x, y = [row['pos']], [row['freq']]
+            fig.add_trace(go.Scatter(x=x, y=y, name=str(t)+'_'+str(m), mode='markers', marker=dict(color='black',
+                                                                                                   symbol=symbol, line=dict(width=0.8, color='black'))
+                                     ), row=i+1, col=1)
+
     fig.for_each_yaxis(lambda axis: axis.update(visible=False))
     fig.for_each_xaxis(lambda axis: axis.update(showgrid=False))
-    #fig.for_each_yaxis(lambda axis: axis.update(layer="above traces"))
-
-    #fig.for_each_annotation(lambda axis: axis.update(text=''))
+    fig.for_each_xaxis(lambda axis: axis.update(zeroline=False))
+    fig.for_each_annotation(lambda axis: axis.update(textangle=0))
     fig.update_xaxes(rangemode='tozero')
-    symbols = {'True':'x-thin',
-            'False':'circle-open'}
+    symbols = {'True': 'x-thin',
+               'False': 'circle-open'}
 
-
-    for d in fig['data']:
-        #treatment,coding = d['name'].split(',')[0],d['name'].split(',')[1].lstrip()
-        d['marker']['color'] = 'black'
-        d['marker']['symbol'] = symbols[d['name']]
-        d['marker']['line']['width'] = 0.8
-        d['marker']['line']['color'] = 'black'
-    for i,n in enumerate(set(df['facet_row'])):
-        fig.add_trace(go.Scatter(x=[0,198853], y=[0,0],mode='lines',line=dict(color='gray')),col=1,row=i+1)
-    for a in fig['layout']['annotations']:
-        text = a['text'].split('_')[-1]
-        a['text'] = 'M' + text
-        a['textangle'] = 0
-    fig = font_size(fig,marker_size=3,line_size=4)
-
+    fig = font_size(fig, marker_size=3, line_size=4,fsize=fsize)
 
     fig.update_layout(
         plot_bgcolor='rgba(0,0,0,0)',  # Fully transparent background
         paper_bgcolor='rgba(0,0,0,0)',
-        showlegend=False
+        showlegend=False,
+        autosize=False,
+        minreducedwidth=width,
+        minreducedheight=height,
+        width=width,
+        height=height,
     )
-    fig.data = fig.data[::-1]
-    for d in fig['data'][:5]:
-        d['line']['color'] = colors_t['2']
-    for d in fig['data'][5:10]:
-        d['line']['color'] = colors_t['3']
-    for d in fig['data'][10:15]:
-        d['line']['color'] = colors_t['4']
-    fig.write_image(join('..','plots','plots','ct_plasmid_annot.svg'))
+    # fig.data = fig.data[::-1]
+
+    if abb == 'ct':
+        for d in fig['data'][:5]:
+            d['line']['color'] = colors_t['2']
+        for d in fig['data'][5:10]:
+            d['line']['color'] = colors_t['3']
+        for d in fig['data'][10:15]:
+            d['line']['color'] = colors_t['4']
+    if abb == 'at':
+        for d in fig['data'][:2]:
+            d['line']['color'] = colors_t['1']
+        for d in fig['data'][2:7]:
+            d['line']['color'] = colors_t['3']
+        for d in fig['data'][7:12]:
+            d['line']['color'] = colors_t['4']
+    fig.write_image(join('..', 'plots', 'plots', fname))
+    return fig
 
 
-annot_plas()
+def annotater():
+    fig = annot_chrom('ct', 'ct_0', 5931804, w/5*4,
+                      'ct_chrom_annot.svg', False)
+    fig = annot_chrom('ct', 'ct_1', 198853, w/5, 'ct_plas_annot.svg', True)
+    fig = annot_chrom('at', 'at_0', 3000155, w/7*2,
+                      'at_chrom_annot.svg', False,fsize=5,height=h+3.5)
+    fig = annot_chrom('at', 'at_1', 1955452, w/7*2,
+                      'at_plas1_annot.svg', False,fsize=5,height=h+3.5)
+    fig = annot_chrom('at', 'at_2', 214247, w/7, 'at_plas2_annot.svg', False,fsize=5,height=h+3.5)
+    fig = annot_chrom('at', 'at_3', 229513, w/7, 'at_plas3_annot.svg', False,fsize=6,height=h+3.5)
+    fig = annot_chrom('at', 'at_4', 31100, w/7, 'at_plas4_annot.svg', True,fsize=6,height=h+3.5)
+
+
+def zero_coverage():
+    dfs = []
+    df = pd.read_csv(join(s.work, 'Ct45.1', 'depth_Q_0.tsv'), sep='\t')
+    df.columns = ['chromosome', 'position', 'coverage']
+    df.insert(len(df.columns), 'sample', 'Ct45.1')
+    dfs.append(df)
+
+    df = pd.read_csv(join(s.work, 'Ct42.2', 'depth_Q_0.tsv'), sep='\t')
+    df.columns = ['chromosome', 'position', 'coverage']
+    df.insert(len(df.columns), 'sample', 'Ct42.2')
+    dfs.append(df)
+
+    df = pd.concat(dfs)
+    df = df[df['chromosome'] == 'tig00000001_polypolish']
+
+    fig = px.scatter(df, x='position', y='coverage',
+                     color='sample', width=w, height=h, opacity=0.5)
+    fig = font_size(fig)
+    fig.write_image('tmp.svg')
