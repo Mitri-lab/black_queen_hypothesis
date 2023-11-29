@@ -5,6 +5,7 @@ import plotly.express as px
 from Bio import SeqIO
 import vcfpy
 
+"""This script hosts the code for the structural anlysis of the PacBio data."""
 
 s = Samples()
 
@@ -28,17 +29,18 @@ colors_t = {'1': '#1B9E77',
 w = 400
 h = 250
 
-df = pd.DataFrame(columns=['strain', 'treatment', 'cosm', 'name','contig','start','end','length'])
-for strain, samples in s.strains.items():
-    for sample in samples:
-        if sample['platform'] == 'pacbio':
-            f = join(sample['dir_name'],'depth_Q_0.concat.csv')
-            if exists(f):
-                dels = pd.read_csv(f)
-                for i,row in dels.iterrows():
-                    df.loc[len(df)] = [strain,sample['treatment'],sample['cosm'],sample['name'],row['chromosome'], \
-                                       int(row['position']),int(row['position']) + int(row['length']),int(row['length'])]
-df.to_csv(join('..','variants','depth_Q_0.concat.csv'))
+def dump_pacbio_zero_cv():
+    df = pd.DataFrame(columns=['strain', 'treatment', 'cosm', 'name','contig','start','end','length'])
+    for strain, samples in s.strains.items():
+        for sample in samples:
+            if sample['platform'] == 'pacbio':
+                f = join(sample['dir_name'],'depth_Q_0.concat.csv')
+                if exists(f):
+                    dels = pd.read_csv(f)
+                    for i,row in dels.iterrows():
+                        df.loc[len(df)] = [strain,sample['treatment'],sample['cosm'],sample['name'],row['chromosome'], \
+                                        int(row['position']),int(row['position']) + int(row['length']),int(row['length'])]
+    df.to_csv(join('..','variants','depth_Q_0.concat.csv'))
 
 
 def parse_pacbio_deletions():
@@ -363,23 +365,3 @@ def number_of_genes(abb):
         d['marker']['color'] = colors_t[d['name']]
         d['line']['color'] = colors_t[d['name']]
     fig.write_image(join('..','plots','plots',abb+'_genes.svg'))
-
-"""plot_deletions_pacbio('at')
-plot_deletions_pacbio('ct')
-plot_insertions_pacbio('at')
-plot_insertions_pacbio('ct')
-plot_assembly_length('at')
-plot_assembly_length('ct')
-plot_contigs('at')
-plot_contigs('ct')
-pacbio_zero_coverage('ct')
-pacbio_zero_coverage('at')
-"""
-
-"""abb = 'ms'
-plot_deletions_pacbio(abb)
-plot_insertions_pacbio(abb)
-plot_assembly_length(abb)
-plot_contigs(abb)
-pacbio_zero_coverage(abb)
-"""
