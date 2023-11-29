@@ -26,4 +26,4 @@ Below is an outline of the most important dataframes:
 - `variants/snps_pacbio.csv` contains all SNPS in the genomic PacBio data
 - `variants/assembly_length.csv` assembly lenghts for PacBio assemblies
 
-The code for the figures can be found in `scripts/diversity.py`.
+The code for the figures can be found in `scripts/diversity.py` for variant analsysis and `scripts/deletions.py` for PacBio data.
