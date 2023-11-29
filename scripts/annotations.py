@@ -125,16 +125,17 @@ def font_size(fig):
     return fig
 
 
-def products():
-    df = pd.read_csv('../annotations/ct_variants_annotations.csv')
+def products(abb):
+    df = pd.read_csv(join('..', 'annotations', abb+'_variants_annotations.csv'))
     filter = (df['timepoint'] == 'T44') & (
         df['freq'] >= 0.1) & (df['product'] != 'Not annotated')
     df = df[filter]
-    products = sorted(list(set(zip(df['product'], df['gene']))),key=lambda x: x[0].lower())
+    products = sorted(
+        list(set(zip(df['product'], df['gene']))), key=lambda x: x[0].lower())
     mult_freqs = []
     matrix = []
     sample_labels = []
-    for sample in s.strains[s.abbreviations['ct']]:
+    for sample in s.strains[s.abbreviations[abb]]:
         if (sample['timepoint'] == 'T44') & (sample['platform'] == 'illumina'):
             sample_labels.append(sample['name'])
             row = []
@@ -146,30 +147,34 @@ def products():
                 if len(freqs) > 0:
                     row.append(np.average(freqs))
                     if len(freqs) > 1:
-                        mult_freqs.append((product,gene))
+                        mult_freqs.append((product, gene))
                 else:
                     row.append(0)
             matrix.append(row)
 
     dm = pd.DataFrame(matrix)
     dm.index = [s.labels[key] for key in sample_labels]
-    dm.columns = [' <i>' + gene + '</i> ' + product for product,gene in products]
+    dm.columns = [' <i>' + gene + '</i> ' +
+                  product for product, gene in products]
 
     colors = ['#7570B3', '#1B9E77', '#E6AB02']
-    #colors = ['#7570B3', '#1B9E77', '#D95F02', '#E6AB02']
+    # colors = ['#7570B3', '#1B9E77', '#D95F02', '#E6AB02']
 
     for c in dm.columns:
         if len(dm[dm[c] != 0]) <= 1:
             dm = dm.drop(c, axis=1)
-    fig = px.imshow(dm, color_continuous_scale=colors)
+    custom_colorscale = ['white','black']
+    fig = px.imshow(dm, color_continuous_scale=custom_colorscale)
     fig.update_traces(colorbar=dict(thickness=1))
 
     fig = font_size(fig)
     fig.update_layout(
         xaxis=dict(tickangle=-45),  # Rotate x-axis labels by -45 degrees
     )
-    fig.write_image(join('..', 'plots', 'plots', 'products.svg'))
+    fig.write_image(join('..', 'plots', 'plots', abb + '_products.pdf'))
     fig.show()
+
+
 k = []
 
 
