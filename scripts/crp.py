@@ -9,6 +9,12 @@ from Bio.SeqRecord import SeqRecord
 from Bio.Seq import Seq
 s = Samples()
 
+"""This is a script that we used to analyze a gene that we were interested.
+Crp only shows up mutated in At evolved under condition 4.
+It is suggested that could be a global transcription regulator.
+Unfortunatly, we didn't get the RNA extraction to work for At.
+"""
+
 oa_seq = '/users/eulrich/work/genome_size/data/at/oa_sequence.fasta'
 work = '/work/FAC/FBM/DMF/smitri/evomicrocomm/genome_size/data'
 
