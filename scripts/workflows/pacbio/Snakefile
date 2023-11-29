@@ -42,6 +42,15 @@ def get_reference(wildcards):
         for sample in samples:
             if sample['name'] == wildcards.sample:
                 return join(work,'ancestors',Samples().abbreviations[strain],'assembly.contigs.polypolish.fasta')
+            
+def get_genome_length(wildcards):
+    genome_sizes = {
+        'At':'5.3m',
+        'Ct':'6.1m',
+        'Ms':'3.7m',
+        'Oa':'5.1m'}
+    return genome_sizes[wildcards.sample[:2]]
+
 
 
 #Aligning corrected reads to wild-type genome
@@ -140,13 +149,6 @@ rule insertion_detection:
     shell:
         "detect_insertions --plot {input} {params}"
 
-def get_genome_length(wildcards):
-    genome_sizes = {
-        'At':'5.3m',
-        'Ct':'6.1m',
-        'Ms':'3.7m',
-        'Oa':'5.1m'}
-    return genome_sizes[wildcards.sample[:2]]
 
 rule hgt_detection:
     input:
