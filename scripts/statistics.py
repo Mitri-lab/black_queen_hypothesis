@@ -56,6 +56,17 @@ def mutations():
     
     return total,fixed, variants,ratio
 
+def genome_legnth():
+    df = pd.read_csv(join('..','variants','assembly_length.csv'))
+    df.insert(len(df.columns),'timepoint','T44')
+    df = df[df['strain'] == 'Ct']
+    out = kruskal_treatment(df,'deletions')
+
+df = pd.read_csv(join('..','variants','genes.csv'))
+df.insert(len(df.columns),'timepoint','T44')
+df = df[df['strain'] == s.abbreviations['ct']]
+out = kruskal_treatment(df,'genes')
+
 def distance():
     dist = distance_tree('ct')
     df = pd.DataFrame(columns=['timepoint','treatment','distance'])
@@ -64,5 +75,6 @@ def distance():
         t = int(i[5])
         df.loc[len(df)] = [tp,t,d]
     return kruskal_treatment(df,'distance')
-t,f,v,r = mutations()
+#t,f,v,r = mutations()
 #d = distance()
+#l = genome_legnth()
