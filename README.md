@@ -1,4 +1,28 @@
-# Sequencing data analysis for Piccardis evolution experiment
+# Sequencing data analysis for the "Co-evolution of four bacterial species reduces facilitative interactions" paper
+
+This repository hosts the code for the sequencing data analysis.
+The experiment described in the paper was followed using DNA short-read, DNA long-read and RNA short-read sequencing data.
+
+## Environment
+
+The conda environment containing most of the software used for data analysis is exported in `environment.yml`
+
+## Data processing
+
+The genomic short-read and long-read data was processed using a Snakemake workflow.  
+They can be found in the following directories:
+- Illumina: `scripts/workflows/illumina`
+- PacBio: `scripts/workflows/pacbio`
+
+The RNA sequencing data was analyzed usign [RASflow](https://github.com/zhxiaokang/RASflow) workflow.
+
+## Data analysis
+
+
+
+
+
+ as well as all data frames containing all information relevant to reproduce the plots
 
 The name of this repository is depreciated and will change soon. 
 
@@ -6,6 +30,9 @@ This repository hosts code for analyzing the sequencing data derived from a comm
 Four strains were cultured together over 44 weeks. As a control, if possible, the strains were also grown in monoculture.
 From this experiment we have metagenomic Illumina sequencing data available for the timepoints 11, 22, 33 and 44 (in weeks).
 At week 44, samples were plated and picked colonies were amplified. The DNA was isolated and sequenced with PacBio.
+
+
+
 
 If you want to have a glims at the results you can do that by having a look at this [report](https://github.com/nahanoo/black_queen_hypothesis/blob/main/reports/report.pdf).  
 For sample processing, a Snakemake workflow was implemented for the PacBio and the Illumina data.
