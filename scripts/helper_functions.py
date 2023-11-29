@@ -345,3 +345,20 @@ def annotate_clusters(abb):
 
     print(out.to_string(index=False))
 """
+
+df = pd.read_csv(join('..','annotations','ct_variants_annotations.csv'))
+df = df[df['timepoint'] == 'T44']
+df = df[df['freq'] >= 0.97]
+df = df[['product','treatment','cosm']]
+df = df.drop_duplicates()
+pac = pd.read_csv(join('..','annotations','ct_pacbio_annotations.csv'))
+j = 0
+k = 0
+for i,row in df.iterrows():
+    treatment,product,cosm = row['treatment'],row['product'],row['cosm']
+    mask = (pac['treatment'] == treatment) & (pac['product'] == product) & (pac['cosm'] == cosm)
+    j += 1
+    if len(pac[mask]) > 0:
+        k += 1
+    
+    

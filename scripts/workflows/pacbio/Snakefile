@@ -59,6 +59,21 @@ rule mapping_corrected_reads:
         samtools index {output}
         """
 
+rule map_assemblies:
+    input:
+        reference = get_reference,
+        assembly = join(work,'{sample}','assembly.contigs.racon.fasta')
+    output:
+        join(work,'{sample}','mapped_assembly.sorted.bam')
+    threads:
+        1
+    shell:
+        """
+        minimap2 -t {threads} -ax asm5 {input} | samtools sort --threads 16 -o {output}
+        samtools index {output}
+        """
+
+
 rule snippy:
     input:
         reference = get_genbank,
@@ -79,20 +94,22 @@ rule snippy:
 
 rule bakta:
     input:
-        join(work,'{sample}','assembly.fasta')
+        join(work,'{sample}','assembly.contigs.racon.fasta')
     output:
-        join(work,'{sample}','bakta','assembly.gbff')
+        join(work,'{sample}','bakta','assembly.contigs.racon.gbff')
     params:
         join(work,'{sample}','bakta')
     threads:
-        1
+        4
+    conda:
+        "bakta"
     shell:
-        """bakta --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input} --output {params}
+        """bakta --force --db ~/work/bakta/db/ --keep-contig-headers --threads {threads} {input} --output {params}
         """
         
 rule deletion_detection:
     input:
-        mutant = join(work,'{sample}','assembly.fasta'),
+        mutant = join(work,'{sample}','assembly.contigs.racon.fasta'),
         reference = get_genbank
     output:
         join(work,'{sample}','deletions.annotated.tsv'),
@@ -217,7 +234,7 @@ rule miniasm:
         """
 rule canu:
     input:
-        pacbio = join(work,'{sample}','reads.fastq.gz')
+        pacbio = join(work,'{sample}','corrected_reads.fasta')
     params:
         genome_length = get_genome_length,
         out_dir = join(work,'{sample}','canu'),
@@ -225,33 +242,33 @@ rule canu:
     output:
         join(work,'{sample}','canu','assembly.contigs.fasta')
     threads:
-        32
+        4
     shell:
         """
-        canu -p {params.prefix} -d {params.out_dir} useGrid=false genomeSize={params.genome_length} \
+        canu -assemble -corrected -p {params.prefix} -d {params.out_dir} useGrid=false genomeSize={params.genome_length} \
         -pacbio {input.pacbio}
         """
 
 rule map_long_reads:
     input:
-        reads = join(work,'{sample}','reads.fastq.gz'),
+        reads = join(work,'{sample}','corrected_reads.fasta'),
         assembly = join(work,'{sample}','canu','assembly.contigs.fasta')
     output:
         join(work,'{sample}','assembly_correction.sam')
     threads:
-        16
+        1
     shell:
         """
-        minimap2 -ax map-pb {input.assembly} {input.reads} > {output}
+        minimap2 -t {threads} -ax map-pb {input.assembly} {input.reads} > {output}
         """
 
 rule racon:
     input:
         fasta = join(work,'{sample}','canu','assembly.contigs.fasta'),
-        fastq = join(work,'{sample}','reads.fastq.gz'),
+        fastq = join(work,'{sample}','corrected_reads.fasta'),
         alignment = join(work,'{sample}','assembly_correction.sam')
     threads:
-        32
+        1
     output:
         join(work,'{sample}','assembly.contigs.racon.fasta')
     shell:
@@ -269,4 +286,82 @@ rule sourmash:
     shell:
         """
         sourmash sketch dna -p scaled=1000,k=31 {input} -o {output}
+        """
+
+rule pbmm2:
+    input:
+        reference = get_reference,
+        reads = join(work,'{sample}','reads.fastq.gz')
+    output:
+        join(work,'{sample}','pbmm2.bam')
+    threads:
+        4
+    shell:
+        """
+        pbmm2 align {input} {output} -j {threads} --sort --preset CCS --sample {wildcards.sample} --rg '@RG\tID:{wildcards.sample}'
+        """
+
+rule pbsvsig:
+    input:
+        join(work,'{sample}','pbmm2.bam')
+    output:
+        join(work,'{sample}','pbsv.svsig.gz')
+    threads:
+        1
+    shell:
+        """
+        pbsv discover {input} {output}
+        """
+
+rule pbsvcall:
+    input:
+        reference = get_reference,
+        sig = join(work,'{sample}','pbsv.svsig.gz')
+    output:
+        join(work,'{sample}','pbsv.var.vcf')
+    threads:
+        4
+    shell:
+        """
+        pbsv call -j {threads} {input} {output}
+        """
+
+rule ipa:
+    input:
+        join(work,'{sample}','reads.fastq.gz')
+    output:
+        join(work,'{sample}','ipa','19-final','final.a_ctg.fasta')
+    params:
+        join(join(work,'{sample}','ipa'))
+    threads:
+        24
+    shell:
+        """
+        ipa dist -i {input} --nthreads 24 --njobs 20 --run-dir {params} --cluster-args "qsub -S /bin/bash -N ipa.{rule} -cwd -q default -pe smp 24 -e qsub_log/ -o qsub_log/ -V"
+        """
+
+rule sniffles:
+    input:
+        join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+    output:
+        join(work,'{sample}','sniffles.var.vcf')
+    threads:
+        8
+    shell:
+        """
+        sniffles -t {threads} -i {input} -v {output}
+        """
+
+rule samtools_depth:
+    input:
+        bam = join(work,'{sample}','mapped_corrected_reads.sorted.bam')
+    output:
+        samtools_depth = join(work,'{sample}','depth_Q_0.tsv'),
+        concat = join(work,'{sample}','depth_Q_0.concat.csv')
+    threads:
+        1
+    shell:
+        """
+        samtools depth -aa -Q 0 {input.bam} > {output.samtools_depth}
+        python concat_depth.py {wildcards.sample}
         """

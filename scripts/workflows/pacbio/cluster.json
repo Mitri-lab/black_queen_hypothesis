@@ -27,7 +27,7 @@
     "bakta":
     {
         "mem": "32G",
-        "time": "0:30:0"
+        "time": "01:0:0"
     },
     "hgt_detection":
     {
@@ -56,22 +56,57 @@
     },
     "canu":
     {
-        "mem": "128G",
-        "time": "12:0:0"
+        "mem": "32G",
+        "time": "3:0:0"
     },
     "map_long_reads":
     {
-        "mem": "64G",
-        "time": "2:0:0"
+        "mem": "32G",
+        "time": "0:30:0"
     },
     "racon":
     {
-        "mem": "128G",
-        "time": "06:0:0"
+        "mem": "32G",
+        "time": "01:0:0"
     },
     "snippy":
     {
         "mem": "8G",
         "time": "3:0:0"
+    },
+    "pbmm2":
+    {
+        "mem": "64G",
+        "time": "0:30:0"
+    },
+    "pbsvsig":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
+    "pbsvcall":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
+    "ipa":
+    {
+        "mem": "32G",
+        "time": "3:0:0"
+    },
+    "sniffles":
+    {
+        "mem": "32G",
+        "time": "3:0:0"
+    },
+    "samtools_depth":
+    {
+        "mem": "32G",
+        "time": "0:30:0"
+    },
+    "map_assemblies":
+    {
+        "mem": "8G",
+        "time": "0:30:0"
     }
 }

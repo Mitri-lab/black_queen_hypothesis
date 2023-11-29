@@ -48,8 +48,6 @@ rule mapping:
         samtools index {output}
         """
 
-
-
 rule split_reads:
     input:
         read1 = join(work,'{sample}','read1.fq.gz'),
@@ -114,13 +112,17 @@ rule depth:
 
 rule samtools_depth:
     input:
-        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
+        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
     output:
-        join(work,'{sample}','{strain}','depth.tsv')
+        samtools_depth = join(work,'{sample}','{strain}','depth_Q_0.tsv'),
+        concat = join(work,'{sample}','{strain}','depth_Q_0.concat.csv')
     threads:
         1
     shell:
-        "samtools depth -aa -Q 0 {input.bam} > {output}"
+        """
+        samtools depth -aa -Q 0 {input.bam} > {output.samtools_depth}
+        python concat_depth.py {wildcards.strain} {wildcards.sample}
+        """
 
 rule samtools_depth_marc:
     input:

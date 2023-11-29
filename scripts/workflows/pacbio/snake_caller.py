@@ -30,7 +30,7 @@ def submit(files):
     """Basic snakemake calling"""
     cluster_config = '--cluster-config cluster.json --cluster \
         "sbatch --mem={cluster.mem} -t {cluster.time} -c {threads}"'
-    cmd = ['snakemake','--rerun-incomplete','-j','100',cluster_config,files]
+    cmd = ['snakemake','--rerun-incomplete','--use-conda','-j','100',cluster_config,files]
     subprocess.call(' '.join(cmd),shell=True)
 
 
@@ -49,4 +49,4 @@ if __name__ == '__main__':
     It's nice that this script then also runs as a sleeper on the cluster.
     """
     #submit(join(work,'At42.1','deletions.annotated.tsv'))
-    all_caller(join('insertions.tsv'))
+    all_caller(join('bakta','assembly.contigs.racon.gbff'))
