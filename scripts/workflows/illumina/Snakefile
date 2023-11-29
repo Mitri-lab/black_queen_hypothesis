@@ -48,31 +48,6 @@ rule mapping:
         samtools index {output}
         """
 
-rule split_reads:
-    input:
-        read1 = join(work,'{sample}','read1.fq.gz'),
-        read2 = join(work,'{sample}','read2.fq.gz')
-    output:
-        join(work,'{sample}','done.txt')
-    threads:
-        8
-    shell:
-        """
-        python comp_mapping.py {wildcards.sample}
-        """
-
-rule split_reads_marc:
-    input:
-        read1 = join(work,'{sample}','read1.fq.gz'),
-        read2 = join(work,'{sample}','read2.fq.gz')
-    output:
-        join(work,'{sample}','done_marc.txt')
-    threads:
-        8
-    shell:
-        """
-        python comp_mapping_marc.py {wildcards.sample}
-        """
 
 #Getting mapping stats of aligment files.
 rule flagstat:
@@ -97,18 +72,7 @@ rule labels:
     shell:
         "python create_labels.py {wildcards.sample} {params.strain} {params.outdir}"
 
-rule depth:
-    input:
-        ref = get_reference,
-        bam = join(work,'{sample}','{strain}','mapped_reads.bam')
-    output:
-        join(work,'{sample}','{strain}','coverage.txt')
-    params:
-        outdir = join(work,'{sample}','{strain}')
-    threads:
-        1
-    shell:
-        "python coverage.py {input.ref} {input.bam} {params.outdir}"
+
 
 rule samtools_depth:
     input:
@@ -123,16 +87,6 @@ rule samtools_depth:
         samtools depth -aa -Q 0 {input.bam} > {output.samtools_depth}
         python concat_depth.py {wildcards.strain} {wildcards.sample}
         """
-
-rule samtools_depth_marc:
-    input:
-        bam = join(work,'{sample}','{strain}','mapped_reads_marc.bam')
-    output:
-        join(work,'{sample}','{strain}','depth_marc.tsv')
-    threads:
-        1
-    shell:
-        "samtools depth -aa -Q 0 {input.bam} > {output}"
 
 
 #Creating repord markdown with
@@ -217,47 +171,6 @@ rule snpEff:
         java -Xmx8g -jar ~/apps/snpEff/snpEff.jar {wildcards.strain} {input} > {output}
         """
 
-
-rule dump_read_ids:
-    input:
-        d_name = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
-    output:
-        join(work,'{sample}','{strain}','read_ids.txt')
-    threads:
-        1
-    shell:
-        """
-        python dump_read_ids.py {input}
-        """
-
-rule filter_bam:
-    input:
-        bam = join(work,'{sample}','{strain}','mapped_reads.sorted.bam')
-    params:
-
-    output:
-        join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam'),
-        join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam.bai')
-    threads:
-        1
-    shell:
-        """
-        python filter_bam.py {wildcards.sample} {input}
-        samtools index {output}
-        """
-
-rule mapped_reads_only:
-    input:
-        bam = join(work,'{sample}','{strain}','mapped_reads.filtered.sorted.bam')
-    output:
-        read1 = join(work,'{sample}','{strain}','read1.fastq.gz'),
-        read2 = join(work,'{sample}','{strain}','read2.fastq.gz'),
-    threads:
-        1
-    shell:
-        """
-        samtools fastq -1 {output.read1} -2 {output.read2} {input}
-        """
 
 rule spades:
     input:
