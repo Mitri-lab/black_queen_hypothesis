@@ -1,4 +1,4 @@
-strain,treatment,cosm,deletions,contigs
+strain,treatment,cosm,assembly_length,contigs
 At,1,1,5393706,6
 At,1,1,5418999,4
 At,1,2,5513889,7
