@@ -1,4 +1,4 @@
-# Sequencing data analysis for the "Co-evolution of four bacterial species reduces facilitative interactions" paper
+# Sequencing data analysis for the paper "The evolution of reduced facilitation in a four-species bacterial community"
 
 This repository hosts the code for the sequencing data analysis.
 The experiment described in the paper was followed using DNA short-read, DNA long-read and RNA short-read sequencing data.
