@@ -167,9 +167,9 @@ def illumina():
                     target = join(dir, "SRA_submission", name)
                     read1 = join(dir, "SRA_submission", target, name + "_1.fastq.gz")
                     read2 = join(dir, "SRA_submission", target, name + "_2.fastq.gz")
-                    cmd = ["sbatch", "transfer.sh", read1]
+                    cmd = ["sbatch", "sra_transfer.sh", read1]
                     subprocess.call(" ".join(cmd), shell=True)
-                    cmd = ["sbatch", "transfer.sh", read2]
+                    cmd = ["sbatch", "sra_transfer.sh", read2]
                     subprocess.call(" ".join(cmd), shell=True)
 
 
@@ -348,7 +348,7 @@ def pacbio():
                     read = join(
                         dir, "SRA_submission", "pacbio", name, name + ".fastq.gz"
                     )
-                    cmd = ["sbatch", "transfer.sh", read]
+                    cmd = ["sbatch", "sra_transfer.sh", read]
                     subprocess.call(" ".join(cmd), shell=True)
 
 
@@ -588,5 +588,5 @@ def rna_seq():
                             ]
                         )
                     read = join(dir, "SRA_submission", "rna_seq", name, name + ".fastq.gz")
-                    cmd = ["sbatch", "transfer.sh", read]
+                    cmd = ["sbatch", "sra_transfer.sh", read]
                     subprocess.call(" ".join(cmd), shell=True)
