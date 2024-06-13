@@ -1,7 +1,5 @@
 import pandas as pd
 from scipy.stats import ttest_ind, kruskal
-from diversity import get_mutations, get_variants
-from snippy_core import distance_tree
 from samples import Samples
 import plotly.express as px
 from os.path import join
@@ -62,10 +60,10 @@ def genome_legnth():
     df = df[df['strain'] == 'Ct']
     out = kruskal_treatment(df,'deletions')
 
-df = pd.read_csv(join('..','variants','genes.csv'))
+"""df = pd.read_csv(join('..','variants','genes.csv'))
 df.insert(len(df.columns),'timepoint','T44')
 df = df[df['strain'] == s.abbreviations['ct']]
-out = kruskal_treatment(df,'genes')
+out = kruskal_treatment(df,'genes')"""
 
 def distance():
     dist = distance_tree('ct')
@@ -75,6 +73,12 @@ def distance():
         t = int(i[5])
         df.loc[len(df)] = [tp,t,d]
     return kruskal_treatment(df,'distance')
-#t,f,v,r = mutations()
-#d = distance()
-#l = genome_legnth()
+
+
+df = pd.read_csv(join('..', 'variants', 'variants_illumina.csv'))
+df = df[df['timepoint'] == 'T44']
+df = df[df['strain'] == s.abbreviations['ct']]
+tmp = pd.DataFrame(columns= ['treatment','total_all_freq','timepoint'])
+for c in set(df['name']):
+    freq = sum(df[df['name'] == c]['freq'])
+    tmp.loc[len(tmp)] = [int(c[4]),freq,'T44']
